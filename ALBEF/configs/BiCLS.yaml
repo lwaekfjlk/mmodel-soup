@@ -1,0 +1,19 @@
+dataset_args: ['jmhessel/newyorker_caption_contest', 'ranking']
+
+image_res: 384
+batch_size_train: 64
+batch_size_test: 128
+
+alpha: 0.4
+distill: False
+warm_up: True
+
+bert_config: 'configs/config_bert.json'
+
+optimizer: {opt: adamW, lr: 1e-4, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 1e-4, epochs: 30, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
+
+
+
+
+
