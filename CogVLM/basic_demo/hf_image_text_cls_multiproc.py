@@ -128,12 +128,12 @@ def main():
         if i == num_partitions - 1:
             end = len(image_text_pairs)
         partition = image_text_pairs[start:end]
-        # p = Process(target=process, args=(i, lock, args, partition))
-        # p.start()
-        # processes.append(p)
-        process(i, lock, args, partition)
-    # for p in processes:
-    #     p.join()
+        p = Process(target=process, args=(i, lock, args, partition))
+        p.start()
+        processes.append(p)
+        # process(i, lock, args, partition)
+    for p in processes:
+        p.join()
         
 if __name__ == "__main__":
     main()
