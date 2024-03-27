@@ -6,7 +6,7 @@ from tqdm import tqdm
 import time
 from collections import defaultdict
 
-from humor_prompt import prompt_construct
+from nycartoon_utils import prompt_construct
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", "<your OpenAI API key if not set as env var>"))
 
