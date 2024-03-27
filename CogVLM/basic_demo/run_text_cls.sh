@@ -1,0 +1,1 @@
+python hf_text_cls_multiproc.py --from_pretrained THUDM/cogvlm-chat-hf --bf16 --text_data ../sarc_data/text_data/train_filtered.txt --save_file ../sarc_data/sarc_text_cls.txt --query "Think step by step. Does the following text contain very obvious sarcasm? Answer yes or no first. Then explain the reason. Text to evaluate: " --num_processes 1

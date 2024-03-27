@@ -1,0 +1,6 @@
+__pycache__
+/sarc_data/image_data/*
+/irfl_data/image_data/*
+**/dataset/*
+!.gitkeep
+blip_output/*
