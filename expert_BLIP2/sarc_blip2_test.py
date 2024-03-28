@@ -33,10 +33,11 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
+        break
     accuracy = total_correct / total
-    f1 = f1_score(labels, predictions, average='macro')
-    precision = precision_score(labels, predictions, average='macro')
-    recall = recall_score(labels, predictions, average='macro')
+    f1 = f1_score(labels.cpu(), predictions.cpu(), average='macro')
+    precision = precision_score(labels.cpu(), predictions.cpu(), average='macro')
+    recall = recall_score(labels.cpu(), predictions.cpu(), average='macro')
     return accuracy, f1, precision, recall
 
 if __name__ == '__main__':
