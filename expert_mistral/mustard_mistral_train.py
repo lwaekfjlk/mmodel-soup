@@ -31,7 +31,6 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
             total += labels.size(0)
             total_labels += labels.tolist()
             total_predictions += predictions.tolist()
-            import pdb; pdb.set_trace()
     accuracy = total_correct / total
     f1 = f1_score(total_labels, total_predictions)
     precision = precision_score(total_labels, total_predictions)
@@ -93,12 +92,12 @@ if __name__ == '__main__':
 
     # Define arguments
     parser.add_argument('--train_path', type=str, default='../mustard_data/results/image_text_train_dataset.json', help='Path to training dataset')
-    parser.add_argument('--val_path', type=str, default='../mustard_data/results/image_text_train_dataset.json', help='Path to validation dataset')
+    parser.add_argument('--val_path', type=str, default='../mustard_data/results/image_text_test_dataset.json', help='Path to validation dataset')
     parser.add_argument('--train_batch_size', type=int, default=1, help='Batch size for training')
     parser.add_argument('--val_batch_size', type=int, default=2, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=1024, help='Maximum sequence length')
     parser.add_argument('--learning_rate', type=float, default=5e-5, help='Learning rate for the optimizer')
-    parser.add_argument('--epochs', type=int, default=1, help='Number of training epochs')
+    parser.add_argument('--epochs', type=int, default=3, help='Number of training epochs')
     parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
     parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
