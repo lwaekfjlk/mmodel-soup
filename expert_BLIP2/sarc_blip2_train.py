@@ -6,6 +6,7 @@ from datasets import load_dataset
 from PIL import Image
 from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
+import argparse
 
 class CustomDataset(Dataset):
     """
@@ -78,11 +79,11 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     accuracy = total_correct / total
     return accuracy
 
-def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1):
+def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     """
     Training loop for the model.
     """
-    optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
     criterion = nn.CrossEntropyLoss()
 
     # Precompute token IDs for "yes" and "no" responses
@@ -92,7 +93,7 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1):
     step = 0
     best_acc = -1
     model.train()
-    for epoch in range(epochs):
+    for epoch in range(args.epochs):
         total_loss = 0
         for batch in tqdm(train_dataloader, desc=f"Epoch {epoch + 1}", leave=False):
             input_ids = batch["input_ids"].to(device)
@@ -109,12 +110,12 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1):
             optimizer.step()
             step += 1
 
-            if step % 100 == 0:
+            if step % args.eval_step == 0:
                 acc = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
                 print(f"Accuracy: {acc}")
                 if best_acc < acc:
                     best_acc = acc
-                    model.save_pretrained("./model")
+                    model.save_pretrained(args.save_path)
 
             total_loss += loss.item()
 
@@ -128,9 +129,22 @@ def get_dataloader(dataset_path, tokenizer, image_processor, batch_size=8, max_l
 
 
 if __name__ == '__main__':
-    # path to data  
-    train_path = './sarc_blip2_train.csv'
-    val_path = './sarc_blip2_test.csv'
+    parser = argparse.ArgumentParser(description="Train a model on sarcastic image-text pairs")
+
+    # Define arguments
+    parser.add_argument('--train_path', type=str, default='./sarc_blip2_train.csv', help='Path to training dataset')
+    parser.add_argument('--val_path', type=str, default='./sarc_blip2_test.csv', help='Path to validation dataset')
+    parser.add_argument('--train_batch_size', type=int, default=24, help='Batch size for training')
+    parser.add_argument('--val_batch_size', type=int, default=48, help='Batch size for validation')
+    parser.add_argument('--max_length', type=int, default=128, help='Maximum sequence length')
+    parser.add_argument('--learning_rate', type=float, default=5e-5, help='Learning rate for the optimizer')
+    parser.add_argument('--epochs', type=int, default=1, help='Number of training epochs')
+    parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
+    parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
+    parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
+    parser.add_argument('--save_path', type=str, default='./sarc_blip2_model', help='Path to save the trained model')
+    parser.add_argument('--eval_step', type=int, default=100, help='Number of steps to evaluate the model')
+    args = parser.parse_args()
 
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
@@ -138,20 +152,38 @@ if __name__ == '__main__':
     device = "cuda" if torch.cuda.is_available() else "cpu" 
     model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
     config = LoraConfig(
-        r=16,
-        lora_alpha=32,
-        lora_dropout=0.05,
+        r=args.lora_rank,
+        lora_alpha=args.lora_alpha,
+        lora_dropout=args.lora_dropout,
         bias="none",
         target_modules=["q_proj", "k_proj"]
     )
     model = get_peft_model(model, config)
     model.print_trainable_parameters()
     model.to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=5e-5)
-    criterion = nn.CrossEntropyLoss()
 
-    train_dataloader = get_dataloader(train_path, tokenizer, processor, batch_size=24, max_length=128)
-    val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=48, max_length=128)
 
-    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1)
-    model.save_pretrained("./model")
+    train_dataloader = get_dataloader(
+        args.train_path, 
+        tokenizer, 
+        processor, 
+        batch_size=args.train_batch_size, 
+        max_length=args.max_length
+    )
+    val_dataloader = get_dataloader(
+        args.val_path, 
+        tokenizer, 
+        processor, 
+        batch_size=args.val_batch_size, 
+        max_length=args.max_length
+    )
+
+    train(
+        args,
+        model, 
+        train_dataloader, 
+        val_dataloader, 
+        tokenizer, 
+        device, 
+    )
+    model.save_pretrained(args.save_path)
