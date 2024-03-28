@@ -1,1 +1,0 @@
-python hf_image_gen_multiproc.py --from_pretrained THUDM/cogagent-chat-hf --bf16 --image_dir ../irfl_data/image_data --save_file ../irfl_data/irfl_image_gen.txt --query "Describe the key information in the image that is related to figurative part." --num_processes 8
