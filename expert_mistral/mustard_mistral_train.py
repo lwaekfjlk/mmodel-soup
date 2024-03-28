@@ -6,7 +6,7 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 import argparse
 from mustard_dataset import CustomDataset, custom_collate
-from sklearn.metrics import f1_score, classification_report
+from sklearn.metrics import f1_score, classification_report, precision_score, recall_score
 
 
 def evaluate(model, dataloader, device, yes_token_id, no_token_id):
@@ -19,19 +19,20 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
-        image = batch["image"].to(device)
         labels = batch["label"].to(device)
         with torch.no_grad():
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask, pixel_values=image)
-            logits = outputs.logits.squeeze()[:, -1, :]
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask)
+            logits = outputs.logits[:, -1, :]
             yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
     accuracy = total_correct / total
     f1 = f1_score(labels.cpu(), predictions.cpu())
+    precision = precision_score(labels.cpu(), predictions.cpu())
+    recall = recall_score(labels.cpu(), predictions.cpu())
     print(classification_report(labels.cpu(), predictions.cpu()))
-    return accuracy
+    return accuracy, f1, precision, recall
 
 def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     """
@@ -64,8 +65,8 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
             step += 1
 
             if step % args.eval_step == 0:
-                acc = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
-                print(f"Accuracy: {acc}")
+                acc, f1, precision, recall = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
+                print(f"Accuracy: {acc}, F1: {f1}, Precision: {precision}, Recall: {recall}")
                 if best_acc < acc:
                     best_acc = acc
                     model.save_pretrained(args.save_path)
@@ -95,8 +96,8 @@ if __name__ == '__main__':
     parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
     parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
-    parser.add_argument('--save_path', type=str, default='./sarc_blip2_model', help='Path to save the trained model')
-    parser.add_argument('--eval_step', type=int, default=50, help='Number of steps to evaluate the model')
+    parser.add_argument('--save_path', type=str, default='./mustard_mistral_model', help='Path to save the trained model')
+    parser.add_argument('--eval_step', type=int, default=100, help='Number of steps to evaluate the model')
     args = parser.parse_args()
 
     # mistral Properties
