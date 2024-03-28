@@ -16,6 +16,8 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     model.eval()
     total_correct = 0
     total = 0
+    total_labels = []
+    total_predictions = []
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
@@ -27,12 +29,15 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
+            total_labels += labels.tolist()
+            total_predictions += predictions.tolist()
+            import pdb; pdb.set_trace()
     accuracy = total_correct / total
-    f1 = f1_score(labels.cpu(), predictions.cpu())
-    precision = precision_score(labels.cpu(), predictions.cpu())
-    recall = recall_score(labels.cpu(), predictions.cpu())
-    print(classification_report(labels.cpu(), predictions.cpu()))
-    return accuracy, f1, precision, recall
+    f1 = f1_score(total_labels, total_predictions)
+    precision = precision_score(total_labels, total_predictions)
+    recall = recall_score(total_labels, total_predictions)
+    report = classification_report(total_labels, total_predictions)
+    return accuracy, f1, precision, recall, report
 
 def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     """
@@ -65,8 +70,9 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
             step += 1
 
             if step % args.eval_step == 0:
-                acc, f1, precision, recall = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
+                acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
                 print(f"Accuracy: {acc}, F1: {f1}, Precision: {precision}, Recall: {recall}")
+                print(report)
                 if best_acc < acc:
                     best_acc = acc
                     model.save_pretrained(args.save_path)
