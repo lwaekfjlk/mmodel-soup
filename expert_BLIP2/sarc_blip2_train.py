@@ -54,6 +54,7 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
 
             optimizer.zero_grad()
             outputs = model(input_ids=input_ids, attention_mask=attention_mask, pixel_values=images)
+            import pdb; pdb.set_trace()
             logits = outputs.logits.squeeze()[:, -1, :]
             yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
             loss = criterion(yesno_logits, labels)
