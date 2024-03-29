@@ -37,7 +37,7 @@ def preprocess(dataset):
     return messages
 
 
-def call_openai_api(messages, model_name='gpt-4-turbo-preview'):
+def call_openai_api(messages, model_name):
     for _ in range(5):
         try:
             api_result = client.chat.completions.create(
@@ -64,8 +64,8 @@ if __name__ == '__main__':
     input_task_name = 'matching'
     input_split = 'train'
     
-    model_name = 'gpt-4-turbo-preview'
-    output_file_name = f'../nycartoon_data/nycartoon_{input_task_name}_split_{input_split}_text_cls_.txt'
+    model_name = 'gpt-3.5-turbo'
+    output_file_name = f'../nycartoon_data/nycartoon_{input_task_name}_split_{input_split}_text_label_logits.txt'
 
     dataset = list(load_dataset(input_dataset_name, input_task_name, split=input_split))
     messages = preprocess(dataset)
@@ -86,7 +86,7 @@ if __name__ == '__main__':
         for caption, message in instance.items():
             logits = call_openai_api(
                 message,
-                model_name=model_name
+                model_name
             )
             prediction[caption] = logits
 
