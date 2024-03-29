@@ -29,8 +29,10 @@ class CustomDataset(Dataset):
         label = torch.tensor(item[' label'], dtype=torch.long)
 
         full_prompt = f"Question: The tweet for this image is: {text}. Is the tweet sarcastic (yes or no)? Answer:"
-        text_encoding = self.tokenizer(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
-
+        # right padding
+        #text_encoding = self.tokenize(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
+        # left padding
+        text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
@@ -39,6 +41,29 @@ class CustomDataset(Dataset):
             "tweet": text,
             "prompt": full_prompt
         }
+
+    def tokenize_and_left_pad(self, full_prompt, max_length):
+        # Tokenize without padding
+        text_encoding = self.tokenizer(full_prompt, truncation=True, max_length=max_length, return_tensors="pt")
+        
+        # Calculate necessary padding
+        seq_len = text_encoding['input_ids'].size(1)
+        padding_length = max_length - seq_len
+        
+        if padding_length > 0:
+            # Create padding tensors
+            pad_ids = torch.full((1, padding_length), self.tokenizer.pad_token_id, dtype=torch.long)
+            pad_mask = torch.zeros((1, padding_length), dtype=torch.long)
+            
+            # Apply left padding
+            text_encoding['input_ids'] = torch.cat([pad_ids, text_encoding['input_ids']], dim=1)
+            text_encoding['attention_mask'] = torch.cat([pad_mask, text_encoding['attention_mask']], dim=1)
+        else:
+            # If no padding is necessary, ensure the sequence is truncated to max_length
+            text_encoding['input_ids'] = text_encoding['input_ids'][:, :max_length]
+            text_encoding['attention_mask'] = text_encoding['attention_mask'][:, :max_length]
+
+        return text_encoding
 
 def custom_collate(batch):
     """
@@ -109,9 +134,8 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1):
             optimizer.step()
             step += 1
 
-            if step % 100 == 0:
+            if step % 20 == 0:
                 acc = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
-                print(f"Accuracy: {acc}")
                 if best_acc < acc:
                     best_acc = acc
                     model.save_pretrained("./model")
@@ -129,8 +153,8 @@ def get_dataloader(dataset_path, tokenizer, image_processor, batch_size=8, max_l
 
 if __name__ == '__main__':
     # path to data  
-    train_path = './sarc_blip2_train.csv'
-    val_path = './sarc_blip2_test.csv'
+    train_path = '/root/bak/mmodel-soup/dataset/sarcasm_blip_train.csv'
+    val_path = '/root/bak/mmodel-soup/dataset/sarcasm_blip_test.csv'
 
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
@@ -151,7 +175,7 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss()
 
     train_dataloader = get_dataloader(train_path, tokenizer, processor, batch_size=24, max_length=128)
-    val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=48, max_length=128)
+    val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=32, max_length=128)
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=1)
     model.save_pretrained("./model")
