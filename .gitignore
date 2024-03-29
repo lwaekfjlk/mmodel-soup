@@ -2,3 +2,5 @@
 !**/.empty
 */__pycache__/*
 */model/*
+*/mustard_mistral_model/*
+**/model/*
