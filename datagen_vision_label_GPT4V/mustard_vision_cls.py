@@ -70,8 +70,8 @@ def query_openai(image_path, query):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--image_path", type=str, default='../mustard_data/raw_data/image_data', help='image folder position')
-    parser.add_argument("--text_data", type=str, default='../mustard_data/intermediate_data/sarcasm_data_speaker_independent_train.json', help='text_list')
-    parser.add_argument("--save_file", type=str, default='../mustard_data/results/mustard_vision_label.json', help='save file path')
+    parser.add_argument("--text_data", type=str, default='../mustard_data/intermediate_data/sarcasm_data_speaker_independent_test.json', help='text_list')
+    parser.add_argument("--save_file", type=str, default='../mustard_data/results/mustard_vision_label_test.json', help='save file path')
     
     args = parser.parse_args()
 
