@@ -67,9 +67,9 @@ def process(num, lock, args, image_names):
             response = response.split("</s>")[0]
         
         with lock:
-            result = json.dumps({"result": response.strip()})
+            result = json.dumps({"image_id": image_names[i], "description": response.strip()})
             with open(args.save_file, 'a') as f:
-                f.write(f"{image_names[i].strip()} {result}\n")
+                f.write(f"{result}\n")
             
             curr_time = time.time()
             time_to_finish = (curr_time - begin_time) / (i + 1) * (len(image_names) - i)
@@ -97,8 +97,9 @@ def main():
     partition_size = len(image_names) // num_partitions
     print(f"total images: {len(image_names)} partition size: {partition_size}")
     
-    with open(args.save_file, 'w') as f:
-        f.write("")
+    if not os.path.exists(args.save_file):
+        with open(args.save_file, 'w') as f:
+            f.write("")
     
     lock = Lock()
     processes = []
