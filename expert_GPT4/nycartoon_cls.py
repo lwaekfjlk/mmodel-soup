@@ -37,7 +37,8 @@ def preprocess(dataset):
     return messages
 
 
-def call_openai_api(messages, model_name):
+def call_openai_api(messages, model_name='gpt-4-turbo-preview'):
+
     for _ in range(5):
         try:
             api_result = client.chat.completions.create(
@@ -86,7 +87,7 @@ if __name__ == '__main__':
         for caption, message in instance.items():
             logits = call_openai_api(
                 message,
-                model_name
+                model_name=model_name
             )
             prediction[caption] = logits
 
