@@ -3,14 +3,14 @@ from torch.utils.data import DataLoader, Dataset
 from PIL import Image
 from datasets import load_dataset
 import json
-import ipdb
+
 
 class CustomDataset(Dataset):
     """
     A custom dataset class that prepares image-text pairs for training.
     """
-    def __init__(self, dataset_path, tokenizer, max_length=512):
-        self.dataset = load_dataset("json", data_files=dataset_path)['train']
+    def __init__(self, dataset_path, tokenizer, split, max_length=512):
+        self.dataset = load_dataset(dataset_path, "ranking")[split]
         self.tokenizer = tokenizer
         self.tokenizer.pad_token = self.tokenizer.eos_token
         self.max_length = max_length
@@ -20,19 +20,23 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         item = self.dataset[idx]
-        text = item['currentSentence']
-        speaker = item['currentSpeaker']
-        show = item['show']
-        context = item['context']
-        label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Question: You are watching an episode of {show}. Following up to this image input, the dialogue has been {context}. Given the current speaker is {speaker} who says {text} - are they being sarcastic? Answer:"
+        choices = item['caption_choices']
+        caption_a = choices[0]
+        caption_b = choices[1]
+        description = item['image_description']
+        label = item['label']
+        if label == "A":
+            label = 0
+        else:
+            label = 1
+        label = torch.tensor(label, dtype=torch.long)
+        full_prompt = f"Question: You are given an image description and two caption choices A and B. Description: {description}. A: {caption_a}. B: {caption_b}. Can you return 0 for A or 1 for B to answer which choice suits the image better? Answer:"
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
 
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,
-            "tweet": text,
             "prompt": full_prompt
         }
     

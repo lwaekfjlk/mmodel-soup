@@ -1,15 +1,20 @@
 import torch
-from torch.utils.data import DataLoader, Dataset
-from PIL import Image
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
 from datasets import load_dataset
-import json
+from PIL import Image
+from tqdm import tqdm
+from peft import LoraConfig, get_peft_model
 import ipdb
+from sklearn.metrics import f1_score, precision_score, recall_score
+
 
 class CustomDataset(Dataset):
     """
     A custom dataset class that prepares image-text pairs for training.
     """
-    def __init__(self, dataset_path, tokenizer, max_length=512):
+    def __init__(self, dataset_path, tokenizer, image_processor, max_length=512):
         self.dataset = load_dataset("json", data_files=dataset_path)['train']
         self.tokenizer = tokenizer
         self.tokenizer.pad_token = self.tokenizer.eos_token
@@ -20,22 +25,23 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         item = self.dataset[idx]
-        text = item['currentSentence']
-        speaker = item['currentSpeaker']
-        show = item['show']
-        context = item['context']
+        text = item['text']
+        caption = item['caption']
+        category = item['type']
         label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Question: You are watching an episode of {show}. Following up to this image input, the dialogue has been {context}. Given the current speaker is {speaker} who says {text} - are they being sarcastic? Answer:"
+        full_prompt = f"Question: You are given an image text pair of a {category}. The text is: {text}. Can you answer 0 if the {category} is Partial Literal (Some objects/entities of the phrase are visualized) and 1 if the {category} is Figurative (The image conveys one or more definitions of the phrase)? Answer:"
+        # right padding
+        #ipdb.set_trace()s
+        #text_encoding = self.tokenize(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
+        # left padding
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
-
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,
-            "tweet": text,
             "prompt": full_prompt
         }
-    
+
     def tokenize_and_left_pad(self, full_prompt, max_length):
         text_encoding = self.tokenizer(full_prompt, truncation=True, max_length=max_length, return_tensors="pt")
         

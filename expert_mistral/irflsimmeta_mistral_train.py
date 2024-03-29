@@ -5,9 +5,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor
 from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 import argparse
-from mustard_dataset import CustomDataset, custom_collate
+from irfl_dataset_simmeta import CustomDataset, custom_collate
 from sklearn.metrics import f1_score, classification_report, precision_score, recall_score
-
+import ipdb
 
 def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     """
@@ -37,6 +37,7 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     recall = recall_score(total_labels, total_predictions)
     report = classification_report(total_labels, total_predictions)
     return accuracy, f1, precision, recall, report
+
 
 def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     """
@@ -78,11 +79,12 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
 
             total_loss += loss.item()
 
-def get_dataloader(dataset_path, tokenizer, batch_size=8, max_length=512):
+
+def get_dataloader(dataset_path, tokenizer, split, batch_size=8, max_length=512):
     """
     Get the dataloader for the given dataset.
     """
-    custom_dataset = CustomDataset(dataset_path, tokenizer, max_length)
+    custom_dataset = CustomDataset(dataset_path, tokenizer, split, max_length)
     dataloader = DataLoader(custom_dataset, batch_size=batch_size, shuffle=True, collate_fn=custom_collate)
     return dataloader
 
@@ -91,17 +93,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on sarcastic image-text pairs")
 
     # Define arguments
-    parser.add_argument('--train_path', type=str, default='/root/bak/mmodel-soup/dataset/mustard_train.json', help='Path to training dataset')
-    parser.add_argument('--val_path', type=str, default='/root/bak/mmodel-soup/dataset/mustard_test.json', help='Path to validation dataset')
+    parser.add_argument('--train_path', type=str, default="/root/haofeiy/mmodel-soup/expert_mistral/mistral_similies.json", help='Path to training dataset')
+    parser.add_argument('--val_path', type=str, default="/root/haofeiy/mmodel-soup/expert_mistral/mistral_similies.json",help='Path to validation dataset')
     parser.add_argument('--train_batch_size', type=int, default=1, help='Batch size for training')
     parser.add_argument('--val_batch_size', type=int, default=2, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=1024, help='Maximum sequence length')
-    parser.add_argument('--learning_rate', type=float, default=5e-5, help='Learning rate for the optimizer')
+    parser.add_argument('--learning_rate', type=float, default=5e-5, help='Lefullarning rate for the optimizer')
     parser.add_argument('--epochs', type=int, default=3, help='Number of training epochs')
     parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
     parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
-    parser.add_argument('--save_path', type=str, default='./mustard_mistral_model', help='Path to save the trained model')
+    parser.add_argument('--save_path', type=str, default='./similie_mistral_model', help='Path to save the trained model')
     parser.add_argument('--eval_step', type=int, default=100, help='Number of steps to evaluate the model')
     args = parser.parse_args()
 
@@ -120,20 +122,20 @@ if __name__ == '__main__':
     model.print_trainable_parameters()
     model.to(device)
 
-
     train_dataloader = get_dataloader(
         args.train_path, 
         tokenizer, 
+        "train",
         batch_size=args.train_batch_size, 
         max_length=args.max_length
     )
     val_dataloader = get_dataloader(
         args.val_path, 
         tokenizer, 
+        "validation",
         batch_size=args.val_batch_size, 
         max_length=args.max_length
     )
-
     train(
         args,
         model, 
