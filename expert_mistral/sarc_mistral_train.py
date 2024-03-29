@@ -5,7 +5,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor
 from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 import argparse
-from mustard_dataset import CustomDataset, custom_collate
+from sarc_dataset import CustomDataset, custom_collate
 from sklearn.metrics import f1_score, classification_report, precision_score, recall_score
 
 
@@ -89,10 +89,9 @@ def get_dataloader(dataset_path, tokenizer, batch_size=8, max_length=512):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on sarcastic image-text pairs")
-
     # Define arguments
-    parser.add_argument('--train_path', type=str, default='/root/bak/mmodel-soup/dataset/mustard_train.json', help='Path to training dataset')
-    parser.add_argument('--val_path', type=str, default='/root/bak/mmodel-soup/dataset/mustard_test.json', help='Path to validation dataset')
+    parser.add_argument('--train_path', type=str, default='/root/bak/mmodel-soup/dataset/sarcasm_blip_train.csv', help='Path to training dataset')
+    parser.add_argument('--val_path', type=str, default='/root/bak/mmodel-soup/dataset/sarcasm_blip_test.csv', help='Path to validation dataset')
     parser.add_argument('--train_batch_size', type=int, default=1, help='Batch size for training')
     parser.add_argument('--val_batch_size', type=int, default=2, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=1024, help='Maximum sequence length')
@@ -101,7 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
     parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
-    parser.add_argument('--save_path', type=str, default='./mustard_mistral_model', help='Path to save the trained model')
+    parser.add_argument('--save_path', type=str, default='./sarcasm_mistral_model', help='Path to save the trained model')
     parser.add_argument('--eval_step', type=int, default=100, help='Number of steps to evaluate the model')
     args = parser.parse_args()
 

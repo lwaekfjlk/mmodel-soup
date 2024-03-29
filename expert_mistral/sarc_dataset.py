@@ -1,7 +1,11 @@
 import torch
-from torch.utils.data import DataLoader, Dataset
-from PIL import Image
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
 from datasets import load_dataset
+from PIL import Image
+from tqdm import tqdm
+from peft import LoraConfig, get_peft_model
 import json
 import ipdb
 
@@ -9,8 +13,8 @@ class CustomDataset(Dataset):
     """
     A custom dataset class that prepares image-text pairs for training.
     """
-    def __init__(self, dataset_path, tokenizer, max_length=512):
-        self.dataset = load_dataset("json", data_files=dataset_path)['train']
+    def __init__(self, dataset_path, tokenizer, max_length=128):
+        self.dataset = load_dataset("csv", data_files=dataset_path)['train']
         self.tokenizer = tokenizer
         self.tokenizer.pad_token = self.tokenizer.eos_token
         self.max_length = max_length
@@ -20,14 +24,21 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, idx):
         item = self.dataset[idx]
-        text = item['currentSentence']
-        speaker = item['currentSpeaker']
-        show = item['show']
-        context = item['context']
-        label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Question: You are watching an episode of {show}. Following up to this image input, the dialogue has been {context}. Given the current speaker is {speaker} who says {text} - are they being sarcastic? Answer:"
-        text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
+        text = item['text']
+        input_json_file = "sarc_image_descriptions.json"
+        # Read the dictionary from the JSON file
+        with open(input_json_file, "r") as json_file:
+            image_description_dict = json.load(json_file)
+        ipdb.set_trace()
+        key = item[" image"]
+        caption = image_description_dict[key]
+        label = torch.tensor(item[' label'], dtype=torch.long)
 
+        full_prompt = f"Question: The description for a tweeted image is {caption}. The tweet text is {text}. Is the tweet sarcastic (yes or no)? Answer:"
+        # right padding
+        #text_encoding = self.tokenize(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
+        # left padding
+        text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
@@ -35,10 +46,12 @@ class CustomDataset(Dataset):
             "tweet": text,
             "prompt": full_prompt
         }
-    
+
     def tokenize_and_left_pad(self, full_prompt, max_length):
+        # Tokenize without padding
         text_encoding = self.tokenizer(full_prompt, truncation=True, max_length=max_length, return_tensors="pt")
         
+        # Calculate necessary padding
         seq_len = text_encoding['input_ids'].size(1)
         padding_length = max_length - seq_len
         
@@ -64,9 +77,11 @@ def custom_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
+    images = torch.stack([item["image"] for item in batch])
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
+        "image": images,
         "label": labels
     }
