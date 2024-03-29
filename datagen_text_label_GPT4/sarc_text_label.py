@@ -41,11 +41,18 @@ def main():
         lines = [line.strip() for line in input_str.strip().split('\n') if line.strip()]
         text_lists = [ast.literal_eval(line) for line in lines]
     
-    with open(args.save_file, 'w') as f:
-        f.write("")
+    if not os.path.exists(args.save_file):
+        with open(args.save_file, 'w') as f:
+            f.write("")
+    with open(args.save_file, 'r') as f:
+        done_lines = f.readlines()
+        done_image_names = [line.split(' ')[0] for line in done_lines]
     
     for text_list in tqdm(text_lists):
         image_name, sentence = text_list[0], text_list[1]
+        if image_name in done_image_names:
+            print(f"Skipping {image_name} because it is already done.")
+            continue
         logits = query_openai(args.query + sentence)
         with open(args.save_file, 'a') as f:
             f.write(f"{image_name} {logits}\n")
