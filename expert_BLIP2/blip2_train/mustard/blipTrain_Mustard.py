@@ -28,7 +28,7 @@ class CustomDataset(Dataset):
         speaker = item['currentSpeaker']
         show = item['show']
         context = item['context']
-        image_path = f'/root/haofeiy/mmodel-soup/mustard_data/image_data/{item["image_id"]}.jpg'
+        image_path = f'/root/haofeiy/mmodel-soup/mustard_data/raw_data/image_data/{item["image_id"]}.jpg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
         label = torch.tensor(item['label'], dtype=torch.long)
@@ -92,6 +92,7 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     model.eval()
     total_correct = 0
     total = 0
+    total_yesno_logits = []
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
@@ -104,14 +105,15 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
+            total_yesno_logits += yesno_logits.tolist()
     accuracy = total_correct / total
     f1 = f1_score(labels.cpu(), predictions.cpu(), average='macro')
     precision = precision_score(labels.cpu(), predictions.cpu(), average='macro')
     recall = recall_score(labels.cpu(), predictions.cpu(), average='macro')
-    return accuracy, f1, precision, recall
+    return accuracy, f1, precision, recall, total_yesno_logits
 
 
-def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50):
+def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5):
     """
     Training loop for the model.
     """
@@ -127,7 +129,7 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
     print(f"Test Precision: {precision}")
     print(f"Test Recall: {recall}")
     step = 0
-    best_acc = -1
+    best_f1 = -1
     model.train()
     for epoch in range(epochs):
         total_loss = 0
@@ -149,14 +151,15 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
             step += 1
 
             if step % 6 == 0:
-                acc, f1, precision, recall = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
+                acc, f1, precision, recall, yesno_logits = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
                 print(f"Test Accuracy: {acc}")
                 print(f"Test F1 Score: {f1}")
                 print(f"Test Precision: {precision}")
                 print(f"Test Recall: {recall}")
-                if best_acc < acc:
-                    best_acc = acc
+                if best_f1 < f1:
+                    best_f1 = f1
                     model.save_pretrained("./model")
+                    torch.save(yesno_logits, "./model/yesno_logits.pt")
 
             total_loss += loss.item()
 
@@ -177,7 +180,7 @@ if __name__ == '__main__':
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
-    device = "cuda:1" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:0" if torch.cuda.is_available() else "cpu" 
     model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
     config = LoraConfig(
         r=16,
@@ -195,5 +198,5 @@ if __name__ == '__main__':
     train_dataloader = get_dataloader(train_path, tokenizer, processor, batch_size=16, max_length=128)
     val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=32, max_length=128)
 
-    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
+    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5)
     model.save_pretrained("./model")

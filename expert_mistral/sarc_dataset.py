@@ -34,7 +34,7 @@ class CustomDataset(Dataset):
         caption = image_description_dict[key]
         label = torch.tensor(item[' label'], dtype=torch.long)
 
-        full_prompt = f"Question: The description for a tweeted image is {caption}. The tweet text is {text}. Is the tweet sarcastic (yes or no)? Answer:"
+        full_prompt = f"Question: The description for a tweeted image is {caption}. The corresponding tweet text is {text}. Is the tweet sarcastic (yes or no)? Answer:"
         # right padding
         #text_encoding = self.tokenize(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
         # left padding

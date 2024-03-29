@@ -42,7 +42,6 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     """
     Training loop for the model.
     """
-    ipdb.set_trace()
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
     #acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
@@ -77,7 +76,6 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
                 if best_acc < acc:
                     best_acc = acc
                     model.save_pretrained(args.save_path)
-
             total_loss += loss.item()
 
 def get_dataloader(dataset_path, tokenizer, split, batch_size=8, max_length=512):
@@ -109,7 +107,7 @@ if __name__ == '__main__':
 
     # mistral Properties
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    device = "cuda" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:6" if torch.cuda.is_available() else "cpu" 
     model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
     config = LoraConfig(
         r=args.lora_rank,

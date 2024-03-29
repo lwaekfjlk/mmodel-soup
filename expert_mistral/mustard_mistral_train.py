@@ -49,6 +49,8 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
 
+    acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
+    print(f"Accuracy: {acc}, F1: {f1}, Precision: {precision}, Recall: {recall}")
     step = 0
     best_acc = -1
     model.train()
@@ -58,7 +60,6 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["label"].to(device)
-
             optimizer.zero_grad()
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits[:, -1, :]
@@ -107,8 +108,8 @@ if __name__ == '__main__':
 
     # mistral Properties
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    device = "cuda" if torch.cuda.is_available() else "cpu" 
-    model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
+    device = "cuda:4" if torch.cuda.is_available() else "cpu" 
+    model = AutoModelForCausalLM.from_pretrained("./mustard_mistral_model")
     config = LoraConfig(
         r=args.lora_rank,
         lora_alpha=args.lora_alpha,
