@@ -78,24 +78,31 @@ def evaluate(model, data_loader, tokenizer, device, config):
 
     header = 'Evaluation:'
     print_freq = 50
+    
+    eval_results = []
 
-    for images, text, targets in metric_logger.log_every(data_loader, print_freq, header):
+    for images, text, targets, image_ids in metric_logger.log_every(data_loader, print_freq, header):
         
         images, targets = images.to(device,non_blocking=True), targets.to(device,non_blocking=True)   
         
         text_inputs = tokenizer(text, padding='longest', return_tensors="pt").to(device)  
 
         prediction = model(images, text_inputs, targets=targets, train=False)  
+        
         # import pdb; pdb.set_trace()
+        
         _, pred_class = prediction.max(1)
         accuracy = (targets==pred_class).sum() / targets.size(0)
+        
+        for image_id, text, pred, target in zip(image_ids, text, pred_class, targets):
+            eval_results.append({'image_id': image_id, 'text': text, 'pred': pred.item(), 'target': target.item()})
 
         metric_logger.meters['acc'].update(accuracy.item(), n=images.size(0))
                 
     # gather the stats from all processes
     metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger.global_avg())
-    return {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}
+    return {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}, eval_results
     
     
 def main(args, config):
@@ -179,10 +186,18 @@ def main(args, config):
         if not args.evaluate:
             if args.distributed:
                 train_loader.sampler.set_epoch(epoch)
-            train_stats = train(model, train_loader, optimizer, tokenizer, epoch, warmup_steps, device, lr_scheduler, config)  
             
-        val_stats = evaluate(model, val_loader, tokenizer, device, config)
-        test_stats = evaluate(model, test_loader, tokenizer, device, config)
+            if args.train:
+                train_stats = train(model, train_loader, optimizer, tokenizer, epoch, warmup_steps, device, lr_scheduler, config) 
+            else:
+                train_stats = {}
+            
+        val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
+        test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
+        
+        with open(os.path.join(args.output_dir, "sarc_vision_text_label.jsonl"), "a") as f:
+            for res in val_results:
+                f.write(json.dumps(res) + "\n")
 
         if utils.is_main_process():  
             if args.evaluate:
@@ -192,7 +207,8 @@ def main(args, config):
                             }
 
                 with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-                    f.write(json.dumps(log_stats) + "\n")                
+                    f.write(json.dumps(log_stats) + "\n")
+                
             else:    
                 log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
                              **{f'val_{k}': v for k, v in val_stats.items()},
@@ -233,16 +249,21 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default='./configs/SarcDetect.yaml')
     parser.add_argument('--output_dir', default='output/SarcDetect')  
-    parser.add_argument('--checkpoint', default='')   
+    parser.add_argument('--checkpoint', default='')
     parser.add_argument('--text_encoder', default='bert-base-uncased')
-    parser.add_argument('--evaluate', action='store_true')    
+    parser.add_argument('--evaluate', action='store_true') 
+    parser.add_argument('--train', action='store_true')
+    parser.add_argument('--no-train', action='store_false', dest='train')
     parser.add_argument('--device', default='cuda')
     parser.add_argument('--seed', default=42, type=int)
     parser.add_argument('--world_size', default=1, type=int, help='number of distributed processes')    
     parser.add_argument('--dist_url', default='env://', help='url used to set up distributed training')
     parser.add_argument('--distributed', default=True, type=bool)
     args = parser.parse_args()
-
+    
+    
+    print("args: \n", args)
+    
     yaml = YAML(typ='rt')
     with open(args.config, 'r') as f:
         config = yaml.load(f)

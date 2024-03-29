@@ -69,7 +69,9 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device, epoc
                 print(f"Test Accuracy: {acc}")
                 if best_acc < acc:
                     best_acc = acc
-                    model.save_pretrained("./model") """
+                    model.save_pretrained("./model")
+            """
+
             total_loss += loss.item()
 
 def get_dataloader(dataset_path, tokenizer, split, batch_size=8, max_length=512):

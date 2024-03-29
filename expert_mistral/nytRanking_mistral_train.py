@@ -68,15 +68,15 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
             loss.backward()
             optimizer.step()
             step += 1
-            total_loss += loss.item()
-"""             if step % args.eval_step == 0:
+
+            if step % args.eval_step == 0:
                 acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
                 print(f"Accuracy: {acc}, F1: {f1}, Precision: {precision}, Recall: {recall}")
                 print(report)
                 if best_acc < acc:
                     best_acc = acc
                     model.save_pretrained(args.save_path)
- """
+            total_loss += loss.item()
 
 def get_dataloader(dataset_path, tokenizer, split, batch_size=8, max_length=512):
     """

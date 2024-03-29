@@ -43,7 +43,6 @@ class sarc_detect_test_dataset(Dataset):
         
     def __len__(self):
         return len(self.text)
-    
 
     def __getitem__(self, index):   
         image_id, sentence, label, ann_label = self.text[index]
@@ -53,5 +52,5 @@ class sarc_detect_test_dataset(Dataset):
 
         sentence = pre_caption(sentence, self.max_words)
 
-        return image, sentence, ann_label
+        return image, sentence, ann_label, image_id
     

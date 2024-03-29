@@ -1,8 +1,8 @@
-train_file: 'sarc_data/text_data/train_filtered.txt'
-val_file: 'sarc_data/text_data/valid.txt'                
-test_file: 'sarc_data/text_data/test.txt'
+train_file: '../sarc_data/intermediate_data/test_filtered.txt'
+val_file: '../sarc_data/raw_data/valid.txt'                
+test_file: '../sarc_data/raw_data/test.txt'
 
-image_root: 'sarc_data/image_data'
+image_root: '../sarc_data/raw_data/image_data'
 
 image_res: 384
 batch_size_train: 64
