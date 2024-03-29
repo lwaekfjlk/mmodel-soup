@@ -200,4 +200,4 @@ if __name__ == '__main__':
     val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=32, max_length=128)
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
-    model.save_pretrained("./model")
+    model.save_pretrained("./modelSimile")

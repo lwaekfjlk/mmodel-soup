@@ -106,7 +106,7 @@ if __name__ == '__main__':
 
     # mistral Properties
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    device = "cuda" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:3" if torch.cuda.is_available() else "cpu" 
     model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
     config = LoraConfig(
         r=args.lora_rank,
