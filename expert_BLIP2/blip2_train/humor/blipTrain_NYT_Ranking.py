@@ -8,6 +8,8 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 import ipdb
 from sklearn.metrics import f1_score, precision_score, recall_score
+import datetime
+
 
 
 class CustomDataset(Dataset):
@@ -115,7 +117,7 @@ def evaluate(model, dataloader, device, yes_token_id, no_token_id):
     return accuracy, f1, precision, recall
 
 
-def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50):
+def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5):
     """
     Training loop for the model.
     """
@@ -125,6 +127,11 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
     # Precompute token IDs for "yes" and "no" responses
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("A"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("B"))[0]
+    acc, f1, precision, recall = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
+    print(f"Test Accuracy: {acc}")
+    print(f"Test F1 Score: {f1}")
+    print(f"Test Precision: {precision}")
+    print(f"Test Recall: {recall}")
     step = 0
     best_acc = -1
     model.train()
@@ -173,7 +180,7 @@ if __name__ == '__main__':
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
-    device = "cuda:6" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:1" if torch.cuda.is_available() else "cpu" 
     model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
     config = LoraConfig(
         r=16,
@@ -191,5 +198,7 @@ if __name__ == '__main__':
     val_path = "jmhessel/newyorker_caption_contest"
     train_dataloader = get_dataloader(train_path, tokenizer, processor, split = "train", batch_size=24, max_length=128)
     val_dataloader = get_dataloader(val_path, tokenizer, processor, split = "validation", batch_size=32, max_length=128)
-    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
-    model.save_pretrained("./model")
+    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    directory_name = f"./modelRankingFineTune_{timestamp}"
+    model.save_pretrained(directory_name)

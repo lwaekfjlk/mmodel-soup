@@ -8,6 +8,7 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 import ipdb
 from sklearn.metrics import f1_score, precision_score, recall_score
+import datetime
 
 
 class CustomDataset(Dataset):
@@ -109,7 +110,7 @@ def evaluate(model, dataloader, device, a_token_id, b_token_id, c_token_id, d_to
     return accuracy
 
 
-def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50):
+def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5):
     """
     Training loop for the model.
     """
@@ -167,7 +168,7 @@ if __name__ == '__main__':
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
-    device = "cuda:4" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:6" if torch.cuda.is_available() else "cpu" 
     model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
     config = LoraConfig(
         r=16,
@@ -184,6 +185,9 @@ if __name__ == '__main__':
     train_path = "jmhessel/newyorker_caption_contest"
     val_path = "jmhessel/newyorker_caption_contest"
     train_dataloader = get_dataloader(train_path, tokenizer, processor, split = "train", batch_size=24, max_length=128)
-    val_dataloader = get_dataloader(val_path, tokenizer, processor, split = "validation", batch_size=32, max_length=128)
-    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=50)
-    model.save_pretrained("./modelMatching")
+    val_dataloader = get_dataloader(val_path, tokenizer, processor, split = "test", batch_size=32, max_length=128)
+    train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    directory_name = f"./modelMatchingFineTune_{timestamp}"
+    model.save_pretrained("./modelMatchingFineTune")
+
