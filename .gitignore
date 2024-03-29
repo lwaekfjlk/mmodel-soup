@@ -5,3 +5,6 @@
 */mustard_mistral_model/*
 **/model/*
 **/nycartoon_data/results/*
+**/modelMatching/*
+**/modelRanking/*
+**/sarc_save_model/*

@@ -64,13 +64,12 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device, epoc
             loss.backward()
             optimizer.step()
             step += 1
-            if step % 50 == 0:
+            """             if step % 50 == 0:
                 acc = evaluate(model, val_dataloader, device, a_token_id, b_token_id, c_token_id, d_token_id, e_token_id)
                 print(f"Test Accuracy: {acc}")
                 if best_acc < acc:
                     best_acc = acc
-                    model.save_pretrained("./model")
-
+                    model.save_pretrained("./model") """
             total_loss += loss.item()
 
 def get_dataloader(dataset_path, tokenizer, split, batch_size=8, max_length=512):
@@ -89,7 +88,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_path', type=str, default="jmhessel/newyorker_caption_contest", help='Path to training dataset')
     parser.add_argument('--val_path', type=str, default="jmhessel/newyorker_caption_contest", help='Path to validation dataset')
     parser.add_argument('--train_batch_size', type=int, default=1, help='Batch size for training')
-    parser.add_argument('--val_batch_size', type=int, default=2, help='Batch size for validation')
+    parser.add_argument('--val_batch_size', type=int, default=1, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=1024, help='Maximum sequence length')
     parser.add_argument('--learning_rate', type=float, default=5e-5, help='Learning rate for the optimizer')
     parser.add_argument('--epochs', type=int, default=3, help='Number of training epochs')
@@ -102,7 +101,7 @@ if __name__ == '__main__':
 
     # mistral Properties
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    device = "cuda" if torch.cuda.is_available() else "cpu" 
+    device = "cuda:5" if torch.cuda.is_available() else "cpu" 
     model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
     config = LoraConfig(
         r=args.lora_rank,
