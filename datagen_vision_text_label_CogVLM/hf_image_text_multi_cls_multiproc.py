@@ -1,5 +1,6 @@
 import os
 import json
+import ast
 import multiprocessing
 from multiprocessing import Process, Lock
 import time
@@ -56,11 +57,14 @@ def process(num, lock, args, image_text_pairs):
         if 'cross_images' in input_by_model and input_by_model['cross_images']:
             inputs['cross_images'] = [[input_by_model['cross_images'][0].to(device).to(torch_type)]]
         
-        token_A = tokenizer.tokenize(args.token_A)
-        token_A_id = tokenizer.convert_tokens_to_ids(token_A)
-        token_B = tokenizer.tokenize(args.token_B)
-        token_B_id = tokenizer.convert_tokens_to_ids(token_B)
-        
+        # import pdb; pdb.set_trace()
+        option_token_ids = {}
+        for option in args.options:
+            option_token = tokenizer.tokenize(option)
+            option_token_id = tokenizer.convert_tokens_to_ids(option_token)
+            assert len(option_token_id) == 1
+            option_token_ids[option] = option_token_id[0]
+
         with torch.no_grad():
             outputs = model(**inputs)
             logits = outputs.logits
@@ -70,10 +74,19 @@ def process(num, lock, args, image_text_pairs):
                 logits = logits.half()
                 
         last_logits = logits[:, -1, :]
-        token_A_logits = last_logits[:, token_A_id]
-        token_B_logits = last_logits[:, token_B_id]
+
+        logits_dict = {}
+        class_result, class_result_logits = "", float('-inf')
+        for option in args.options:
+            option_token_id = option_token_ids[option]
+            option_logits = last_logits[:, option_token_id]
+            logits_dict[option] = option_logits.item()
+
+            if class_result_logits < option_logits:
+                class_result = option
+                class_result_logits = option_logits
         
-        result = {"image_id": image_id, "text": text, "response": {args.token_A: token_A_logits.item(), args.token_B: token_B_logits.item()}}
+        result = {"image_id": image_id, "text": text, "response": logits_dict}
         result = json.dumps(result)
         
         with lock:
@@ -82,7 +95,6 @@ def process(num, lock, args, image_text_pairs):
                 
             curr_time = time.time()
             time_to_finish = (curr_time - begin_time) / (i + 1) * (len(image_text_pairs) - i)
-            class_result = args.token_A if token_A_logits > token_B_logits else args.token_B
             print(f"proc {num} {i}/{len(image_text_pairs)} estimate time to finish {time_to_finish / 60:.2f} mins. Result: {result} Class: {class_result}")
 
 def main():
@@ -100,10 +112,12 @@ def main():
     parser.add_argument("--save_file", type=str, default=None, help='save file path')
     parser.add_argument("--query", type=str, default=None, help='query')
     parser.add_argument("--num_processes", type=int, default=8, help='number of processes')
-    parser.add_argument("--token_A", type=str, default=None, help='token A')
-    parser.add_argument("--token_B", type=str, default=None, help='token B')
+    parser.add_argument("--options", type=str, default=None, help='options')
+    parser.add_argument("--cache_dir", type=str, default=None, help='cache dir')
 
     args = parser.parse_args()
+    # import pdb; pdb.set_trace()
+    args.options = ast.literal_eval(args.options)
     
     with open(args.text_file, 'r') as f:
         lines = f.readlines()
