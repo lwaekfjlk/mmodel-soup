@@ -11,6 +11,7 @@ from dataset.vqa_dataset import vqa_dataset
 from dataset.grounding_dataset import grounding_dataset
 from dataset.bi_cls_dataset import bi_cls_dataset
 from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
+from dataset.irfl_dataset import irfl_train_dataset, irfl_test_dataset
 
 from dataset.randaugment import RandomAugment
 
@@ -106,6 +107,12 @@ def create_dataset(dataset, config):
         train_dataset = sarc_detect_train_dataset(config['train_file'], train_transform, config['image_root'])  
         val_dataset = sarc_detect_test_dataset(config['val_file'], test_transform, config['image_root'])  
         test_dataset = sarc_detect_test_dataset(config['test_file'], test_transform, config['image_root'])                
+        return train_dataset, val_dataset, test_dataset 
+    
+    elif dataset=='irfl':   
+        train_dataset = irfl_train_dataset(config['train_file'], train_transform, config['image_root'])  
+        val_dataset = irfl_test_dataset(config['val_file'], test_transform, config['image_root'])  
+        test_dataset = irfl_test_dataset(config['test_file'], test_transform, config['image_root'])                
         return train_dataset, val_dataset, test_dataset 
 
 def vqa_collate_fn(batch):
