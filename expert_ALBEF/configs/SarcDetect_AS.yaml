@@ -1,12 +1,12 @@
 train_file: '../sarc_data/intermediate_data/ALBEF_RUS_outputs/sarc_AS_dataset_train.txt' 
-val_file: '../sarc_data/intermediate_data/test_filtered.txt'             
+val_file: '../sarc_data/intermediate_data/valid_filtered.txt'             
 test_file: '../sarc_data/intermediate_data/test_filtered.txt'
 
 image_root: '../sarc_data/raw_data/image_data'
 
 image_res: 384
-batch_size_train: 64
-batch_size_test: 128
+batch_size_train: 32
+batch_size_test: 64
 
 alpha: 0.4
 distill: True
@@ -16,10 +16,5 @@ bert_config: 'configs/config_bert.json'
 
 optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
 schedular: {sched: cosine, lr: 2e-5, epochs: 10, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
-
-
-
-
-
 
 

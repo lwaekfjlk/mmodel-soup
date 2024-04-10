@@ -45,7 +45,7 @@ class sarc_detect_test_dataset(Dataset):
         return len(self.text)
 
     def __getitem__(self, index):   
-        image_id, sentence, label, ann_label = self.text[index]
+        image_id, sentence, ann_label = self.text[index]
         image_path = os.path.join(self.image_root,'%s.jpg'%image_id)      
         image = Image.open(image_path).convert('RGB')   
         image = self.transform(image)          

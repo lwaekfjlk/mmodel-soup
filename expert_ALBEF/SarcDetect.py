@@ -194,9 +194,9 @@ def main(args, config):
             
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
         test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
-        
-        if os.path.exists(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl")):
-            os.remove(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"))
+
+        with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "w") as f:
+            f.write("")
         
         with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "a") as f:
             for res in val_results:
