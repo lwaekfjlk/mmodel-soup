@@ -94,8 +94,8 @@ def evaluate(model, data_loader, tokenizer, device, config):
         _, pred_class = prediction.max(1)
         accuracy = (targets==pred_class).sum() / targets.size(0)
         
-        for image_id, text, pred, target in zip(image_ids, text, pred_class, targets):
-            eval_results.append({'image_id': image_id, 'text': text, 'pred': pred.item(), 'target': target.item()})
+        for image_id, text, pred, target, logits in zip(image_ids, text, pred_class.tolist(), targets.tolist(), prediction.tolist()):
+            eval_results.append({'image_id': image_id, 'text': text, 'pred': pred, 'target': target, 'logits': logits})
 
         metric_logger.meters['acc'].update(accuracy.item(), n=images.size(0))
                 
@@ -194,8 +194,11 @@ def main(args, config):
             
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
         test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
+
+        with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "w") as f:
+            f.write("")
         
-        with open(os.path.join(args.output_dir, "sarc_vision_text_label.jsonl"), "a") as f:
+        with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "a") as f:
             for res in val_results:
                 f.write(json.dumps(res) + "\n")
 

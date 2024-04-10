@@ -1,12 +1,12 @@
-train_file: '../sarc_data/intermediate_data/test_filtered.txt'
-val_file: '../sarc_data/intermediate_data/ALBEF/sarc_U_dataset_train.txt'                
+train_file: '../sarc_data/intermediate_data/ALBEF_RUS_outputs/sarc_U_dataset_train.txt'
+val_file: '../sarc_data/intermediate_data/valid_filtered.txt'             
 test_file: '../sarc_data/intermediate_data/test_filtered.txt'
 
 image_root: '../sarc_data/raw_data/image_data'
 
 image_res: 384
-batch_size_train: 64
-batch_size_test: 128
+batch_size_train: 16
+batch_size_test: 32
 
 alpha: 0.4
 distill: True
