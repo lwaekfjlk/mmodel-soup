@@ -47,9 +47,12 @@ def train(args, model, train_dataloader, val_dataloader, tokenizer, device):
     #acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
     criterion = nn.CrossEntropyLoss()
-
+    acc, f1, precision, recall, report = evaluate(model, val_dataloader, device, yes_token_id, no_token_id)
     # Precompute token IDs for "yes" and "no" responses
-
+    print(f"Test Accuracy: {acc}")
+    print(f"Test F1 Score: {f1}")
+    print(f"Test Precision: {precision}")
+    print(f"Test Recall: {recall}")
     step = 0
     best_acc = -1
     model.train()
@@ -97,7 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_batch_size', type=int, default=2, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=1024, help='Maximum sequence length')
     parser.add_argument('--learning_rate', type=float, default=5e-5, help='Learning rate for the optimizer')
-    parser.add_argument('--epochs', type=int, default=3, help='Number of training epochs')
+    parser.add_argument('--epochs', type=int, default=5, help='Number of training epochs')
     parser.add_argument('--lora_alpha', type=int, default=32, help='Lora alpha value')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='Lora dropout value')
     parser.add_argument('--lora_rank', type=int, default=16, help='Number of attention heads')
