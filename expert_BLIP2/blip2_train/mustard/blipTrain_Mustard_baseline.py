@@ -32,7 +32,7 @@ class CustomDataset(Dataset):
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
         label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Question: You are watching an episode of {show}. Following up to this image input, the dialogue has been {context}. Given the current speaker is {speaker} who says {text} - are they being sarcastic? Answer:"
+        full_prompt = f"Question: You are watching an episode of {show}. Given the current speaker is {speaker} who says {text} - are they being sarcastic? Answer:"
         # right padding
         #ipdb.set_trace()s
         #text_encoding = self.tokenize(full_prompt, padding='max_length', truncation=True, max_length=self.max_length, return_tensors="pt")
@@ -180,8 +180,8 @@ if __name__ == '__main__':
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
-    device = "cuda:0" if torch.cuda.is_available() else "cpu" 
-    model = Blip2ForConditionalGeneration.from_pretrained("./model_mustard_finetune")
+    device = "cuda:1" if torch.cuda.is_available() else "cpu" 
+    model = Blip2ForConditionalGeneration.from_pretrained("./model_mustard_baseline_finetune")
     config = LoraConfig(
         r=16,
         lora_alpha=32,
@@ -199,4 +199,4 @@ if __name__ == '__main__':
     val_dataloader = get_dataloader(val_path, tokenizer, processor, batch_size=32, max_length=128)
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5)
-    model.save_pretrained("./model_mustard_finetune")
+    model.save_pretrained("./model_mustard_baseline_finetune")
