@@ -8,3 +8,10 @@
 **/modelMatching/*
 **/modelRanking/*
 **/sarc_save_model/*
+**/modelMatchingFineTune/*
+**/modelRankingFineTune/*
+**/model_mustard_baseline_finetune/*
+**/model_mustard_finetune/*
+**/modelSarcasmFineTune_2024-03-29_13-57-44/*
+**/nytRanking_mistral_model/*
+**/expert_BLIP2/dataset/*

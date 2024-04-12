@@ -169,7 +169,7 @@ if __name__ == '__main__':
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
     device = "cuda:6" if torch.cuda.is_available() else "cpu" 
-    model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
+    model = Blip2ForConditionalGeneration.from_pretrained("./modelMatchingFineTune")
     config = LoraConfig(
         r=16,
         lora_alpha=32,
