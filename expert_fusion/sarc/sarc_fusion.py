@@ -2,6 +2,7 @@ import numpy as np
 from collections import defaultdict
 import os
 import jsonlines
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 def load_and_transform_data(file_dir):
     subset_names = ['AS', 'R', 'U']
@@ -24,54 +25,65 @@ def load_and_transform_data(file_dir):
     return dataset, results
 
 def interaction_type_acc(results, interaction_type='AS'):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         total_logits = data['logits'][interaction_type]
         predicted_label = total_logits.index(max(total_logits))
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 def simple_average_fusion(results):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         total_logits = [sum(logits) / len(logits) for logits in zip(*data['logits'].values())]
         predicted_label = total_logits.index(max(total_logits))
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 def weighted_average_fusion(results, weights):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         weighted_logits = [sum(w * logits[i] for w, logits in zip(weights, data['logits'].values()))
                            for i in range(len(next(iter(data['logits'].values()))))]
         predicted_label = weighted_logits.index(max(weighted_logits))
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 def max_fusion(results):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         max_logits = [max(logits) for logits in zip(*data['logits'].values())]
         predicted_label = max_logits.index(max(max_logits))
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 def softmax_fusion(results):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         softmaxed_probs = [np.exp(logits) / np.sum(np.exp(logits)) for logits in data['logits'].values()]
         average_probs = np.mean(softmaxed_probs, axis=0)
         predicted_label = np.argmax(average_probs)
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 def cascaded_fusion(results, threshold):
-    correct = 0
+    gths = []
+    preds = []
     for data_id, data in results.items():
         softmaxed_probs = {}
         for interaction_type, logits in data['logits'].items():
@@ -80,9 +92,10 @@ def cascaded_fusion(results, threshold):
             predicted_label = np.argmax(softmaxed_probs['R']) if np.max(softmaxed_probs['R']) > np.max(softmaxed_probs['U']) else np.argmax(softmaxed_probs['U'])
         else:
             predicted_label = np.argmax(softmaxed_probs['AS'])
-        if predicted_label == data['target']:
-            correct += 1
-    return correct / len(results)
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    return f1, precision, recall, accuracy
 
 
 # Example usage within your main workflow
@@ -90,7 +103,7 @@ if __name__ == "__main__":
     file_dir = '../../sarc_data/intermediate_data/ALBEF_RUS_outputs'
     _, transformed_results = load_and_transform_data(file_dir)
 
-    weights = {'AS': 0.5, 'R': 0.3, 'U': 0.2}
+    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
 
     print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))
