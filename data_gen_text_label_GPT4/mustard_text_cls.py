@@ -39,8 +39,8 @@ def query_openai(query):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--text_data", type=str, default='../mustard_data/intermediate_data/sarcasm_data_speaker_independent_test.json', help='text_list')
-    parser.add_argument("--save_file", type=str, default='../mustard_data/results/mustard_text_label_test.json', help='save file path')
+    parser.add_argument("--text_data", type=str, default='../mustard_data/data_raw/mustard_raw_data_speaker_independent_train.json', help='text_list')
+    parser.add_argument("--save_file", type=str, default='../mustard_data/data_gen_output/mustard_text_only_pred_train.json', help='save file path')
     
     args = parser.parse_args()
 
