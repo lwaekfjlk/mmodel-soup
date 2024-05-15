@@ -4,7 +4,7 @@ from collections import defaultdict
 def read_vision_and_text_labels():
     text_label_dict = defaultdict(dict)
     vision_label_dict = defaultdict(dict)
-    with open('../../mustard_data/results/mustard_text_label.json', 'r') as f:
+    with open('../../mustard_data/data_gen_output/mustard_text_only_pred.json', 'r') as f:
         reader = f.readlines()
         for line in reader:
             identifier, json_str = line.split(' ', 1)
@@ -23,7 +23,7 @@ def read_vision_and_text_labels():
                 text_label_dict[identifier]['no'] = data['No']
                 text_label_dict[identifier]['pred'] = 0
 
-    with open('../../mustard_data/results/mustard_vision_label.json', 'r') as f:
+    with open('../../mustard_data/data_gen_output/mustard_vision_only_pred.json', 'r') as f:
         reader = f.readlines()
         for line in reader:
             identifier, list_str = line.split(' ', 1)
@@ -46,7 +46,7 @@ def read_vision_and_text_labels():
 
 def read_groundtruth_labels():
     gth_label_dict = {}
-    with open('../../mustard_data/intermediate_data/sarcasm_data_speaker_independent_train.json', 'r') as f:
+    with open('../../mustard_data/data_raw/mustard_raw_data_speaker_independent_train.json', 'r') as f:
         dataset = json.load(f)
         for key, value in dataset.items():
             gth_label_dict[key] = 1 if value['sarcasm'] == True else 0
@@ -78,7 +78,7 @@ def select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict):
 
 def construct_subset(ids):
     subset = {}
-    with open('../../mustard_data/intermediate_data/sarcasm_data_speaker_independent_train.json', 'r') as f:
+    with open('../../mustard_data/data_raw/mustard_raw_data_speaker_independent_train.json', 'r') as f:
         dataset = json.load(f)
         for id in ids:
             subset[id] = dataset[id]
@@ -90,13 +90,13 @@ if __name__ == "__main__":
     text_label_dict, vision_label_dict = read_vision_and_text_labels()
     R_ids, AS_ids, U_ids = select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict)
     R_dataset = construct_subset(R_ids)
-    with open('../../mustard_data/results/mustard_R_dataset_train.json', 'w') as f:
+    with open('../../mustard_data/data_split_output/mustard_R_dataset_train.json', 'w') as f:
         json.dump(R_dataset, f)
     AS_dataset = construct_subset(AS_ids)
-    with open('../../mustard_data/results/mustard_AS_dataset_train.json', 'w') as f:
+    with open('../../mustard_data/data_split_output/mustard_AS_dataset_train.json', 'w') as f:
         json.dump(AS_dataset, f)
     U_dataset = construct_subset(U_ids)
-    with open('../../mustard_data/results/mustard_U_dataset_train.json', 'w') as f:
+    with open('../../mustard_data/data_split_output/mustard_U_dataset_train.json', 'w') as f:
         json.dump(U_dataset, f)
 
     print(len(R_ids))
