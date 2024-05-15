@@ -8,7 +8,7 @@ from tqdm import tqdm
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
-  
+
 def get_ids_and_image_paths(image_folder_path):
     image_paths = []
     ids = []
@@ -19,7 +19,7 @@ def get_ids_and_image_paths(image_folder_path):
     return ids, image_paths
 
 client = OpenAI()
-image_folder_path = "../mustard_data/image_data"
+image_folder_path = "../mustard_data/data_raw/images"
 ids, image_paths = get_ids_and_image_paths(image_folder_path)
 
 image_description = {}
@@ -64,6 +64,6 @@ for image_path, id in tqdm(zip(image_paths, ids), total=len(ids)):
         if success:
             break
 
-    with open("mustard_image_description.json", "w") as f:
+    with open("../mustard_data/data_gen_output/mustard_image_description.json", "w") as f:
         json.dump(image_description, f)
-   
+
