@@ -10,7 +10,7 @@ import torch
 from PIL import Image
 from transformers import AutoModelForCausalLM, LlamaTokenizer
 
-def process(num, lock, args, image_text_pairs):
+def process(num, lock, args, quadriplets):
     device = f"cuda:{num}"
     tokenizer = LlamaTokenizer.from_pretrained(args.local_tokenizer)
     
@@ -25,7 +25,9 @@ def process(num, lock, args, image_text_pairs):
             torch_dtype=torch_type,
             low_cpu_mem_usage=True,
             load_in_4bit=True,
-            trust_remote_code=True
+            trust_remote_code=True,
+            device_map=device,
+            cache_dir=args.cache_dir
         ).eval()
     else:
         model = AutoModelForCausalLM.from_pretrained(
@@ -33,18 +35,22 @@ def process(num, lock, args, image_text_pairs):
             torch_dtype=torch_type,
             low_cpu_mem_usage=True,
             load_in_4bit=args.quant is not None,
-            trust_remote_code=True
-        ).to(device).eval()
-    
+            trust_remote_code=True,
+            device_map=device,
+            cache_dir=args.cache_dir
+        ).eval()
     begin_time = time.time()
     
-    for i in range(len(image_text_pairs)):
-        image_id, text = image_text_pairs[i]
+    for i in range(len(quadriplets)):
+        figurative_type, image_id, text, label = quadriplets[i]
         image_path = os.path.join(args.image_dir, image_id)
         image = Image.open(image_path).convert('RGB')
-        query = "USER: {} ASSISTANT:".format(args.query + " " + text if args.query is not None else text)
+        query = "USER: {} ASSISTANT:".format(args.query.format(text))
         
-        input_by_model = model.build_conversation_input_ids(tokenizer, query=query, history=[], images=[image])
+        if image is None:
+            input_by_model = model.build_conversation_input_ids(tokenizer, query=query, history=[], template_version='base')
+        else:
+            input_by_model = model.build_conversation_input_ids(tokenizer, query=query, history=[], images=[image])
 
         inputs = {
             'input_ids': input_by_model['input_ids'].unsqueeze(0).to(device),
@@ -73,7 +79,7 @@ def process(num, lock, args, image_text_pairs):
         token_A_logits = last_logits[:, token_A_id]
         token_B_logits = last_logits[:, token_B_id]
         
-        result = {"image_id": image_id, "text": text, "response": {args.token_A: token_A_logits.item(), args.token_B: token_B_logits.item()}}
+        result = {"image_id": image_id, "text": text, "response": {args.token_A: token_A_logits.item(), args.token_B: token_B_logits.item()}, "label": label, "figurative_type": figurative_type}
         result = json.dumps(result)
         
         with lock:
@@ -81,9 +87,9 @@ def process(num, lock, args, image_text_pairs):
                 f.write(f"{result}\n")
                 
             curr_time = time.time()
-            time_to_finish = (curr_time - begin_time) / (i + 1) * (len(image_text_pairs) - i)
+            time_to_finish = (curr_time - begin_time) / (i + 1) * (len(quadriplets) - i)
             class_result = args.token_A if token_A_logits > token_B_logits else args.token_B
-            print(f"proc {num} {i}/{len(image_text_pairs)} estimate time to finish {time_to_finish / 60:.2f} mins. Result: {result} Class: {class_result}")
+            print(f"proc {num} {i}/{len(quadriplets)} estimate time to finish {time_to_finish / 60:.2f} mins. Result: {result} Class: {class_result}")
 
 def main():
     
@@ -96,26 +102,31 @@ def main():
     parser.add_argument("--fp16", action="store_true")
     parser.add_argument("--bf16", action="store_true")
     parser.add_argument("--image_dir", type=str, default=None, help='image dir')
-    parser.add_argument("--text_file", type=str, default=None, help='text file')
+    parser.add_argument("--csv_file", type=str, default=None, help='text file')
     parser.add_argument("--save_file", type=str, default=None, help='save file path')
     parser.add_argument("--query", type=str, default=None, help='query')
     parser.add_argument("--num_processes", type=int, default=8, help='number of processes')
     parser.add_argument("--token_A", type=str, default=None, help='token A')
     parser.add_argument("--token_B", type=str, default=None, help='token B')
+    parser.add_argument("--cache_dir", type=str, default=None, help='cache dir')
 
     args = parser.parse_args()
     
-    with open(args.text_file, 'r') as f:
+    with open(args.csv_file, 'r') as f:
         lines = f.readlines()
     
-    image_text_pairs = []
-    for line in lines:
-        image_id, text = line.split(" ", 1)
-        image_text_pairs.append((f"{image_id}.jpeg", text))
+    quadriplets = []
+    for i in range(1, len(lines)):
+        line = lines[i]
+        try:
+            figurative_type, image_id, text, label = line.split(",")
+        except:
+            import pdb; pdb.set_trace()
+        quadriplets.append((figurative_type.strip(), f"{image_id}.jpeg", text, label.strip()))
         
     num_partitions = args.num_processes
-    partition_size = len(image_text_pairs) // num_partitions
-    print(f"total images: {len(image_text_pairs)} partition size: {partition_size}")
+    partition_size = len(quadriplets) // num_partitions
+    print(f"total images: {len(quadriplets)} partition size: {partition_size}")
     
     with open(args.save_file, 'w') as f:
         f.write("")
@@ -126,8 +137,8 @@ def main():
         start = i * partition_size
         end = (i + 1) * partition_size
         if i == num_partitions - 1:
-            end = len(image_text_pairs)
-        partition = image_text_pairs[start:end]
+            end = len(quadriplets)
+        partition = quadriplets[start:end]
         p = Process(target=process, args=(i, lock, args, partition))
         p.start()
         processes.append(p)
