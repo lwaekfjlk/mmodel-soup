@@ -26,7 +26,8 @@ def process(num, lock, args, image_text_pairs):
             torch_dtype=torch_type,
             low_cpu_mem_usage=True,
             load_in_4bit=True,
-            trust_remote_code=True
+            trust_remote_code=True,
+            cache_dir=args.cache_dir
         ).eval()
     else:
         model = AutoModelForCausalLM.from_pretrained(
@@ -34,7 +35,8 @@ def process(num, lock, args, image_text_pairs):
             torch_dtype=torch_type,
             low_cpu_mem_usage=True,
             load_in_4bit=args.quant is not None,
-            trust_remote_code=True
+            trust_remote_code=True,
+            cache_dir=args.cache_dir
         ).to(device).eval()
     
     begin_time = time.time()
