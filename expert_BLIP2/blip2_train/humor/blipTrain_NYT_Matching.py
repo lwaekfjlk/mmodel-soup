@@ -71,6 +71,7 @@ class CustomDataset(Dataset):
 
         return text_encoding
 
+
 def custom_collate(batch):
     """
     A custom collate function to pad the batches dynamically.
@@ -154,6 +155,7 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, epochs=5):
 
             total_loss += loss.item()
 
+
 def get_dataloader(dataset_path, tokenizer, image_processor, split, batch_size=8, max_length=128):
     """
     Get the dataloader for the given dataset.
@@ -190,4 +192,3 @@ if __name__ == '__main__':
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     directory_name = f"./modelMatchingFineTune_{timestamp}"
     model.save_pretrained("./modelMatchingFineTune")
-
