@@ -104,7 +104,11 @@ def main():
             existing_ids.append(data['image_id'])
     
     image_names = os.listdir(args.image_dir)
-    image_names = [x for x in image_names if f"{x}.jpg" not in existing_ids]
+    # import pdb; pdb.set_trace()
+    image_names = [x for x in image_names if x not in existing_ids]
+    if ".gitkeep" in image_names:
+        image_names.remove(".gitkeep")
+    print(f"{len(existing_ids)} ids already processed, {len(image_names)} ids to process")
     num_partitions = args.num_processes
     partition_size = len(image_names) // num_partitions
     print(f"total images: {len(image_names)} partition size: {partition_size}")
