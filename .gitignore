@@ -15,3 +15,7 @@
 **/modelSarcasmFineTune_2024-03-29_13-57-44/*
 **/nytRanking_mistral_model/*
 **/expert_BLIP2/dataset/*
+**/images/*
+**/*_model/*
+**/sarc/*
+**/*.csv
