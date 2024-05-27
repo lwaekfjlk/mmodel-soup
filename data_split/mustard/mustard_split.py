@@ -65,10 +65,10 @@ if __name__ == "__main__":
         test_dataset = json.load(file)
     
     train_dataset = construct_subset(train_dataset.keys(), train_dataset)
-    save_dataset('../../mustard_data/data_split_output/mustard_dataset_train.json', train_dataset)
+    save_dataset('../../mustard_data/data_raw/mustard_dataset_train.json', train_dataset)
 
     test_dataset = construct_subset(test_dataset.keys(), test_dataset)
-    save_dataset('../../mustard_data/data_split_output/mustard_dataset_test.json', test_dataset)
+    save_dataset('../../mustard_data/data_raw/mustard_dataset_test.json', test_dataset)
     
     R_dataset = construct_subset(R_ids, train_dataset)
     save_dataset('../../mustard_data/data_split_output/mustard_R_dataset_train.json', R_dataset)
