@@ -22,7 +22,8 @@ def parse_prediction(data):
 def read_vision_and_text_labels():
     text_label_reader = read_json_file('../../mustard_data/data_gen_output/mustard_text_only_pred.json')
     vision_label_reader = read_json_file('../../mustard_data/data_gen_output/mustard_vision_only_pred.json')
-    
+
+    import pdb; pdb.set_trace() 
     text_label_dict = parse_labels(text_label_reader)
     vision_label_dict = parse_labels(vision_label_reader)
     
