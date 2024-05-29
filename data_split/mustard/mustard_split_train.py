@@ -1,8 +1,8 @@
 import json
+import sys
+sys.path.append('../')
+from utils import read_json_file, save_dataset, construct_subset
 
-def read_json_file(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
 
 def read_preds():
     text_only_pred = read_json_file('../../mustard_data/data_gen_output/mustard_text_only_pred.json')
@@ -27,12 +27,6 @@ def select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict):
             U_ids.append(id)
     return R_ids, AS_ids, U_ids
 
-def construct_subset(ids, dataset):
-    return {id: dataset[id] for id in ids if id in dataset}
-
-def save_dataset(file_path, dataset):
-    with open(file_path, 'w') as file:
-        json.dump(dataset, file)
 
 def main():
     gth_label = read_groundtruth_labels()

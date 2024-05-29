@@ -1,8 +1,8 @@
 import json
+import sys
+sys.path.append('../')
+from utils import read_json_file, save_dataset, construct_subset
 
-def read_json_file(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
 
 def read_preds(task):
     preds = read_json_file(f'../../irfl_data/data_gen_output/irfl_{task}_pred.json')
@@ -29,12 +29,6 @@ def select_subset_ids(preds, labels):
                 U_ids.append(id)
     return R_ids, AS_ids, U_ids
 
-def construct_subset(ids, dataset):
-    return {id: dataset[id] for id in ids if id in dataset}
-
-def save_dataset(file_path, dataset):
-    with open(file_path, 'w') as file:
-        json.dump(dataset, file)
 
 def main():
     tasks = ['simile', 'metaphor', 'idiom']
