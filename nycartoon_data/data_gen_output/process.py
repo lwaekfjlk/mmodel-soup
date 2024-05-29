@@ -31,8 +31,8 @@ for line in lines:
     for text in data:
         final_data[image_id][text] = {}
         final_data[image_id][text]['logits'] = {
-            'yes': data[text]['yes'] if 'yes' in data[text] else -float("inf"),
-            'no': data[text]['no'] if 'no' in data[text] else -float("inf")
+            'Yes': data[text]['yes'] if 'yes' in data[text] else -float("inf"),
+            'No': data[text]['no'] if 'no' in data[text] else -float("inf")
         }
         final_data[image_id][text]['pred'] = 0
     # find the text with the maximum difference
