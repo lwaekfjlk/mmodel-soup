@@ -17,5 +17,5 @@
 **/expert_BLIP2/dataset/*
 **/images/*
 **/*_model/*
-**/sarc/*
+**/blip2_train/sarc/*
 **/*.csv
