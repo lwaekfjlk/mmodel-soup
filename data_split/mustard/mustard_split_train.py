@@ -10,7 +10,7 @@ def read_preds():
     return text_only_pred, vision_only_pred 
 
 def read_groundtruth_labels():
-    with open('../../mustard_data/data_raw/mustard_raw_data_speaker_independent_train.json', 'r') as file:
+    with open('../../mustard_data/data_raw/mustard_dataset_train.json', 'r') as file:
         dataset = json.load(file)
         return {key: 1 if value['sarcasm'] else 0 for key, value in dataset.items()}
 
@@ -39,11 +39,7 @@ def main():
     text_only_pred, vision_only_pred = read_preds()
     R_ids, AS_ids, U_ids = select_subset_ids(text_only_pred, vision_only_pred, gth_label)
     
-    train_dataset = read_json_file('../../mustard_data/data_raw/mustard_raw_data_speaker_independent_train.json')
-    test_dataset = read_json_file('../../mustard_data/data_raw/mustard_raw_data_speaker_independent_test.json')
-    
-    save_dataset('../../mustard_data/data_raw/mustard_dataset_train.json', train_dataset)
-    save_dataset('../../mustard_data/data_raw/mustard_dataset_test.json', test_dataset)
+    train_dataset = read_json_file('../../mustard_data/data_raw/mustard_dataset_train.json')
     
     R_dataset = construct_subset(R_ids, train_dataset)
     save_dataset('../../mustard_data/data_split_output/mustard_R_dataset_train.json', R_dataset)

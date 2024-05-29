@@ -37,25 +37,27 @@ def save_dataset(file_path, dataset):
         json.dump(dataset, file)
 
 def main():
-    task = 'simile'
-    gth_label = read_groundtruth_labels(task)
-    preds = read_preds(task)
-    R_ids, AS_ids, U_ids = select_subset_ids(preds, gth_label)
-    
-    train_dataset = read_json_file(f'../../irfl_data/data_raw/irfl_{task}_train.json')
-    
-    R_dataset = construct_subset(R_ids, train_dataset)
-    save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_R_dataset_train.json', R_dataset)
-    
-    AS_dataset = construct_subset(AS_ids, train_dataset)
-    save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_AS_dataset_train.json', AS_dataset)
-    
-    U_dataset = construct_subset(U_ids, train_dataset)
-    save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_U_dataset_train.json', U_dataset)
-    
-    print(f"R_ids: {len(R_ids)}")
-    print(f"AS_ids: {len(AS_ids)}")
-    print(f"U_ids: {len(U_ids)}")
+    tasks = ['simile', 'metaphor', 'idiom']
+    for task in tasks:
+        gth_label = read_groundtruth_labels(task)
+        preds = read_preds(task)
+        R_ids, AS_ids, U_ids = select_subset_ids(preds, gth_label)
+        
+        train_dataset = read_json_file(f'../../irfl_data/data_raw/irfl_{task}_train.json')
+        
+        R_dataset = construct_subset(R_ids, train_dataset)
+        save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_R_dataset_train.json', R_dataset)
+        
+        AS_dataset = construct_subset(AS_ids, train_dataset)
+        save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_AS_dataset_train.json', AS_dataset)
+        
+        U_dataset = construct_subset(U_ids, train_dataset)
+        save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_U_dataset_train.json', U_dataset)
+        
+        print(task)
+        print(f"R_ids: {len(R_ids)}")
+        print(f"AS_ids: {len(AS_ids)}")
+        print(f"U_ids: {len(U_ids)}")
 
 if __name__ == "__main__":
     main()
