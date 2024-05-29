@@ -29,7 +29,6 @@ def select_subset_ids(preds, labels):
                 U_ids.append(id)
     return R_ids, AS_ids, U_ids
 
-
 def main():
     tasks = ['simile', 'metaphor', 'idiom']
     for task in tasks:
@@ -52,6 +51,7 @@ def main():
         print(f"R_ids: {len(R_ids)}")
         print(f"AS_ids: {len(AS_ids)}")
         print(f"U_ids: {len(U_ids)}")
+
 
 if __name__ == "__main__":
     main()
