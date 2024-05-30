@@ -18,15 +18,16 @@ def select_subset_ids(preds, labels):
     delta = 2
     for id, pred in preds.items():
         for text, value in pred.items():
+            dataset_id = id + '_' + text
             logits = value['logits']
             pred = value['pred']
-            label = labels[id + '_' + text]
+            label = labels[dataset_id]
             if pred == label and abs(logits['Yes'] - logits['No']) > delta:
-                R_ids.append(id)
+                R_ids.append(dataset_id)
             if pred != label and abs(logits['Yes'] - logits['No']) > delta:
-                AS_ids.append(id)
+                AS_ids.append(dataset_id)
             if abs(logits['Yes'] - logits['No']) <= delta:
-                U_ids.append(id)
+                U_ids.append(dataset_id)
     return R_ids, AS_ids, U_ids
 
 def main():
