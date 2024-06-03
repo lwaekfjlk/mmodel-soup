@@ -19,3 +19,4 @@
 **/*_model/*
 **/blip2_train/sarc/*
 **/*.csv
+**/__pycache__/*
