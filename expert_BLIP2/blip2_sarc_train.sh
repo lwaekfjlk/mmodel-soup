@@ -4,7 +4,9 @@ python train.py \
 --val_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --image_data_path ../sarc_data/data_raw/images \
---save_path ./blip2_sarc_AS_model;
+--save_path ./blip2_sarc_AS_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset sarc \
@@ -12,7 +14,9 @@ python train.py \
 --val_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --image_data_path ../sarc_data/data_raw/images \
---save_path ./blip2_sarc_R_model;
+--save_path ./blip2_sarc_R_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset sarc \
@@ -20,7 +24,9 @@ python train.py \
 --val_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --image_data_path ../sarc_data/data_raw/images \
---save_path ./blip2_sarc_U_model;
+--save_path ./blip2_sarc_U_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset sarc \
@@ -28,4 +34,6 @@ python train.py \
 --val_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
 --image_data_path ../sarc_data/data_raw/images \
---save_path ./blip2_sarc_baseline_model;
+--save_path ./blip2_sarc_baseline_model \
+--batch_size 10 \
+--max_length 512;

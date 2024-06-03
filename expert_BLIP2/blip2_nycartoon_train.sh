@@ -4,7 +4,9 @@ python train.py \
 --val_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --test_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --image_data_path ../nycartoon_data/data_raw/images \
---save_path ./blip2_nycartoon_AS_model;
+--save_path ./blip2_nycartoon_AS_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset nycartoon \
@@ -12,7 +14,9 @@ python train.py \
 --val_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --test_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --image_data_path ../nycartoon_data/data_raw/images \
---save_path ./blip2_nycartoon_R_model;
+--save_path ./blip2_nycartoon_R_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset nycartoon \
@@ -20,7 +24,9 @@ python train.py \
 --val_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --test_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --image_data_path ../nycartoon_data/data_raw/images \
---save_path ./blip2_nycartoon_U_model;
+--save_path ./blip2_nycartoon_U_model \
+--batch_size 10 \
+--max_length 512;
 
 python train.py \
 --dataset nycartoon \
@@ -28,4 +34,6 @@ python train.py \
 --val_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --test_path ../nycartoon_data/data_raw/nycartoon_dataset_test.json \
 --image_data_path ../nycartoon_data/data_raw/images \
---save_path ./blip2_nycartoon_baseline_model;
+--save_path ./blip2_nycartoon_baseline_model \
+--batch_size 10 \
+--max_length 512;
