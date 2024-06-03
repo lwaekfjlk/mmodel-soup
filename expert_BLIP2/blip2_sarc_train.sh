@@ -6,6 +6,7 @@ python train.py \
 --image_data_path ../sarc_data/data_raw/images \
 --save_path ./blip2_sarc_AS_model \
 --batch_size 10 \
+--eval_steps 300 \
 --max_length 512;
 
 python train.py \
@@ -16,6 +17,7 @@ python train.py \
 --image_data_path ../sarc_data/data_raw/images \
 --save_path ./blip2_sarc_R_model \
 --batch_size 10 \
+--eval_steps 300 \
 --max_length 512;
 
 python train.py \
@@ -26,6 +28,7 @@ python train.py \
 --image_data_path ../sarc_data/data_raw/images \
 --save_path ./blip2_sarc_U_model \
 --batch_size 10 \
+--eval_steps 300 \
 --max_length 512;
 
 python train.py \
@@ -36,4 +39,5 @@ python train.py \
 --image_data_path ../sarc_data/data_raw/images \
 --save_path ./blip2_sarc_baseline_model \
 --batch_size 10 \
+--eval_steps 300 \
 --max_length 512;
