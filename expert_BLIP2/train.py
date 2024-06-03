@@ -8,6 +8,7 @@ from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
 from nycartoon import get_nycartoon_dataloader
 from irfl import get_irfl_dataloader
+from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 
 
@@ -96,6 +97,17 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
                     model.save_pretrained(args.save_path)
                     torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
 
+def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
+    configs = []
+    for name, path, image_path, max_length in zip(dataset_names, dataset_paths, image_data_paths, max_lengths):
+        config = {
+            "name": name,
+            "dataset_path": path,
+            "image_data_path": image_path,
+            "max_length": max_length
+        }
+        configs.append(config)
+    return configs
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on the mustard dataset")
@@ -115,6 +127,12 @@ if __name__ == '__main__':
     parser.add_argument('--lora_alpha', type=int, default=32, help='LoRA alpha parameter')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='LoRA dropout parameter')
     parser.add_argument('--save_path', type=str, default='./model', help='Path to save the trained model')
+    parser.add_argument('--combined_dataset_names', type=str, nargs='+', default=[], help='Names of the datasets to combine')
+    parser.add_argument('--combined_train_paths', type=str, nargs='+', default=[], help='Paths to the training data')
+    parser.add_argument('--combined_val_paths', type=str, nargs='+', default=[], help='Paths to the validation data')
+    parser.add_argument('--combined_test_paths', type=str, nargs='+', default=[], help='Paths to the test data')
+    parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
+    parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
     
     args = parser.parse_args()
 
@@ -138,27 +156,28 @@ if __name__ == '__main__':
     if args.dataset == "mustard":
         train_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="train")
         val_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="val")
+        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
     elif args.dataset == "sarc":
         train_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="train")
         val_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="val")
+        test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
     elif args.dataset == "nycartoon":
         train_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="train")
         val_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="val")
+        test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
     elif args.dataset == "irfl":
         train_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="train")
         val_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="val")
+        test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
+    elif args.dataset == "combined":
+        train_configs = create_dataset_configs(args.combined_dataset_names, args.combined_train_paths, args.combined_image_data_paths, args.combined_max_lengths)
+        val_configs = create_dataset_configs(args.combined_dataset_names, args.combined_val_paths, args.combined_image_data_paths, args.combined_max_lengths)
+        test_configs = create_dataset_configs(args.combined_dataset_names, args.combined_test_paths, args.combined_image_data_paths, args.combined_max_lengths)
+        train_dataloader = get_combined_dataloader(train_configs, args, tokenizer, processor, split="train")
+        val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, processor, split="val")
+        test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, processor, split="test")
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, args)
-
-    # Test the model
-    if args.dataset == 'mustard':
-        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == 'sarc':
-        test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == 'nycartoon':
-        test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == 'irfl':
-        test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
 
     acc, f1, precision, recall, yesno_logits = evaluate(
         tokenizer, 
