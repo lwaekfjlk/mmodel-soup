@@ -7,6 +7,7 @@ python train.py \
 --save_path ./blip2_nycartoon_AS_model \
 --batch_size 10 \
 --eval_steps 300 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -18,6 +19,7 @@ python train.py \
 --save_path ./blip2_nycartoon_R_model \
 --batch_size 10 \
 --eval_steps 300 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -29,6 +31,7 @@ python train.py \
 --save_path ./blip2_nycartoon_U_model \
 --batch_size 10 \
 --eval_steps 300 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -40,4 +43,5 @@ python train.py \
 --save_path ./blip2_nycartoon_baseline_model \
 --batch_size 10 \
 --eval_steps 300 \
+--epochs 5 \
 --max_length 512;
