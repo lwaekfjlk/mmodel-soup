@@ -6,6 +6,8 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
+from nycartoon import get_nycartoon_dataloader
+from irfl import get_irfl_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 
 
@@ -139,11 +141,25 @@ if __name__ == '__main__':
     elif args.dataset == "sarc":
         train_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="train")
         val_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="val")
+    elif args.dataset == "nycartoon":
+        train_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="train")
+        val_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="val")
+    elif args.dataset == "irfl":
+        train_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="train")
+        val_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="val")
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, args)
 
     # Test the model
-    test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
+    if args.dataset == 'mustard':
+        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
+    elif args.dataset == 'sarc':
+        test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
+    elif args.dataset == 'nycartoon':
+        test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
+    elif args.dataset == 'irfl':
+        test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
+
     acc, f1, precision, recall, yesno_logits = evaluate(
         tokenizer, 
         model, 
