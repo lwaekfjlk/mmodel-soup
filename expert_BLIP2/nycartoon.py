@@ -50,9 +50,6 @@ class NYCartoonDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
-            "prompt": full_prompt,
-            "caption": caption,
-            "question": question
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
