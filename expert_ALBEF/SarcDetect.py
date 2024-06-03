@@ -89,8 +89,6 @@ def evaluate(model, data_loader, tokenizer, device, config):
 
         prediction = model(images, text_inputs, targets=targets, train=False)  
         
-        # import pdb; pdb.set_trace()
-        
         _, pred_class = prediction.max(1)
         accuracy = (targets==pred_class).sum() / targets.size(0)
         
@@ -241,11 +239,11 @@ def main(args, config):
                 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
-    print('Training time {}'.format(total_time_str)) 
+    print('Training time {}'.format(total_time_str))
     
     if utils.is_main_process():   
         with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-            f.write("best epoch: %d"%best_epoch)         
+            f.write("best epoch: %d"%best_epoch)
             
 
 if __name__ == '__main__':
