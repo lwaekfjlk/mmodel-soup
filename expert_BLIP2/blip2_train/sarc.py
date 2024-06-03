@@ -8,11 +8,12 @@ class SarcDataset(Dataset):
     """
     A custom dataset class that prepares image-text pairs for training.
     """
-    def __init__(self, dataset_path, tokenizer, image_processor, max_length=128):
+    def __init__(self, dataset_path, image_data_path, tokenizer, image_processor, max_length=128):
         self.dataset = self.load_dataset(dataset_path)
         self.tokenizer = tokenizer
         self.max_length = max_length
         self.image_processor = image_processor
+        self.image_data_path = image_data_path
 
     def __len__(self):
         return len(self.dataset)
