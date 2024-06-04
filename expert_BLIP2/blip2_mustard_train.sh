@@ -6,6 +6,8 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./blip2_mustard_AS_model \
 --batch_size 10 \
+--eval_steps 10 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -16,6 +18,8 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./blip2_mustard_R_model \
 --batch_size 10 \
+--eval_steps 10 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -26,6 +30,8 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./blip2_mustard_U_model \
 --batch_size 10 \
+--eval_steps 10 \
+--epochs 5 \
 --max_length 512;
 
 python train.py \
@@ -36,4 +42,6 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./blip2_mustard_baseline_model \
 --batch_size 10 \
+--eval_steps 10 \
+--epochs 5 \
 --max_length 512;

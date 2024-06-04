@@ -50,9 +50,6 @@ class NYCartoonDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
-            "prompt": full_prompt,
-            "caption": caption,
-            "question": question
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -91,8 +88,10 @@ def nycartoon_collate(batch):
 def get_nycartoon_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = NYCartoonDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=nycartoon_collate)
     elif split == "val":
         dataset = NYCartoonDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=False, collate_fn=nycartoon_collate)
     elif split == "test":
         dataset = NYCartoonDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=nycartoon_collate)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=False, collate_fn=nycartoon_collate)

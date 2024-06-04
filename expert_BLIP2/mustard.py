@@ -53,7 +53,6 @@ class MustardDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
-            "prompt": full_prompt
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -89,8 +88,10 @@ def mustard_collate(batch):
 def get_mustard_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = MustardDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=mustard_collate)
     elif split == "val":
         dataset = MustardDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mustard_collate)
     elif split == "test":
         dataset = MustardDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=mustard_collate)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mustard_collate)

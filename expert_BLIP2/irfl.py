@@ -33,7 +33,7 @@ class IRFLDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
-        image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
+        image_path = f'{self.image_data_path}/{item["image_id"]}.jpeg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
         label = torch.tensor(item['label'], dtype=torch.long)
@@ -49,8 +49,6 @@ class IRFLDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
-            "tweet": text,
-            "prompt": full_prompt
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -89,8 +87,10 @@ def irfl_collate(batch):
 def get_irfl_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = IRFLDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=irfl_collate)
     elif split == "val":
         dataset = IRFLDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=irfl_collate)
     elif split == "test":
         dataset = IRFLDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=irfl_collate)
+        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=irfl_collate)
