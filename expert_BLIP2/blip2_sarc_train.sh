@@ -1,3 +1,5 @@
+#!/bin/sh
+
 python train.py \
 --dataset sarc \
 --train_path ../sarc_data/data_split_output/sarc_AS_dataset_train.json \

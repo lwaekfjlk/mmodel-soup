@@ -57,7 +57,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_irfl_irfl_AS_model" \
+  "./blip2_irfl_AS_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run R experiment
@@ -67,7 +67,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_irfl_irfl_R_model" \
+  "./blip2_irfl_R_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run U experiment
@@ -77,7 +77,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_irfl_irfl_U_model" \
+  "./blip2_irfl_U_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run baseline experiment
@@ -87,5 +87,5 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_irfl_irfl_baseline_model" \
+  "./blip2_irfl_baseline_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
