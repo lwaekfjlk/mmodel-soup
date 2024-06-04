@@ -1,6 +1,6 @@
-train_file: '../irfl_data/data_raw/irfl_simile_dataset_test.json'
-val_file: '../irfl_data/data_raw/irfl_simile_dataset_test.json'          
-test_file: '../irfl_data/data_raw/irfl_simile_dataset_test.json'
+train_file: '../irfl_data/data_raw/irfl_idiom_dataset_test.json'
+val_file: '../irfl_data/data_raw/irfl_idiom_dataset_test.json'          
+test_file: '../irfl_data/data_raw/irfl_idiom_dataset_test.json'
 
 image_root: '../irfl_data/data_raw/image_data'
 

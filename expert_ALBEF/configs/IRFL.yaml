@@ -1,8 +1,8 @@
-train_file: '../sarc_data/intermediate_data/ALBEF_RUS_outputs/sarc_AS_dataset_train.txt' 
-val_file: '../sarc_data/intermediate_data/valid_filtered.txt'             
-test_file: '../sarc_data/intermediate_data/test_filtered.txt'
+train_file: '../irfl_data/data_raw/irfl_idiom_dataset_train.json' 
+val_file: '../irfl_data/data_raw/irfl_idiom_dataset_test.json'             
+test_file: '../irfl_data/data_raw/irfl_idiom_dataset_test.json'
 
-image_root: '../sarc_data/raw_data/image_data'
+image_root: '../irfl_data/data_raw/image_data'
 
 image_res: 384
 batch_size_train: 32
