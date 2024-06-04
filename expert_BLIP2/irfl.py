@@ -23,6 +23,7 @@ class IRFLDataset(Dataset):
             raw_dataset = json.load(f)
         return [
             {
+                "id": id,
                 "image_id": id,
                 "text": data["text"],
                 "label": 1 if 'Figurative' in data['category'] else 0
@@ -33,6 +34,7 @@ class IRFLDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
+        id = item['id']
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpeg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
@@ -49,6 +51,7 @@ class IRFLDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
+            "id": id,
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -80,7 +83,8 @@ def irfl_collate(batch):
         "input_ids": input_ids,
         "attention_mask": attention_masks,
         "image": images,
-        "label": labels
+        "label": labels,
+        "id": [item["id"] for item in batch],
     }
 
 
