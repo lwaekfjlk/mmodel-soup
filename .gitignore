@@ -20,3 +20,4 @@
 **/blip2_train/sarc/*
 **/*.csv
 **/__pycache__/*
+**/*.out

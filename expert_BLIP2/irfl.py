@@ -90,7 +90,7 @@ def get_irfl_dataloader(args, tokenizer, image_processor, split):
         return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=irfl_collate)
     elif split == "val":
         dataset = IRFLDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=True, collate_fn=irfl_collate)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=irfl_collate)
     elif split == "test":
         dataset = IRFLDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=True, collate_fn=irfl_collate)
+        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=irfl_collate)
