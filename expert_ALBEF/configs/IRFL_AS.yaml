@@ -1,4 +1,4 @@
-train_file: '../irfl_data/data_raw/irfl_dataset_train.json' 
+train_file: '../irfl_data/data_split_output/irfl_AS_dataset_train.json' 
 val_file: '../irfl_data/data_raw/irfl_dataset_test.json'             
 test_file: '../irfl_data/data_raw/irfl_dataset_test.json'
 
