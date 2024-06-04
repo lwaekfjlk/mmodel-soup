@@ -199,19 +199,6 @@ if __name__ == '__main__':
         model.save_pretrained(args.save_path)
     
     elif args.mode == "test":
-<<<<<<< HEAD
-        #load model from checkpoint
-        model = Blip2ForConditionalGeneration.from_pretrained(args.save_path)
-        model.to(device)
-        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
-        acc, f1, precision, recall, yesno_logits = evaluate(
-            tokenizer, 
-            model, 
-            test_dataloader, 
-            device, 
-            args
-        )
-=======
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
         model = PeftModel.from_pretrained(
             model,
@@ -255,4 +242,3 @@ if __name__ == '__main__':
                 device, 
                 args
             )
->>>>>>> 3057a591d1f8b0cd8724119b5da39a2b39d4d8d4
