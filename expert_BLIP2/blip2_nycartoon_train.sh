@@ -1,3 +1,5 @@
+#!/bin/sh
+
 python train.py \
 --dataset nycartoon \
 --train_path ../nycartoon_data/data_split_output/nycartoon_AS_dataset_train.json \

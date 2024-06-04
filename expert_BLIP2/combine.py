@@ -54,8 +54,8 @@ def get_combined_dataloader(dataset_configs, args, tokenizer, image_processor, s
         return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=combined_collate)
     elif split == "val":
         dataset = CombinedDataset(dataset_configs, tokenizer, image_processor)
-        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=True, collate_fn=combined_collate)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=combined_collate)
     elif split == "test":
         dataset = CombinedDataset(dataset_configs, tokenizer, image_processor)
-        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=True, collate_fn=combined_collate)
+        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=combined_collate)
 
