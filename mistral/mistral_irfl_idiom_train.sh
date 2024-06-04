@@ -4,7 +4,7 @@ python train.py \
 --val_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --test_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---save_path ./blip2_irfl_idiom_AS_model \
+--save_path ./mistral_irfl_idiom_AS_model \
 --batch_size 10 \
 --eval_steps 300 \
 --max_length 512;
@@ -15,7 +15,7 @@ python train.py \
 --val_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --test_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---save_path ./blip2_irfl_idiom_R_model \
+--save_path ./mistral_irfl_idiom_R_model \
 --batch_size 10 \
 --eval_steps 150 \
 --max_length 512;
@@ -26,7 +26,7 @@ python train.py \
 --val_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --test_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---save_path ./blip2_irfl_idiom_U_model \
+--save_path ./mistral_irfl_idiom_U_model \
 --batch_size 10 \
 --eval_steps 150 \
 --max_length 512;
@@ -37,7 +37,7 @@ python train.py \
 --val_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --test_path ../irfl_data/data_raw/irfl_idiom_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---save_path ./blip2_irfl_idiom_baseline_model \
+--save_path ./mistral_irfl_idiom_baseline_model \
 --batch_size 10 \
 --eval_steps 150 \
 --max_length 512;
