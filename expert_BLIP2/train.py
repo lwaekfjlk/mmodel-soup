@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
 from tqdm import tqdm
-from peft import LoraConfig, get_peft_model
+from peft import LoraConfig, get_peft_model, PeftModel
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
 from nycartoon import get_nycartoon_dataloader
@@ -134,6 +134,8 @@ if __name__ == '__main__':
     parser.add_argument('--combined_test_paths', type=str, nargs='+', default=[], help='Paths to the test data')
     parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
+    parser.add_argument('--test_dataset', type=str, default='mustard', help='Dataset to test on')
+    parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
     
     args = parser.parse_args()
 
@@ -197,15 +199,46 @@ if __name__ == '__main__':
         model.save_pretrained(args.save_path)
     
     elif args.mode == "test":
-        #load model from checkpoint
-        model = Blip2ForConditionalGeneration.from_pretrained(args.save_path)
-        model.to(device)
-        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
-        acc, f1, precision, recall, yesno_logits = evaluate(
-            tokenizer, 
-            model, 
-            test_dataloader, 
-            device, 
-            args
-        )
+        model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
+        model = PeftModel.from_pretrained(
+            model,
+            args.load_model_name,
+            is_trainable=True
+        ).to(device)
 
+        if args.test_dataset == "mustard":
+            test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+        elif args.test_dataset == "sarc":
+            test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+        elif args.test_dataset == "nycartoon":
+            test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+        elif args.test_dataset == "irfl":
+            test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
