@@ -1,5 +1,5 @@
 import json
-with open('irfl_simile_U_logits.jsonl') as f:
+with open('irfl_simile_baseline_logits.jsonl') as f:
     data = [json.loads(line) for line in f]
 
 preds, targets = [], []
