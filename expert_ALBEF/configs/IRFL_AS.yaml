@@ -5,8 +5,8 @@ test_file: '../irfl_data/data_raw/irfl_dataset_test.json'
 image_root: '../irfl_data/data_raw/image_data'
 
 image_res: 384
-batch_size_train: 32
-batch_size_test: 64
+batch_size_train: 16
+batch_size_test: 32
 
 alpha: 0.4
 distill: True
