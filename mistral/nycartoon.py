@@ -2,6 +2,7 @@ import json
 import torch
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
+import ipdb
 
 
 class NYCartoonDataset(Dataset):
@@ -26,6 +27,8 @@ class NYCartoonDataset(Dataset):
                 "caption": data["caption"],
                 "label": data['label'],
                 "question": data["questions"],
+                "description": data["description"],
+                "mode": data["mode"],
             }
             for id, data in raw_dataset.items()
         ]
@@ -34,12 +37,19 @@ class NYCartoonDataset(Dataset):
         item = self.dataset[idx]
         caption = item['caption']
         question = item['question']
-        label = torch.tensor(item['label'], dtype=torch.long)
-
-        full_prompt = (
-            f"Given the question {question} and the image captioned:{caption}. Does this represent humor or match with each other (yes or no)? Answer:",
-        )
-
+        description = item['description']
+        mode = item['mode']
+        if mode == "single":
+            full_prompt = (
+                f"Given the question {question} and the image captioned as {description}. Does the comment {caption} represent humor or match with each other (yes or no)? Answer:",
+            )
+            label = torch.tensor(item['label'], dtype=torch.long)
+        else:
+            caption_a, caption_b, caption_c, caption_d, caption_e  = caption[0], caption[1],caption[2],caption[3], caption[4]
+            labelTranslate = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
+            label = labelTranslate[item['label']]
+            label = torch.tensor(label, dtype=torch.long)
+            full_prompt = f"Question: You are given an image description and 5 caption choices. Description: {description}. 1: {caption_a}. 2: {caption_b}. 3: {caption_c}. 4: {caption_d}. 5: {caption_e}. Can you return which choice suits the image best? Answer:"
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
