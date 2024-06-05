@@ -6,7 +6,7 @@ from PIL import Image
 from dataset.utils import pre_caption
 
 class nycartoon_train_dataset(Dataset):
-    def __init__(self, dataset_path, transform, image_root, max_words=30):
+    def __init__(self, dataset_path, transform, image_root, max_words=150):
         self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
         self.image_root = image_root
@@ -21,8 +21,10 @@ class nycartoon_train_dataset(Dataset):
         result = []
         for id, data in raw_dataset.items():
             image_id, _ = id.split('_')
-            text = data['text']
-            label = 1 if "Figurative" in data['category'] else 0
+            caption = data['caption']
+            question = data['questions'][0]
+            text = f"{question} {caption}"
+            label = data['label']
             result.append({
                 'image_id': image_id,
                 'text': text,
@@ -42,14 +44,31 @@ class nycartoon_train_dataset(Dataset):
 
 
 class nycartoon_test_dataset(Dataset):
-    def __init__(self, dataset_path, transform, image_root, max_words=30):        
+    def __init__(self, dataset_path, transform, image_root, max_words=150):        
         self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
         self.image_root = image_root
         self.max_words = max_words
         
     def __len__(self):
-        return len(self.text)
+        return len(self.dataset)
+
+    def load_dataset(self, dataset_path):
+        with open(dataset_path) as f:
+            raw_dataset = json.load(f)
+        result = []
+        for id, data in raw_dataset.items():
+            image_id, _ = id.split('_')
+            caption = data['caption']
+            question = data['questions'][0]
+            text = f"{question} {caption}"
+            label = data['label']
+            result.append({
+                'image_id': image_id,
+                'text': text,
+                'label': label
+            })
+        return result
 
     def __getitem__(self, index):   
         image_id, text, label = self.dataset[index]['image_id'], self.dataset[index]['text'], self.dataset[index]['label']
@@ -58,5 +77,5 @@ class nycartoon_test_dataset(Dataset):
         image = self.transform(image)
 
         text = pre_caption(text, self.max_words)
-
-        return image, text, label
+        
+        return image, text, label, image_id
