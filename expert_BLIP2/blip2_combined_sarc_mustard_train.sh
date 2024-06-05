@@ -51,14 +51,14 @@ IMAGE_DATA_PATHS=("$SARC_IMAGE_DATA_PATH" "$MUSTARD_IMAGE_DATA_PATH")
 MAX_LENGTHS=(512 512)
 
 # Run AS experiment
-run_training "${COMBINED_DATASETS[@]}" \
-  "../sarc_data/data_split_output/sarc_AS_dataset_train.json" "../mustard_data/data_split_output/mustard_AS_dataset_train.json" \
-  "${VAL_PATHS[@]}" \
-  "${TEST_PATHS[@]}" \
-  "${IMAGE_DATA_PATHS[@]}" \
-  "${MAX_LENGTHS[@]}" \
-  "./blip2_sarc_mustard_AS_model" \
-  "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
+#run_training "${COMBINED_DATASETS[@]}" \
+#  "../sarc_data/data_split_output/sarc_AS_dataset_train.json" "../mustard_data/data_split_output/mustard_AS_dataset_train.json" \
+#  "${VAL_PATHS[@]}" \
+#  "${TEST_PATHS[@]}" \
+#  "${IMAGE_DATA_PATHS[@]}" \
+#  "${MAX_LENGTHS[@]}" \
+#  "./blip2_sarc_mustard_AS_model" \
+#  "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run R experiment
 run_training "${COMBINED_DATASETS[@]}" \
