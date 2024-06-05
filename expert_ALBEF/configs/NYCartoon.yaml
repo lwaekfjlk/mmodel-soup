@@ -1,5 +1,5 @@
 train_file: '../nycartoon_data/data_raw/nycartoon_dataset_train.json' 
-val_file: '../nycartoon_data/data_raw/nycartoon_dataset_test.json'             
+val_file: '../nycartoon_data/data_raw/nycartoon_dataset_validation.json'             
 test_file: '../nycartoon_data/data_raw/nycartoon_dataset_test.json'
 
 image_root: '../nycartoon_data/data_raw/images'

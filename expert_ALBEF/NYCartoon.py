@@ -193,6 +193,9 @@ def main(args, config):
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
         test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
         
+        with open(os.path.join(args.output_dir, "nycartoon_vision_text_logits.jsonl"), "w") as f:
+            f.write("")
+        
         with open(os.path.join(args.output_dir, "nycartoon_vision_text_logits.jsonl"), "a") as f:
             for res in val_results:
                 f.write(json.dumps(res) + "\n")
