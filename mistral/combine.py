@@ -7,20 +7,20 @@ import torch
 
 
 class CombinedDataset(Dataset):
-    def __init__(self, dataset_configs, tokenizer, image_processor):
-        self.datasets = self.load_datasets(dataset_configs, tokenizer, image_processor)
+    def __init__(self, dataset_configs, tokenizer):
+        self.datasets = self.load_datasets(dataset_configs, tokenizer)
 
     def load_datasets(self, dataset_configs, tokenizer, image_processor):
         datasets = []
         for config in dataset_configs:
             if config["name"] == "IRFL":
-                datasets.append(IRFLDataset(config["dataset_path"], config["image_data_path"], tokenizer, image_processor, config["max_length"]))
+                datasets.append(IRFLDataset(config["dataset_path"],  tokenizer, config["max_length"]))
             elif config["name"] == "mustard":
-                datasets.append(MustardDataset(config["dataset_path"], config["image_data_path"], tokenizer, image_processor, config["max_length"]))
+                datasets.append(MustardDataset(config["dataset_path"], tokenizer, config["max_length"]))
             elif config["name"] == "NYCartoon":
-                datasets.append(NYCartoonDataset(config["dataset_path"], config["image_data_path"], tokenizer, image_processor, config["max_length"]))
+                datasets.append(NYCartoonDataset(config["dataset_path"], tokenizer, config["max_length"]))
             elif config["name"] == "sarc":
-                datasets.append(SarcDataset(config["dataset_path"], config["image_data_path"], tokenizer, image_processor, config["max_length"]))
+                datasets.append(SarcDataset(config["dataset_path"], tokenizer, config["max_length"]))
         return datasets
 
     def __len__(self):
@@ -38,12 +38,10 @@ def combined_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
-    images = torch.stack([item["image"] for item in batch])
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
-        "image": images,
         "label": labels
     }
 

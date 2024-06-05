@@ -23,6 +23,7 @@ class NYCartoonDataset(Dataset):
             raw_dataset = json.load(f)
         return [
             {
+                "id": id,
                 "image_id": id.split('_')[0],
                 "caption": data["caption"],
                 "label": data['label'],
@@ -35,6 +36,7 @@ class NYCartoonDataset(Dataset):
         item = self.dataset[idx]
         caption = item['caption']
         question = item['question']
+        id = item['id']
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
@@ -50,6 +52,7 @@ class NYCartoonDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
+            "id": id,
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -76,20 +79,24 @@ def nycartoon_collate(batch):
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
     images = torch.stack([item["image"] for item in batch])
+    ids = [item["id"] for item in batch]
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
         "image": images,
-        "label": labels
+        "label": labels,
+        "id": ids,
     }
 
 
 def get_nycartoon_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = NYCartoonDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=nycartoon_collate)
     elif split == "val":
         dataset = NYCartoonDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=False, collate_fn=nycartoon_collate)
     elif split == "test":
         dataset = NYCartoonDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=nycartoon_collate)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=False, collate_fn=nycartoon_collate)

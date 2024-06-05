@@ -20,6 +20,7 @@ class MustardDataset(Dataset):
             raw_dataset = json.load(f)
         return [
             {
+                "id": id,
                 "image_id": id,
                 "show": data["show"],
                 "context": data["context"],
@@ -35,6 +36,7 @@ class MustardDataset(Dataset):
 
     def __getitem__(self, idx):
         item = self.dataset[idx]
+        id = item['id']
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
@@ -53,6 +55,7 @@ class MustardDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
+            "id": id,
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -76,20 +79,24 @@ def mustard_collate(batch):
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
     images = torch.stack([item["image"] for item in batch])
+    ids = [item["id"] for item in batch]
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
         "image": images,
-        "label": labels
+        "label": labels,
+        "id": ids,
     }
 
 
 def get_mustard_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = MustardDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=mustard_collate)
     elif split == "val":
         dataset = MustardDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mustard_collate)
     elif split == "test":
         dataset = MustardDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=mustard_collate)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mustard_collate)

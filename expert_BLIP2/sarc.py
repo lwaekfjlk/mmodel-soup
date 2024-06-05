@@ -25,7 +25,8 @@ class SarcDataset(Dataset):
             {
                 "image_id": id,
                 "text": data["text"],
-                "label": data["label"]
+                "label": data["label"],
+                "id": id,
             }
             for id, data in raw_dataset.items()
         ]
@@ -33,6 +34,7 @@ class SarcDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
+        id = item['id']
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
         image = Image.open(image_path)
         image = self.image_processor(image, return_tensors="pt").pixel_values.squeeze(0)
@@ -49,6 +51,7 @@ class SarcDataset(Dataset):
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
             "label": label,
+            "id": item["id"],
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -80,15 +83,18 @@ def sarc_collate(batch):
         "input_ids": input_ids,
         "attention_mask": attention_masks,
         "image": images,
-        "label": labels
+        "label": labels,
+        "id": [item["id"] for item in batch],
     }
 
 
 def get_sarc_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
         dataset = SarcDataset(args.train_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=sarc_collate)
     elif split == "val":
         dataset = SarcDataset(args.val_path, args.image_data_path, tokenizer, image_processor, args.max_length)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=sarc_collate)
     elif split == "test":
         dataset = SarcDataset(args.test_path, args.image_data_path, tokenizer, image_processor, args.max_length)
-    return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=sarc_collate)
+        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=sarc_collate)

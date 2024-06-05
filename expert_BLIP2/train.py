@@ -3,20 +3,21 @@ import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
 from tqdm import tqdm
-from peft import LoraConfig, get_peft_model
+from peft import LoraConfig, get_peft_model, PeftModel
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
 from nycartoon import get_nycartoon_dataloader
 from irfl import get_irfl_dataloader
 from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
+import json
 
 
 def evaluate(tokenizer, model, dataloader, device, args):
     model.eval()
     total_correct = 0
     total = 0
-    total_yesno_logits = []
+    total_yesno_logits = {}
     all_labels = []
     all_predictions = []
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
@@ -27,6 +28,7 @@ def evaluate(tokenizer, model, dataloader, device, args):
         attention_mask = batch["attention_mask"].to(device)
         images = batch["image"].to(device)
         labels = batch["label"].to(device)
+        ids = batch["id"]
         
         with torch.no_grad():
             outputs = model(input_ids=input_ids, attention_mask=attention_mask, pixel_values=images)
@@ -37,7 +39,9 @@ def evaluate(tokenizer, model, dataloader, device, args):
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
-            total_yesno_logits.extend(yesno_logits.tolist())
+            yesno_logits = yesno_logits.tolist()
+            for i, id in enumerate(ids):
+                total_yesno_logits[id] = yesno_logits[i]
             all_labels.extend(labels.cpu().tolist())
             all_predictions.extend(predictions.cpu().tolist())
     
@@ -95,7 +99,8 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
                 if f1 > best_f1:
                     best_f1 = f1
                     model.save_pretrained(args.save_path)
-                    torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
+                    with open(f"{args.save_path}/yesno_logits.json", "w") as f:
+                        json.dump(yesno_logits, f)
 
 def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
     configs = []
@@ -111,6 +116,7 @@ def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_l
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Train a model on the mustard dataset")
+    parser.add_argument('--mode', type=str, default='train', help='Mode to run the script in')
     parser.add_argument('--dataset', type=str, default='mustard')
     parser.add_argument('--train_path', type=str, default='../mustard_data/data_split_output/mustard_AS_dataset_train.json', help='Path to the training data')
     parser.add_argument('--val_path', type=str, default='../mustard_data/data_split_output/mustard_dataset_test.json', help='Path to the validation data')
@@ -133,6 +139,8 @@ if __name__ == '__main__':
     parser.add_argument('--combined_test_paths', type=str, nargs='+', default=[], help='Paths to the test data')
     parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
+    parser.add_argument('--test_dataset', type=str, default='mustard', help='Dataset to test on')
+    parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
     
     args = parser.parse_args()
 
@@ -140,56 +148,113 @@ if __name__ == '__main__':
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
     processor = AutoProcessor.from_pretrained("Salesforce/blip2-opt-2.7b")
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        
+    if args.mode == "train":
+        model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
+        config = LoraConfig(
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            bias="none",
+            target_modules=["q_proj", "k_proj"]
+        )
+        model = get_peft_model(model, config)
+        model.print_trainable_parameters()
+        model.to(device)
+
+        if args.dataset == "mustard":
+            train_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "sarc":
+            train_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "nycartoon":
+            train_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "irfl":
+            train_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "combined":
+            train_configs = create_dataset_configs(args.combined_dataset_names, args.combined_train_paths, args.combined_image_data_paths, args.combined_max_lengths)
+            val_configs = create_dataset_configs(args.combined_dataset_names, args.combined_val_paths, args.combined_image_data_paths, args.combined_max_lengths)
+            test_configs = create_dataset_configs(args.combined_dataset_names, args.combined_test_paths, args.combined_image_data_paths, args.combined_max_lengths)
+            train_dataloader = get_combined_dataloader(train_configs, args, tokenizer, processor, split="train")
+            val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, processor, split="val")
+            test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, processor, split="test")
+
+        train(model, train_dataloader, val_dataloader, tokenizer, device, args)
+
+        acc, f1, precision, recall, yesno_logits = evaluate(
+            tokenizer, 
+            model, 
+            test_dataloader, 
+            device, 
+            args
+        )
+        print("Test Results:")
+        print(f"Test Accuracy: {acc:.4f}")
+        print(f"Test F1 Score: {f1:.4f}")
+        print(f"Test Precision: {precision:.4f}")
+        print(f"Test Recall: {recall:.4f}")
+        model.save_pretrained(args.save_path)
     
-    model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
-    config = LoraConfig(
-        r=args.lora_r,
-        lora_alpha=args.lora_alpha,
-        lora_dropout=args.lora_dropout,
-        bias="none",
-        target_modules=["q_proj", "k_proj"]
-    )
-    model = get_peft_model(model, config)
-    model.print_trainable_parameters()
-    model.to(device)
+    elif args.mode == "test":
+        model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
+        model = PeftModel.from_pretrained(
+            model,
+            args.load_model_name,
+            is_trainable=True
+        ).to(device)
 
-    if args.dataset == "mustard":
-        train_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="train")
-        val_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="val")
-        test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == "sarc":
-        train_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="train")
-        val_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="val")
-        test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == "nycartoon":
-        train_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="train")
-        val_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="val")
-        test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == "irfl":
-        train_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="train")
-        val_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="val")
-        test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
-    elif args.dataset == "combined":
-        train_configs = create_dataset_configs(args.combined_dataset_names, args.combined_train_paths, args.combined_image_data_paths, args.combined_max_lengths)
-        val_configs = create_dataset_configs(args.combined_dataset_names, args.combined_val_paths, args.combined_image_data_paths, args.combined_max_lengths)
-        test_configs = create_dataset_configs(args.combined_dataset_names, args.combined_test_paths, args.combined_image_data_paths, args.combined_max_lengths)
-        train_dataloader = get_combined_dataloader(train_configs, args, tokenizer, processor, split="train")
-        val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, processor, split="val")
-        test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, processor, split="test")
+        if args.test_dataset == "mustard":
+            test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
+            
+        elif args.test_dataset == "sarc":
+            test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
 
-    train(model, train_dataloader, val_dataloader, tokenizer, device, args)
+        elif args.test_dataset == "nycartoon":
+            test_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
 
-    acc, f1, precision, recall, yesno_logits = evaluate(
-        tokenizer, 
-        model, 
-        test_dataloader, 
-        device, 
-        args
-    )
-    print("Test Results:")
-    print(f"Test Accuracy: {acc:.4f}")
-    print(f"Test F1 Score: {f1:.4f}")
-    print(f"Test Precision: {precision:.4f}")
-    print(f"Test Recall: {recall:.4f}")
-
-    model.save_pretrained(args.save_path)
+        elif args.test_dataset == "irfl":
+            test_dataloader = get_irfl_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
