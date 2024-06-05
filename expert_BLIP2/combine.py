@@ -39,12 +39,14 @@ def combined_collate(batch):
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
     images = torch.stack([item["image"] for item in batch])
+    id = [item["id"] for item in batch]
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
         "image": images,
-        "label": labels
+        "label": labels,
+        "id": id,
     }
 
 
