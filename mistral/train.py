@@ -21,6 +21,11 @@ def evaluate(tokenizer, model, dataloader, device, args):
     all_predictions = []
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
+    a_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("1"))[0]
+    b_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("2"))[0]
+    c_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("3"))[0]
+    d_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("4"))[0]
+    e_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("5"))[0]
     
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
@@ -31,21 +36,25 @@ def evaluate(tokenizer, model, dataloader, device, args):
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits
             logits = logits[:, -1, :]
-
-            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+            if args.answer_options > 2:
+                yesno_logits = torch.stack([logits[:, a_token_id], logits[:, b_token_id],  logits[:, c_token_id], logits[:, d_token_id], logits[:, e_token_id]], dim=-1)
+            else:
+                yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
             total_yesno_logits.extend(yesno_logits.tolist())
             all_labels.extend(labels.cpu().tolist())
             all_predictions.extend(predictions.cpu().tolist())
-    
-    accuracy = total_correct / total
-    f1 = f1_score(all_labels, all_predictions, average='macro')
-    precision = precision_score(all_labels, all_predictions, average='macro')
-    recall = recall_score(all_labels, all_predictions, average='macro')
-    
-    return accuracy, f1, precision, recall, total_yesno_logits
+    if args.answer_options == 2:
+        accuracy = total_correct / total
+        f1 = f1_score(all_labels, all_predictions, average='macro')
+        precision = precision_score(all_labels, all_predictions, average='macro')
+        recall = recall_score(all_labels, all_predictions, average='macro')
+        return accuracy, f1, precision, recall, total_yesno_logits
+    else:
+        accuracy = total_correct / total
+        return accuracy, total_yesno_logits
 
 
 def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
@@ -54,8 +63,14 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
 
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
+    a_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("1"))[0]
+    b_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("2"))[0]
+    c_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("3"))[0]
+    d_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("4"))[0]
+    e_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("5"))[0]
 
     best_f1 = -1
+    best_acc = -1
     model.train()
     
     for epoch in range(args.epochs):
@@ -69,7 +84,10 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             optimizer.zero_grad()
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits[:, -1, :]
-            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+            if args.answer_options > 2:
+                yesno_logits = torch.stack([logits[:, a_token_id], logits[:, b_token_id],  logits[:, c_token_id], logits[:, d_token_id], logits[:, e_token_id]], dim=-1)
+            else:
+                yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
             loss = criterion(yesno_logits, labels)
             loss.backward()
             optimizer.step()
@@ -77,23 +95,40 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             total_loss += loss.item()
 
             if (step + 1) % args.eval_steps == 0:
-                acc, f1, precision, recall, yesno_logits = evaluate(
-                    tokenizer, 
-                    model, 
-                    val_dataloader, 
-                    device, 
-                    args
-                )
-                print(f"Epoch {epoch + 1} Step {step + 1}")
-                print(f"Validation Accuracy: {acc:.4f}")
-                print(f"Validation F1 Score: {f1:.4f}")
-                print(f"Validation Precision: {precision:.4f}")
-                print(f"Validation Recall: {recall:.4f}")
-                
-                if f1 > best_f1:
-                    best_f1 = f1
-                    model.save_pretrained(args.save_path)
-                    torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
+
+                if args.answer_options == 2:
+                    acc, f1, precision, recall, yesno_logits = evaluate(
+                        tokenizer, 
+                        model, 
+                        test_dataloader, 
+                        device, 
+                        args
+                    )
+                    print(f"Epoch {epoch + 1} Step {step + 1}")
+                    print(f"Validation Accuracy: {acc:.4f}")
+                    print(f"Validation F1 Score: {f1:.4f}")
+                    print(f"Validation Precision: {precision:.4f}")
+                    print(f"Validation Recall: {recall:.4f}")
+                    
+                    if f1 > best_f1:
+                        best_f1 = f1
+                        model.save_pretrained(args.save_path)
+                        torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
+                else: 
+                    acc, yesno_logits = evaluate(
+                        tokenizer, 
+                        model, 
+                        test_dataloader, 
+                        device, 
+                        args
+                    )
+                    print(f"Epoch {epoch + 1} Step {step + 1}")
+                    print(f"Validation Accuracy: {acc:.4f}")
+                    
+                    if acc > best_acc:
+                        best_acc = acc
+                        model.save_pretrained(args.save_path)
+                        torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
 
 def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
     configs = []
@@ -118,7 +153,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_batch_size', type=int, default=32, help='Batch size for validation')
     parser.add_argument('--test_batch_size', type=int, default=32, help='Batch size for testing')
     parser.add_argument('--max_length', type=int, default=128, help='Maximum length for tokenized sequences')
-    parser.add_argument('--epochs', type=int, default=50, help='Number of training epochs')
+    parser.add_argument('--epochs', type=int, default=5, help='Number of training epochs')
     parser.add_argument('--lr', type=float, default=5e-5, help='Learning rate')
     parser.add_argument('--eval_steps', type=int, default=10, help='Number of steps between evaluations')
     parser.add_argument('--lora_r', type=int, default=16, help='LoRA r parameter')
@@ -131,6 +166,7 @@ if __name__ == '__main__':
     parser.add_argument('--combined_test_paths', type=str, nargs='+', default=[], help='Paths to the test data')
     parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
+    parser.add_argument('--answer_options', type=int, default=2, help='Maximum number of choices')
     
     args = parser.parse_args()
 
@@ -174,16 +210,26 @@ if __name__ == '__main__':
         train_dataloader = get_combined_dataloader(train_configs, args, tokenizer, split="train")
         val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, split="val")
         test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, split="test")
+    
 
     train(model, train_dataloader, val_dataloader, tokenizer, device, args)
 
-    acc, f1, precision, recall, yesno_logits = evaluate(
-        tokenizer, 
-        model, 
-        test_dataloader, 
-        device, 
-        args
-    )
+    if args.answer_options == 2:
+        acc, f1, precision, recall, yesno_logits = evaluate(
+            tokenizer, 
+            model, 
+            test_dataloader, 
+            device, 
+            args
+        )
+    else: 
+        acc, yesno_logits = evaluate(
+            tokenizer, 
+            model, 
+            test_dataloader, 
+            device, 
+            args
+        )
     print("Test Results:")
     print(f"Test Accuracy: {acc:.4f}")
     print(f"Test F1 Score: {f1:.4f}")
