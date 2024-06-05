@@ -113,4 +113,8 @@ if __name__ == "__main__":
         print(f"Cascaded Fusion Accuracy (Threshold={threshold}):", cascaded_fusion(transformed_results, threshold))
     print("AS Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'AS'))
     print("R Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'R'))
+<<<<<<< HEAD
     print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
+=======
+    print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
+>>>>>>> 63caf6c (Create irfl_fusion.py)
