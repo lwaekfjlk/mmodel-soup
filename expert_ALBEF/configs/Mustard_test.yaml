@@ -1,0 +1,18 @@
+train_file: '../mustard_data/data_raw/mustard_dataset_test.json'
+val_file: '../mustard_data/data_raw/mustard_dataset_test.json'          
+test_file: '../mustard_data/data_raw/mustard_dataset_test.json'
+
+image_root: '../mustard_data/data_raw/images'
+
+image_res: 384
+batch_size_train: 16
+batch_size_test: 32
+
+alpha: 0.4
+distill: True
+warm_up: False
+
+bert_config: 'configs/config_bert.json'
+
+optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
+schedular: {sched: cosine, lr: 0, epochs: 1, min_lr: 0, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
