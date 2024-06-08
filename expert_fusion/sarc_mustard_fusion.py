@@ -3,7 +3,25 @@ from collections import defaultdict
 import os
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
-import ipdb
+
+def load_and_transform_baseline(file_dir):
+    subset_names = ['baseline']
+    dataset = defaultdict(list)
+    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
+
+    # Load data from files
+    for name in subset_names:
+        file_path = os.path.join(file_dir, f'mustard_{name}_logits.jsonl')
+        with jsonlines.open(file_path, 'r') as f:
+            for line in f:
+                image_id = line['image_id']
+                data_id = f"{image_id}"
+                dataset[name].append(line)
+                results[data_id]['logits'][name] = line['logits']
+                if results[data_id]['target'] is None:
+                    results[data_id]['target'] = line['target']
+                assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
+    return dataset, results
 
 def load_and_transform_data(file_dir):
     subset_names = ['AS', 'R', 'U']
@@ -12,7 +30,7 @@ def load_and_transform_data(file_dir):
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'irfl_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'mustard_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
                 image_id = line['image_id']
@@ -51,7 +69,7 @@ def weighted_average_fusion(results, weights):
     preds = []
     for data_id, data in results.items():
         weighted_logits = [sum(w * logits[i] for w, logits in zip(weights, data['logits'].values()))
-                           for i in range(len(next(iter(data['logits'].values()))))]
+                            for i in range(len(next(iter(data['logits'].values()))))]
         predicted_label = weighted_logits.index(max(weighted_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
@@ -100,7 +118,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../../irfl_data/expert_inference_output'
+    file_dir = '../sarc_mustard_mixed/expert_blip2'
     _, transformed_results = load_and_transform_data(file_dir)
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
@@ -114,3 +132,5 @@ if __name__ == "__main__":
     print("AS Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'AS'))
     print("R Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'R'))
     print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
+    baseline_dataset, baseline_results = load_and_transform_baseline(file_dir)
+    print("Baseline Interaction Type Accuracy:", interaction_type_acc(baseline_results, 'baseline'))
