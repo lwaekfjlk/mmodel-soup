@@ -5,7 +5,7 @@ from torch.utils.data import Dataset
 from PIL import Image
 from dataset.utils import pre_caption
 
-class nycartoon_train_dataset(Dataset):
+class mustard_train_dataset(Dataset):
     def __init__(self, dataset_path, transform, image_root, max_words=150):
         self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
@@ -20,11 +20,9 @@ class nycartoon_train_dataset(Dataset):
             raw_dataset = json.load(f)
         result = []
         for id, data in raw_dataset.items():
-            image_id, _ = id.split('_')
-            caption = data['caption']
-            question = data['questions'][0]
-            text = f"{question} {caption}"
-            label = data['label']
+            image_id = id
+            text = data['utterance']
+            label = 1 if data['sarcasm'] == True else 0
             result.append({
                 'image_id': image_id,
                 'text': text,
@@ -43,7 +41,7 @@ class nycartoon_train_dataset(Dataset):
         return image, text, label
 
 
-class nycartoon_test_dataset(Dataset):
+class mustard_test_dataset(Dataset):
     def __init__(self, dataset_path, transform, image_root, max_words=150):        
         self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
@@ -58,11 +56,9 @@ class nycartoon_test_dataset(Dataset):
             raw_dataset = json.load(f)
         result = []
         for id, data in raw_dataset.items():
-            image_id, _ = id.split('_')
-            caption = data['caption']
-            question = data['questions'][0]
-            text = f"{question} {caption}"
-            label = data['label']
+            image_id = id
+            text = data['utterance']
+            label = 1 if data['sarcasm'] == True else 0
             result.append({
                 'image_id': image_id,
                 'text': text,

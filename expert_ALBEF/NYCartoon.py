@@ -117,7 +117,7 @@ def main(args, config):
 
     #### Dataset #### 
     print("Creating dataset")
-    datasets = create_dataset('irfl', config) 
+    datasets = create_dataset('nycartoon', config) 
     
     if args.distributed:
         num_tasks = utils.get_world_size()
@@ -193,10 +193,10 @@ def main(args, config):
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
         test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
         
-        with open(os.path.join(args.output_dir, "irfl_vision_text_logits.jsonl"), "w") as f:
+        with open(os.path.join(args.output_dir, "nycartoon_vision_text_logits.jsonl"), "w") as f:
             f.write("")
         
-        with open(os.path.join(args.output_dir, "irfl_vision_text_logits.jsonl"), "a") as f:
+        with open(os.path.join(args.output_dir, "nycartoon_vision_text_logits.jsonl"), "a") as f:
             for res in val_results:
                 f.write(json.dumps(res) + "\n")
 

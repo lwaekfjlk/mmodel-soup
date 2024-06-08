@@ -1,8 +1,8 @@
 import json
-with open('expert_albef/irfl_baseline_logits.jsonl') as f:
+with open('expert_albef/mustard_U_logits.jsonl') as f:
     data = [json.loads(line) for line in f]
 
-data = data[-1064:]
+data = data
 
 preds, targets = [], []
 for d in data:
