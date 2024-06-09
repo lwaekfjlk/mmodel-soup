@@ -1,4 +1,4 @@
-python -m torch.distributed.launch --nproc_per_node=4 --use_env SarcDetect.py \
+python -m torch.distributed.launch --nproc_per_node=5 --use_env SarcDetect.py \
 --config ./configs/SarcDetect_U.yaml \
 --output_dir ./output/SarcDetect-U \
 --checkpoint ./ALBEF.pth \
