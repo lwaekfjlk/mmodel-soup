@@ -1,6 +1,6 @@
-train_file: '../sarc_data/intermediate_data/test_filtered.txt'
-val_file: '../sarc_data/raw_data/valid.txt'                
-test_file: '../sarc_data/raw_data/test.txt'
+train_file: '../sarc_data/data_raw/sarc_dataset_train.json'
+val_file: '../sarc_data/data_raw/sarc_dataset_val.json'                
+test_file: '../sarc_data/data_raw/sarc_dataset_test.json'
 
 image_root: '../sarc_data/raw_data/image_data'
 
