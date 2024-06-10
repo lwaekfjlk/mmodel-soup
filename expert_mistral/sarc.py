@@ -23,7 +23,7 @@ class SarcDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
-            {
+            {    "id": id,
                 "image_id": id,
                 "text": data["text"],
                 "label": data["label"]
@@ -34,6 +34,7 @@ class SarcDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
+        id = item['id']
         label = torch.tensor(item['label'], dtype=torch.long)
 
         input_json_file = "/storage/mmodel-soup/sarc_data/data_gen_output/sarc_image_description.json"
@@ -51,6 +52,7 @@ class SarcDataset(Dataset):
 
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return { 
+             "id": id,
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,
@@ -78,11 +80,13 @@ def sarc_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
-    
+    ids = [item["id"] for item in batch]
+
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
-        "label": labels
+        "label": labels,
+        "id": ids
     }
 
 

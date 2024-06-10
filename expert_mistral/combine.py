@@ -10,7 +10,7 @@ class CombinedDataset(Dataset):
     def __init__(self, dataset_configs, tokenizer):
         self.datasets = self.load_datasets(dataset_configs, tokenizer)
 
-    def load_datasets(self, dataset_configs, tokenizer, image_processor):
+    def load_datasets(self, dataset_configs, tokenizer):
         datasets = []
         for config in dataset_configs:
             if config["name"] == "IRFL":
@@ -46,14 +46,14 @@ def combined_collate(batch):
     }
 
 
-def get_combined_dataloader(dataset_configs, args, tokenizer, image_processor, split):
+def get_combined_dataloader(dataset_configs, args, tokenizer,  split):
     if split == "train":
-        dataset = CombinedDataset(dataset_configs, tokenizer, image_processor)
+        dataset = CombinedDataset(dataset_configs, tokenizer)
         return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=combined_collate)
     elif split == "val":
-        dataset = CombinedDataset(dataset_configs, tokenizer, image_processor)
+        dataset = CombinedDataset(dataset_configs, tokenizer)
         return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=combined_collate)
     elif split == "test":
-        dataset = CombinedDataset(dataset_configs, tokenizer, image_processor)
+        dataset = CombinedDataset(dataset_configs, tokenizer)
         return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=combined_collate)
 

@@ -2,6 +2,8 @@ import argparse
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor
+from torch.nn.parallel import DistributedDataParallel as DDP
+import torch.distributed as dist
 from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 from mustard import get_mustard_dataloader
@@ -10,14 +12,17 @@ from nycartoon import get_nycartoon_dataloader
 from irfl import get_irfl_dataloader
 from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
+import json
+import ipdb
+from peft import LoraConfig, get_peft_model, PeftModel
 
 
 def evaluate(tokenizer, model, dataloader, device, args):
     model.eval()
     total_correct = 0
     total = 0
-    total_yesno_logits = []
     all_labels = []
+    total_yesno_logits = {}
     all_predictions = []
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
@@ -31,6 +36,7 @@ def evaluate(tokenizer, model, dataloader, device, args):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
         labels = batch["label"].to(device)
+        ids = batch["id"]
         
         with torch.no_grad():
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
@@ -43,7 +49,9 @@ def evaluate(tokenizer, model, dataloader, device, args):
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
-            total_yesno_logits.extend(yesno_logits.tolist())
+            yesno_logits = yesno_logits.tolist()
+            for i, id in enumerate(ids):
+                total_yesno_logits[id] = yesno_logits[i]
             all_labels.extend(labels.cpu().tolist())
             all_predictions.extend(predictions.cpu().tolist())
     if args.answer_options == 2:
@@ -94,41 +102,41 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
 
             total_loss += loss.item()
 
-            if (step + 1) % args.eval_steps == 0:
-
-                if args.answer_options == 2:
-                    acc, f1, precision, recall, yesno_logits = evaluate(
-                        tokenizer, 
-                        model, 
-                        test_dataloader, 
-                        device, 
-                        args
-                    )
-                    print(f"Epoch {epoch + 1} Step {step + 1}")
-                    print(f"Validation Accuracy: {acc:.4f}")
-                    print(f"Validation F1 Score: {f1:.4f}")
-                    print(f"Validation Precision: {precision:.4f}")
-                    print(f"Validation Recall: {recall:.4f}")
-                    
-                    if f1 > best_f1:
-                        best_f1 = f1
-                        model.save_pretrained(args.save_path)
-                        torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
-                else: 
-                    acc, yesno_logits = evaluate(
-                        tokenizer, 
-                        model, 
-                        test_dataloader, 
-                        device, 
-                        args
-                    )
-                    print(f"Epoch {epoch + 1} Step {step + 1}")
-                    print(f"Validation Accuracy: {acc:.4f}")
-                    
-                    if acc > best_acc:
-                        best_acc = acc
-                        model.save_pretrained(args.save_path)
-                        torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
+            #if (step + 1) % args.eval_steps == 0:
+        if args.answer_options == 2:
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print(f"Epoch {epoch + 1} Step {step + 1}")
+            print(f"Validation Accuracy: {acc:.4f}")
+            print(f"Validation F1 Score: {f1:.4f}")
+            print(f"Validation Precision: {precision:.4f}")
+            print(f"Validation Recall: {recall:.4f}")
+            
+            if f1 > best_f1:
+                best_f1 = f1
+                model.save_pretrained(args.save_path)
+                torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
+        else: 
+            acc, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print(f"Epoch {epoch + 1} Step {step + 1}")
+            print(f"Validation Accuracy: {acc:.4f}")
+            
+            if acc > best_acc:
+                best_acc = acc
+                print("SAVING MODEL")
+                model.save_pretrained(args.save_path)
+                torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
 
 def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
     configs = []
@@ -167,25 +175,19 @@ if __name__ == '__main__':
     parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
     parser.add_argument('--answer_options', type=int, default=2, help='Maximum number of choices')
-    
+    parser.add_argument('--mode', type=str, default="train", help='train/test type')
+    parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
+    parser.add_argument('--device', type=int, default=0, help='specify gpu')
+    parser.add_argument('--world_size', type=int, default=4, help='specify gpu')
+
+
+
     args = parser.parse_args()
 
-    # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    device = torch.device("cuda:3" if torch.cuda.is_available() else "cpu")
+    device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
     
-    model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
-    config = LoraConfig(
-        r=args.lora_r,
-        lora_alpha=args.lora_alpha,
-        lora_dropout=args.lora_dropout,
-        bias="none",
-        target_modules=["q_proj", "k_proj"]
-    )
-    model = get_peft_model(model, config)
-    model.print_trainable_parameters()
-    model.to(device)
 
     if args.dataset == "mustard":
         train_dataloader = get_mustard_dataloader(args, tokenizer, split="train")
@@ -211,37 +213,79 @@ if __name__ == '__main__':
         val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, split="val")
         test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, split="test")
     
-
-    train(model, train_dataloader, val_dataloader, tokenizer, device, args)
-
-    if args.answer_options == 2:
-        acc, f1, precision, recall, yesno_logits = evaluate(
-            tokenizer, 
-            model, 
-            test_dataloader, 
-            device, 
-            args
+    if args.mode == "train":
+        model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
+        config = LoraConfig(
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
+            lora_dropout=args.lora_dropout,
+            bias="none",
+            target_modules=["q_proj", "k_proj"]
         )
-    else: 
-        acc, yesno_logits = evaluate(
-            tokenizer, 
-            model, 
-            test_dataloader, 
-            device, 
-            args
-        )
-    print("Test Results:")
-    print(f"Test Accuracy: {acc:.4f}")
-    print(f"Test F1 Score: {f1:.4f}")
-    print(f"Test Precision: {precision:.4f}")
-    print(f"Test Recall: {recall:.4f}")
+        model = get_peft_model(model, config)
+        model.print_trainable_parameters()
+        model.to(device)
+        train(model, train_dataloader, val_dataloader, tokenizer, device, args)
 
-    metrics_file_path = f"test_metrics_{args.save_path}.txt"
-    with open(metrics_file_path, "w") as file:
-        file.write("Test Results:\n")
-        file.write(f"Test Accuracy: {acc:.4f}\n")
-        file.write(f"Test F1 Score: {f1:.4f}\n")
-        file.write(f"Test Precision: {precision:.4f}\n")
-        file.write(f"Test Recall: {recall:.4f}\n")
+        if args.answer_options == 2:
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print("Test Results:")
+            print(f"Test Accuracy: {acc:.4f}")
+            print(f"Test F1 Score: {f1:.4f}")
+            print(f"Test Precision: {precision:.4f}")
+            print(f"Test Recall: {recall:.4f}")
+        else: 
+            acc, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print("Test Results:")
+            print(f"Test Accuracy: {acc:.4f}")
 
-    model.save_pretrained(args.save_path)
+
+#        model.save_pretrained(args.save_path)
+    else:
+        print(f"TEST {args.load_model_name}")
+        model = AutoModelForCausalLM.from_pretrained(args.load_model_name).to(device)
+        #model = PeftModel.from_pretrained(
+        #    model,
+        #    args.load_model_name,
+        #    is_trainable=True
+        #).to(device)
+        if args.answer_options == 2:
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print("Test Results:")
+            print(f"Test Accuracy: {acc:.4f}")
+            print(f"Test F1 Score: {f1:.4f}")
+            print(f"Test Precision: {precision:.4f}")
+            print(f"Test Recall: {recall:.4f}")
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
+        else: 
+            acc, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            print("Test Results:")
+            print(f"Test Accuracy: {acc:.4f}")
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
