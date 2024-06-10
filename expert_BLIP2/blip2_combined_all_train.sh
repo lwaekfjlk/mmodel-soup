@@ -30,7 +30,7 @@ run_training() {
 # Common parameters
 BATCH_SIZE=10
 EVAL_STEPS=200
-EPOCHS=5
+EPOCHS=2
 
 # Dataset-specific parameters
 COMBINED_DATASETS=("sarc" "mustard" "nycartoon" "irfl")
