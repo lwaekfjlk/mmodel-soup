@@ -32,7 +32,7 @@ def interaction_type_acc(results, interaction_type='AS'):
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 def simple_average_fusion(results):
@@ -43,7 +43,7 @@ def simple_average_fusion(results):
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 def weighted_average_fusion(results, weights):
@@ -55,7 +55,7 @@ def weighted_average_fusion(results, weights):
         predicted_label = weighted_logits.index(max(weighted_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 def max_fusion(results):
@@ -66,7 +66,7 @@ def max_fusion(results):
         predicted_label = max_logits.index(max(max_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 def softmax_fusion(results):
@@ -78,7 +78,7 @@ def softmax_fusion(results):
         predicted_label = np.argmax(average_probs)
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 def cascaded_fusion(results, threshold):
@@ -94,7 +94,7 @@ def cascaded_fusion(results, threshold):
             predicted_label = np.argmax(softmaxed_probs['AS'])
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds, average='macro'), precision_score(gths, preds, average='macro'), recall_score(gths, preds, average='macro'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
 
