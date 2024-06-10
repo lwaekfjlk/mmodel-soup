@@ -29,7 +29,7 @@ run_training() {
 
 # Common parameters
 BATCH_SIZE=10
-EVAL_STEPS=1
+EVAL_STEPS=200
 EPOCHS=5
 
 # Dataset-specific parameters
