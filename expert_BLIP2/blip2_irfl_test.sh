@@ -3,7 +3,7 @@ python train.py \
 --test_dataset irfl \
 --test_path ../irfl_data/data_raw/irfl_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---load_model_name blip2_irfl_baseline_model \
+--load_model_name blip2_sarc_mustard_nycartoon_irfl_baseline_model \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
@@ -14,7 +14,7 @@ python train.py \
 --test_dataset irfl \
 --test_path ../irfl_data/data_raw/irfl_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---load_model_name blip2_irfl_R_model \
+--load_model_name blip2_sarc_mustard_nycartoon_irfl_baseline_model \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
@@ -25,7 +25,7 @@ python train.py \
 --test_dataset irfl \
 --test_path ../irfl_data/data_raw/irfl_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---load_model_name blip2_irfl_U_model \
+--load_model_name blip2_sarc_mustard_nycartoon_irfl_baseline_model \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
@@ -36,7 +36,7 @@ python train.py \
 --test_dataset irfl \
 --test_path ../irfl_data/data_raw/irfl_dataset_test.json \
 --image_data_path ../irfl_data/data_raw/images \
---load_model_name blip2_irfl_AS_model \
+--load_model_name blip2_sarc_mustard_nycartoon_irfl_baseline_model \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
