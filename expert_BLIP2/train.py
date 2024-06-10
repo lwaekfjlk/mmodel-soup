@@ -46,9 +46,9 @@ def evaluate(tokenizer, model, dataloader, device, args):
             all_predictions.extend(predictions.cpu().tolist())
     
     accuracy = total_correct / total
-    f1 = f1_score(all_labels, all_predictions, average='macro')
-    precision = precision_score(all_labels, all_predictions, average='macro')
-    recall = recall_score(all_labels, all_predictions, average='macro')
+    f1 = f1_score(all_labels, all_predictions)
+    precision = precision_score(all_labels, all_predictions)
+    recall = recall_score(all_labels, all_predictions)
     
     return accuracy, f1, precision, recall, total_yesno_logits
 
