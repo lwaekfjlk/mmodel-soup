@@ -21,7 +21,11 @@ class IRFLDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
+<<<<<<< HEAD
+            {                "id": id,
+=======
             {
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
                 "image_id": id,
                 "text": data["text"],
                 "label": 1 if 'Figurative' in data['category'] else 0
@@ -32,6 +36,10 @@ class IRFLDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
+<<<<<<< HEAD
+        id = item['id']
+=======
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
         label = torch.tensor(item['label'], dtype=torch.long)
         with open('irfl_captions.json', 'r') as json_file:
             parsed_results = json.load(json_file)
@@ -46,6 +54,7 @@ class IRFLDataset(Dataset):
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,
+            "id": id
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -71,11 +80,13 @@ def irfl_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
-    
+    ids = [item["id"] for item in batch]
+
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
-        "label": labels
+        "label": labels,
+        "id": ids,
     }
 
 

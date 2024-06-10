@@ -24,11 +24,12 @@ run_training() {
     --save_path "${save_path_prefix}" \
     --batch_size "${batch_size}" \
     --eval_steps "${eval_steps}" \
+    --device 1 \
     --epochs "${epochs}"
 }
 
 # Common parameters
-BATCH_SIZE=10
+BATCH_SIZE=1
 EVAL_STEPS=200
 EPOCHS=5
 
@@ -57,7 +58,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_sarc_mustard_AS_model" \
+  "./mistral_sarc_mustard_AS_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run R experiment
@@ -67,7 +68,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_sarc_mustard_R_model" \
+  "./mistral_sarc_mustard_R_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run U experiment
@@ -77,7 +78,7 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_sarc_mustard_U_model" \
+  "./mistral_sarc_mustard_U_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"
 
 # Run baseline experiment
@@ -87,5 +88,5 @@ run_training "${COMBINED_DATASETS[@]}" \
   "${TEST_PATHS[@]}" \
   "${IMAGE_DATA_PATHS[@]}" \
   "${MAX_LENGTHS[@]}" \
-  "./blip2_sarc_mustard_baseline_model" \
+  "./mistral_sarc_mustard_baseline_model" \
   "$BATCH_SIZE" "$EVAL_STEPS" "$EPOCHS"

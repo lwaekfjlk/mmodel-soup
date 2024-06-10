@@ -22,7 +22,7 @@ class NYCartoonDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
-            {
+            {                "id": id,
                 "image_id": id.split('_')[0],
                 "caption": data["caption"],
                 "label": data['label'],
@@ -39,6 +39,7 @@ class NYCartoonDataset(Dataset):
         question = item['question']
         description = item['description']
         mode = item['mode']
+        id = item['id']
         if mode == "single":
             full_prompt = (
                 f"Given the question {question} and the image captioned as {description}. Does the comment {caption} represent humor or match with each other (yes or no)? Answer:",
@@ -80,10 +81,11 @@ def nycartoon_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
-    
+    ids = [item["id"] for item in batch]
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
+        "id": ids,
         "label": labels
     }
 

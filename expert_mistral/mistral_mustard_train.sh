@@ -6,8 +6,9 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./mistral_mustard_AS_model \
 --batch_size 2 \
---eval_steps 10 \
+--eval_steps 25 \
 --epochs 5 \
+--device 1 \
 --max_length 512;
 
 python train.py \
@@ -16,10 +17,11 @@ python train.py \
 --val_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --test_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --image_data_path ../mustard_data/data_raw/images \
---save_path ./mistral_mustard_R_model \
+--save_path ./mistralnci_mustard_R_model \
 --batch_size 2 \
 --eval_steps 10 \
 --epochs 5 \
+--device 1 \
 --max_length 512;
 
 python train.py \
@@ -31,8 +33,9 @@ python train.py \
 --save_path ./mistral_mustard_U_model \
 --batch_size 2 \
 --eval_steps 10 \
---epochs 5 \
+--device 1 \
 --max_length 512;
+
 
 python train.py \
 --dataset mustard \
@@ -44,4 +47,5 @@ python train.py \
 --batch_size 2 \
 --eval_steps 10 \
 --epochs 5 \
+--device 1 \
 --max_length 512;
