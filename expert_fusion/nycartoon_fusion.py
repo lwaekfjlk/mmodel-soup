@@ -3,6 +3,47 @@ from collections import defaultdict
 import os
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+from collections import defaultdict
+
+def matching_acc(gths, logits, data_ids):
+    matching_dataset = defaultdict(lambda: defaultdict(dict))
+    for gth, logit, data_id in zip(gths, logits, data_ids):
+        image_id = data_id.split('_')[0]
+        text = data_id.split('_')[1]
+        logit = np.exp(logit) / np.sum(np.exp(logit))
+        matching_dataset[image_id][text] = {'gth': gth, 'logit': logit}
+
+    matching = 0
+    for multi_choice in matching_dataset.values():
+        gths = []
+        yes_logits = []
+        for choice in multi_choice:
+            gths.append(multi_choice[choice]['gth'])
+            yes_logits.append(multi_choice[choice]['logit'][1])
+        assert len(gths) == len(yes_logits) == 5
+        if gths[yes_logits.index(max(yes_logits))] == 1:
+            matching += 1
+    return matching / len(matching_dataset)
+
+
+def load_and_transform_baseline(file_dir):
+    subset_names = ['baseline']
+    dataset = defaultdict(list)
+    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
+
+    # Load data from files
+    for name in subset_names:
+        file_path = os.path.join(file_dir, f'nycartoon_{name}_logits.jsonl')
+        with jsonlines.open(file_path, 'r') as f:
+            for line in f:
+                image_id, text = line['image_id'], line['text']
+                data_id = f"{image_id}_{text}"
+                dataset[name].append(line)
+                results[data_id]['logits'][name] = line['logits']
+                if results[data_id]['target'] is None:
+                    results[data_id]['target'] = line['target']
+                assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
+    return dataset, results
 
 def load_and_transform_baseline(file_dir):
     subset_names = ['baseline']
@@ -45,24 +86,28 @@ def load_and_transform_data(file_dir):
 def interaction_type_acc(results, interaction_type='AS'):
     gths = []
     preds = []
+    logits = []
     for data_id, data in results.items():
         total_logits = data['logits'][interaction_type]
+        logits.append(total_logits)
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
-    return f1, precision, recall, accuracy
+    acc = matching_acc(gths, logits, list(results.keys()))
+    return acc  
 
 def simple_average_fusion(results):
     gths = []
     preds = []
+    logits = []
     for data_id, data in results.items():
         total_logits = [sum(logits) / len(logits) for logits in zip(*data['logits'].values())]
+        logits.append(total_logits)
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
-    return f1, precision, recall, accuracy
+    acc = matching_acc(gths, logits, list(results.keys()))
+    return acc
 
 def weighted_average_fusion(results, weights):
     gths = []
