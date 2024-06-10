@@ -23,11 +23,7 @@ class SarcDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
-<<<<<<< HEAD
-            {                   "id": id,
-=======
-            {
->>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
+            {    "id": id,
                 "image_id": id,
                 "text": data["text"],
                 "label": data["label"]
@@ -38,10 +34,7 @@ class SarcDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
-<<<<<<< HEAD
         id = item['id']
-=======
->>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
         label = torch.tensor(item['label'], dtype=torch.long)
 
         input_json_file = "/storage/mmodel-soup/sarc_data/data_gen_output/sarc_image_description.json"
