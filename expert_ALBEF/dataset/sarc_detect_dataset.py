@@ -5,52 +5,73 @@ from torch.utils.data import Dataset
 from PIL import Image
 from dataset.utils import pre_caption
 
-
 class sarc_detect_train_dataset(Dataset):
-    def __init__(self, text_file, transform, image_root, max_words=30):        
-        with open(text_file, 'r') as f:
-            input_str = f.read()
-            lines = [line.strip() for line in input_str.strip().split('\n') if line.strip()]
-            self.text = [ast.literal_eval(line) for line in lines]
+    def __init__(self, dataset_path, transform, image_root, max_words=30):
+        self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
         self.image_root = image_root
         self.max_words = max_words
         
     def __len__(self):
-        return len(self.text)
+        return len(self.dataset)
+
+    def load_dataset(self, dataset_path):
+        with open(dataset_path) as f:
+            raw_dataset = json.load(f)
+        result = []
+        for id, data in raw_dataset.items():
+            image_id = id
+            text = data['text']
+            label = data['label']
+            result.append({
+                'image_id': image_id,
+                'text': text,
+                'label': label
+            })
+        return result
     
-
     def __getitem__(self, index):   
-        image_id, sentence, label = self.text[index]
-        image_path = os.path.join(self.image_root,'%s.jpg'%image_id)      
+        image_id, text, label = self.dataset[index]['image_id'], self.dataset[index]['text'], self.dataset[index]['label']
+        image_path = os.path.join(self.image_root, f'{image_id}.jpg')      
         image = Image.open(image_path).convert('RGB')   
-        image = self.transform(image)          
+        image = self.transform(image)
 
-        sentence = pre_caption(sentence, self.max_words)
+        text = pre_caption(text, self.max_words)
 
-        return image, sentence, label
+        return image, text, label
 
 
 class sarc_detect_test_dataset(Dataset):
-    def __init__(self, text_file, transform, image_root, max_words=30):        
-        with open(text_file, 'r') as f:
-            input_str = f.read()
-            lines = [line.strip() for line in input_str.strip().split('\n') if line.strip()]
-            self.text = [ast.literal_eval(line) for line in lines]
+    def __init__(self, dataset_path, transform, image_root, max_words=30):        
+        self.dataset = self.load_dataset(dataset_path)
         self.transform = transform
         self.image_root = image_root
         self.max_words = max_words
         
     def __len__(self):
-        return len(self.text)
+        return len(self.dataset)
+
+    def load_dataset(self, dataset_path):
+        with open(dataset_path) as f:
+            raw_dataset = json.load(f)
+        result = []
+        for id, data in raw_dataset.items():
+            image_id = id
+            text = data['text']
+            label = data['label']
+            result.append({
+                'image_id': image_id,
+                'text': text,
+                'label': label
+            })
+        return result
 
     def __getitem__(self, index):   
-        image_id, sentence, ann_label = self.text[index]
-        image_path = os.path.join(self.image_root,'%s.jpg'%image_id)      
+        image_id, text, label = self.dataset[index]['image_id'], self.dataset[index]['text'], self.dataset[index]['label']
+        image_path = os.path.join(self.image_root, f'{image_id}.jpg')      
         image = Image.open(image_path).convert('RGB')   
-        image = self.transform(image)          
+        image = self.transform(image)
 
-        sentence = pre_caption(sentence, self.max_words)
-
-        return image, sentence, ann_label, image_id
-    
+        text = pre_caption(text, self.max_words)
+        
+        return image, text, label, image_id
