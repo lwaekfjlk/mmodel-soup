@@ -19,7 +19,11 @@ class MustardDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
+<<<<<<< HEAD
             {                "id": id,
+=======
+            {
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
                 "image_id": id,
                 "show": data["show"],
                 "context": data["context"],
@@ -39,7 +43,10 @@ class MustardDataset(Dataset):
         text = item['utterance']
         speaker = item['speaker']
         show = item['show']
+<<<<<<< HEAD
         id = item['id']
+=======
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
         context = item['context']
         speakers = item['context_speakers']
         fullContext = ""
@@ -54,7 +61,10 @@ class MustardDataset(Dataset):
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,
+<<<<<<< HEAD
             "id": id
+=======
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
         }
 
     def tokenize_and_left_pad(self, full_prompt, max_length):
@@ -77,14 +87,21 @@ def mustard_collate(batch):
     input_ids = torch.stack([item["input_ids"] for item in batch])
     attention_masks = torch.stack([item["attention_mask"] for item in batch])
     labels = torch.stack([item["label"] for item in batch])
+<<<<<<< HEAD
     ids = [item["id"] for item in batch]
 
+=======
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
     
     return {
         "input_ids": input_ids,
         "attention_mask": attention_masks,
+<<<<<<< HEAD
         "label": labels,
         "id": ids,
+=======
+        "label": labels
+>>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
     }
 
 

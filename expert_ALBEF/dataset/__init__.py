@@ -12,6 +12,8 @@ from dataset.grounding_dataset import grounding_dataset
 from dataset.bi_cls_dataset import bi_cls_dataset
 from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
 from dataset.irfl_dataset import irfl_train_dataset, irfl_test_dataset
+from dataset.nycartoon_dataset import nycartoon_train_dataset, nycartoon_test_dataset
+from dataset.mustard_dataset import mustard_train_dataset, mustard_test_dataset
 
 from dataset.randaugment import RandomAugment
 
@@ -114,6 +116,19 @@ def create_dataset(dataset, config):
         val_dataset = irfl_test_dataset(config['val_file'], test_transform, config['image_root'])  
         test_dataset = irfl_test_dataset(config['test_file'], test_transform, config['image_root'])                
         return train_dataset, val_dataset, test_dataset 
+
+    elif dataset=='nycartoon':   
+        train_dataset = nycartoon_train_dataset(config['train_file'], train_transform, config['image_root'])  
+        val_dataset = nycartoon_test_dataset(config['val_file'], test_transform, config['image_root'])  
+        test_dataset = nycartoon_test_dataset(config['test_file'], test_transform, config['image_root'])                
+        return train_dataset, val_dataset, test_dataset
+
+    elif dataset=='mustard':   
+        train_dataset = mustard_train_dataset(config['train_file'], train_transform, config['image_root'])  
+        val_dataset = mustard_test_dataset(config['val_file'], test_transform, config['image_root'])  
+        test_dataset = mustard_test_dataset(config['test_file'], test_transform, config['image_root'])                
+        return train_dataset, val_dataset, test_dataset
+
 
 def vqa_collate_fn(batch):
     image_list, question_list, answer_list, weight_list, n = [], [], [], [], []
