@@ -1,0 +1,59 @@
+from mustard import MustardDataset
+from irfl import IRFLDataset 
+from sarc import SarcDataset
+from nycartoon import NYCartoonDataset 
+from torch.utils.data import Dataset, DataLoader
+import torch
+
+
+class CombinedDataset(Dataset):
+    def __init__(self, dataset_configs, tokenizer):
+        self.datasets = self.load_datasets(dataset_configs, tokenizer)
+
+    def load_datasets(self, dataset_configs, tokenizer):
+        datasets = []
+        for config in dataset_configs:
+            if config["name"] == "IRFL":
+                datasets.append(IRFLDataset(config["dataset_path"],  tokenizer, config["max_length"]))
+            elif config["name"] == "mustard":
+                datasets.append(MustardDataset(config["dataset_path"], tokenizer, config["max_length"]))
+            elif config["name"] == "NYCartoon":
+                datasets.append(NYCartoonDataset(config["dataset_path"], tokenizer, config["max_length"]))
+            elif config["name"] == "sarc":
+                datasets.append(SarcDataset(config["dataset_path"], tokenizer, config["max_length"]))
+        return datasets
+
+    def __len__(self):
+        return sum(len(dataset) for dataset in self.datasets)
+
+    def __getitem__(self, idx):
+        for dataset in self.datasets:
+            if idx < len(dataset):
+                return dataset[idx]
+            idx -= len(dataset)
+        raise IndexError("Index out of range")
+
+
+def combined_collate(batch):
+    input_ids = torch.stack([item["input_ids"] for item in batch])
+    attention_masks = torch.stack([item["attention_mask"] for item in batch])
+    labels = torch.stack([item["label"] for item in batch])
+    
+    return {
+        "input_ids": input_ids,
+        "attention_mask": attention_masks,
+        "label": labels
+    }
+
+
+def get_combined_dataloader(dataset_configs, args, tokenizer,  split):
+    if split == "train":
+        dataset = CombinedDataset(dataset_configs, tokenizer)
+        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=combined_collate)
+    elif split == "val":
+        dataset = CombinedDataset(dataset_configs, tokenizer)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=combined_collate)
+    elif split == "test":
+        dataset = CombinedDataset(dataset_configs, tokenizer)
+        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=combined_collate)
+
