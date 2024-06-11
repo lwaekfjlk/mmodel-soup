@@ -70,7 +70,11 @@ with open("data_split_output/irfl_R_dataset_train.json", 'w') as f:
 with open("data_split_output/irfl_U_dataset_train.json", 'w') as f:
     json.dump(U_train, f, indent=4)
 
+AS_R_train = merge_mixed_data(AS_train, R_train)
+with open("data_split_output/irfl_AS_R_dataset_train.json", 'w') as f:
+    json.dump(AS_R_train, f, indent=4)
 
+print("AS + R: ", get_count_label(AS_R_train))
 
 with open("data_raw/irfl_idiom_dataset_train.json", 'r') as f:
     idiom_train = json.load(f)
