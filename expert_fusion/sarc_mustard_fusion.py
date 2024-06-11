@@ -1,6 +1,7 @@
 import numpy as np
 from collections import defaultdict
 import os
+import json
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
@@ -11,11 +12,11 @@ def load_and_transform_baseline(file_dir):
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'sarc_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'mustard_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
-                image_id, text = line['image_id'], line['text']
-                data_id = f"{image_id}_{text}"
+                image_id, text = line['image_id'], ''
+                data_id = f"{image_id}"
                 dataset[name].append(line)
                 results[data_id]['logits'][name] = line['logits']
                 if results[data_id]['target'] is None:
@@ -30,11 +31,11 @@ def load_and_transform_data(file_dir):
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'sarc_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'mustard_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
-                image_id, text = line['image_id'], line['text']
-                data_id = f"{image_id}_{text}"
+                image_id, text = line['image_id'], ''
+                data_id = f"{image_id}"
                 dataset[name].append(line)
                 results[data_id]['logits'][name] = line['logits']
                 if results[data_id]['target'] is None:
@@ -56,8 +57,14 @@ def interaction_type_acc(results, interaction_type='AS'):
 def simple_average_fusion(results):
     gths = []
     preds = []
+    with open('./blip2_fuser/test_rus_logits.json', 'r') as f:
+        rus_logits = json.load(f)
+
     for data_id, data in results.items():
         total_logits = [sum(logits) / len(logits) for logits in zip(*data['logits'].values())]
+        #total_logits = [0, 0]
+        #for i in range(2):
+        #    total_logits[i] = data['logits']['R'][i] * rus_logits[data_id][0] + data['logits']['U'][i] * rus_logits[data_id][1] + data['logits']['AS'][i] * rus_logits[data_id][2]
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
@@ -102,9 +109,16 @@ def softmax_fusion(results):
     softmaxed_probs_data = {}
     # normalize the distribution based on all the logits
 
+    with open('./blip2_fuser/test_rus_logits.json', 'r') as f:
+        rus_logits = json.load(f)
+    
+    #for data_id, data in rus_logits.items():
+    #    rus_logits[data_id] = np.exp(data) / np.sum(np.exp(data))
+
     for data_id, data in results.items():
         softmaxed_probs = [np.exp(logits) / np.sum(np.exp(logits)) for logits in data['logits'].values()]
-        average_probs = np.mean(softmaxed_probs, axis=0)
+        average_probs = softmaxed_probs[0] * rus_logits[data_id][0] + softmaxed_probs[1] * rus_logits[data_id][1] + softmaxed_probs[2] * rus_logits[data_id][2]
+        #average_probs = np.mean(softmaxed_probs, axis=0)
         predicted_label = np.argmax(average_probs)
         gths.append(data['target'])
         preds.append(predicted_label)
@@ -130,7 +144,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../sarc_mustard_mixed/expert_inference_output/expert_albef'
+    file_dir = '../sarc_mustard_mixed/expert_blip2'
     _, transformed_results = load_and_transform_data(file_dir)
     weights = {'AS': 0.4, 'R': 0.2, 'U': 0.2}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
