@@ -13,6 +13,7 @@ class MustardDataset(Dataset):
             "R": "../mustard_data/data_split_output/mustard_R_dataset_train.json",
             "U": "../mustard_data/data_split_output/mustard_U_dataset_train.json",
             "S": "../mustard_data/data_split_output/mustard_AS_dataset_train.json",
+            "test": "../mustard_data/data_raw/mustard_dataset_test.json",
         }
         self.dataset = self.load_dataset(dataset_dict)
         self.tokenizer = tokenizer
