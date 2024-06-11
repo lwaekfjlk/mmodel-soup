@@ -24,6 +24,7 @@ def load_and_transform_baseline(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+
 def load_and_transform_data(file_dir):
     subset_names = ['AS', 'R', 'U', 'baseline']
     dataset = defaultdict(list)
@@ -75,6 +76,7 @@ def interaction_type_acc(results, interaction_type='AS'):
         preds.append(predicted_label)
     f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
+
 
 def simple_average_fusion(results):
     gths = []
