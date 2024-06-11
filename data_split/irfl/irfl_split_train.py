@@ -9,9 +9,9 @@ def read_preds(task):
     return preds
 
 def read_groundtruth_labels(task):
-    with open(f'../../irfl_data/data_raw/irfl_{task}_train.json', 'r') as file:
+    with open(f'../../irfl_data/data_raw/irfl_{task}_dataset_train.json', 'r') as file:
         dataset = json.load(file)
-        return {key: 1 if value['category'] == 'Figurative' else 0 for key, value in dataset.items()}
+        return {key: 1 if 'Figurative' in value['category'] else 0 for key, value in dataset.items()}
 
 def select_subset_ids(preds, labels):
     R_ids, AS_ids, U_ids = [], [], []
@@ -36,7 +36,7 @@ def main():
         preds = read_preds(task)
         R_ids, AS_ids, U_ids = select_subset_ids(preds, gth_label)
         
-        train_dataset = read_json_file(f'../../irfl_data/data_raw/irfl_{task}_train.json')
+        train_dataset = read_json_file(f'../../irfl_data/data_raw/irfl_{task}_dataset_train.json')
         
         R_dataset = construct_subset(R_ids, train_dataset)
         save_dataset(f'../../irfl_data/data_split_output/irfl_{task}_R_dataset_train.json', R_dataset)
