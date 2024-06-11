@@ -23,6 +23,7 @@ def load_and_transform_baseline(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+
 def load_and_transform_data(file_dir):
     subset_names = ['AS', 'R', 'U']
     dataset = defaultdict(list)
@@ -42,6 +43,7 @@ def load_and_transform_data(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+
 def interaction_type_acc(results, interaction_type='AS'):
     gths = []
     preds = []
@@ -52,6 +54,7 @@ def interaction_type_acc(results, interaction_type='AS'):
         preds.append(predicted_label)
     f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
+
 
 def simple_average_fusion(results):
     gths = []
@@ -118,7 +121,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../mustard_data/expert_inference_output/expert_albef'
+    file_dir = '../mustard_data/expert_inference_output/expert_blip2'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
