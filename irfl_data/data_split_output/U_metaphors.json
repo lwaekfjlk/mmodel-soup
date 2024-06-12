@@ -1,0 +1,1934 @@
+[
+    {
+        "text": "blanket of bullets",
+        "image_id": "89327664854913109054932301514213844675597506877242288503056522446992518804701",
+        "caption": "The image does not contain any figurative parts. It depicts a sofa with a blanket draped over it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "59439996068746995075564095340703303893095327166530506254413933919327803515686",
+        "caption": "The image prominently features a lion with its mouth open, displaying its tongue. The lion's expression and posture give it a playful or mischievous appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "112525596010135868049875880326280337427495084573520042283867178395272972445290",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a vast expanse of the ocean with waves and a clear sky.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "66959016951603951343244880338398973591691853005892585505017549050127694364999",
+        "caption": "The image depicts two individuals crossing a street. One of them is holding a handbag, and both appear to be in mid-stride, suggesting they are walking.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "26755456989494384580798859211708167749736707874821368790343357070949653911811",
+        "caption": "The image depicts a young girl with her hands placed on her head, appearing to be deep in thought or possibly stressed. Her gaze is directed towards something outside the frame, and her facial expression suggests concern or contemplation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "30953313270761213394590159818887283344179422417615931577879110045032863743675",
+        "caption": "The man in the photo is making a hand gesture with his hands together, forming a triangle shape with his fingers. This gesture can be interpreted as a symbol or a gesture, and it may have different meanings depending on the context in which it is used.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "100226218521365318718707650691041303500511523288514634425584423748314883477384",
+        "caption": "The image depicts a serene and picturesque scene of a grassy field bathed in the golden hues of the setting or rising sun. The sun casts a warm, radiant glow, illuminating the tall grasses which sway gently, creating a sense of movement and tranquility. The foreground is dominated by the grass, which is detailed and textured, showing individual blades of wheat or some other type of grain. The background reveals a hint of trees and a clear sky, adding depth and perspective to the scene.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "8034779577270166873960447902418876231333073486000015618881974571549843155873",
+        "caption": "The image features a woman with a joyful expression, laughing with her mouth open. She has a warm smile, revealing her teeth. Her eyes are closed, and she appears to be in a state of happiness or amusement.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "48579655843436811964321915243844262226590087995990308675295762620091436765332",
+        "caption": "The image showcases a bee, which is an insect. The bee is prominently featured in the center of the image, with its wings spread slightly to the side. The bee's body is covered in dense, golden-brown fur, and it has a pair of long, slender legs. Its head is black with a distinctive striped pattern, and it has a pair of antennae extending outward.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "23838751867364555625476906690876077120487996115591119693456208178437287731042",
+        "caption": "The image depicts a man running along a beach. He is wearing a gray tank top, gray shorts, white socks, and white sneakers. He appears to be in motion, with one foot off the ground and the other pushing forward. He is also wearing sunglasses, and his posture suggests determination and focus.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "101660149060442087036735889427759256971551657750339849869823391099361319413109",
+        "caption": "The image showcases a muscular man wearing a police uniform. He has a prominent physique with well-defined arms and shoulders. The man is also wearing a wristwatch on his left hand.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "84846891061750218652610410946832745945201689772044290290108684890821187341376",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene beach scene with natural elements like the sea, sand, rocks, and palm trees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "80565689871950976976204073067509889626602856538531660660895207862174253941869",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a woman working at a desk with a laptop and various papers.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "29430580547060097171111862987755787870960650043720453930426697157504271531011",
+        "caption": "The image depicts a young woman with her hands on her head, appearing to be stressed or overwhelmed. She has a focused and intense expression on her face, suggesting that she might be deep in thought or facing a challenging situation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "12296372758062208503969687783388082067408486128154081448299693152963385740968",
+        "caption": "The image depicts a small ant carrying a large red fruit, resembling a cherry or a berry. The ant is positioned on a white rope or string, and the background is blurred with green hues, possibly indicating foliage or trees. The ant appears to be exerting effort to move the fruit, suggesting it might be transporting it to a specific location or simply moving it from one point to another.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "46773265915325379363354288445840282902464503309020850465027329937970705948568",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene beach scene with the ocean waves gently lapping the shore.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "13323874610356813101596089080741943670937256002077415985013401091735043873427",
+        "caption": "The image does not contain any significant figurative elements. It primarily showcases a two-story house with a swimming pool, surrounded by lush greenery and palm trees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "3743593656003780878765901078220210277313224582284624770230193528440269643929",
+        "caption": "The image does not contain any figurative parts. It only shows a folded blanket.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "1866727978357395311423843074027543484868722463744305152409105392304233384079",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a plate of fried chicken on a table with some accessories.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "14922209334594419421878512033771415529774571101410310212983662199313592989381",
+        "caption": "The image showcases a man with a beard and short hair. He is smiling, revealing his teeth, and has a confident and friendly expression. The man appears to be in a well-lit room, possibly an office or a living space, based on the background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "29037456046003301024058891575326559657145441036475057742650281923212261120630",
+        "caption": "The image primarily showcases a fenced area, possibly a prison or detention facility, with a guard tower in the center. The tower has a label that reads 'T.D.C.W.' which might stand for 'Tennessee Department of Correctional Services'. The tower also has a flagpole with the American flag, indicating the facility's location or affiliation with the United States.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "79231713196157274655650639964672541151633320137772116463096569907639047427837",
+        "caption": "The image showcases a young woman in a field of flowers. She is wearing a straw hat and has a red flower close to her face, seemingly smelling or admiring it. The woman has long, flowing hair and is dressed in a red top. She is also wearing a necklace with a pendant.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "42075172243474575925519282960525002074892224667732441455633309724266460596661",
+        "caption": "The image showcases a man driving a unique, bubble-like car. The bubble is transparent, allowing the man to be visible inside it. He appears to be in motion, as suggested by the blurred background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "57286075424664396072928475809215390942556062039551743300441048378611584353551",
+        "caption": "The image showcases a man with short, dark hair. He has a clean-shaven face, with a prominent smile on his lips. He is wearing a maroon or deep red v-neck sweater over a light blue shirt.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "74279570351146327777990755076994050379892480007917276863814010225309679372727",
+        "caption": "The image depicts a man walking on a sidewalk. He is wearing a white shirt, dark blue jeans, and a black jacket. He is also wearing glasses and has a confident posture as he walks.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "28952219669492931651566243461145182206725844121585376947813442054024935265602",
+        "caption": "The image showcases a snake, which is a reptile. The snake is coiled around a green leaf, and its head is prominently visible. The snake's eye is large and round, with a unique pattern around it, giving it a distinct appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "35685368344605591322772316040195226280377337984279175691312259571064498148015",
+        "caption": "The image does not contain any figurative parts. It depicts a real-world scene of a car parked in front of a building.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "68343995768458597024558644510181206738334746895305553228529810097856195607268",
+        "caption": "The man in the picture is wearing a white short-sleeved shirt and a gray scarf. He is standing in front of a gray background, with his hands clasped together in front of his chest. His eyes are closed, and his facial expression appears to be one of contemplation or concentration.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "78608323477300591667515224971901959983318895669995085609978688661035754203646",
+        "caption": "The image showcases a male athlete from Kenya named Eliud Kipchoge. He is wearing a red and black jersey with the word 'KENYA' and his name printed on it. He is also wearing a wristband with the number '2020'. He is raising his left arm in a triumphant gesture, possibly celebrating his victory or a significant milestone in his race.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "94948935610535135365327297044220896788406299077507053020546548073058224172641",
+        "caption": "The image showcases a blue pickup truck driving through a sandy terrain. The truck is leaving a trail of dust behind it, indicating movement and activity. The dust cloud is figuratively representing the truck's path or journey through the desert.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "99401559410212480383726524505557770776655210571925827568175075684656974424575",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene beach landscape with waves, sand, and the horizon.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "13539580155804724768239764020072092189126074550985482157421805446403586866135",
+        "caption": "The image showcases a side profile of a man with a mustache. He appears to be smiling, and his gaze is directed slightly upwards. The lighting on his face highlights the contours of his face, especially around the eyes and cheekbones.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "76204354863542305420917347780761316685615069370354850194588816813604346881676",
+        "caption": "The image contains a tall building with a crane on its side. The crane has a red and white color scheme, with the word 'ASTRA' prominently displayed on its side.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "44842668936852395195379894959351323519769497474391623389770073210166580951656",
+        "caption": "The image showcases a medical professional, possibly a doctor, holding a digital tablet that displays an X-ray of a patient's lungs. The X-ray provides a clear view of the lungs, revealing any potential issues or abnormalities.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "91656703821037976499082926395036037427072456588230832271195640351824006386162",
+        "caption": "The image showcases a young boy with a surprised or shocked facial expression. He has his hands placed on his cheeks, with his mouth wide open, displaying his teeth. His eyes are wide open, and his eyebrows are raised, all of which contribute to the overall sense of astonishment or alarm he is conveying.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "6376565422573404270392525801507280256810445822123541618423244065656873724721",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a close-up view of grass blades against a backdrop of a field and trees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "79979135629819078620316727785324332305897034244281697731588117999368116638084",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a courtroom setting with individuals engaged in a legal proceeding.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "27725326306166408556297672114307494890210817635621674040727486590162269528413",
+        "caption": "The image primarily showcases a person's hands holding an open book. The hands are positioned near the middle of the page, and the fingers are spread out, holding the book's edges. The person seems to be engrossed in reading.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "78019099350423382302290243992441256829314323033500193542415437762604800047516",
+        "caption": "The image features a young girl with curly brown hair and striking blue eyes. She is wearing a yellow dress with white lace detailing on the edges. The girl is smiling, revealing her teeth, and appears to be outdoors, with a blurred background suggesting a natural setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "17919453155975874440912585844761588569167522944101149360394700581946063312453",
+        "caption": "The image depicts two individuals seated next to each other. The person on the left is a man who appears to be reading a book, while the person on the right is a woman who is engrossed in her mobile phone.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "81222942588410244357518806341487032422952183915320646024548094144906786497372",
+        "caption": "The image depicts a young individual with their hands placed on their head, indicating frustration or deep thought. Their posture suggests they might be struggling with a task or problem.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "25525103179746309137648052988697960973693825571979567072179896408783454543672",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural landscape with mountains, a river, and dense forests.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "68512475462598247344629481596439097354900286815742972965013982040695209828166",
+        "caption": "The image does not contain any figurative parts that can be described. It primarily showcases a modern architectural structure with wooden panels, large windows, and a clear sky.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "83431770539453643745988123413370658850732611318689141018555715320690286554634",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a residential building with architectural details.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "63246156985274799838544752607210506932416949549638407331638465274143490266958",
+        "caption": "The image does not contain any figurative parts. It depicts a real-world scene of a Chevrolet truck driving on a road with a mountainous landscape in the background.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "90015145587956451741090278489309227909482071610061415319603255245289991640921",
+        "caption": "The image depicts a small ant carrying a much larger green leaf. This can be interpreted figuratively as representing hard work, perseverance, or the idea of overcoming obstacles.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "110650025359160518288707385971426418801249749338922711155491696096064952920930",
+        "caption": "The image showcases two beach chairs with blue cushions and wooden frames. They are positioned facing the sea, with one chair slightly tilted to the right. Above the chairs, there's a large red and white striped umbrella providing shade. The umbrella has a wooden pole and is anchored in the sand.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "40724919995979562853035558196076840788409106674843504884182388439597690470562",
+        "caption": "The image prominently features three individuals, with one of them standing behind a podium displaying the emblem of the 'New York City Police Department'. The individual at the podium appears to be addressing an audience, while the other two individuals are observing. In the foreground, there is a table displaying a variety of firearms, suggesting a press conference or an official announcement related to firearms confiscation or seizure.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "60647336001285752673052055946007246655415554037438411121043044933852341643797",
+        "caption": "The image showcases a woman with short, wavy brown hair. She is wearing a pink sweater and has a thoughtful or sly expression on her face. The woman is looking upwards and has her hands clasped together near her chin, as if she is plotting or scheming something.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "35673906130199068953826077927511433509555032910336998718587870354357426223743",
+        "caption": "The image depicts four soldiers in combat gear, advancing through a smoky environment. They are in a formation, with one soldier in the foreground taking the lead, followed by three others. Each soldier is holding a rifle and is wearing a helmet with a mounted camera or device. The smoke in the background adds a dramatic and intense atmosphere to the scene, suggesting a combat situation or a training exercise.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "50244172508513125898126138435838307504575878710990157987413500931927089291038",
+        "caption": "The image showcases a blanket or quilt with a diagonal pattern. The pattern consists of alternating blocks of two colors: a deep teal or greenish-blue and a burnt orange or terracotta. The teal blocks have a diagonal stripe pattern, while the orange blocks are solid color. Additionally, there is a measurement indication on the image, showing that the blanket or quilt is 72 inches in length and 56 inches in width.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "71908614084745208111863024377628915832253139698454001171860105670438740562099",
+        "caption": "The image depicts a man with a beard and short hair, wearing a blue shirt. He is clasping his hands together in front of him, with a slight smile on his face. The man's posture and facial expression suggest a thoughtful or contemplative mood.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "58233242473992145628904160998316240146309334046301555564099785207539579992114",
+        "caption": "The image does not contain any figurative parts. It only depicts a colorful umbrella.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "80028946454256153310830803148329876340293271554712277573032077369178150428598",
+        "caption": "The image prominently features a young woman giving a thumbs-up gesture with her right hand. She has a cheerful expression on her face and is looking directly at the camera.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "92972052405251763342331048309869326120319191983955966193185542226409683410912",
+        "caption": "The image does not contain any significant figurative elements. It primarily depicts a residential house with a lawn, trees, and some decorative plants.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "112329268678792248793306630200030173263383685989439339739174118462695587932150",
+        "caption": "The image showcases a young child with curly hair, smiling and holding two orange dumbbells in each hand. The child is wearing a light gray long-sleeved shirt with a buttoned-up front. The background is a dark gray or black surface, possibly a chalkboard.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "50385924196477845521791781868930982380113429687160319111427007131417106577112",
+        "caption": "The image showcases a blue blanket or mat with a geometric design embossed on it. The design consists of a series of interconnected lines forming a circular pattern with an arrow or chevron motif pointing outward.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "52929843823120038460402714601044201416626625737724959510204344937332443353488",
+        "caption": "The picture shows a little girl wearing a red dress, with her left hand covering her mouth, looking to the right side of the picture.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "29051756781472190284388131907002572692812510296124349794286665723733458622668",
+        "caption": "The image features a vibrant and colorful umbrella that stands prominently on a sandy beach. The umbrella has a striped pattern with hues of blue, green, yellow, and red. It casts a shadow on the sand, indicating its position in the foreground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "113036754474244334659763740871733663305362728187998636527307180055674299970138",
+        "caption": "The image does not contain any figurative parts. It depicts an underwater scene with a sunken boat and clear blue water.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "12971736399399692696022691637186728441411500876436497133879399040527471299462",
+        "caption": "The girl in the picture is holding a green pen in her hand, and she is smiling while looking at the camera. She is wearing a brown sweater and has her hair tied up. She is sitting in front of a white table, with a blue folder and a red folder on the table.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "107353014057926658000772005338036487259573170041172848692369164410190895639157",
+        "caption": "The image depicts a young man with dark hair, wearing a light-colored shirt and a gray jacket. He is looking out of the car window with a focused expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "96048230197406540048681934641903451477930591401917204189985786058586600180554",
+        "caption": "The image features a white bust statue placed on a small table next to a vase with greenery. The statue appears to be of a classical design, possibly representing a historical or mythological figure.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "14294828063659773760667177565436250092978948533076783967673095204101899448232",
+        "caption": "The image prominently features a fox with its mouth wide open, appearing to yawn or possibly vocalize. The fox's mouth is stretched wide, revealing its teeth and tongue.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "77076123647952014652727085576950441675665173843347413935105430453853856448589",
+        "caption": "The image prominently features a cheetah standing in a grassy field. The cheetah is characterized by its sleek, slender body covered in black and white spots. It has a distinctive black 'tear mark' running from the inner corner of its eye to the side of its mouth. The cheetah's head is turned slightly, revealing its sharp teeth and focused gaze.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "36744670862470155497506491464655066946444157754124231517934597776014629841407",
+        "caption": "The image depicts a group of people gathered around a table filled with food. The table is set outdoors, and there are various dishes, utensils, and beverages on it. The people seem to be in a jovial mood, with some smiling and others engaged in conversations. The setting suggests a communal meal or gathering, possibly in a park or an outdoor community space.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "41672150896882112774820918634279103664533356399750323790242948428829836627283",
+        "caption": "The image showcases a young woman with a cheerful expression. She has curly hair tied up in a bun and is wearing glasses. She is also wearing a yellow sweater and has headphones around her neck. The woman is resting her chin on her hand, giving a relaxed and content look.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "100992597738195116657353821920119220031218439763667757205083996344384880527436",
+        "caption": "The image showcases a male athlete wearing a white martial arts uniform, commonly known as a gi. He appears to be in a fighting stance, with his hands wrapped in white protective tape, commonly referred to as 'tap' or 'gauze'. The athlete has a focused expression on his face, indicating he might be preparing for or just finished a match.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "10157340071851576278842046257961959822181299279818506427199278787106573506060",
+        "caption": "The image depicts a woman walking on a path in a park. She is wearing a blue sports bra and black leggings. Her hair is styled with red highlights, and she is wearing sunglasses.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "31029733209474939498478651664146271020336633646137583543978380396123431577046",
+        "caption": "The image does not contain any significant figurative elements. It primarily showcases a house with architectural details, landscaping, and garden elements.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "21763997075024494308731581317761787611257112883418244512295882120997043591770",
+        "caption": "The image depicts a woman with glasses, wearing a white top. She has a sly or cunning expression on her face, with her hands clasped together in front of her. Her fingers are positioned near her chin, and she is looking to the side with a slight smirk.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "66469287110527856716109039844609319625678741050833836194062917327445454439096",
+        "caption": "The image showcases a vibrant sunset over a beach. The sun is setting on the horizon, casting a warm orange and pink glow across the sky. The clouds are painted in hues of pink, purple, and blue, adding to the dramatic effect of the scene. The sun's reflection on the water creates a shimmering effect, and the gentle waves wash ashore, creating a serene ambiance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "5232002131095004394085676212006264234095490370884736659784562125589420777230",
+        "caption": "The image showcases a chicken. It appears to be a light-colored breed, possibly a Leghorn, with distinct features such as a red comb, wattles, and earlobes. The chicken is in a mid-motion pose, possibly walking or running, with its legs spread apart.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "84067308255349129577497529029006485070972643007097719715362718304229357037819",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger in the image has a distinctive black and orange striped pattern on its fur, with piercing amber eyes. It appears to be in a focused or alert state, possibly due to its surroundings or the presence of prey.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "13052974051198314295944648084916285738144321257760837637195085166677959937948",
+        "caption": "The image depicts a man walking on a pathway. He appears to be middle-aged with a beard, wearing a blue shirt and jeans. He is walking with a purpose, looking straight ahead.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "109484851420714546681434003227244179566010936142827257456754872350372360619022",
+        "caption": "The image primarily showcases an x-ray of the cervical spine, which is a part of the human skeletal system. It provides a detailed view of the vertebrae, discs, and any pathological conditions or injuries that might be present.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "96733595749070013362853181367247202417451654545799880253458338051350629650292",
+        "caption": "The image showcases a man driving a car. He appears to be in his mid-30s, with short dark hair and a beard. He is wearing a white shirt and a dark blazer. The man is focused on driving, with his hands on the steering wheel.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "48555910834376260192828485122137616345276810704554559965376651964068575859865",
+        "caption": "The image prominently features a bald man wearing a white shirt. He appears to be in a brightly lit room with large windows, possibly an office or conference room. The man is looking directly at the camera with a smile, giving a sense of confidence and positivity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "9036862010741239563631321820641776323519946434941756261862097573625286099014",
+        "caption": "The image prominently features a pair of eyes, which are the most recognizable and expressive parts of the face. They are positioned centrally and are the focal point of the image. The eyes are brown, with long eyelashes and a clear reflection, suggesting a healthy condition. The eyelids are well-defined, and the eyebrows are thick and neatly shaped.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "54273495811264826795740743405295656467260623989056435442027365194066673082076",
+        "caption": "The image showcases a chicken with a vibrant red comb and wattles on its head. These are characteristic features of chickens and are often used in poultry farming for display or as a source of protein.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "37354760527246492810722148837790299432451911467200129643878100613845978018695",
+        "caption": "The image does not contain any figurative elements that require detailed description. It primarily showcases a house with architectural details.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "4447088438169418879078435135010812652611074687730645623208218372414280458922",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a coastal cityscape with buildings, a harbor, and boats.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "79144741429095783944443033934007550647260571802169408420240949779258527276100",
+        "caption": "The image depicts three individuals seated on a wooden bench in what appears to be an outdoor setting. Two of them are engaged in a close conversation, with one man leaning towards the woman he's speaking to. The third individual, a woman with blonde hair, is looking away from the couple, holding the hand of the man seated next to her. The overall mood of the image suggests intimacy and tension, as the woman seems to be aware of the man's interaction with the other woman.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "107218407242231348085273492549470851481300069648408846635215278872503077916936",
+        "caption": "The image showcases a woman lying on the grass with her hands supporting her chin. She is smiling and looking directly at the camera. The woman is wearing a light blue top and appears to be in a relaxed and joyful mood.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "104685984231162975720369597819393791305454936555969898606074426232790098583109",
+        "caption": "The image depicts a woman who appears to be in a state of distress or deep thought. She is holding her head with one hand, indicating a sense of overwhelm or confusion. Her facial expression suggests that she might be trying to solve a problem or make a decision.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "32102284607347277244325095781101170832077680354979184133764083778152886104184",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a courtroom setting with individuals engaged in a legal proceeding.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "8069033885173516346054432293294922978956720300140049191492723892737495441254",
+        "caption": "The image showcases a young fox with its eyes closed, appearing to be in a state of relaxation or contentment. The fox's ears are perked up, and its snout is slightly tilted upwards, giving it a cute and endearing expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "35077430370277180532083859441475723613036795386628524968957138718401415945983",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger is lying down in a grassy area, with its mouth slightly open, revealing its teeth. The tiger's eyes are focused forward, giving it a alert and intense expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "10458492110125274951808653411601703242175988851533364334242881004933965170911",
+        "caption": "The image depicts a young girl with her hands on her head, expressing frustration or distress. This gesture suggests that she might be feeling overwhelmed or stressed about something.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "21830422954560895837260699457837027881803068911910231911308978188131634895271",
+        "caption": "The image prominently features a close-up of a tiger's face. The tiger has striking orange and black stripes, with its eyes wide open, revealing a deep amber hue. The fur is detailed, showing individual strands and patterns, and the nose is pink with a slight curve upwards at the tip.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "82748655969512568499172896817075482341086990566306087797079690624865749386637",
+        "caption": "The image showcases a wheel with a black hub and spokes. The tire appears to be made of a soft, black rubber material with a textured tread pattern. The wheel is centered on a white background, emphasizing its design and details.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "3408264338758151165475123943325623711820452335611003484041443211332355828567",
+        "caption": "The image does not contain any prominent figurative elements. It primarily depicts a scene inside a cell block with individuals behind bars.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "23935895430045826210225504106389687518029945739544123959463513606992243769636",
+        "caption": "The image primarily features a woman with a joyful expression. She has her eyes closed and her lips are slightly parted, revealing a bright white smile. Her hair is blonde and flows freely, partially covering her face. She is wearing a blue sweater, which adds a touch of color to the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "105407997361842515603087534756263141406358098278340368138561371882938583659873",
+        "caption": "The image showcases a muscular man with a determined expression on his face. He is holding a thick rope around his shoulder, which suggests he might be involved in some form of physical activity or exercise. The man's physique is well-defined, with prominent muscles visible, especially in his arms and chest.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "10365691860788784815914389582608589598658703309135198370521251691396274171592",
+        "caption": "The image showcases a man with a beard and mustache, smiling and looking directly at the camera. He appears to be in a relaxed setting, possibly at home.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "17196760427332064909565016476736442906929527066154272704859801382414746994842",
+        "caption": "The image primarily features a man who appears to be in a home setting. He is smiling and looking towards the camera. The man is wearing a checkered shirt and is positioned in front of a bookshelf filled with books. There's also a vase with pink flowers on a table behind him.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "20768332632978801394083466307794457025994420807942668318559475322280851903636",
+        "caption": "The image depicts a woman walking on a pathway in a park. She is wearing a white t-shirt, black leggings, and white sneakers. She is also holding a purple water bottle in her right hand.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "64077791663129126801126435661152114400180996893073735584256306253939185983680",
+        "caption": "The image does not contain any figurative parts. It depicts a white Nissan car parked on a road with a scenic background of trees showcasing autumn foliage.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "79252186444082147193982757773046321110131920238549853893253703151757290634568",
+        "caption": "The image does not contain any figurative elements. It depicts a modern house with architectural details, but there are no human figures or any other non-object elements that could be considered figurative.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "9877279369854997871485851597811663001974585508642822519897916785530035357504",
+        "caption": "The image showcases a woman in an active state, possibly jogging or walking. She is wearing a bright yellow jacket, black leggings, and pink sneakers. Her hair is tied back, and she appears to be in mid-stride with one foot forward and one foot back.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "83722259771616892436847354168742941406670056022428058797750903997182233365497",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a real-life scene of people serving food and interacting with each other.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "5813640535688355957359281964747214810038398375354196451508052792448543105007",
+        "caption": "The image prominently features a rooster with a vibrant red comb and wattles. The comb is shaped like a crown, which is a common feature among roosters. The wattles are fleshy and also pinkish-red in color.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "103092749383386231455100349975495139074304649976756312466695258506036963803580",
+        "caption": "The image showcases a man sitting inside a small blue vehicle, possibly a three-wheeled car. He is wearing a blue jacket, a black vest, and beige pants. He is holding the door open with his right hand and is pointing outside with his left hand. The man appears to be in a cheerful mood, possibly indicating that he is proud of the vehicle or is excited to show it off.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "44130089402119500024826360211251684056727969948603854629544333208702826954795",
+        "caption": "The image depicts four young individuals engaged in a group activity. They appear to be in a library or study room, surrounded by books and other learning materials. The group is focused on a mobile phone, with one person holding it and showing something to the others. Their expressions range from curiosity to interest, suggesting they are engaged in an interactive learning experience or discussion.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "93455492496406443343261399729906457503923826464549037653796961950707495408714",
+        "caption": "The image does not contain any figurative parts. It only depicts an open umbrella.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "53614652695196769325481535320933537165521700076201146234022034447234613896188",
+        "caption": "The image depicts two children, a boy and a girl, standing by a window. The boy is facing the window, looking outside, while the girl is turned away from the camera, looking towards the boy. The girl has her hair tied up in a bun, and she is wearing a dress with a colorful pattern.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "29501093543265758861887372090872730068686889936834306900605120517992180737665",
+        "caption": "The image does not contain any figurative parts. It depicts an underwater view of a boat with a clear bowl-like object attached to its front.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "41187372926419961854197907153460152671409552853928184486996195358898610882886",
+        "caption": "The image showcases a serene beach setting with two lounge chairs under a straw umbrella. The chairs are positioned facing the azure sea, and the umbrella provides shade for the chairs. The sky above is a vibrant blue with fluffy white clouds scattered across it, suggesting a pleasant day.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "40589313975204094883236840833221071902299214077519183167306761734057891672982",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a blanket or throw draped over a couch.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "92976806050824280289312806022249534000996094429184838355363021935051438125612",
+        "caption": "The image depicts a man with his hands raised, seemingly in a gesture of explanation or emphasis. He has a beard and is wearing glasses. The hands are open, with palms facing upwards, and the fingers are spread apart.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "100854660132645743097022859690599910557183897777499490905093746270461792358946",
+        "caption": "The image depicts a man driving a car. He appears to be in a focused or concentrated state, possibly due to the act of driving. The man is wearing a light-colored shirt and has short dark hair. He is holding onto the steering wheel with both hands, indicating that he is in control of the vehicle.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "62172694910281078968059534410802427541639239423758090673556719450054089378040",
+        "caption": "The image features a close-up portrait of a man with distinct facial features. He has a beard that is neatly trimmed, with a hint of stubble. His eyes are green and he is wearing rectangular glasses with a brown frame. The man's nose is straight, and he has a slightly furrowed brow, suggesting a contemplative or focused expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "41025867864820415258989036639443654116539938538868099312841374872398205281354",
+        "caption": "The image does not contain any figurative parts. It showcases a wheel, which is a functional part of a vehicle, not a figurative representation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "71620365976130331411817835903526359023430238617139602957023738706058072842018",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger in the image appears to be in its natural habitat, possibly a forest or a grassland. The tiger's eyes are focused, and it seems to be in a state of alertness. The tiger's fur is distinct, with a combination of orange, black, and white stripes. Its whiskers are also visible, and it has a snarling expression, indicating it might be in a hunting or defensive posture.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "50244161803818960363975350535110303548977610230853766071295766672164542777222",
+        "caption": "The image depicts a soldier in combat gear, pointing forward with his finger. The soldier appears to be in a tactical stance, possibly during a patrol or an operation. The figurative part of the image is the soldier, who is the main subject and represents a warrior or soldier in a combat scenario.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "18673631560151387708298740776250103098732659845401133558719925856535065865808",
+        "caption": "The image does not contain any significant figurative elements. It depicts a real-life situation with three individuals, a house, and a vehicle.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "114699785949057282570448311853797122325860685852241881378027075434450032505103",
+        "caption": "The image depicts a young girl sitting on a windowsill. She is wearing a red and white dress with a pattern that resembles a snowflake or a star. The girl is looking out of the window, her long brown hair cascading down her back. She appears to be in a contemplative or curious state, possibly observing the outside world or waiting for something.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "18942050562251378486540531437859809766324204495126755019739660210796514764823",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases tall grasses swaying in the wind against a backdrop of a clear blue sky with a few scattered clouds.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "18558247194498636105962981465326542824215627345668641989013761830619472250612",
+        "caption": "The image showcases a man with a beard and short hair. He is smiling and appears to be in a relaxed mood. The man is wearing a gray t-shirt with a black collar. He is positioned against a backdrop of trees and greenery, suggesting an outdoor setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "66183202719531650227438330882846006533922992248322496976141192272968068648834",
+        "caption": "The image features a dog standing near a tank. The dog appears to be looking towards the camera, and its posture suggests alertness or curiosity. The presence of the dog adds a touch of life and contrast to the otherwise military and barren setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "57782407560722513266200306922588683977367561306054906176996939903017709799622",
+        "caption": "The picture shows a little boy sitting at a table, holding a pen and writing in a notebook. He is focused on his task and seems to be enjoying the process of writing.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "115687624547166168042010186826316086133485399557883616920061776230449391892888",
+        "caption": "The image does not contain any figurative elements that can be described. It primarily showcases a house with architectural details.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "109028275169319214164655101959855158702142281592088448512293462171179804896194",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger is depicted in a relaxed posture, lying down on a grassy terrain with its head turned slightly to the side. The tiger's eyes are focused, and it appears alert, suggesting it might be aware of its surroundings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "64551765280007932813135916660297841403093617911154909963108089063386702375005",
+        "caption": "The image features a man with a beard and short hair. He is looking directly at the camera with a gentle smile. His posture is relaxed, with one hand resting under his chin in a contemplative manner.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "49282110609445776405762833349239973185071358991844991535775962649684557725351",
+        "caption": "The image prominently features a young girl with curly hair. She is smiling and appears to be engaged in an activity on a laptop. Her facial expression is one of joy or amusement, suggesting that she is enjoying what she is seeing or doing on the screen.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "44192492258844283821803622558895907251526123110282061135160114627324254200813",
+        "caption": "The image depicts three individuals sitting on a couch. From the viewer's perspective, the person on the left is a woman with blonde hair tied in a ponytail, wearing a light blue sweater. The middle person is a woman with long brown hair, wearing a hat with a checkered pattern. The person on the right is a man with short blonde hair, wearing a red sleeveless shirt. All three appear to be engaged in a relaxed setting, with the woman in the middle and the man on the right holding hands.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "114812521584768408121295333514609465550019631388777661112951014576735362051154",
+        "caption": "The image showcases a boat underwater with a flag attached to it. The flag has text on it that reads 'TRUMP 2020 - KEEP AMERICA GREAT'.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "46711182434155846242590115164844612543079624369041843231899629049859681383434",
+        "caption": "The image does not contain any figurative parts. It depicts a real-life scene of a silver Chevrolet truck driving on a road with a desert landscape in the background.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "75650630639345615668474197715741982251567517430403732136703446276794508922158",
+        "caption": "The image depicts a woman wearing a white mask, which covers the lower half of her face. The mask appears to be a medical-grade face mask, commonly used to protect against the spread of airborne diseases. The woman's eyes are visible through the gaps between the mask and her face, and they seem to be focused or contemplative. The mask creates a barrier between her face and the outside world, symbolizing a sense of isolation or protection.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "44263473565968984245860404593124949038370681839946023429257876718673584401938",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a dense green forest landscape.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "104004480062112381168840706199627581436528151102510534031379387565251212231062",
+        "caption": "The image depicts a woman lying on a bed. She appears to be in a relaxed or sleeping position, with her head resting on a pillow. Her arms are stretched out on the bed, and she has a serene expression on her face.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "39747785800747776178491876915891172286176911556561049918473369436874969031288",
+        "caption": "The image does not contain any figurative parts. It depicts a person holding an X-ray image of a hand.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "21986852344104796740861037434811095098333014077667916637834227386836977842919",
+        "caption": "The image depicts a young boy sitting at a table, engrossed in reading a book. He appears to be in a state of concentration or enjoyment, with a slight smile on his face. The boy is wearing a brown and white striped shirt, and the background shows a bright room with a window.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "29164440423828501975642206552061360475228980555111723879014695851674624679426",
+        "caption": "The image depicts a tender moment between a mother and her newborn baby. The baby, with its tiny features and delicate skin, is held gently by the mother. The baby appears to be crying or expressing discomfort, with its mouth open and eyes wide open. The mother's face is not visible, but her hand is shown cradling the baby's head, offering comfort and protection. The scene conveys the emotional bond between the two and the vulnerability of the newborn.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "12521476571866987195986385287873183657879777309833648387708625203653142079817",
+        "caption": "The image showcases a vibrant orange snake with intricate patterns on its body. The snake is coiled around a wooden branch, with its head slightly lowered, giving it a poised and alert appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "85921261525405747206145087990511985831560192437772248604805746564595283318420",
+        "caption": "The image showcases a snake coiled around a tree trunk. The snake appears to be in a resting or alert posture, with its head raised slightly, giving it a vigilant appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "70235056496332904888936411553702226990089590294792222943100755170892966782414",
+        "caption": "The image features a young woman with long brown hair, wearing a purple top. She is posing with one hand near her mouth, biting her nail, and looking directly at the camera with a slight smile. Her posture is slightly turned to the side, and she appears to be deep in thought or contemplation.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "9188797551532341278985833711522279887725071404755045794411990806861936925158",
+        "caption": "The image primarily features a man with a bald head and a beard. He has a neutral expression on his face and is looking directly at the camera.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "91151023124297941697357391026423422834372939297281451961998309750375176784699",
+        "caption": "The image showcases a woman holding onto a yellow handle, which appears to be a part of the subway or train's interior design. The handle is triangular in shape and is mounted on the ceiling. The woman is using it for support or balance as she stands inside the train.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "77816828788428740414953416450789235399500683386295600274550550122713219861115",
+        "caption": "The image showcases a snake-like creature with a glossy, dark body. It has a segmented body with a head that appears to be slightly flattened. The creature's eyes are not visible, and it lacks external legs or appendages.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "14216317888825047726087953793312658079650244518184307227191201470509300941722",
+        "caption": "The image features a woman with curly hair, engrossed in reading a book. She is positioned near a window, allowing natural light to illuminate her. The woman is wearing a white outfit and has a necklace with a pendant. Her facial expression suggests deep concentration or contemplation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "75008928881578130329768264891130923604034245253627811614565642140922720192942",
+        "caption": "The image primarily showcases a person's hands holding an open book. The hands are adorned with red nail polish. The person is wearing a beige cardigan, a black top, and blue jeans. They also have a necklace with a pendant.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "47860231135410664119071882763527413015522632974311592521040184958239774467236",
+        "caption": "The key information related to the figurative part of the image is a woman wearing round sunglasses. The sunglasses have a metal frame with a dark lens, and they are positioned on the woman's face, covering her eyes.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "an angel",
+        "image_id": "27143033215592528678781914934755864213789822411925345141522418139190532696131",
+        "caption": "The image depicts a young girl holding a plush toy, which appears to be a teddy bear. She is looking towards the left side of the image, possibly at something or someone out of the frame.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "30835887868546133985988692833751607508381838681515783413176923448146928481667",
+        "caption": "The image showcases a tiger standing amidst a snowy landscape. The tiger is prominently featured in the center, with its distinct orange and black striped fur, piercing eyes, and a focused gaze.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "112481403182658257127224938680136884047245375861652971625400347324823686198343",
+        "caption": "The image prominently features a young man with short dark hair, wearing an orange shirt. He is smiling and appears to be in a library or bookstore setting, as evidenced by the bookshelves filled with books in the background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "94201013802488546546094041809133095202228121233092579138879035006564486816020",
+        "caption": "The image features a young girl with red hair, wearing glasses. She is dressed in a blue top and white tights, and is seated on a wooden table. The girl is engrossed in reading a book.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "115167994153897734566246303155528569477338394923447874658954083915816164043026",
+        "caption": "The image does not contain any figurative parts. It only depicts a folded gray blanket.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "101514130024804135868804040500057435389135728535540652745924601720765473704933",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a modern architectural structure with a person standing on a balcony, overlooking the surroundings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "65273777336372546840921498132578775282491764071351384922975948657789120169269",
+        "caption": "The image depicts a young woman who appears to be stressed or overwhelmed. She is holding her head with both hands, indicating a sense of frustration or anxiety. Her facial expression suggests that she might be struggling with something, possibly academic or personal.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "4599331561854253128195393683391065706700222582223339123050807571919755366955",
+        "caption": "The image does not contain any prominent figurative elements. It primarily depicts individuals engaged in a beach cleanup activity.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "32293689135282830745808154906214849785698873024267375716223338983312454973945",
+        "caption": "The image showcases a man with a furrowed brow, tightly clenched teeth, and an open mouth, expressing intense emotion. His eyes are wide open, and his facial expression suggests anger, frustration, or determination.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "71507164618192266617040043176249635915432366847879476060986690371481273770332",
+        "caption": "The image showcases a cozy living room setting with a large, chunky knit throw blanket draped over a light-colored couch. On the couch, there's also a magazine or book with a gray cover. To the right of the couch, there's a small wooden table with a black lamp on top, casting a warm glow. The room has a window with white curtains, allowing natural light to filter in. Above the couch, there's a framed artwork or poster on the wall.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "3912643746687800188723486132281188458035149473102545653902419220127387644347",
+        "caption": "The image showcases a bullet, which is a metallic projectile designed to be fired from a firearm. It has a pointed tip and a cylindrical body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "46381466911786358444117876258776714591896047682470050034398795633283662170687",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger is depicted sitting on snow-covered ground, with its head turned slightly to the side, displaying its distinctive orange and black striped fur. The tiger's eyes are focused intently on something in the distance, and its whiskers are prominently visible.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "20349320820224676890684560283885849920523669841873415841134405004303301846418",
+        "caption": "The image depicts a young boy with a focused and determined expression on his face, as if he is deeply engrossed in his work or thinking. His eyes are intently looking downwards, and his lips are pressed together, suggesting concentration or contemplation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "61800921280211266615092020108746071086363222046424704347214351442967300797251",
+        "caption": "The image depicts an elderly man walking with the aid of a cane. He is dressed in a white shirt, dark trousers, and a straw hat. The man appears to be in a contemplative or peaceful state, possibly enjoying the serenity of nature.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "37363094287120187566327079613490134692949746277585016462059471766873804271833",
+        "caption": "The image prominently features a statue of a woman holding a basket or container on her head. She stands tall with her left arm extended outward, while her right arm is bent at the elbow. The statue appears to be made of white marble or a similar material, and it is positioned in the center of a fountain.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "77525078776009860024216865549908114694880520217189039991809370775478882610416",
+        "caption": "The image depicts three individuals on a beach, actively participating in a cleanup activity. The key figurative elements include a man in the center holding a large clear bag filled with trash, a woman on the left holding a smaller bag, and another woman on the right with a fishing rod, seemingly collecting trash from the water.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "42125713997134103915340000826110608269061461721419415738670675893050669966396",
+        "caption": "The image primarily features two individuals: an adult woman and a young child. The woman is leaning over the child, seemingly engaging with or reading to her. The child appears to be looking at a book or some form of visual content that the woman is presenting to her.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "31453077062307324376661141700344367682526726982353163150590852199162479045478",
+        "caption": "The image does not contain any significant figurative elements. It depicts a two-story house with a driveway, surrounded by trees and landscaping.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "97490353879502027685778434230635140255515776233860840931593858067236846794562",
+        "caption": "The image does not contain any figurative parts. It depicts a black Mercedes-Benz car parked outdoors with trees and grass in the background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "65389488220079321041649692718136795407561707536048453398898446008073841221340",
+        "caption": "The image showcases a woman with a thoughtful expression. She is looking off to the side with her hand placed on her chin, indicating deep contemplation or introspection.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "23636663852414100726478639017376515264786026558430371540688213001750245759537",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a corridor with prison cells on one side, characterized by metal bars on the windows.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "an angel",
+        "image_id": "99962765767395859792000295149276886260524313883599166702210744299477202548981",
+        "caption": "The image depicts a heartwarming scene where a young child is giving a high five to a female medical professional, possibly a doctor. The gesture conveys a sense of accomplishment, trust, or appreciation.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "104972423617308576643619112362977806985710292932429557594943496899700449955264",
+        "caption": "The image showcases a close-up of a person's face, focusing on the left eye and part of the nose and mouth. The person appears to be in deep thought or emotion, with the hand placed near the face, possibly indicating contemplation or concern. The lighting is dramatic, with a shadow cast on one side of the face, highlighting the other.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "13141480990982381475577178703072094129592542276197931517468547737776998763841",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a young girl sitting at a table with a laptop and some stationery items.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "95360603051342409301078499622905557612714764508418098000568192401833601649053",
+        "caption": "The image primarily features a group of people gathered on a beach, participating in a cleanup activity. They are holding various signs and banners that convey messages about environmental awareness and the importance of cleaning up the beach. One of the signs reads 'Volunteer Cleanup.org', while another sign says 'Trash in the Can, Not the Sand!'. There's also a banner with a logo that says 'Surf Riders'. These signs and banners serve as visual symbols of the cause the participants are supporting and the message they want to convey.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "101780222472662473342258190078003772645661467747805981731250083558518717421640",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a seascape with waves crashing onto the shore.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "46393159486873749060310910642322541542521047776713249058721321155831996958525",
+        "caption": "The image does not contain any figurative parts. It depicts a sandy beach with a shell and some foam.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "6057647883457618803622872007796196774621894427749845386374625331477886209582",
+        "caption": "The image primarily features a person sitting on a beach chair, reading a book. The person is seen from the back, with long black hair and is wearing sunglasses. The beach chair has a colorful striped design with shades of red, orange, and yellow.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "66581571407453013021435697961747165505392200805215849283614174371547569629707",
+        "caption": "The image primarily showcases a close-up of a woman's face, focusing on her eyes and nose. The eyes are brown and appear to be looking directly at the camera. The eyelashes are long and well-defined, and the eyebrows are neatly shaped. The nose is straight and has a slightly pinkish hue. The skin texture appears to be smooth with some minor blemishes.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "26444106288987918390106067084328554465514148178982650938133609887400752367654",
+        "caption": "The image does not contain any figurative parts. It showcases a wheel, which is a functional part of a vehicle.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "112986393266713448936132276216008423672156732176789487514010726662675914062214",
+        "caption": "The image prominently features a fox with its eyes closed, giving it a relaxed and content expression. The fox's fur is a mix of white, brown, and orange, and its ears are perked up, adding to its overall charm.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "73444754462474203423971890987505363287933834732892681340267894282915647031302",
+        "caption": "The image prominently features a cheetah standing on a rocky surface. The cheetah is characterized by its sleek, slender body covered in distinctive black and white spots. Its eyes are focused intently forward, and its ears are perked up, suggesting alertness.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "5847930367404415152145666917050643386129261655126881369610919382000315440446",
+        "caption": "The image depicts a man with a beard and glasses, wearing a gray T-shirt. He is open-mouthed, expressing strong emotions, and his hands are spread out as if he is trying to grasp something or express a strong desire.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "64577741290100469393557288786522605533312689044045324899809523315127945516291",
+        "caption": "The image depicts a woman walking along a pathway near the sea. She is wearing a white top, blue pants, and black shoes. Her hair is tied up in a bun, and she appears to be in a relaxed posture, possibly enjoying the view or engaging in some form of exercise.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "65317089445255653849533233547171723132509398874518817761116550192740609439699",
+        "caption": "The image depicts a vibrant and colorful beach umbrella standing on a sandy beach. The umbrella is prominently positioned in the foreground, with its bright blue, green, and yellow stripes contrasting against the clear blue sky and the serene sea in the background. The umbrella appears to be providing shade, suggesting a relaxed and sunny day at the beach.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "85447590568121724646962154646010574785429321342700663780523545977402118450350",
+        "caption": "The image showcases a male athlete from Kenya named Eliud Kipchoge. He is wearing a red and black jersey with the word 'KENYA' and the name 'KIPCHOGE' printed on it. He is also wearing a wristband with the number '2' on it.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "13895709492804894034686334065252733289669872871958321755407768911696834234192",
+        "caption": "The image primarily showcases a turbulent ocean scene with waves crashing and churning the water. There isn't a clear figurative part that stands out as a distinct object or creature. Instead, the entire image is dominated by the fluid dynamics of the water, creating a sense of movement and power.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "77545206452960875405103634402966324944348021099718027169891063376446195982355",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene beach scene with clear blue skies, turquoise waters, and gentle waves lapping the sandy shore.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "16425168719135359708573898441884010258076705395294151613196443957154222540386",
+        "caption": "The image does not contain any figurative parts. It depicts a white car driving on a road with a scenic background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "24412362666032965539435030914191174859166432813479418959677870220336734504210",
+        "caption": "The image showcases a man with a beard and short hair. He is wearing a white shirt and is smiling. The man appears to be in a relaxed posture, with his arms by his sides.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "52936978438808987189617395668753596689926357084147207382918352026191816603229",
+        "caption": "The image depicts a young boy giving a thumbs up gesture with his right hand. He is sitting at a table with a pile of books in front of him. The boy is wearing a striped shirt and has a watch on his left wrist.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "54221086363564514761141251742782782364593418891238727838113572567972770822859",
+        "caption": "The image does not contain any figurative elements that require a detailed description. It primarily showcases a sandy beach leading to a calm sea under a clear blue sky with some wispy clouds.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "110371912126468560449829001186641486860161229563444816420309575833239935721695",
+        "caption": "The image does not contain any explicit figurative parts. It depicts an underwater view of a boat with some details like the boat's name, 'Blueyes Below', and some equipment attached to it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "101566902056140246945460502698757624918910137292161744307044344547933317805832",
+        "caption": "The image showcases a white Ford truck on a road, with the word 'FORD' prominently displayed on its front grille. The truck appears to be in motion, giving a sense of speed and dynamism. The word 'FORD' is a figurative part of the image as it represents the brand and model of the truck.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "74130546707943921374868162036029875734040001821443216199216577630902449969397",
+        "caption": "The image depicts a group of tall grasses swaying in the wind, creating a silhouette against a blue sky. The grasses are elongated and thin, with their tips curling upwards, giving the impression of movement and life. The way they are positioned and the play of light and shadow on their surfaces make them appear as if they are dancing or waving.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "cute teddy bear",
+        "image_id": "61111654452251017231317773377738430898577949031096097295330171709542379897831",
+        "caption": "The image prominently features a bear in its natural habitat. The bear appears to be a mature individual with a thick coat, large paws, and a muscular build. It has a focused gaze, suggesting it might be on the lookout for prey or simply observing its surroundings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "54615421414408604843409733273378125999804459421209305208116107197337137042191",
+        "caption": "The image showcases a silhouette of a person rock climbing during sunset. The climber is suspended mid-air, using ropes to aid in their ascent. The sky in the background is painted with hues of orange, pink, and purple, creating a dramatic backdrop for the climber's action.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "92620389554242913589610080260006743103195582301649479237061565034499495266821",
+        "caption": "The image depicts a young woman joyfully raising her arms in the air, with her palms facing upwards. She appears to be in a state of elation or excitement.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "78968846684288202703769990797154946342291264726311366842680702711720380255708",
+        "caption": "The image showcases a bee lying on a sandy surface. The bee appears to be motionless, possibly due to exhaustion or distress. The sand around the bee is textured with small grains, and there are some footprints or traces nearby, suggesting the bee might have been moving or disturbed.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "75263261088097933118155315613463950450894194905303496241308034368058450069157",
+        "caption": "The image depicts a young boy who appears to be stressed or frustrated. He is holding his head in his hands, which is a common gesture people make when they are overwhelmed or feeling anxious. His posture and facial expression suggest he might be struggling with his studies or some other challenging situation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "57896704321267211594170280826437943428358536341526726059710221272115069054390",
+        "caption": "The image showcases a man with a sly or cunning expression. He has a sharp haircut, is wearing a maroon blazer, a white shirt, and has his hands clasped together in front of him.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "30587341596641769566824484116161332515719519241585570805881572195444993936141",
+        "caption": "The image does not contain any prominent human figures. It primarily showcases a vibrant street scene with buildings, a bicycle, and some outdoor furniture.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "an angel",
+        "image_id": "12341624611343741657579178544392918996354603755416433288547851350256521164852",
+        "caption": "The image depicts a young girl sitting on a bed, smiling and looking up at a female doctor who is standing beside her. The doctor is wearing a white coat and has a stethoscope around her neck. She is holding the stethoscope's earpieces to the girl's chest, suggesting that she is checking the girl's heartbeat or listening to her lungs.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "25986292890605358964486823707683030570153277685518624839182608460052878284095",
+        "caption": "The image features a young girl with curly hair. She is wearing a blue shirt with white polka dots. Her eyes are closed, and she appears to be in a relaxed or contemplative state, with her hands clasped together in front of her.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "113492627426730489945418474073517757812510231858910449593528090538487799440607",
+        "caption": "The image prominently features a tiger with distinctive stripes and a focused gaze. The tiger's eyes are wide open, and it appears to be looking directly at the viewer. The fur patterns, especially around the face, are well-defined, showcasing the intricate details of the tiger's appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "4323137283670489581572739697314710463971170134412884946226653091148229275687",
+        "caption": "The image showcases a man who appears to be in his late 20s or early 30s. He has a beard, short brown hair, and is smiling while looking to his right. He is wearing a blue shirt and is seated in a car, holding onto the steering wheel.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "79447673942600058779772998112618610405751321486209882120833683972680976158966",
+        "caption": "The man in the picture is wearing a gray sweater and has a black watch on his wrist. He is holding his hands together and has a sneaky smile on his face.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "41977478090094295449054790948749267782669804577794385398559940114194732457401",
+        "caption": "The image showcases a woman in a white dress, standing in a field with a bouquet of yellow flowers in her hand. She is smiling and looking upwards, seemingly enjoying the moment. The woman's posture is upright and confident, and she appears to be in a state of happiness or contentment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "102548406484605121116485796759065925497473303762511684111375846361048416575716",
+        "caption": "The image does not contain any significant figurative elements. It primarily showcases a modern architectural house with a white exterior, black accents, and large windows.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "38453727487926686034375235015212040904394045300932480609952902272063838613431",
+        "caption": "The image prominently features a silhouette of a couple, with the man and woman appearing to be in a close embrace, possibly sharing a kiss. The silhouette is created against a backdrop of the Eiffel Tower, which is a well-known landmark in Paris, France. The warm hues of the image, combined with the silhouette, give it a romantic and dreamy ambiance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "2376232924974648588781352176216122563595611305508268042681766287677366075652",
+        "caption": "The image showcases a detailed anatomical representation of the human chest, highlighting the heart, lungs, and major blood vessels. It provides a visual understanding of the internal structures and their relative positions within the body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "106007692204455471365715136113207909358331349217356593551947897795256570849094",
+        "caption": "The image features a close-up portrait of a woman. She has long, straight brown hair and is wearing dark makeup, particularly around her eyes and lips. Her gaze is directed towards the camera, and she has a neutral expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "42892673108980632470297413063402436803557136367077238023114607127942502546131",
+        "caption": "The image depicts two elderly individuals, likely a man and a woman, walking hand in hand in a park-like setting. The man is wearing a light-colored shirt, dark trousers, and shoes, while the woman is dressed in a blue and white striped sweater and a blue skirt. They both appear to be using walking aids, with the man holding a cane and the woman using a walker. Their postures suggest a sense of companionship and mutual support.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "32352759887311018322674811395236146921833261095260808436460930979742507975549",
+        "caption": "The image prominently features a group of soldiers standing in a field. The soldier in the foreground is holding a rifle and wearing a helmet with a mounted light. The helmet also has a face shield, and the soldier is wearing a mask that covers the lower half of the face. The soldiers in the background are also equipped with similar gear, suggesting they are part of the same unit or mission.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "10087351467218271457115604915961552723088399508020132767367927491200615535400",
+        "caption": "The image depicts a young girl who appears to be engrossed in her studies. She is leaning over a table with her chin resting on her hand, focusing intently on her work. The girl's expression suggests deep concentration and dedication to her task.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "69772408299904730288166498847848561003349805772289697919583417612264502765020",
+        "caption": "The image features a portrait of a young woman. She has long brown hair, brown eyes, and is wearing a maroon or deep red top. The woman is looking slightly to her right with a neutral expression on her face.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "13701441860594025556098624943657423548717358144632439037807440825269918438987",
+        "caption": "The image depicts a man and a woman in an intimate moment. The man is carrying the woman on his back, both of them appear to be in a joyful mood. The woman has her arms wrapped around the man's neck, and her head is resting on his shoulder. The man is wearing a pink shirt and gray pants, while the woman is wearing a colorful dress with floral patterns.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "101453833133884692060904878279599378811773298410494166198393249820772130990712",
+        "caption": "The image showcases a young woman with a thoughtful expression. She has a light complexion, brown hair, and is wearing a mustard-colored top. Her gaze is directed upwards, and her lips are slightly parted, giving an impression of deep contemplation or daydreaming.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "98897406001775900369018891291754933285535378255721025163240380029962817590939",
+        "caption": "The image showcases a young boy with short dark hair, wearing a green t-shirt. He is smiling and looking directly at the camera. The boy appears to be in a well-lit room, possibly a kitchen or a living area, with some household items in the background.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "10659763402615636563080667135942986263256390965050793176536592833061187219161",
+        "caption": "The image showcases a young woman with long brown hair. She is gazing off to the side with a contemplative expression. Her hand is placed near her face, resting on her chin, further emphasizing her thoughtful demeanor.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "23422064684616756001649087937696545074541911969427133350505879790414664472284",
+        "caption": "The image depicts a person with curly hair covering their face with their hands. The individual is wearing a striped shirt, and their fingers are positioned in a way that obscures their eyes and nose.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "an angel",
+        "image_id": "18975588509830365841770770712627162740487340283113922275926345773422271549411",
+        "caption": "The picture shows two women hiking in the mountains. One woman is wearing a white shirt and blue shorts, while the other woman is wearing a gray shirt and blue jeans. They are holding hands and helping each other climb the rocks. The woman wearing a white shirt is reaching out her hand to help the woman wearing a gray shirt climb up. The woman wearing a gray shirt is also reaching out her hand to help the woman wearing a white shirt climb up. They are both smiling and looking at each other.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "57177044656246249914135480564299355783804443013183110968046265168592324618194",
+        "caption": "The image depicts four young individuals engaged in a study or learning session outdoors. They are lying on the grass, with a laptop and some books in front of them. The sunlight filters through the trees, casting a warm glow on their faces and creating a serene atmosphere. Their expressions are focused and attentive, suggesting they are deeply involved in their tasks.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "34033751596765444573616199617915011505741372428149754885677755797618337782367",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a group of individuals engaged in a beach cleanup activity, with a focus on collecting trash and waste.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "83126709458060854598347006469572709210236035509205750600549550459767588810430",
+        "caption": "The image contains several figurative elements. In the foreground, there is a woman holding a newborn baby. In the background, there are several plush toys, including a teddy bear and a lion. These toys add a playful and comforting element to the scene, suggesting a nursery or a cozy environment.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "49644360725925189916897571052482725810142815792599099154194346571512858655084",
+        "caption": "The image features a statue of the Statue of Liberty located to the right of the main tank display. The statue appears to be in a greenish patina, consistent with the color of the tank, and is positioned on a pedestal.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "45090658842685472077284568583881932558856846565403117667692825709005674521089",
+        "caption": "The image does not contain any figurative parts. It depicts an interior setting with a chair draped in a gray blanket and a fireplace with logs stacked beside it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "54068733608127375386896252838698402950471795088914315964998923483465512315426",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger appears to be in mid-stride, with its front paws extended forward and its hind legs lifted. Its fur is a mix of orange, black, and white stripes, which is characteristic of the Siberian tiger. The tiger's eyes are focused intently ahead, and it has a determined expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "41812109223555847573706666706550099402089813698436059890625987673842955680437",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene landscape with trees, grass, and a clear sky.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "104675623833471489097405819302144000794112268678758016985926456789684284966340",
+        "caption": "The image depicts two male runners participating in a marathon. They are wearing numbered bibs and are in the midst of a race. The runner on the left is wearing a white tank top with the text 'KIPSANG' and 'Kimboi' written on it, along with the 'Virgin Money London Marathon' logo. He is also wearing black shorts and white shoes. The runner on the right is wearing a blue tank top with the text 'KIPCHOGE' and 'Nike' written on it, along with the 'Virgin Money London Marathon' logo. He is wearing black shorts and green shoes. Both runners appear to be in a competitive stance, with focused expressions and determined strides.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "17617599333893252568021908115686428992400869422438823463335614483993599194336",
+        "caption": "The image depicts a young boy looking out of a bus window with a contemplative or curious expression. The boy is wearing a blue shirt and has a backpack on. The expression on his face suggests that he might be thinking about something important or noticing something outside the bus.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "104402260001058217202917018183070384724354038859471753847920550191004076422004",
+        "caption": "The image depicts an ant carrying a feather-like structure. This can be seen as a metaphorical representation of strength, perseverance, or the ability to overcome challenges. The ant, being a small creature, is able to transport a much larger object, symbolizing the potential of individuals to achieve great things despite their size or limitations.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "36301725158500398125910405660617178402549869101227974475627576107214028938279",
+        "caption": "The image primarily features a close-up of a man's face. He has a beard and short hair. His eyes are focused intently on something, and he has a slight frown or contemplative expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "58819843777266160408802315474891921072914734930128913894620012073136177091436",
+        "caption": "The image prominently features a coat of arms in the center, which appears to be the emblem of Israel. It consists of a shield with a blue Star of David in the center, surrounded by two horizontal blue stripes at the top and bottom.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "8960513416899354795624259759259673960879142594550931854899090783058961734605",
+        "caption": "The image depicts a man in a state of intense emotion, possibly shouting or expressing strong feelings. He is leaning forward with his mouth open wide, and his arms are raised, clenched into fists. His facial expression suggests a mix of surprise, excitement, or frustration.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "7074588935151616652544855131660835497602780894476864552679137041938018448990",
+        "caption": "The image primarily showcases a dense forest with various types of vegetation. There isn't a clear figurative part that stands out as a person or animal. It's a natural, untouched landscape of a rainforest.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "111111834064976006738580868916286066780960910426507712996180192735452514255404",
+        "caption": "The image showcases a man with short, dark hair. He has a clear complexion, and his facial features include a prominent nose, well-defined lips, and a confident smile. He is wearing a dark-colored jacket over a light blue shirt.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "41075642803304919999516398262123924030288223609197165159523219922885139790292",
+        "caption": "Find the figurative part [[274,135,518,747]]. The part [[274,135,518,747]] is a tie. [[274,135,518,747]] So the answer is tie.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "67471234227327300413638668319052379481575695386184986761844023721044669144160",
+        "caption": "The image does not contain any figurative parts. It only depicts a folded blanket or throw with a chunky knit pattern.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "4759052143165153659024655511419659369303308844385337755881862404257510667989",
+        "caption": "The image features a woman sitting at a desk, looking intently at a computer screen. She has long black hair and is wearing a black blazer. The woman also has a necklace with a pendant around her neck.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "54289271893081955843487442962359810836362010273460872099279203064748761789391",
+        "caption": "The image does not contain any significant figurative elements. It primarily showcases a house with a blue exterior, white trim, and a black door.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "3559886650539307521070618402489542642671432607096410065350091716081834545040",
+        "caption": "The image showcases a close-up of a person's hand wearing a white glove, picking up a plastic bottle from the sandy ground. The hand is prominently featured, with the glove providing a clear contrast to the natural surroundings.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "11505842631954381344391028358506191294672837310076074549818843466507042384185",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a corridor with prison cells on one side and a man walking on the other.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "35585095411820107275112939303214814215267273998842620789697502632451909082380",
+        "caption": "The image prominently features a cheetah, which is a large wild cat known for its speed and agility. The cheetah in the image is sitting on a mound, gazing into the distance with a focused expression. Its distinctive black spots and sleek body are clearly visible, making it easily identifiable as a cheetah.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "49843739478286598752778114520397683826812997024873638359622889095658721739467",
+        "caption": "The image prominently features a tiger, which is a large wild cat. The tiger in the image is walking on grass, with its head turned slightly to the left, displaying its distinctive orange and black striped fur. The tiger's eyes are focused, and it appears to be in a natural habitat, possibly a forest or a wildlife sanctuary.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "5513895261772667675006237868406112990650640062229492569278154745260720073766",
+        "caption": "The image primarily features a woman walking on a city street. She is dressed in a formal black suit with a white shirt underneath. She is holding a brown leather briefcase in her right hand and a white cup in her left hand. She is also holding a mobile phone to her ear, seemingly engaged in a conversation.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "110784831130948893302595399117299350546290424265832817726888395992862974005935",
+        "caption": "The image depicts a woman wearing a blue mask, with her hands placed on her head, expressing a sense of distress or contemplation. The mask covers the lower half of her face, and her eyes appear to be focused on something outside the frame. The overall mood conveyed is one of concern or introspection.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "68788879952606310458124950105477099393143510280238249413193121972337499419866",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural scene with trees, a pathway, and greenery.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "69947574084078340374902080913918019131603244336956245158595980387820050660285",
+        "caption": "The image depicts a man in the midst of a strenuous weightlifting exercise. He is shown in a powerful stance, with his muscles tensed and his mouth open, possibly expressing effort or determination. The man's physique is well-defined, indicating that he is likely engaged in regular strength training.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "103060758584382873812603484030064196262413428468379136618842913305280615598897",
+        "caption": "The image depicts a man wearing a suit and tie, who appears to be in the driver's seat of a car. He is looking forward with a focused expression, suggesting he might be driving or preparing to drive.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "57113875115023642317826029079428358592329631688846016536737386245999348889833",
+        "caption": "The image features a tank with a prominent turret. On the turret, there's a red star, which is a symbol associated with communism and the Soviet Union. Additionally, there's a wreath placed on the turret, suggesting a memorial or commemorative context for the tank.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "62122966129235676981103511633460645416317831490069624540832462221989770788632",
+        "caption": "The image features a woman wearing glasses. She is engrossed in reading a book, with her hand supporting her chin. Her posture suggests deep concentration or contemplation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "89008132343017175303547230953712486967916055399033524324324216387688259459426",
+        "caption": "The image depicts a young man with a surprised or shocked expression. He has his hands placed near his mouth, covering his mouth, and his eyes are wide open. This gesture typically indicates astonishment, amazement, or fear.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "108540126671664578595206332739563157138646414867635230264169784580334261040473",
+        "caption": "The image showcases a young man wearing glasses. He has a cheerful expression on his face and is looking directly at the camera. His glasses have a thin metal frame, and he is wearing a red sweater.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "28815118623044450348924725488496993507641103255338343639246756336050056756889",
+        "caption": "The image prominently features a snake coiled around a branch. The snake has a patterned body with green and black scales. Its eyes are alert, and it appears to be looking directly at the camera.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "61963130141072025687052825755609438365514007137199898231863963951799621375200",
+        "caption": "The image does not contain any prominent figurative elements. It primarily depicts a woman and a young child engaging in a reading activity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "54476692673548372727599376551158129487959442539545998242724432614629288523552",
+        "caption": "The image primarily features tall, slender grasses with feathery plumes that sway gracefully. These grasses are in focus, with their details prominently displayed against a clear sky in the background. The grasses appear to be in a field, bathed in the soft light of either early morning or late afternoon. The overall mood of the image is serene and calming, with the grasses taking center stage as the main subject.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "74636444703563633781927935016589559256642230733963708071879587820747547844629",
+        "caption": "The image depicts two female athletes engaged in a judo match. They are wearing traditional judo uniforms, known as 'gi', with one in blue and the other in white. The athlete in blue is attempting to throw or take down the one in white. The action is intense, with both athletes displaying focused expressions and using various techniques to gain an advantage.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "26827920973012729059509400486823881015258224554712151216162185788652726407172",
+        "caption": "The image showcases a beach scene with a prominent red and white striped umbrella placed on the sand. The umbrella casts a shadow on the sand, indicating its position relative to the sun.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "67514415048720816978534976171337213485920846059635112232036944627196495158502",
+        "caption": "The image features a tall statue or sculpture of a figure holding a spherical object on a tall pedestal. The figure appears to be made of a shiny material, possibly metal, and is positioned in the middle of a public space. The statue is a prominent feature in the urban landscape, drawing attention due to its size and design.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "21113754909764334405574900805492626338395216531395190907052437136217916849858",
+        "caption": "The image primarily features two male runners participating in a marathon. They are wearing numbered bibs, which are essential identifiers for participants in such events. The runner on the left is wearing an orange shirt with the number '73309' and maroon shorts. The runner on the right is dressed in a yellow tank top with the number '1491' and black shorts. Both runners appear to be in mid-stride, showcasing determination and focus.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "34047595272189499655971720892850173563914950469731223547484712292605537115880",
+        "caption": "The image depicts three individuals sitting on a white couch. The central figure is a man and a woman, with the woman leaning towards the man and holding onto his arm. The third person, a woman with long dark hair, is seated on the left side of the image, looking over her shoulder at the man and woman. The man and woman appear to be engaged in a conversation or interaction, while the third woman observes them.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "62255869091036280574344936621225393590662045869619446821336167984933032644518",
+        "caption": "The image features a close-up portrait of a woman. She has prominent facial features such as almond-shaped eyes with dark eyeliner and mascara, full lips with a subtle shade of lipstick, and a straight nose. Her hair is styled in a sleek updo, and she is wearing a necklace with a sparkling design.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "90649856597766573038339429674793741112316266252846191140736979859992610961198",
+        "caption": "The image depicts a young woman with her eyes closed, seemingly in a state of fatigue or boredom. She is holding a pen near her temple, suggesting she might be taking notes or studying. Her posture and facial expression indicate that she is struggling or finding the task at hand challenging.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "78610612007124899587076954892923521334758654429229845108402512356737620221279",
+        "caption": "The image depicts a figurative part in the form of a hand reaching out from behind a barred window or door. The hand appears to be reaching or signaling for something or someone.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "71261799909120577205815081311742886902243558886428226185473523655322541985411",
+        "caption": "The image prominently features the United States flag in the background. The flag has 13 stripes alternating between red and white, and a blue rectangle in the top left corner with 50 white stars arranged in nine horizontal rows.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "51054390013628964209288630589784416427946224229604456524111551386323614712682",
+        "caption": "The image showcases a military tank with a prominent gun barrel pointing forward. The tank is camouflaged in green and brown patterns, which helps it blend into its surroundings. The tank is stationed on a concrete platform, and there are some orange cones placed nearby, possibly indicating a restricted area or a pathway.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "97909832664330935566586154781278959993854984788702826917753600706568890746671",
+        "caption": "The image prominently features a single red rose with a vibrant and full bloom. The rose is positioned upright, with its stem extending vertically. The petals are tightly packed, displaying a rich, deep red hue. The rose also has green leaves surrounding its stem, which are slightly wet, possibly indicating recent watering or dew.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "95850205708964523877299344699234561252585484872781428664180380681887665906736",
+        "caption": "The image depicts a woman lying on a couch, holding a bowl of chips in one hand and a remote control in the other. She appears to be relaxed and engaged in a snacking session while watching television.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "27504075194401304915125463412863517303934522375911758146442747311463378221726",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a group of people engaged in a volunteering activity, serving food to others.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "81312987938875450951300435449120479458659675264026187343778494564491344311693",
+        "caption": "The image showcases a man in what appears to be a warrior or gladiator attire. He is holding a sword with intricate designs on its handle and a round shield with a decorative rim. The man has a fierce expression on his face, suggesting aggression or readiness for battle.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "19268165260795851574613665166208994320422805321816352352019426706348378781310",
+        "caption": "The image showcases a man with a beard and mustache. He has short, dark hair and is looking directly at the camera with a neutral expression. The man is wearing a blue t-shirt, and there is a small tattoo on his neck.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "54490448373443500109198564682926244422002667031422085579025449883754523942237",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene forest scene with tall trees, a muddy path, and sunlight filtering through the canopy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "7418192967752097366536799352205478343091411883979116594389029653130221505313",
+        "caption": "The image features a man with a beard and short hair. He has a confident and friendly expression, looking directly at the camera. The man is wearing a checkered shirt, and the background appears to be a well-lit room with a white brick wall and some framed pictures.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "43480682468885583440795853002153062034367202690633910047927769174462417383244",
+        "caption": "The image does not contain any prominent figurative elements. It depicts an urban street scene with buildings, traffic lights, and vehicles.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "81800592215402806824197126719951850059102810171565672362967507812349477575001",
+        "caption": "The image does not contain any figurative parts. It depicts a red Ford truck driving through a muddy terrain.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "50514821407715697228360586526064812293341170945463955606154390538177656878796",
+        "caption": "The image does not contain any figurative parts. It only shows an open black and white umbrella.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "106866575144517000427923244258493397205396632520385158373906691807520504130121",
+        "caption": "The image contains a woman who appears to be in a city setting, possibly a street or sidewalk. She is wearing a white t-shirt with the text 'Everything is MNG' and 'Barcelona Around the World' printed on it. She has long dark hair and is looking upwards, possibly at a building or sign.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "103093879308651342635100225685624711289967899085856371336099497299690312838894",
+        "caption": "The image prominently features a close-up of a man's face, capturing a strong and intense emotion. The most striking aspect is his wide-open mouth, which forms a near-perfect circle, revealing his teeth. His eyes are wide open, displaying a mix of anger, surprise, or fear. The man has a thick beard and mustache, which contrasts with the smoothness of his skin. The background is dark, putting emphasis on the man's facial features.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "88135632155311154568499383834939945077925143631584031439486862893969812290970",
+        "caption": "The image features a man with a beard and mustache, wearing glasses with a blue tint. He has a cheerful expression on his face and is looking directly at the camera.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "24544107353016230581310909827743183159236558403872248268868133815560754782728",
+        "caption": "The image showcases a close-up portrait of a male figure. The most prominent features include his sharp, intense eyes, well-defined eyebrows, and a straight nose. He has a neutral expression with a slightly furrowed brow, giving an impression of concentration or contemplation. The texture of his skin appears to be realistic, with visible pores and minor blemishes. The hair is black and styled in a short, neat manner.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "33433552651616547261835577750015251258745381331346103289689923246669339523251",
+        "caption": "The image depicts a busy city street with numerous vehicles, including cars, buses, and trucks. In the foreground, there's a large truck with the label 'Take One' and the tagline 'Big Story of the Day'. This suggests that the truck might be distributing newspapers or magazines. The presence of the truck implies that the setting could be a city where news or media distribution is happening.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "96949029382493625197628889732760590945858144763862102121927191387709287599854",
+        "caption": "The image showcases a Chevrolet Silverado truck driving on a road during sunset or sunrise. The truck is in motion, and its headlights are on, illuminating the road ahead. The sky is painted with hues of orange and pink, indicating either the early morning or late evening hours. The truck's design is modern, with a prominent front grille, LED headlights, and a sleek profile. The wheels are large and rugged, suggesting it might be a high-performance or off-road variant.",
+        "label": 1,
+        "type": "metaphor"
+    }
+]

@@ -1,14 +1,14 @@
 import json
 import ipdb
 
-file_path = 'nycartoon_dataset_test.json'
+file_path = 'nycartoon_dataset_train.json'
 
 with open(file_path, 'r') as file:
     data = json.load(file)
 
 for key in data:
-    split_key = key.split('_')
-    if len(split_key) != 2:
-        print(len(split_key))
+    data[key]['mode'] = 'single'
 
-ipdb.set_trace()
+
+with open(f"nycartoon_dataset_train_NEW.json", 'w') as f:
+    json.dump(data, f, indent=4)

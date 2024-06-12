@@ -50,9 +50,11 @@ class NYCartoonDataset(Dataset):
             labelTranslate = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4}
             label = labelTranslate[item['label']]
             label = torch.tensor(label, dtype=torch.long)
-            full_prompt = f"Question: You are given an image description and 5 caption choices. Description: {description}. 1: {caption_a}. 2: {caption_b}. 3: {caption_c}. 4: {caption_d}. 5: {caption_e}. Can you return which choice suits the image best? Answer:"
+            full_prompt = f"Question: You are given an image description and 5 caption choices. Description: {description}. 1: {caption_a}. 2: {caption_b}. 3: {caption_c}. 4: {caption_d}. 5: {caption_e}. Can you return which number choice suits the image best? Answer:"
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
+        #ipdb.set_trace()
         return { 
+            "id": id,
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "label": label,

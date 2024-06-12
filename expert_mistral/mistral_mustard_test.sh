@@ -9,7 +9,7 @@ python train.py \
 --batch_size 1 \
 --eval_steps 10 \
 --epochs 5 \
---device 1 \
+--device 0 \
 --max_length 512;
 
 python train.py \
@@ -23,7 +23,7 @@ python train.py \
 --batch_size 1 \
 --eval_steps 10 \
 --epochs 5 \
---device 1 \
+--device 0 \
 --max_length 512;
 
 python train.py \
@@ -37,7 +37,7 @@ python train.py \
 --batch_size 1 \
 --eval_steps 10 \
 --epochs 5 \
---device 1 \
+--device 0 \
 --max_length 512;
 
 python train.py \
@@ -51,5 +51,5 @@ python train.py \
 --batch_size 1 \
 --eval_steps 10 \
 --epochs 5 \
---device 1 \
+--device 0 \
 --max_length 512;

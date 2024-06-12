@@ -1,0 +1,2109 @@
+[
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "15357255826806375600247539024662391392650225867579976893501242225671789987237",
+        "caption": "The image showcases a sleek, modern car driving on a road. The car has a futuristic design with sharp edges, aerodynamic curves, and a prominent front grille. The car's design is reminiscent of advanced sports or racing cars, often seen in movies or concept cars.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "23758040629881107649906878424744017689760326563468917176753628209539704750434",
+        "caption": "The image primarily features a serene landscape with a calm body of water reflecting the surrounding scenery. On the water, there are three boats, each with a person on board. In the distance, there's a dense cluster of trees and a building, possibly a temple or a small house. The backdrop is dominated by a series of mist-covered mountains under a clear sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "16973080595728416584895070382729255236178960287003223813481099768353252919726",
+        "caption": "The image does not contain any explicit figurative elements. It depicts a large natural hole or sinkhole in a dry, arid landscape.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "36930885644070673387392128917140976741167876456805107698115387780313948999274",
+        "caption": "The image depicts two human figures. One is a man standing on the ground, wearing glasses, a white shirt, and dark shorts. He appears to be looking up at the other figure. The second figure is a person standing on stilts, wearing a light-colored shirt, blue jeans, and pink sneakers. The stilted figure is taller than the man on the ground, and both figures are set against a backdrop of trees, a fence, and a building.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sweet as sugar",
+        "image_id": "33199132517786322427600376597909902378050332524978676391680170821280187853026",
+        "caption": "The image primarily showcases a heap of white granulated substance, possibly sugar, contained within an orange measuring cup. The measuring cup is placed on a textured surface, possibly a cloth or a bag. The image does not contain any explicit figurative elements.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "105193207295756988534415555000533041133239006833475278774038078631160091254539",
+        "caption": "The image showcases a green bell pepper with a curved stem. The stem is green and appears to be attached to the top of the pepper. The pepper itself is smooth and glossy, typical of bell peppers.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "95861735952408859778372426396711064847890890028761977965104296380343058009076",
+        "caption": "The image showcases two red bell peppers. The key figurative part in the image is the green stalk and the curled end of the pepper, which resembles a face.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "25763022685152621648440470695421601966855760060488868232271706330681890290931",
+        "caption": "The image prominently features a glass filled with a vibrant red liquid, which appears to be a type of juice or beverage. The glass is positioned on a wooden surface, and there are several strawberries scattered around it. The strawberries are fresh, with green leaves attached, and they add a colorful and natural element to the scene.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as wide as the sea",
+        "image_id": "63150281220465119362461416872472835389108064628186820278713975832888177538033",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural landscape with rocky formations, a stream, and a clear sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "86924244965398967383640394293681741505674930219597158819378355489794514217424",
+        "caption": "The image prominently features tulips, which are known for their vibrant colors and distinctive shape. The tulip in the foreground is fully bloomed with a bright red hue, while the others in the background are in various stages of growth, from buds to full blooms. The tulip's shape is cup-like with a flared edge, and it has multiple layers of petals that give it a layered appearance.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "32721882229529896232343579010723956190788786038471014577955176167078377221972",
+        "caption": "The image features a young woman with long brown hair. She has a distinctive facial expression, with her eyebrows raised and a slight frown. Her eyes are green, and she has freckles scattered across her face. She is wearing a yellow top with lace detailing on the sleeves.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "1861693862930406349047201978842899542607814738836151559356192323585734424584",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a stone-built structure, possibly a historic or traditional house, surrounded by greenery.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "88565857916471775235365974906454593085955199457052374550554516299599288384920",
+        "caption": "The image does not contain any figurative parts. It only depicts a tool with a wooden handle and a metal blade.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "29036606294719571869558524083283175557081171466039865965617679783221173328032",
+        "caption": "The image prominently features a mountain peak, which can be seen as a metaphorical representation of challenge or ascent. The sharp, jagged edges and the snow-covered surface symbolize the difficulties and obstacles one might face in achieving their goals. The moon in the background further adds a sense of mystery and the unknown, emphasizing the vastness and complexity of the journey.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "3074019854812537484263512759304562763789656589495775184431071128420088556995",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a dry, cracked soil surface.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "50123356135949170911791038272446540454968022956808100151106227137030274351436",
+        "caption": "The image showcases a prominent mountain peak, which can be seen as a metaphorical representation of achievement, challenge, or nature's grandeur. The peak's sharpness and the snow-covered slopes symbolize the ascent to the summit, often associated with overcoming obstacles or reaching a pinnacle in life.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "42787516367707600075084961299904274777928519881907782699794910444693813709797",
+        "caption": "The image does not contain any figurative parts. It is a simple photograph of a bottle of vinegar.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "103914548140017255582617554918522137789273216484850923375502698952189667932878",
+        "caption": "The image does not contain any figurative elements. It depicts a natural scene with soil, water, and some tools.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "93996077635670190521020320928078128641760481618534688090765092497568827721677",
+        "caption": "The image prominently features two animated characters. On the left, there is a character with large, round eyes, a pink nose, and a big smile. This character has a brown body with a white face, and it seems to be holding a part of the background. On the right, there is another character that appears to be a graduation cap, which is typically associated with achievement and celebration.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "19844209137822450490792322362524495168262676796507993112982936915840398041791",
+        "caption": "The image depicts a rotten apple with a dark, wrinkled, and decayed surface. The apple appears to be in a state of significant deterioration, with parts of it falling off and revealing a white, spongy interior. The texture of the apple is rough and uneven, and the color transitions from a dark brown to a lighter brown, indicating the progression of the rot.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "109143074414226320862833892348883587965857087012872112990382296128152786312320",
+        "caption": "The image showcases a woman in a gym setting, wearing earphones and lifting a dumbbell. She is focused on her workout and appears to be in a state of concentration.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "95740170184245656956890046486240351735119568551387961334028778157005395767811",
+        "caption": "The image depicts a woman who appears to be overwhelmed or stressed. She has sticky notes all over her body, especially on her clothes and hair, with various tasks and reminders written on them. Her facial expression is one of surprise or shock, suggesting that the tasks or reminders are unexpected or numerous.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "92997827741623387418283060086625495586534175732356277873039157334584081683363",
+        "caption": "The image showcases a modern train moving at high speed. The train is predominantly white with a red front, and it appears to be in motion with a blurred background, emphasizing its speed.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "16796335640717404761404552797742403951252286587030751618397103677052545067605",
+        "caption": "The image showcases a green bell pepper, which can be seen as a figurative representation of a face. The top of the pepper resembles the forehead, the stem is the nose, and the indentation on the top is the eyes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "93968879030982797601505975158629720318436362324441043814524674343140862924881",
+        "caption": "The image depicts a woman holding a baby close to her. The woman has short blonde hair and is wearing a white top. The baby is dressed in a white outfit and appears to be asleep in the woman's arms.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "46960552410957175751414780321631909099290681860588535351442193477461520950628",
+        "caption": "The picture shows a pile of red tomatoes, which are shiny and glossy. The tomatoes are arranged in different sizes and shapes, and they are stacked on top of each other. The background is a bright red color, which makes the tomatoes look even more prominent.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "22118780150343271168801372184481316857049039091000155233441314846144417118914",
+        "caption": "The image primarily showcases a collection of blue raspberries. The raspberries are closely packed together, and their vibrant blue color dominates the scene. The texture of the raspberries is visible, with individual berries showing their distinctive bumpy surface. The overall composition gives a sense of freshness and abundance.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a razor",
+        "image_id": "34524462296706846623146697346028804012890717284033815358007663555215272381488",
+        "caption": "The image does not contain any figurative parts. It is a simple, minimalist image with a knife as the main subject.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "36878270722286274234117114621100635190562066812436298473846529445003492874479",
+        "caption": "The image showcases a plush toy of a doll. The doll has a light-colored face with green eyes and freckles. It has orange hair styled in two pigtails, each secured with a red bow. The doll is wearing a pink dress with a pattern of small, colored dots and a pink sleeve. Additionally, the doll has red striped stockings and red shoes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "73255508231633599542429624338955001389230035012721748066595856185381633825351",
+        "caption": "The image depicts a person, likely female, who is holding a clear bottle to her forehead, possibly to drink from it or to wipe away sweat. The sun is shining brightly, casting a warm glow on her face and the surroundings. The bottle is positioned in a way that it partially obscures her face, but her eyes are closed, suggesting a moment of relaxation or contemplation.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "17347096718885631245422851236269097089786740264821908748402026732457163212560",
+        "caption": "The image contains two glasses filled with a yellowish liquid. Each glass has a slice of orange as a garnish.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "89729608560059338364826718179036802826154906985628135135708578189973053411817",
+        "caption": "The image showcases a plush toy doll with a blonde hair tied in a ponytail. The doll has blue eyes, a light blue dress with colorful polka dots, and blue striped leggings.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "93927885309373082384189132964382494412946883017356487931728467060961964843384",
+        "caption": "The image showcases a rubber duck. It is primarily yellow in color with a glossy finish. The duck has a bright red beak, two black eyes, and a pair of curved eyelashes. The duck's body is slightly curved, and it appears to be floating in water.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "70449200055904060056716689334358873087429419043821264475710242770595840712959",
+        "caption": "The image does not contain any figurative elements. It only depicts a pile of red bricks with various sizes and shapes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "6464346133359063692813163126994143590835596079115110562030059600649636264446",
+        "caption": "The image showcases a small dog with distinctive black, white, and tan markings. The dog appears to be a Yorkshire Terrier, known for its small size, long silky coat, and upright ears. The dog is being held gently in a human hand against a turquoise background.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sweet as sugar",
+        "image_id": "106774661071718088255222543125600480897991528333134261738772165193051453541059",
+        "caption": "The image contains a watermelon slice and a strawberry. The watermelon slice is placed on a cloth, and the strawberry is placed next to the slice. These objects can be considered as figurative elements in the image, as they do not have a direct functional role but add aesthetic value and represent the theme of the drink.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "59401498571034902959461630441275391060259207522297103055355392227821801887780",
+        "caption": "The image does not contain any figurative parts. It showcases four metal rods with colored plastic tips, each in a different color: green, pink, blue, and transparent.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "107696339217071752046318492389483549853770882390567373084877725197171571561799",
+        "caption": "The image showcases two speed skaters in action during the PyeongChang 2018 Winter Olympics. The skater on the left is wearing a red suit with the Canadian flag on it, while the skater on the right is donned in a blue suit with the United States flag. Both skaters are intensely focused on their race, and their postures suggest they are in a close contest.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "38717160567675711597772170001794250712742923148683378730535737075306246462988",
+        "caption": "The image prominently features a bull with large, curved horns. The horns are dark and appear to be slightly worn, indicating the age or maturity of the bull. The bull's face is also visible, showcasing its eyes, nose, and mouth.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "82085928566254208018379161857952788493885282376495644607078812463457049946502",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a glass of liquid, possibly juice, and some apples.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "28282222913380724068490602303214068490914705732099116226754015675769464706827",
+        "caption": "The image does not contain any figurative parts. It showcases two strawberries with their green stems and leaves intact.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "100956510357600820582762610498794088022852789648764917419538562325702831688569",
+        "caption": "The image showcases a cat with a distinct and expressive face. The cat has a focused, almost stern expression with its eyes wide open and its eyebrows slightly raised. The fur color is a light beige or cream, and the cat's ears are perked up, giving it an alert appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "55611005520268468448392106157133464634460478630418788607441925481755532085973",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases slices of bread, a jar of jam, a bowl of butter, and a knife.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "56640757220207854459211279064531360832651586665865767371698060668315624021523",
+        "caption": "The image prominently features a young individual with short, cropped hair. They have a bright smile, and their eyes are looking directly at the camera. The person is wearing a dark-colored shirt, and their ears are pierced with a single stud in each.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "62467406812428869014763880295490955216870923915420413076482030634986720222114",
+        "caption": "The image depicts an apple that appears to be rotting or decaying. The top half of the apple is red and shiny, typical of a fresh apple, while the bottom half is brown and wrinkled, indicating spoilage. This can be seen as a metaphorical representation of something that was once valuable or good but has now become worthless or tainted.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "102093954166718604285171705082906743428875180516118472272679360777037123245396",
+        "caption": "The image showcases a plush toy of a girl. She has blonde hair styled in a ponytail with a red bow at the top. Her eyes are blue, and she has a light complexion. She is wearing a red jumper with a pattern, a grey and white striped top underneath, and orange shoes with white soles.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "88077737194241157853499746439365455338448630732740040851099953171336723204779",
+        "caption": "The boy in the picture is wearing a black coat and has his mouth wide open. He is standing behind a tree with orange and yellow leaves, and his hands are clasped together.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as solid as a rock",
+        "image_id": "8134186339529765656934277089430598594394794416916007497332848189058118297917",
+        "caption": "The image does not contain any discernible figurative parts. It primarily showcases a rough, textured surface resembling cooled lava or volcanic rock.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as funny as a clown",
+        "image_id": "36136825291703155331466343433445037746201335480221163638295496848252865434927",
+        "caption": "The image showcases a close-up of a man's face, focusing on his facial features. He has a prominent mustache that curves upwards at its ends. His eyes are looking to the side, and he has a serious expression.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "92672142918536968880357043709611103578468370720327466833933272047525962011862",
+        "caption": "The image does not contain any figurative elements. It depicts a real-world scene with a blue Nissan car parked in an open area.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a stick",
+        "image_id": "65228705827731115612882208985729367193894387722543348436103041222983483478076",
+        "caption": "The image features a stylized illustration of a dog's face in the top right corner. The illustration is simplistic, with a white background and the dog depicted in a minimalist style, primarily in shades of white and black.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "35746862460783611285134124919252863060730954640044075695680672542154220189094",
+        "caption": "The image showcases a green apple with a visible stem at the top. The stem is brown and appears to be attached to the apple.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a knife",
+        "image_id": "20417804473368360158096416357300076556969233934721956301808316516971532633988",
+        "caption": "The picture shows three black and silver arrowheads arranged in a row. The arrowheads are in the shape of a triangle, with a black metal rod passing through the center of the arrowhead. The arrowheads are placed on a white background.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "70088540080071913759519151081466410478821954482389945037499876851336545738301",
+        "caption": "The image showcases a white daisy flower with a prominent yellow center. The daisy has multiple petals arranged in a circular pattern around the center. The petals are smooth and radiate outward, giving the flower a delicate and graceful appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "114353970451443893060141401724923913571612592115437173735210579889078931034411",
+        "caption": "The image primarily showcases a close-up view of a fabric, specifically a silky or satin-like material. The fabric has a smooth and shiny surface with a subtle sheen. There are no discernible human figures or objects in the image, making it more abstract and focusing solely on the texture and drape of the fabric.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "80343957165203137252061029060648218792300981704979017692237711069514845431556",
+        "caption": "The image does not contain any figurative parts. It only shows a pair of tweezers.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "30254525930199903942854746443173485852449940014496539233191072987187421501504",
+        "caption": "The image features a silhouette of a person standing on a rocky outcrop, looking up towards a large, circular opening in the cave's ceiling. The person appears to be in awe or wonder, possibly contemplating the vastness and mystery of the cave.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "107199491453845168128881162435587322807181528643560543318887640318707415481317",
+        "caption": "The image prominently features a vibrant red flower with a dark center, surrounded by green leaves. The flower has a long, slender stamen in the center, which is yellow and appears to be the reproductive part of the plant.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "24235455090984007999632846569480719398251937645125667553052948503538250693475",
+        "caption": "The image prominently features a sharp, snow-covered peak that rises majestically against a clear blue sky. The peak's shape can be likened to a mountain range or a towering pillar, reaching towards the heavens.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "75496200845412230847949063987499163865099226694784670383263631646982352080576",
+        "caption": "The image showcases a red apple with a green leaf attached to it. The leaf is positioned on the top of the apple, acting as a figurative element that adds a touch of nature and freshness to the composition.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "63168497930129879908396299634279848844301145672233051651113821157946825541689",
+        "caption": "The image prominently features a dog with a joyful expression, its tongue out and mouth open, giving it a playful appearance. The dog appears to be wrapped in a light blue blanket, adding to the cozy ambiance of the scene.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "2319904882497399658163510078040202461016053633061748188276074170605879999122",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases an interior space with furniture and decor items.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "100974219030815142885971198917196698251035411941896570662475780741550798026666",
+        "caption": "The image does not contain any figurative elements. It depicts a house with a gray exterior, white trims, and a few windows.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "80763846512512138087213386194285155317268180558745163505797797375864524135866",
+        "caption": "The image showcases a bee, which is a flying insect. The bee is depicted in mid-flight, hovering above a pink flower. The bee's body is segmented into three parts: the head, thorax, and abdomen. The head has compound eyes, a pair of antennae, and a mouthpart. The thorax is where the bee's legs and wings are attached. The abdomen contains the bee's digestive system. The bee is also carrying a yellow pollen grain on its leg, indicating that it has been foraging for nectar and pollen.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "29867602945931076449159416911539838974938735073519277337526219898111320120154",
+        "caption": "The image depicts a group of pigs in a pen. The pigs are facing different directions, with some looking directly at the camera. Their facial expressions and postures suggest curiosity and attentiveness.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "19457048987575128867215516262170647403423480012932950043026875773027101271080",
+        "caption": "The image showcases three apples, each with a distinct color and texture. They appear ripe and glossy, suggesting freshness. The apples are not anthropomorphized, but their round shape and vibrant appearance can be seen as symbolic of perfection or abundance.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "100554546723572123641162565973185002954973412278776929565437193224298775470224",
+        "caption": "The image does not contain any figurative parts that can be described in detail. It primarily showcases a collection of round fruits with a mix of green and yellow hues.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "75997073658088534259770975252850353458433875490180363679612679488274114957318",
+        "caption": "The image showcases a person riding a bicycle. The person is wearing a dark-colored jacket, black pants, and brown shoes. They are also carrying a backpack on their back. The bicycle has a front basket and appears to be in motion, as indicated by the blurred background.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a knife",
+        "image_id": "86352198761631027862344785910435989054013379393495446648808606858134428172882",
+        "caption": "The image contains five wooden figurines, each with a cylindrical body and a spherical head. The spherical heads have a metallic ring around them, possibly indicating a function or decorative purpose.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "48699501660531188429895032556877791711551814448487315896081295682419370020724",
+        "caption": "The image showcases an ice hockey rink, which is a rectangular ice surface used for ice hockey games. The rink is marked with various lines and circles, including the center ice, blue lines, face-off circles, and goal creases. There's also a jumbotron or large screen in the center of the rink that displays video content.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "106676741586482923610522096702877591977134159612313986711126145746224059820006",
+        "caption": "The image primarily features white daisy-like flowers with yellow centers. These flowers are surrounded by green stems and buds. The overall theme of the image is nature, specifically showcasing a common garden or meadow flower.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "69745176040503522140797679277586002894946584226652846054655054417931072632764",
+        "caption": "The image does not contain any explicit figurative elements. It depicts a young boy holding up a piece of paper with a spelling test on it, standing in a classroom.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "14317445067778905852982966355097895673795765949282833260743125105858466174887",
+        "caption": "The image depicts a figure skating rink where two individuals are seen skating. The foreground prominently features the skates of one of the skaters, with a focus on the white ice skates, black laces, and the person's feet. The background showcases another skater, albeit slightly blurred, and a green wall with white drawings of trees, snowflakes, and a sign that reads 'LancasterBarnstormers'. The sky above is clear with a hint of blue, suggesting a sunny day.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "54576865841414033592956180624580538775904119169992358762456551846940854153208",
+        "caption": "The image showcases a dog with a curly, light-colored coat. The dog appears to be in a standing position on a grassy field. The most prominent feature of the dog is its fluffy tail, which is raised and curled upwards.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "86925152037394614290035299150377396988981936002449097335230431929915263345641",
+        "caption": "The image primarily showcases a turbulent ocean or sea with waves crashing and swirling. There isn't a clear figurative representation, but the waves can be seen as abstract forms that mimic the shapes of creatures or beings.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a snail",
+        "image_id": "103586942389409707703306322179828527723561305288243146687296075906823204961190",
+        "caption": "The image showcases a modern, sleek train with a streamlined design. The train has a prominent nose, which is typically designed to reduce aerodynamic drag and increase fuel efficiency. The front of the train also features a windshield, which is essential for the driver's visibility during high-speed operation.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "104948588706721819713120210857736843629716413226167162523601953015319419849606",
+        "caption": "The image showcases a white flower with a yellow center, commonly known as a daisy. The daisy is in full bloom, with its petals spread out in a circular pattern and its center composed of numerous yellow stamens.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "76298224486299872629832583501121862305785151822293488733227757446215617357697",
+        "caption": "The image showcases a red apple with a vibrant and shiny skin. The apple appears fresh and has a green stem attached to it. The stem is slightly curved, and the apple's surface has some minor blemishes and imperfections, giving it a natural and organic look.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "7530211925210602789177395190863016346592081941252279649443566251927474491623",
+        "caption": "The image contains a figurative part in the form of a yellow arrow painted on the rock. The arrow points to the right, indicating a direction or possibly a path.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "63394000867295345884600436220767736794916965076041043039213228171057222617546",
+        "caption": "The image features a dog with a focused expression, standing on its hind legs and resting its front paws on a computer mouse. The dog appears to be interacting with the mouse, suggesting a playful or curious behavior.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "18965944259880114240783199019870689201476857651075910491158338177586774786976",
+        "caption": "The image showcases two apples that appear to be overripe or rotten. They have wrinkled and brown skin, indicating age or spoilage. The texture of the apples looks rough and uneven, with some parts appearing soft and mushy. The coloration is predominantly brown with hints of yellow, suggesting that they have passed their prime.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "7863120091837424794081483849061030620985132323678605850587349082274178321093",
+        "caption": "The image prominently features a fox with a sharp, focused gaze. The fox has a reddish-brown fur coat with a white underbelly. Its ears are perked up, and its eyes are a captivating shade of amber. The fox's facial features are well-defined, showcasing its pointed snout, sharp teeth, and bushy tail.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as solid as a rock",
+        "image_id": "95536029230933948891408542945616829383869499404112239047555933586886804212381",
+        "caption": "The image primarily showcases a vast expanse of molten lava with intricate patterns and flowing streams. These patterns resemble the flow of liquid, with bright orange and red hues contrasting against the darker background. The fluidity of the lava gives it a dynamic and almost alive appearance, making it a fitting representation of the fiery and unstoppable nature often associated with figurative language.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "30109202910484607708796834133133750873557121987374435936897689431924969838089",
+        "caption": "The image depicts a young plant sprouting from the soil, symbolizing growth, resilience, and the cycle of life. The plant is surrounded by water droplets, which can represent watering, nourishment, or the beginning of a new journey.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "25631797092244697018116697821195897359005102660459114782923740066916306812921",
+        "caption": "The image prominently features a human hand, which appears to be gently holding or touching a newborn baby. The hand is wearing a ring, suggesting it might belong to an adult, possibly the baby's parent or guardian. The baby is wrapped in a white cloth with pink and blue stripes and is wearing a knitted beanie with colors including white, blue, and brown.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "39206498038956786855190444010047750243930957106184557728388137379177615183438",
+        "caption": "The image does not contain any figurative parts that stand out as distinct objects. It primarily showcases a hotel room with furniture and decor.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "23271173941126532461239101339730787197899214303920679782658841831403583712035",
+        "caption": "The image depicts a baby lying on its stomach on a soft, fluffy surface. The baby is in a crawling position, with its arms stretched out in front and its legs extended behind. The baby's eyes are open, and it appears to be gazing intently at something. The baby's facial expression is one of curiosity and focus.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "102548847362509190333861738645003598761744006100121831759393536781583744556513",
+        "caption": "The image showcases a man with a well-groomed beard and mustache. He has a confident and intense gaze directed towards the camera. The man's hair is slicked back, emphasizing his forehead and cheekbones. The lighting on his face highlights the contours of his face, giving him a chiseled appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "56636919049937955693749649170228838460171629258303404992237624524828023638066",
+        "caption": "The image does not contain any figurative elements. It depicts a messy room with various objects scattered around.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "92776303870542843876936930100382030719296853842877879194805443448156278799025",
+        "caption": "The image contains a framed silhouette of a woman on the wall. The silhouette appears to be in black and white and is positioned above a piece of furniture.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "40611235165374569266081521473343350681616381859664727920924483865717887040540",
+        "caption": "The image depicts a young woman with long brown hair. She is wearing a pink hoodie and has a gentle and sincere expression on her face. Her hands are clasped together in front of her chest, and she is looking directly at the camera.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "77796729038235040371622284620334473596995947449702921615840582289336023990726",
+        "caption": "The image does not contain any figurative parts. It depicts a slice of bread with a pat of butter on top, placed on a white surface with a knife beside it.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "8802134925997693025426760053794690269549653020617958786277647166449941242873",
+        "caption": "The image features a young boy with short, dark hair. He has a focused and intense gaze directed towards the camera. His eyebrows are slightly raised, and his eyes are wide open. The boy's lips are slightly parted, and his facial expression appears neutral.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as pale as a ghost",
+        "image_id": "13463732470558759865851162218299585744380806565465454373515592830887914822905",
+        "caption": "The image showcases a close-up of a young individual with fair skin and long, straight blonde hair. The person's eyes are prominently displayed, appearing to be of a light blue or grayish hue. The lips are slightly parted, and the facial expression seems neutral. The lighting in the image casts soft shadows, emphasizing the features of the face.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as cold as ice",
+        "image_id": "111387921440282043738443362146648496546816583084807838967529816045840597724192",
+        "caption": "The image contains a figurative part that appears to be a face or mask, intricately designed with sharp edges and patterns. It is embedded within the snow, suggesting that it might have been created or discovered naturally over time.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "28243406976871234848974149390906949029516314205424863682182280286143628832111",
+        "caption": "The image does not contain any figurative parts that can be described. It is a close-up view of a textured surface, specifically what appears to be dry, cracked earth or soil.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "12659112644353326765099587858407796717026859418669025236257128400629767385549",
+        "caption": "The image depicts a red apple with a shiny surface, indicating freshness and ripeness. The apple has a typical round shape with a slightly elongated stem at the top. The stem is attached to the apple's body, and there are no visible signs of damage or decay. The apple's skin is smooth, with a slight variation in color, indicating the natural variations in the growth and maturity of the fruit.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "27498942240416001827028655805432783099942405930286918535902799548123770078243",
+        "caption": "The image primarily showcases a collection of tomatoes. While tomatoes are botanically fruits, they are commonly used in culinary contexts as vegetables.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "50483756148280772193859551539787977553665582217568660930078253857669970600762",
+        "caption": "The image depicts a figurative part of an apple that appears to be bitten or eaten. The bite is significant, taking a large chunk out of the apple, revealing the inner flesh.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "103317820570968154040314199212159819207501658358918477281173674621892262275533",
+        "caption": "The image showcases a woman with a fair complexion, light brown hair, and brown eyes. She has a calm and serene expression on her face.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "104444540843436332974955230383978838054273602633052431774788272081649699985037",
+        "caption": "The image showcases a bee, which is a flying insect. It has a distinctive striped pattern on its abdomen and is covered in fine hairs. The bee's wings are translucent with a yellowish hue, and it has a pair of antennae in front of its head.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "111955995120587954777421468641882111838108340007830482214037111135006830925155",
+        "caption": "The image primarily showcases a vast expanse of cracked and parched land, reminiscent of a dried-up lake bed or a desert. The intricate patterns formed by these cracks evoke a sense of desolation and aridity. There aren't any discernible figurative elements in this image, but the patterns can be seen as metaphors for hardship, drought, or the passage of time.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "70868021172984744915350514486179753768087215754993126210188739370738144460929",
+        "caption": "The image prominently features a baby with wide eyes and an open mouth, expressing surprise or excitement. The baby appears to be lying on its stomach, with its arms stretched out in front. The baby is holding a plush toy, which looks like a small animal with a fluffy body and a button nose.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "100800516018196495179180347807430039486585086742268506776419294171012684920415",
+        "caption": "The image showcases a vibrant and dynamic scene of molten lava flowing over solidified rock. The lava appears in the form of bright, glowing orange and red masses that are in motion, creating a stark contrast against the darker, cooler background of the solidified rock. The flowing lava forms shapes that resemble fluid, almost organic entities, moving and evolving as they cool and solidify.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "89427131927835676082842215783127841215261872513735084892776060077122808307735",
+        "caption": "The image does not contain any figurative parts. It depicts a person riding a motorcycle on a road.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "70510266644574903749351845290338818849977561940788645484618678478124068992717",
+        "caption": "The image showcases a muscular man in an intense workout pose. He is pulling a heavy tire with both hands, displaying a focused and determined expression. The man's physique is well-defined, with prominent muscles visible, especially in his arms, chest, and abdomen. The lighting emphasizes his musculature, creating dramatic shadows and highlights.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as pale as a ghost",
+        "image_id": "15846660382600631076384087808762848598911589143499468153483358554754252639364",
+        "caption": "The image primarily features a young woman with long, straight, and light-colored hair. She is wearing sunglasses on top of her head, which rests on her shoulder. The woman is smiling, revealing her teeth, and appears to be in a joyful mood.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "33034769838723982597648669119527873379120400504049756199624105196792865954031",
+        "caption": "The image primarily showcases a draped fabric with a smooth and shiny texture. The fabric has a wavy and flowing pattern, creating folds and creases that add depth and dimension to the image. The way the fabric interacts with light gives it a silky and luxurious appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "94128659169164579655068695452443856453486546905795839849029307660733096025772",
+        "caption": "The image does not contain any figurative parts. It depicts a hand holding a pile of soil.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "61211267749301840039822440405651876857994026840796049248316792610288589488813",
+        "caption": "The image prominently features the American flag, which is a horizontal rectangular tricolor of red, white, and blue; with the red and white stripes alternating, and a blue rectangle in the canton containing fifty small white five-pointed stars.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "9788344385923802519425067585556769200981996176190972305246200617245042188139",
+        "caption": "The image features a young girl with blue eyes and light brown hair. She appears to be in a contemplative or thoughtful mood, looking off to the side. The girl is wearing a blue denim jacket and jeans.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as wild as an animal",
+        "image_id": "16801471822834059127077887274198804489250463480009190754898452551575901504531",
+        "caption": "The image features a person with long, wavy brown hair and a beard. They have a serious expression on their face and are looking directly at the camera.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "43150804168616952620630157677326809783666105284585545764692685504023177800466",
+        "caption": "The image prominently features a cat walking on a paved surface. The cat has a distinct pattern on its fur, with a mix of white and brown patches. It appears to be in motion, with its tail slightly raised and eyes focused forward.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "93038576622695556365957607079519182458147447655214194080084540417459187008763",
+        "caption": "The image contains a glass jar filled with a yellow liquid, which appears to be lemonade or some kind of citrus juice. Inside the jar, there is a wooden spoon. The jar is placed on a blue surface, and there are lemons and limes around it.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "16226529065919185140457171180426503208648261305464337629295471248036426226477",
+        "caption": "The image primarily showcases a collection of red chili peppers with green stems and leaves attached. These chili peppers are shiny and appear fresh, suggesting they are recently harvested. The vibrant red color and the green stems and leaves give the image a figurative representation of spiciness and freshness.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a snail",
+        "image_id": "69185969438576988558044162969499140871573410783188977129660395101082925553300",
+        "caption": "The image showcases a snail on a paved surface. The snail appears to be moving forward, with its antennae extended and its body curled underneath its large, brown shell.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "10898894756357384402903067124199424659016641796300539174187080308073252659453",
+        "caption": "The image showcases a majestic castle situated atop a hill, surrounded by a dense forest in autumn colors. The castle is intricately designed with multiple towers, turrets, and ornate details. In the background, there are mountains and a serene lake, adding to the picturesque beauty of the landscape.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "98994577701251491723125474753049955588553860446303587988916391362514148249131",
+        "caption": "The image does not contain any figurative elements that can be described. It depicts an industrial setting with stacked boxes and equipment.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "10066321213472042731625991774500710481715308236527927978961613641890150238729",
+        "caption": "The image showcases a close-up view of an insect, specifically a wasp or hornet. The insect has a prominent, large head with two prominent compound eyes. The eyes are white with a black border, and they are surrounded by a fuzzy, yellowish-brown area. The insect also has a pair of long, slender black antennae extending from its head.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "19099466465047885399535876715514372208850343391173541714821386024756773724409",
+        "caption": "The image showcases a close-up of a person's face, focusing primarily on the eyes and lips. The eyes are a striking shade of green, and the eyebrows are well-defined. The lips are slightly parted, revealing a hint of pink lipstick. The overall expression is neutral, with a calm and composed demeanor.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "115591878861868307519721125944916666164093220564380144352806888868943987183237",
+        "caption": "The image primarily showcases a large number of bananas arranged closely together. There aren't any figurative elements that can be discerned from the image.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "2809308668160136373414204192289554189411957524896416181739484232249793080835",
+        "caption": "The image depicts a plush toy doll with a pink dress and pink hair. The doll has blue eyes, a white face, and a pink nose. It is sitting with its legs crossed.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "96365434076692111608893228576066306330655560285193194793101907394482849302470",
+        "caption": "The image showcases a young boy with a contemplative or thoughtful expression. He is resting his chin on his hand, which is a common gesture indicating deep thought or pondering.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "80427088053372415237665558385187590833646674092346125370819392078085439735797",
+        "caption": "The image primarily showcases a close-up view of a fabric, specifically a silky or satin-like material. The fabric displays a smooth, flowing texture with folds and creases that create a sense of depth and dimension. The image does not contain any figurative elements that represent people, animals, or objects.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "54655827825331855387532375250572942426550836303155766634509002029801751788387",
+        "caption": "The image showcases a vibrant blue rose with dewdrops on its petals. The rose appears to be in full bloom, with its layers of petals delicately curled and overlapping. The dewdrops give the rose a fresh and dewy appearance, adding to its beauty and serenity.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "53114440124949800517506711632265093170535617715731057868511716897842351160929",
+        "caption": "The image showcases a figurine of an elephant. The elephant appears to be in a playful or curious pose, with its trunk curled upwards and its eyes wide open. The figurine is intricately detailed, capturing the texture of the elephant's skin, the shape of its ears, and the fine details of its tusks.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "15716182437029252099639550508974471673573913688908520329310057355841813562643",
+        "caption": "The image does not contain any prominent figurative elements. It showcases a mountainous landscape with snow-covered peaks, rocky terrains, and a clear blue sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "74775246167791665571634267654596833493069516657699741201978773301945452061428",
+        "caption": "The image prominently features a man with short, wavy brown hair and a beard. He has a cheerful expression, with his eyes looking directly at the camera. The man is wearing a blue shirt with a collar, and the background appears to be an outdoor setting with wooden structures.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sweet as sugar",
+        "image_id": "51296048623272454067866742342903631408647396664698054288165419475399473283664",
+        "caption": "The image showcases a silver teapot with intricate designs on its handle and spout. The teapot appears to be ornate and has a reflective surface, likely made of a metal like silver or gold. The handle is curved and has decorative elements, while the spout is elongated and has a floral or leaf-like design.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a razor",
+        "image_id": "38658518844745068766447708144441292986669077180940669844419288059847259195397",
+        "caption": "The image depicts a serrated knife with a green handle. The blade of the knife is made of a shiny metal, possibly stainless steel, and has a series of jagged teeth along its edge, commonly used for cutting soft or tender foods like cheese or tomatoes. The handle is ergonomic, providing a comfortable grip, and has a hole near the top, possibly for hanging or storing the knife.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "20009138426990053138491263267377693025856812300944819796000110518771438664680",
+        "caption": "The image showcases a plush toy that resembles a doll. The doll has a soft, plush body with a light pink outfit. The outfit features a white polka dot blouse with a pink hat adorned with a flower on the left side. The doll's facial features include brown eyes, a light pink nose, and a cheerful smile. The doll also has a tag on its outfit that reads 'My First DOLLY'.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "104685984231162975720369597819393791305454936555969898606074426232790098583109",
+        "caption": "The image depicts a woman who appears to be in a state of distress or deep thought. She is holding her head with one hand, indicating a sense of overwhelm or confusion. Her facial expression suggests that she might be trying to solve a problem or make a decision.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "85621541626269780413515772303036833794387882490059410357767418778391218192308",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a clear blue sky with scattered clouds and an underwater view of the sea.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "363487077469381156961238061471490242792707476414758123046749707709426790675",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a living room setting with furniture, plants, and decorative items.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "42033726111582344890159067273872414760560956272066701023960891371343526860699",
+        "caption": "The image showcases a bunch of bananas. Among them, there is a banana with a unique and distinctive shape, appearing somewhat elongated and curved. This banana stands out from the rest due to its different form.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "44771203963200745013756218499963656556953640987170279053136518966369646163339",
+        "caption": "The image showcases a snail with a brown and yellow striped shell, moving across a textured surface. The snail's antennae are extended forward, and its mouth is slightly open, giving it a curious appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "30445901583408078068662293757524676186903569560470491674077085178077582851141",
+        "caption": "The image depicts a woman who appears to be wiping her forehead with a tissue or handkerchief. This action suggests that she might be feeling hot or is experiencing some discomfort, possibly due to the sun or exertion.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "80825428937278069172838636272859320270535950496043173237679538530707133429609",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a kitchen setting with various household items.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as pretty as a princess",
+        "image_id": "110339442534591585242360899875120907512008975831626224007691094370107118018425",
+        "caption": "The image prominently features a man with short brown hair, a clear complexion, and a confident smile. He has a sharp jawline and is wearing a black suit with a white shirt and a black tie.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "111714350836327453437765461171542484237730388222555702498097930183834561247048",
+        "caption": "The image contains a figurative part which is a leaf. The leaf is attached to the stem of the apple and is green in color, resembling the natural leaf of an apple tree.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "93800550223242300980915185017681161822864272966220346538618418504638371520672",
+        "caption": "The image features a decorative lamp with a unique design. It has a white, textured shade that resembles a seashell or coral. The base of the lamp is also white and has a cylindrical shape. The lamp is placed on a wooden surface, and next to it is a potted plant with green leaves.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "59864374059025614560437377138057000719174511943967120011883527727110979662326",
+        "caption": "The man in the picture is wearing gray shorts, and his upper body is naked. He is standing in the gym, with his right hand placed on his waist and his left hand raised, showing off his muscles. He is looking at his raised left arm, with a confident expression on his face.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "97968107861563847937231974303695638159034030716613613063046171583476229309857",
+        "caption": "The image does not contain any figurative elements. It depicts a cluttered room with various objects scattered around.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "58677600927391180734048707681910908649812054941608796643140534832819153115858",
+        "caption": "The image depicts a close-up of a young boy's face, focusing on his eyes and facial expression. He appears to be in a state of displeasure or anger, with furrowed brows and a tightened mouth.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as solid as a rock",
+        "image_id": "35520582193446657032344610285440336745905363196908371140642289614143283341154",
+        "caption": "The image showcases a vibrant and dynamic scene of a volcanic eruption. The most striking part is the fiery lava flowing down the slope, illuminating the surrounding area with a bright orange glow. Above the main eruption site, there's a spectacular display of molten rock being expelled from the vent, creating a fountain-like effect. The sky above is clear, providing a stark contrast to the intense heat and fiery display below.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "17816719801205209173888586698502832858822545952582199462054712273369420367763",
+        "caption": "The image primarily showcases a barren landscape with cracked and parched soil. There are no discernible figurative elements in this image.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "91470348793293022441708637141526970452259958778318020025056710119017349613090",
+        "caption": "The image depicts a vibrant and dynamic seascape. The sky is filled with fluffy white clouds against a deep blue backdrop, suggesting a clear day. The clouds are scattered across the sky, with some appearing closer and others farther away, giving depth and dimension to the scene. The sunlight seems to be shining from the left side, illuminating the clouds and casting a glow on the water below.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "61181025331569456051976606838128460168861330828169046833442281078702532802424",
+        "caption": "The image does not contain any figurative parts. It only shows a metal profile with a series of holes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "91918102337731756711487934436628678177280226058153738311322706149851661122756",
+        "caption": "The image prominently features a young individual with a short, curly hairstyle. The hairstyle is neatly combed back, showcasing the texture and volume of the hair. The individual's eyes are focused intently forward, and they have a neutral expression. The facial features, such as the nose, lips, and chin, are well-defined.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "34143189411056885499703743502919607831499756105172447268993980312214467244755",
+        "caption": "The image showcases a gummy bear figurine. It appears to be a traditional bear shape with a glossy, red exterior. The bear has two large, round ears, a central facial region with a cute, slightly opened mouth, and a curved, slightly upturned tail.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "97881158449470120444797568783983797367748610997853903807452976181198436080325",
+        "caption": "The boy in the image is expressing excitement or pride with a wide-open mouth and raised eyebrows. He appears to be shouting or cheering, possibly indicating a successful accomplishment or a positive outcome.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "33710738555706185097230543475612124546911106531248488459175406489811448295561",
+        "caption": "The image showcases a majestic mountain peak bathed in the warm hues of a setting or rising sun. The peak is illuminated in a vibrant shade of orange, contrasting sharply with the cooler tones of the surrounding mountains and the deep blue of the sky. The mountain's sharp, jagged edges and snow-capped summit give it a formidable and awe-inspiring appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "46757193122277737201474464978699546042369043956163837158300315195685372034922",
+        "caption": "The image showcases a three-story castle with distinct architectural features. The castle has two conical red-roofed towers, one on each side. The central tower is slightly taller and has an ornate design with multiple windows and a balcony. The castle is surrounded by greenery, including trees and shrubs, and there's a staircase leading up to the entrance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as solid as a rock",
+        "image_id": "70512132461693736095489453423811128333152941231708274487255086275852140824008",
+        "caption": "The image depicts a vibrant and intense pattern resembling molten lava or burning embers. It has a deep orange and red hue with a textured appearance, suggesting a sense of heat and intensity.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a snail",
+        "image_id": "10270469804437917473242023236175918880926169778893792267626235218441857565257",
+        "caption": "The image showcases a modern high-speed train moving at a significant velocity. The train is predominantly red and white in color, with a streamlined design. The front of the train has a sleek, aerodynamic shape, and the side windows are large, providing ample visibility for passengers. The train's name, 'InterCity', is prominently displayed on the side.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "114285386833934161450724561743187190802085937041706198706350212889822609790373",
+        "caption": "The image does not contain any figurative parts. It only depicts a glass of green liquid with a pink and white striped straw, placed on a surface with some green leaves scattered around.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "46312650813101219324985968856531084062012422518988915518408962065665248529919",
+        "caption": "The image primarily features a close-up of a person's face. The individual has striking white hair, pale skin, and light-colored eyes. The eyes are prominently visible, with a neutral expression on the face.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as solid as a rock",
+        "image_id": "114603130165695966773504307180511351914571891361467016059836572107947013374154",
+        "caption": "The image does not contain any figurative elements. It depicts a real-life scene of a road covered by lava flow.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a stick",
+        "image_id": "115408639184938358511682620268987201039120823920694957619063330816971219315775",
+        "caption": "The image does not contain any prominent figurative elements. It is primarily a landscape photograph showcasing a frozen body of water with ice formations.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "65042465049098974880172479369507107495384302035721123606978121693518786229507",
+        "caption": "The image showcases a towering rock formation emerging from the sea, crowned with lush green trees. The rock formation can be seen as a metaphorical 'island' amidst the vast expanse of the ocean.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "28160809859411941227171004890040346076219750507270772225072725293283287198215",
+        "caption": "The image prominently features an elephant, which is a large mammal known for its distinctive trunk and tusks. The elephant in the image appears to be an adult, with a robust body and large ears that are spread out.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a razor",
+        "image_id": "111364182187498554841949245220501163754810644464376802052340333220923211559130",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a tool with blades and a handle.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "105303940772887821793196513320350648166441199382157970888327700675005066992641",
+        "caption": "The image prominently features two individuals riding camels across the vast sand dunes. They appear to be traveling through a desert landscape, with one person leading the camel and the other following closely behind. The figures are dwarfed by the vastness of the sand dunes, emphasizing the scale and beauty of the natural environment.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "40665020948127830130562773022285764935077019862328302699906132412878761978929",
+        "caption": "The image primarily showcases a group of white daisies with yellow centers. These daisies are often associated with innocence, purity, and simplicity. They can also symbolize joy, happiness, and cheerfulness.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "12520491801709637306931109345323834054416154666675816792671050187292806841942",
+        "caption": "The image does not contain any figurative parts. It only depicts a glass bottle filled with a red liquid, possibly ketchup or tomato sauce, with a red lid on top.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "49368062018069212605829056290624797739943710518956854443954521100076381259469",
+        "caption": "The image does not contain any figurative elements that require interpretation. It depicts a dry, cracked soil with some green plants growing amidst it.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "18734926956785924426471307157531915214905228680863551997196768586986648256372",
+        "caption": "The image showcases a plush toy that resembles a doll. The doll has a light-colored face with black eyes and black hair styled in two buns on either side of its head. It is wearing a floral dress with a pattern of red and white flowers, paired with blue shorts. The doll also has teal-colored shoes on its feet.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "37856167234641123738904590871167077401968043963813187939211562993105743959135",
+        "caption": "The image primarily showcases a turbulent ocean or sea with waves crashing and frothing. There isn't a clear figurative part that stands out as a distinct object or creature. Instead, the waves and their patterns dominate the visual.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "80075285543758008794886183484970075734789515979302414008578369281118461843217",
+        "caption": "The image primarily features a man standing by the sea. He is wearing glasses, a checkered shirt, and cargo pants. The man is looking towards the camera with a neutral expression.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "114153296957151990728046216707142862850943131855610386673870991850952337125632",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural landscape with mountains, trees, and a railway track.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "105598626352764841125596301385122981481313811342880387646868102731828051988506",
+        "caption": "The image showcases a woman with a cheerful expression, standing against a plain white background. She has short, wavy brown hair and is wearing a green cardigan with a beaded necklace. Her arms are crossed, and she appears to be looking directly at the camera.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "24696994123943223139765229378480651052842326503911186692595074808870860172487",
+        "caption": "The image showcases a living room setting with a modern art piece on the wall. The art piece consists of black geometric shapes forming a symmetrical pattern. The dominant shapes are triangles and half-circles. The artwork is hung on a white wall with a diagonal white line accent. Below the artwork, there's a gray sofa adorned with various patterned cushions in shades of brown, white, and black. In front of the sofa, there's a round white coffee table with a vase containing green leaves and a black vase with a plant. To the right of the sofa, there's a tall indoor plant with long green leaves. The room also features a large window with white curtains, allowing natural light to flood in.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "78032298191807238914558709984681443311728480826057885363397672215974797318006",
+        "caption": "The image showcases a cat with a relaxed posture, sitting upright on a couch. The cat has a distinctive orange and white fur pattern, with its eyes wide open, giving it a curious or contemplative expression.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "47077540531951844962809480985341231661182777228837058618834401665980539312784",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a majestic snow-covered mountain peak set against a clear blue sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "99877372314782141957347809740897136541535189697216465884018798368287399558001",
+        "caption": "The image does not contain any figurative elements. It depicts a cluttered kitchen with various household items scattered around.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "89869189563189733397594186361796199795506640344002954757122625193711008703449",
+        "caption": "The image does not contain any figurative elements. It is a simple landscape photo showcasing a vast sand dune with a clear blue sky above.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "21631751054951596303645816640218997266927051846985648218389838505860461085005",
+        "caption": "The image prominently features the eyes of a cat, which are large, round, and have a vivid orange hue. The eyes are surrounded by dark fur, and there's a slight reflection or shine in them, indicating that they might be wet or that the lighting is hitting them directly.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a knife",
+        "image_id": "24213954480013703247972637074448224445565021592761010352032724568759360696503",
+        "caption": "The image showcases three knives with intricate, textured patterns on their blades. These patterns seem to be designed for grip and possibly added aesthetic appeal. The knives have wooden handles with a dark, possibly ebony or rosewood, finish. The brand name 'XTUO' is prominently displayed on the top left corner, suggesting that these knives belong to that brand.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "62500431649551341723460649422676675907421779142858144102231156199209316046432",
+        "caption": "The image prominently features a tall palm tree with its fronds spread out, providing a shade and adding a tropical ambiance to the scene.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "103073163912183697015465393284767471060573129122349740271325665518881535673533",
+        "caption": "The image showcases an apple that appears to be rotting or spoiled. The apple has a brownish-red hue with patches of green and yellow, indicating signs of decay. The stem is still attached, but it's brown and slightly withered. The overall appearance of the apple is not appealing, suggesting it's past its prime and not suitable for consumption.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "35589940323978969313080816120612406362799044053939214926628494549653211003324",
+        "caption": "The image prominently features the face of a turtle. The turtle has a detailed and textured shell, with a patterned head that is predominantly black with yellow eyes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as rocks",
+        "image_id": "6499450902281964282921385015303626523784541037102594420157819047330585676908",
+        "caption": "The image does not depict any figurative parts. It showcases a black wheel with a white center hub.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "24118724773641940375833396467193006736093359877302728522907206339489015405536",
+        "caption": "The image showcases a red apple with a green stem. The apple appears ripe and shiny, with small white dots scattered across its surface, which are typically indicative of natural imperfections or the presence of certain minerals.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a knife",
+        "image_id": "74552726952765669638449559847040164231264014984987781268770236418938070488260",
+        "caption": "The image showcases a set of five black, funnel-shaped objects arranged in a row. They appear to be part of a larger structure or device, with the largest one at the left end and the smallest at the right.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as bright as the sun",
+        "image_id": "4456550263960666687404626596087002264099669922565808616071088297998276454835",
+        "caption": "The image primarily showcases a celestial body, which appears to be the moon. It is depicted in a dark, almost black hue, with visible craters and surface details. The moon does not have any discernible facial features or other figurative elements that would suggest it represents a person or animal.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "61001172606027769122982227311396516580350507385039349583342373331408698083413",
+        "caption": "The image prominently features a painting or image of a horse in mid-gallop on a snowy landscape. The horse appears to be in full stride with its mane and tail flowing, capturing the dynamic movement and power of the animal.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "20609303026910716744827390270466726605887618293268780210514456674551673935624",
+        "caption": "The image depicts a vast, barren landscape characterized by cracked and parched earth. The ground appears to be baked dry, with deep fissures and crevices stretching across it. The sky overhead is vast and expansive, with a mix of clouds casting shadows on the ground below. The overall mood of the image is one of desolation and aridity.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "3969594754132431003307457856163470812706430389671310709771700018891067153039",
+        "caption": "The image prominently features a vibrant red flower with multiple petals layered in a circular arrangement. In the center of the flower, there's a cluster of darker red or maroon petals that resemble the center of a sunflower. The flower appears to be freshly watered, as there are droplets of water on its petals, reflecting the dew or rain.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "78811914150989588697903895456916216134518028162595760384828852888987311355105",
+        "caption": "The image prominently features a daisy flower with a white petal structure and a yellow center. The daisy is positioned against a black background, which accentuates its bright colors and makes it the focal point of the image.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "34639687327494804221963286461045038554912319909723527585893242859048609688030",
+        "caption": "The image features a white ghost-like figure with sunglasses. The ghost is draped in a sheet, giving it a classic appearance often associated with Halloween. The sunglasses are a unique touch, adding a contemporary and whimsical element to the figure.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "5628574762123840775618839289198322457872361190764051007611972861866887930624",
+        "caption": "The image depicts a figurative representation of an apple that has been partially eaten. The bite taken out of the apple is shaped like a human profile, suggesting a playful or artistic interpretation of the object.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "6227444671589528974263399802711031219862852090247188935920488055720287222667",
+        "caption": "The image does not contain any prominent figurative elements. It primarily depicts a cluttered kitchen scene with various household items.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "67301231096172631596149926444833389338849724001518167234305266098847586163206",
+        "caption": "The image showcases a cyclist in action. The cyclist is wearing a helmet, sunglasses, and a blue jersey with red shorts. They are also wearing white shoes and are in a focused posture, pedaling their red bicycle.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "37038332223395485969085848516885961248058979585525167742856281219016683324566",
+        "caption": "The image does not contain any figurative parts. It primarily showcases sliced bananas in a bowl and a peeled banana on a wooden board.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "15491671859894382288700778628697141251890734714415519847061553048331976272769",
+        "caption": "The image depicts a bottle of vinegar. The bottle is transparent, allowing one to see its contents. It has a cork at the top, which is typically used to seal the bottle and prevent the contents from spilling out. The label on the bottle reads 'vinegar', which is a figurative representation of the liquid inside the bottle.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "6893471821538101522085575014833774450051540964029231782902918277095737687470",
+        "caption": "The image features a young woman wearing sunglasses and a hat. She is seen adjusting her sunglasses with one hand while her other hand covers her mouth, expressing surprise or shock.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "30140544741402559952535296944179102367638148014168668153588554013206243754791",
+        "caption": "The image depicts a person with long hair covering their face with both hands. They are wearing a white top with black stripes on the sleeves. The background is a plain grayish-white color.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as pretty as a princess",
+        "image_id": "39237047727422904174450371857405998452885844257520308106244333143416896258155",
+        "caption": "The image features a female figure with long, flowing hair that appears to be made of ice or snow. She is wearing a shimmering blue dress that seems to be made of the same material. Her facial expression is serene and she has a crown-like structure on her head.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "21824565225360283412535671148882974986214938150959211349674139293154791394650",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a vast desert landscape with sand dunes.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "45941341753254947628879000251955645324620099217110739039042537775758630142052",
+        "caption": "The image showcases a man standing against a white background. He is wearing a blue long-sleeved shirt and has his arms crossed. The man is smiling, revealing his teeth, and appears to be in a relaxed posture.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "13046100504363572203290632024021710028158720677690648000365219762308741224774",
+        "caption": "The image prominently features an elephant, which is a large mammal known for its distinctive trunk and tusks. The elephant in the image appears to be an adult, given its size and the presence of tusks. The elephant's skin shows signs of wear and tear, suggesting it might be an older individual.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "62833371531732335384315471131530776800988636672647375615129314754557983313338",
+        "caption": "The image primarily showcases the wavy patterns of water, which can be seen as a metaphorical representation of turbulent emotions or situations. The varying depths of blue and the intricate details of the waves suggest a sense of complexity and depth.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "72381639149270526541587574887232029601398517488289166894876072503206362588802",
+        "caption": "The image showcases a cat with a distinctive and expressive face. The cat has a furry coat with a mix of white, brown, and black colors. Its eyes are strikingly blue, and it appears to be hissing or growling, with its mouth open, revealing its sharp teeth.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "21369818159901127027644178340185292650996444695397887429492689634279702409208",
+        "caption": "The image does not contain any figurative parts. It depicts a vehicle parked in an outdoor setting with some industrial structures in the background.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "12442741105399708348808700477791135887945326172848504335000275792181970978069",
+        "caption": "The image showcases a close-up portrait of a woman. The key features related to the figurative part include her eyes, nose, lips, and hair. She has almond-shaped eyes with a hint of makeup, including eyeliner and mascara. Her nose is straight and narrow, and her lips are slightly parted with a muted pink lipstick. Her hair is long, dark, and wavy, cascading down past her shoulders.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sweet as sugar",
+        "image_id": "108392749172957770047857556550379677740411597909444826065322974927324023798551",
+        "caption": "The image does not contain any explicit figurative parts. It primarily showcases a plate of food with a fork placed on it.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "94086360111097086079154996293797016594642114221849172401731150545558457584015",
+        "caption": "The image depicts a rock or stone that appears to be embedded in the dried and cracked earth. The rock has a rough texture and is surrounded by cracks that extend outwards in all directions. The positioning of the rock suggests that it has been there for a long time, possibly even before the soil around it dried up. The rock can be seen as a metaphor for resilience and endurance, as it remains untouched despite the harsh conditions around it.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "97553253747143075332600802582124674685666290347140101798906188146516584377914",
+        "caption": "The image showcases two objects that resemble bricks. One brick has a rough, textured surface with a reddish-brown hue, while the other brick has a smoother, lighter brown surface with black circular patterns.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as brave as a lion",
+        "image_id": "31889533877743731643080076504810212037404344689037424039189128324230263729185",
+        "caption": "The image prominently features a dog with a surprised or startled expression on its face. The dog has large, round eyes and its mouth is slightly open, revealing its teeth. The dog's fur is a mix of white, brown, and black, and it appears to be in a room with a glass door or window behind it.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a stick",
+        "image_id": "2444624760999804491076290014056949074280446491008910925012154046457991089413",
+        "caption": "The image prominently features a cat with distinctive blue eyes and a light-colored coat. The cat appears to be sitting on a concrete surface, possibly outdoors, surrounded by various plants.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as white as a ghost",
+        "image_id": "66792614014875948682684240521216004123519566828766548945325003865611570194389",
+        "caption": "The image showcases a close-up portrait of a woman. The most prominent figurative elements include her face, which is detailed with clear blue eyes, well-defined eyebrows, and vibrant red lipstick. Her hair is styled in a high bun, and she has a soft, natural glow on her skin.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "5084331705334966110593798053284593695926870816197266824635448130034864002007",
+        "caption": "The image features a vibrant and animated snail character. The snail has a sleek, futuristic shell painted in blue, white, and red with a number '5' on it. It also has large, expressive eyes that are white with black pupils. The snail appears to be in motion, as evidenced by the blurred background and the dynamic pose of its body.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "221292047573061406185883709637979240715736148878967250999289490753657198278",
+        "caption": "The image showcases three individuals. On the left, there's a woman dressed in a blue dress, standing next to a vintage car. In the center, a tall man wearing a suit and tie stands next to the car, dwarfing the woman beside him. On the right, another woman in a black dress is seen standing next to the tall man.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "103769386273778766855717375502852264489853012712566867470893988876834200911446",
+        "caption": "The image contains a bed with a gray headboard and white bedding, a chair with a brownish-gray cushion, a table lamp with a white shade and a black base, a computer monitor with a black stand, and a small potted plant with green leaves.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as pale as a ghost",
+        "image_id": "92027818671861375104542439947198482390343110567589977179258754974917737080536",
+        "caption": "The image primarily features a close-up portrait of a woman. She has dark, long hair that falls over her shoulders. Her facial expression appears calm and neutral, with her eyes looking directly at the camera. The woman has a fair complexion, and her lips are slightly parted. She is wearing a light-colored turtleneck sweater.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "94523599801059543760864448958108896615309869866081575639697026464539971881220",
+        "caption": "The image primarily features a variety of fresh fruits and vegetables. Among these, there are kiwi slices, oranges, blueberries, a grapefruit half, a tomato, and a banana. These items are arranged in a way that they seem to be arranged on a table or countertop, and they are accompanied by glasses filled with different colored juices.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "113119300398670083503258385308675350934286003554919405095674308858827906600040",
+        "caption": "The image showcases a muscular man in a gym setting. He is shirtless, displaying a well-defined physique with prominent muscles. He is wearing a necklace and has a watch on his left wrist. The man is holding his hands together in front of him, and the lighting in the gym casts a dramatic shadow on his body, emphasizing his muscular contours.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "84184927169850584562650194354463498669690574980528986578277705606927968261953",
+        "caption": "The image showcases a person in mid-motion, seemingly slipping or tripping on a wet floor. The person appears to be in a dance or playful pose, with one leg extended outward and the other bent at the knee. The individual is wearing a patterned coat, black pants, and high heels.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as angry as a hornet",
+        "image_id": "24267416688095687804383172298709198586117147748683622195604923100134830722426",
+        "caption": "The image prominently features a cat with distinct markings and a human hand gently petting its head. The cat appears to be in a relaxed state, looking upwards with its eyes half-closed, possibly enjoying the touch. The human hand is positioned on the cat's head, with fingers gently scratching or massaging the fur.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "95739615755876638191671819375317999747550207699272490434429965983429252567549",
+        "caption": "The image prominently features a cherry with a green stem. The cherry appears ripe and shiny, with a vibrant red hue. The stem is long and slender, curving slightly upwards at the top. The cherry's shape and color give it a fresh and appetizing appearance.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "15483165026034936524041194000076820981661887831462804605140111414898739146226",
+        "caption": "The image showcases a man seated at a desk with multiple arms extending outward, each holding different objects. These objects include a red notebook, a white cup, a red folder, a magnifying glass, a calculator, and a red pen. The man appears to be multitasking or demonstrating his versatility with these items.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "10257744968390994963441209854827724392485114944346692443221182130107999932957",
+        "caption": "The image prominently features a line of camels, each carrying a person. The camels are walking in a single file through vast sand dunes. The riders are dressed in traditional attire, which includes blue robes and colorful scarves. The camels are laden with bags, suggesting they might be on a journey or a trade route.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "113705687383586690477085635121099190073371266336549951068341745214730155352106",
+        "caption": "The image prominently features a peacock with its vibrant and colorful feathers spread out. The peacock's head is blue with a distinctive crest, and its eyes are sharp and focused. The feathers display a myriad of colors including green, blue, gold, and white, creating a stunning visual spectacle.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "57286075424664396072928475809215390942556062039551743300441048378611584353551",
+        "caption": "The image showcases a man with short, dark hair. He has a clean-shaven face, with a prominent smile on his lips. He is wearing a maroon or deep red v-neck sweater over a light blue shirt.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "82966242468099469199190306966772811085225740351615113378062577039258992318413",
+        "caption": "The key figurative element in the image is a thought bubble. It appears as a white cloud with three smaller white clouds branching off from it, suggesting a chain of thoughts or ideas.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as cold as ice",
+        "image_id": "34446438360709309136677278050069670783222723053970084762054416329401137284644",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a vast green field with a few trees in the distance and a building on the right side.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sweet as honey",
+        "image_id": "98237694855268473302593967047543070742576993945601884605380710133571698110049",
+        "caption": "The image showcases a honey dipper with honey dripping from it. The honey dipper is a figurative part of the image, symbolizing the act of dripping honey into a container.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "33892095657345043765231944583829982478341859967175194854263262525824437862283",
+        "caption": "The picture shows a man riding a motorcycle on a black road. He is wearing a black jacket, black pants, and black shoes. He is also wearing a red helmet and a yellow vest. There is a white number \"88\" on the front of the motorcycle. In the bottom right corner of the picture, there is another man riding a motorcycle. He is wearing a black jacket, black pants, and black shoes. He is also wearing a black helmet and a yellow vest. There is a white number \"89\" on the front of the motorcycle.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as proud as a peacock",
+        "image_id": "88507845433673813217199237715638128351772844004812093499889221552167392469441",
+        "caption": "The image showcases a man with his hand placed on his forehead, indicating a gesture of distress, contemplation, or deep thought.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "93929174020450454497877907294852241869508847251736403243095986823466248014768",
+        "caption": "The picture shows a group of red strawberries placed on a black stone surface. The strawberries are arranged in a somewhat scattered manner, with some overlapping. The strawberries are in different stages of maturity, with some appearing red and ripe, while others are slightly green and unripe.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "24720473614042758784496144439419945058160307419202994558837517206209355664934",
+        "caption": "The image depicts a dog lying on the grass. The dog appears to be resting or relaxing, with its eyes slightly open, giving it a contemplative or serene expression.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "81303166810155167591548500231302985497718607806031079231056740109064487376111",
+        "caption": "The image primarily features white daisies with yellow centers. These daisies are often associated with innocence, purity, and simplicity. They can also symbolize joy, happiness, and friendship.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "92682389266805283835548404800348146527290485677543534709987801892739260509959",
+        "caption": "The image does not contain any figurative elements that require description.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "79819992773983742924723210294599289742857091215266240024782383967936114352979",
+        "caption": "The image showcases a person crouched down, wearing a blue jacket and sunglasses, positioned in front of a large, translucent ice block. The individual's reflection is clearly visible on the icy surface, creating a mirror effect. The person appears to be observing or interacting with the ice, possibly taking a photograph or documenting the scene.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "103512014840740440361184788607474248702678524708737810692910937854017996938441",
+        "caption": "The image prominently features a dog, which appears to be resting or sleeping. The dog has a predominantly white coat with black and tan markings. It has a relaxed posture with its eyes closed, and its paws are extended outward.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "106157383043241144472129627095364237860090007088683392983452064490474397830537",
+        "caption": "The image does not contain any figurative elements. It depicts a loaf of bread placed on a wooden board with a rustic background.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "39583204117679918014854455306701591540229003012480726279122068875798920689802",
+        "caption": "The image contains two red chili peppers with green stems and tips. They are depicted in a realistic and detailed manner, showcasing the characteristic elongated shape and vibrant color of chili peppers.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "91080401536174050478857906157825547669420910885719826342850391285708884576570",
+        "caption": "The image depicts a sharp pencil with a pointed tip. The pencil appears to be yellow in color and has a wooden texture with visible grain patterns. The tip of the pencil is very thin and appears to be broken or sharpened to an extreme point.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "70710155199303665802028208723994493790826864196404371315693202060173960680333",
+        "caption": "The image showcases a red apple with a green stem at the top. The apple appears ripe and shiny, with a smooth texture. The stem is straight and attached to the apple's body.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "94612174362289631757414903878162258779174239649240029656982683383986222824515",
+        "caption": "The image prominently features a majestic mountain peak that rises above the surrounding terrain. The peak is covered in snow and ice, suggesting it is a high-altitude mountain. The mountain's sharpness and grandeur make it a symbol of challenge, achievement, and nature's beauty.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "89069889871946004533436399979977664663388377971873877534046581205680476669217",
+        "caption": "The image depicts a dog wearing glasses, a tie, and holding a pencil in its mouth. The dog appears to be seated in an office chair, suggesting a humorous take on a professional setting.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "38506953788903802426356518845067561806931016835608167934809144188940071174507",
+        "caption": "The image does not contain any figurative elements. It depicts a series of rectangular objects that appear to be glowing or illuminated, possibly due to some form of heat or light source.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "77631714022098115554151486056470973291370595465277352173092774855047698310674",
+        "caption": "The image depicts a snail moving across a surface. The snail is the primary focus and is shown in detail, with its brown shell and tentacles extended forward.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as funny as a clown",
+        "image_id": "114511809106669806653416434517618358954412928856242620623247754532827505832170",
+        "caption": "The image showcases a person dressed as a clown. The clown has a vibrant red curly hair, a painted white face with blue and yellow accents around the eyes and a red nose. The clown is wearing a colorful outfit with a blue, red, and yellow top hat adorned with yellow pompoms.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "89086808249711161878607506882663792536786041639012020808029087355636718720882",
+        "caption": "The image does not contain any figurative elements. It showcases a close-up view of vibrant, flowing fabric in various colors.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as blue as the ocean",
+        "image_id": "33385205197754236836707248826190517225797393532137870328977078409609842406199",
+        "caption": "The image does not contain any prominent figurative parts. It showcases vast sand dunes with intricate patterns and curves, highlighting the natural beauty and vastness of a desert landscape.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "104897582640237140944947319026602867884339615655505099813821147973488967151495",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a breathtaking landscape of snow-capped mountains during what appears to be either sunrise or sunset.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "67824080846989834619666334521526964697448797322627638507262747020266405155175",
+        "caption": "The image showcases a modern living room with a large window that offers a scenic view of a coastal city and mountains in the distance. The room is furnished with a navy blue sofa adorned with patterned cushions. In front of the sofa is a white coffee table with a few decorative items on it. On the left side of the room, there's a television mounted on a white cabinet. Above the television, there's a framed artwork depicting a colorful aerial view of a city.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "65585679794773275337282777083011902155780332931403381159585759465492043917648",
+        "caption": "The image does not contain any figurative parts that stand out as distinct from the other objects. It primarily depicts a kitchen with various household items and appliances.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "62710197506612050715181978743199517172890454435158668660824007361800041474142",
+        "caption": "The image does not contain any figurative elements. It depicts a cluttered room with various items scattered around.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "21170491679622716079785620770097722614118231270967454526941604169946250664428",
+        "caption": "The image showcases two cows. One cow is white with a distinct horn curving backward, while the other is brown with a horn pointing straight up. The white cow appears to be resting its head on the brown cow's neck, creating a sense of closeness and companionship between the two animals.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "74517562282723841714431763784040040819765187640028272247662263941699683558165",
+        "caption": "The image does not contain any figurative elements. It is an interior view of a room with a wooden floor and white walls.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "65116678418022791279103760830895081471126088485757237377948288928926039691490",
+        "caption": "The image primarily showcases a collection of colorful, gummy bear-shaped candies. These candies are glittery and come in a variety of vibrant colors including red, green, yellow, and orange. They are closely packed together, forming a circular arrangement.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "27166987358103240271215300061450202633399154846075085499744919433585446903881",
+        "caption": "The image prominently features a fox, which is a mammal known for its sharp features, pointed ears, and bushy tail. The fox in the image appears to be in a natural setting, surrounded by fallen leaves, giving it a wild and natural look.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "79420133982170525555546861604481932869271681849691019536438282370070118395687",
+        "caption": "The image depicts two halves of an apple, one fresh and the other rotten. The fresh half is vibrant and has a smooth texture, while the rotten half is brown and wrinkled, indicating decay. This can be seen as a metaphorical representation of something that is in its prime versus something that is deteriorating or falling apart.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a mountain",
+        "image_id": "108505559674063841407154771271246757942205682606001921647100751627324163229158",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a historical stone building with a cemetery in the foreground.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "6198119938731246095679214238078885199548459000924580618860544469314351764485",
+        "caption": "The image does not contain any prominent figurative parts. It primarily showcases a desert landscape with cacti and mountains.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "99592411640648736596855465289266532318630683707258214292361826740270445209331",
+        "caption": "The image showcases a green chili pepper, which can be considered a figurative part due to its resemblance to a face when viewed from a certain angle. The pepper has a curved shape, two visible 'eyes' or ridges, and a 'nose' or protrusion at the top.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a snail",
+        "image_id": "111290289509263419761208837423447752215911306646190402060361046221811857056053",
+        "caption": "The image does not contain any figurative parts. It showcases three motorcycles parked side by side on a road.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as funny as a clown",
+        "image_id": "51820700529355194112315482818952561013594582186912134054602837942950415152688",
+        "caption": "The image showcases a man with a surprised or exaggerated facial expression. He has wide eyes, raised eyebrows, and an open mouth, all of which contribute to a humorous or comedic effect.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "13557486946482567534527030667180937552544210609928951342783226214097817994150",
+        "caption": "The image features a woman sitting at a desk, engrossed in a phone call. She is wearing glasses and a white shirt. The woman appears to be in a focused or contemplative state, holding a pen in her other hand, possibly taking notes or making a list.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a stick",
+        "image_id": "61510153346042653190488979504121392494945076968748425810241518176765492191202",
+        "caption": "The image prominently features a dog with a fluffy coat, lying down on a pathway. The dog has a mix of white, brown, and black fur, with expressive eyes that seem to be gazing forward. The dog's ears are slightly floppy, and it appears to be in a relaxed or contemplative state.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "82119697427788877897897664691704236879185364533526137392062792451080908508708",
+        "caption": "The image does not contain any figurative parts. It only shows a group of strawberries covered in a white substance, possibly indicating mold or mildew.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as helpless as a baby",
+        "image_id": "59180441063749473739113480757811336407614568115892538962468636220999855932301",
+        "caption": "The image contains three human figures. The first is an adult woman holding a baby in her left arm. The baby is wearing a light blue sleeveless top with a design on it. The second figure is a young boy, possibly around the age of 7 or 8, wearing a yellow and orange shirt with a pattern on it. He is holding a yellow object in his right hand. The third figure is another young boy, possibly around the same age as the one in the orange shirt, but with darker skin and wearing a beige shirt with a red stripe.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "110877747175434902757881073152398279613474529555701673687219162909236032070689",
+        "caption": "The image primarily showcases a collection of tomatoes with water droplets on them. While there aren't any figurative elements per se, the arrangement and the shine on the tomatoes can be seen as artistic choices that give the image aesthetic appeal.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fast as a cheetah",
+        "image_id": "44504394847671506130081188849265207164569917295660337549409426528887077373524",
+        "caption": "The image showcases a family enjoying a day at the beach. The central focus is on a unique vehicle that appears to be a combination of a car and a boat, with a streamlined body and wheels. The vehicle is parked on the sandy shore, and a man is driving it. There are three children seated in the vehicle, with one of them pointing towards the water. In the background, there are other boats anchored in the water, and a few people can be seen on the shore.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as tall as a skyscraper",
+        "image_id": "43852699606990544197207079573167778113902261927935446505286612275011304021400",
+        "caption": "The image does not contain any prominent figurative elements. It showcases a cityscape with tall buildings under a clear blue sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sly as a fox",
+        "image_id": "93135281884216556658249899766972199300649258689257670539709645953065234055703",
+        "caption": "The image depicts a man with a beard and mustache, wearing a blue shirt. He is tilting his head to the side with a mischievous or playful expression, raising one eyebrow. The man's eyes are squinted, and he has a slight smirk on his face.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "3111587498708637027580214655180997296343140588733009799514390613849791035142",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural scene with water, ice, and some dried grass.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a snail",
+        "image_id": "17189363002877895122832499334713149097039143384143857652073090701734995802467",
+        "caption": "The image does not contain any figurative parts. It depicts a red car parked on a cobblestone street with a scenic background of a bridge and a tower.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "53719393365455510894490011392830580505638671899892072330438219031430331255577",
+        "caption": "The image primarily showcases a collection of rotting apples. These apples are visibly decayed, with various shades of red, brown, and yellow. The texture of the apples appears soft and mushy, indicating that they have reached the stage of spoilage.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as hot as lava",
+        "image_id": "115609351662286797160729344648976377324964598604823893749719254111184075047370",
+        "caption": "The image depicts a woman sitting on a couch, wrapped in a gray blanket. She appears to be in a contemplative or introspective state, with her head slightly tilted downward and her eyes closed. The blanket envelops her, providing a sense of comfort and protection.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slow as a turtle",
+        "image_id": "57926383299976525113110818659060019031023367816354293215740992617504638762705",
+        "caption": "The image does not contain any figurative parts. It only depicts a turtle.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sour as vinegar",
+        "image_id": "89777442078642904831677579787596536183985518341663183427456339515667090818610",
+        "caption": "The image primarily features a glass jar filled with a yellow liquid, which appears to be lemonade. The jar is placed on a white surface, and there are lemons and limes scattered around it. The lemons are cut in half, revealing their juicy insides, while the limes are whole. The glass jar has a design on its side, and there's a white cloth or napkin in the background.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "74293141769950580183479351089055857090636483186689806457055182966782608877741",
+        "caption": "The image depicts a bulldog lying down on a desk, resting its head on a laptop. The bulldog appears to be in a relaxed or sleepy state, with its tongue slightly out. The positioning of the bulldog and the laptop suggests a playful or humorous juxtaposition of a traditional work setting with a casual, playful presence.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as hard as a brick",
+        "image_id": "96748864099841753490226046601527521886753177466088101789336763094602310315421",
+        "caption": "The image depicts two black and silver rollers. The rollers have a cylindrical shape with a flat surface. They are connected to handles on both ends, which are also cylindrical in shape and have a black and silver color scheme. The handles have a hole in the middle, possibly for attaching a strap or a lanyard.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "104528175494313650908085921647389083769924700924034020557676339141379509087057",
+        "caption": "The image showcases a green apple with a single leaf attached to its stem. The leaf is positioned on the top right corner of the apple, and its stem is inserted into the apple's core. The apple itself appears ripe and has a glossy surface.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "73437708707969088559548193436486588369946262563645513931857895649030219028480",
+        "caption": "The image does not contain any figurative parts. It only shows a set of screwdrivers with different colored handles.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "38767853028971584079706759872437003375881481624331026944788554598845692653764",
+        "caption": "The image depicts two individuals who appear to be spelunkers or cavers. One of them is actively rappelling down a rock face using a rope, while the other is floating or swimming in a body of water below. The person rappelling is equipped with a helmet, gloves, and a safety harness, and is holding onto the rope with one hand while using the other to guide himself. The person in the water is illuminated by a light source, revealing their silhouette against the turquoise water.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "62106886048303602724153691098765879035982602941164008999723616075906272307931",
+        "caption": "The image showcases a white daisy with a vibrant yellow center. The daisy has multiple petals that are arranged in a circular pattern around the center. The center of the daisy is composed of numerous small, tightly packed yellow disc florets. The petals are smooth and have a slightly curled appearance at the edges.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as filthy as a pigsty",
+        "image_id": "67515933057308738884188050321629418798774248122056101169012758153121825105774",
+        "caption": "The image contains a framed picture hanging on the wall. The picture depicts a brown and white cow or bovine, possibly a calf, with a textured background.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "10346040369748157951238623231874391466828596815100545847432627571097926248040",
+        "caption": "The image depicts a bald man sitting on a yellow sofa. He is wearing a striped shirt and has his feet up on a table in front of him. He is holding a remote control in his hand.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as strong as an ox",
+        "image_id": "979036581157607610268950907344466637131627973094402012108876763093756304786",
+        "caption": "The image prominently features a muscular man with a beard and tattoos. He has a fierce expression on his face, with his mouth open wide, showcasing his teeth. He is flexing his muscles, emphasizing his physique.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as busy as a bee",
+        "image_id": "107894109517645995618662755955855389144950769387601777589807066679832335475088",
+        "caption": "The image showcases a man with a joyful expression, his mouth open in a broad smile. He has a beard and is looking directly at the camera. His arms are crossed, and he appears relaxed and comfortable in his denim shirt.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as an arrow",
+        "image_id": "36986439000895474853967179940712235811748034939035148753487266371514308050549",
+        "caption": "The image does not contain any figurative parts. It is a simple illustration of a tool with a wooden handle and a metal blade.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "195408492606697103535962304331606368817196220436657172120480999968860600828",
+        "caption": "The image primarily showcases a collection of tomatoes, which are literal objects. However, if we look at them metaphorically, they could represent something round and red, perhaps even something cherished or valued in one's life.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "29784044142226239137149811901220209218339610484077909826481044861361362901789",
+        "caption": "The image does not contain any figurative parts. It only showcases a bunch of bananas.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as sharp as a knife",
+        "image_id": "42652579286415834377152018693205108336973037661673240151288897511032787099216",
+        "caption": "The image showcases two knives with the brand name 'VINERS' inscribed on them. These knives are placed on a wooden cutting board. Alongside the knives, there are sliced onions and bell peppers. The onions are sliced both vertically and horizontally, while the bell peppers are sliced into rings.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a tomato",
+        "image_id": "84227130771985212793828780782097624347417666068903353296527970199854840650350",
+        "caption": "The image does not contain any figurative elements. It depicts ripe tomatoes growing on a plant.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "80478975530793462116142951398112767621455620332176782364101074648296649957847",
+        "caption": "The image does not contain any discernible figurative parts. It primarily showcases a banana with some spots and imperfections.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as deep as the ocean",
+        "image_id": "70164077477105187732811469690838104893640778082767339376345647933343766246297",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a vast expanse of water meeting a clear blue sky.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as fresh as a daisy",
+        "image_id": "76208754857182386049512348562503004558116523383195556996718536492431825435145",
+        "caption": "The image does not contain any figurative elements. It depicts a slice of bread, a butter dish with butter, and a blue cloth.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as red as a cherry",
+        "image_id": "110555846042418949205495291210771788866075385463653060228266905436160160895622",
+        "caption": "The image showcases a red bell pepper with a green stem. The stem is curved and attached to the top of the pepper. The pepper itself is smooth with a glossy finish, and it has a typical bell-shaped structure.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "105137313519885163522003264811094532518357413795211360092491407630893829045637",
+        "caption": "The image prominently features a close-up of a human eye and part of the face. The eye is detailed, showing the iris, eyelashes, and eyebrow. The skin appears smooth and has a natural glow. The eyelashes are long and well-defined, and the eyebrow is neatly shaped. The lips are slightly parted, revealing a hint of the lip color.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as smooth as silk",
+        "image_id": "9309141785285378970472423089421873885852740354188743779548089448809927298030",
+        "caption": "The image does not contain any figurative parts. It showcases a plain teal-colored pillowcase with a draped teal fabric on top of it.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as thin as a rail",
+        "image_id": "85795314665432747876793332999670111808013013165249281145107955358542998018856",
+        "caption": "The image does not contain any figurative parts. It showcases a wooden block with visible grain patterns and a knot.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as pale as a ghost",
+        "image_id": "27569137358827633933625828754034283248208296881100788243796966532594254185885",
+        "caption": "The image showcases a young individual with striking blue eyes and platinum blonde hair. The person is captured in a close-up shot, with one hand lightly touching the hair, emphasizing the texture and volume. The gaze is directed towards the camera, giving a direct and intense look. The facial expression is neutral, yet there's an air of confidence about the individual.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as wide as the sea",
+        "image_id": "112358465151812425012631186059111833951322178364671188684438564941418831520711",
+        "caption": "The image does not contain any figurative parts that are explicitly described. It primarily showcases a vast expanse of water with a clear blue sky overhead.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as big as a mountain",
+        "image_id": "99067803205130627380878047617692937553638963507226283643625740254356398907560",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a majestic castle situated atop a hill, surrounded by lush greenery and a vast landscape.",
+        "label": 1,
+        "type": "simile"
+    },
+    {
+        "text": "as dry as a desert",
+        "image_id": "38062480065173619320172061987045590014820799991899899904591507825226593407074",
+        "caption": "The image primarily features a vast desert landscape with rolling sand dunes. Dominating the scene is a clear blue sky. In the middle of the desert, there is a cluster of palm trees, providing a stark contrast to the surrounding arid environment. Additionally, there is a lone tree on the right side, which stands out due to its green foliage against the golden hue of the sand.",
+        "label": 0,
+        "type": "simile"
+    },
+    {
+        "text": "as slippery as an ice rink",
+        "image_id": "103549772657570365058892142092446404643296810699903131776430715003398085468638",
+        "caption": "The image does not contain any figurative parts that can be described in detail. It primarily showcases a muddy terrain with patterns formed by tire tracks and water puddles.",
+        "label": 1,
+        "type": "simile"
+    }
+]
