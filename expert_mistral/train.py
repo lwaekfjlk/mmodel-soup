@@ -46,7 +46,9 @@ def evaluate(tokenizer, model, dataloader, device, args):
                 yesno_logits = torch.stack([logits[:, a_token_id], logits[:, b_token_id],  logits[:, c_token_id], logits[:, d_token_id], logits[:, e_token_id]], dim=-1)
             else:
                 yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+            ipdb.set_trace()
             predictions = torch.argmax(yesno_logits, dim=-1)
+            #ipdb.set_trace()
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
             yesno_logits = yesno_logits.tolist()
@@ -56,9 +58,9 @@ def evaluate(tokenizer, model, dataloader, device, args):
             all_predictions.extend(predictions.cpu().tolist())
     if args.answer_options == 2:
         accuracy = total_correct / total
-        f1 = f1_score(all_labels, all_predictions, average='macro')
-        precision = precision_score(all_labels, all_predictions, average='macro')
-        recall = recall_score(all_labels, all_predictions, average='macro')
+        f1 = f1_score(all_labels, all_predictions)
+        precision = precision_score(all_labels, all_predictions)
+        recall = recall_score(all_labels, all_predictions)
         return accuracy, f1, precision, recall, total_yesno_logits
     else:
         accuracy = total_correct / total

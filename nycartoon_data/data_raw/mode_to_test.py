@@ -9,7 +9,7 @@ with open(train_path, 'r') as file:
     test_data = json.load(file)
 
 for observation in test_data:
-    test_data[observation]['mode'] = "single"
+    test_data[observation]['mode'] = "multichoice"
 
 file_path = '/storage/mmodel-soup/nycartoon_data/data_raw/nycartoon_dataset_test_NEW.json'
 with open(f"{file_path}_NEW.json", "w") as file:
