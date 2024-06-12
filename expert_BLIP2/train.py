@@ -2,6 +2,7 @@ import argparse
 import torch
 import torch.nn as nn
 from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
+from torch.nn.parallel import DistributedDataParallel as DDP
 from tqdm import tqdm
 from peft import LoraConfig, get_peft_model, PeftModel
 from mustard import get_mustard_dataloader
@@ -11,6 +12,7 @@ from irfl import get_irfl_dataloader
 from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
+
 
 
 def evaluate(tokenizer, model, dataloader, device, args):
