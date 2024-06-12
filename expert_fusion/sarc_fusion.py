@@ -14,8 +14,8 @@ def load_and_transform_baseline(file_dir):
         file_path = os.path.join(file_dir, f'sarc_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
-                image_id = line['image_id']
-                data_id = f"{image_id}"
+                image_id, text = line['image_id'], line['text']
+                data_id = f"{image_id}_{text}"
                 dataset[name].append(line)
                 results[data_id]['logits'][name] = line['logits']
                 if results[data_id]['target'] is None:
@@ -103,8 +103,8 @@ def softmax_fusion(results):
 def cascaded_fusion(results, threshold):
     gths = []
     preds = []
+    softmaxed_probs = {}
     for data_id, data in results.items():
-        softmaxed_probs = {}
         for interaction_type, logits in data['logits'].items():
             softmaxed_probs[interaction_type] = np.exp(logits) / np.sum(np.exp(logits))
         if np.max(softmaxed_probs['R']) > threshold and np.max(softmaxed_probs['U']) > threshold:
