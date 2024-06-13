@@ -46,6 +46,7 @@ def main():
     print(f"R_ids: {len(R_ids)}")
     print(f"AS_ids: {len(AS_ids)}")
     print(f"U_ids: {len(U_ids)}")
+    print("Total: ", len(R_ids) + len(AS_ids) + len(U_ids))
 
 if __name__ == "__main__":
     main()
