@@ -21,11 +21,7 @@ class IRFLDataset(Dataset):
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         return [
-<<<<<<< HEAD
-            {                "id": id,
-=======
-            {
->>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
+            {     "id": id,
                 "image_id": id,
                 "text": data["text"],
                 "label": 1 if 'Figurative' in data['category'] else 0
@@ -36,10 +32,7 @@ class IRFLDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         text = item['text']
-<<<<<<< HEAD
         id = item['id']
-=======
->>>>>>> 074f84b93f92db0df5a1977597278f5deacd885b
         label = torch.tensor(item['label'], dtype=torch.long)
         with open('irfl_captions.json', 'r') as json_file:
             parsed_results = json.load(json_file)

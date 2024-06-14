@@ -3,6 +3,7 @@ from collections import defaultdict
 import os
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+import json
 
 def load_and_transform_baseline(file_dir):
     subset_names = ['baseline']
@@ -23,8 +24,9 @@ def load_and_transform_baseline(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+
 def load_and_transform_data(file_dir):
-    subset_names = ['AS', 'R', 'U']
+    subset_names = ['AS', 'R', 'U', 'baseline']
     dataset = defaultdict(list)
     results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
 
@@ -42,6 +44,7 @@ def load_and_transform_data(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+
 def interaction_type_acc(results, interaction_type='AS'):
     gths = []
     preds = []
@@ -52,6 +55,7 @@ def interaction_type_acc(results, interaction_type='AS'):
         preds.append(predicted_label)
     f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
+
 
 def simple_average_fusion(results):
     gths = []
@@ -118,20 +122,29 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../mustard_data/expert_inference_output/expert_albef'
+    file_dir = '../mustard_data/expert_inference_output/expert_blip2'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
-
-    print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))
-    print("Weighted Average Fusion Accuracy:", weighted_average_fusion(transformed_results, weighted_weights))
-    print("Max Fusion Accuracy:", max_fusion(transformed_results))
-    print("Softmax Fusion Accuracy:", softmax_fusion(transformed_results))
+    f1, precision, recall, accuracy = simple_average_fusion(transformed_results)
+    print(f"Simple Average Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = weighted_average_fusion(transformed_results, weighted_weights)
+    print(f"Weighted Average Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = max_fusion(transformed_results)
+    print(f"Max Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = softmax_fusion(transformed_results)
+    print(f"Softmax Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
     for threshold in [0.5, 0.6, 0.7, 0.8, 0.9]:
-        print(f"Cascaded Fusion Accuracy (Threshold={threshold}):", cascaded_fusion(transformed_results, threshold))
-    print("AS Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'AS'))
-    print("R Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'R'))
-    print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
-    baseline_dataset, baseline_results = load_and_transform_baseline(file_dir)
-    print("Baseline Interaction Type Accuracy:", interaction_type_acc(baseline_results, 'baseline'))
+        f1, precision, recall, accuracy = cascaded_fusion(transformed_results, threshold)
+        print(f"Cascaded Fusion Threshold={threshold}): f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'AS')
+    print(f"AS Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'R')
+    print(f"R Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'U')
+    print(f"U Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'baseline')
+    print(f"Baseline Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    f1, precision, recall, accuracy = simple_average_fusion_model(transformed_results)
+    print(f"Softmax Logits Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")

@@ -63,9 +63,33 @@ def load_and_transform_baseline(file_dir):
                     results[data_id]['target'] = line['target']
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
+from collections import defaultdict
+import json
+import ipdb
 
-def load_and_transform_data(file_dir):
-    subset_names = ['AS', 'R', 'U']
+def matching_acc(gths, logits, data_ids):
+    matching_dataset = defaultdict(lambda: defaultdict(dict))
+    for gth, logit, data_id in zip(gths, logits, data_ids):
+        image_id = data_id.split('_')[0]
+        text = data_id.split('_')[1]
+        logit = np.exp(logit) / np.sum(np.exp(logit))
+        matching_dataset[image_id][text] = {'gth': gth, 'logit': logit}
+
+    matching = 0
+    for multi_choice in matching_dataset.values():
+        gths = []
+        yes_logits = []
+        for choice in multi_choice:
+            gths.append(multi_choice[choice]['gth'])
+            yes_logits.append(multi_choice[choice]['logit'][1])
+        assert len(gths) == len(yes_logits) == 5
+        if gths[yes_logits.index(max(yes_logits))] == 1:
+            matching += 1
+    return matching / len(matching_dataset)
+
+
+def load_and_transform_baseline(file_dir):
+    subset_names = ['baseline']
     dataset = defaultdict(list)
     results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
 
@@ -74,8 +98,64 @@ def load_and_transform_data(file_dir):
         file_path = os.path.join(file_dir, f'nycartoon_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
-                image_id, text = line['image_id'], line['text']
-                data_id = f"{image_id}_{text}"
+                image_id = line['image_id']
+                data_id = f"{image_id}"
+                dataset[name].append(line)
+                results[data_id]['logits'][name] = line['logits']
+                if results[data_id]['target'] is None:
+                    results[data_id]['target'] = line['target']
+                assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
+    return dataset, results
+
+def load_and_transform_baseline(file_dir):
+    subset_names = ['baseline']
+    dataset = defaultdict(list)
+    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
+
+    # Load data from files
+    for name in subset_names:
+        file_path = os.path.join(file_dir, f'nycartoon_{name}_logits.jsonl')
+        with jsonlines.open(file_path, 'r') as f:
+            for line in f:
+                image_id = line['image_id']
+                data_id = f"{image_id}"
+                dataset[name].append(line)
+                results[data_id]['logits'][name] = line['logits']
+                if results[data_id]['target'] is None:
+                    results[data_id]['target'] = line['target']
+                assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
+    return dataset, results
+
+def simple_average_fusion_model(results):
+    gths = []
+    preds = []
+    logits = []
+    with open('test_rus_logits.json', 'r') as f:
+        rus_logits = json.load(f)
+    for data_id, data in results.items():
+        total_logits = [sum(logits) / len(logits) for logits in zip(*data['logits'].values())]
+        logits.append(total_logits)
+        #total_logits = [0, 0]
+        #for i in range(2):
+        #    total_logits[i] = data['logits']['R'][i] * rus_logits[data_id][0] + data['logits']['U'][i] * rus_logits[data_id][1] + data['logits']['AS'][i] * rus_logits[data_id][2]
+        predicted_label = total_logits.index(max(total_logits))
+        gths.append(data['target'])
+        preds.append(predicted_label)
+    acc = matching_acc(gths, logits, list(results.keys()))
+    #f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    return acc
+
+def load_and_transform_data(file_dir):
+    subset_names = ['AS', 'R', 'U']
+    dataset = defaultdict(list)
+    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
+    # Load data from files
+    for name in subset_names:
+        file_path = os.path.join(file_dir, f'nycartoon_{name}_logits.jsonl')
+        with jsonlines.open(file_path, 'r') as f:
+            for line in f:
+                image_id = line['image_id']
+                data_id = f"{image_id}"
                 dataset[name].append(line)
                 results[data_id]['logits'][name] = line['logits']
                 if results[data_id]['target'] is None:
@@ -163,7 +243,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../nycartoon_data/expert_inference_output/expert_blip2'
+    file_dir = '../nycartoon_data/expert_inference_output/expert_mistral'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
@@ -180,3 +260,4 @@ if __name__ == "__main__":
     print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
     baseline_dataset, baseline_results = load_and_transform_baseline(file_dir)
     print("Baseline Interaction Type Accuracy:", interaction_type_acc(baseline_results, 'baseline'))
+    print("Blip 2 Fusion Accuracy:", simple_average_fusion_model(baseline_results))

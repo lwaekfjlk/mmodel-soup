@@ -1,0 +1,2277 @@
+[
+    {
+        "text": "walking encyclopedia",
+        "image_id": "110766717328662251833460335615954724396075439577030011321686354301248156973181",
+        "caption": "The image depicts a person walking on a pathway during sunset. The individual is seen from the back, wearing a black jacket and blue jeans. They appear to be in a contemplative or peaceful state, possibly enjoying the serenity of nature.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "82082015757093586772239394531477215693343743858693639666227121532787350590456",
+        "caption": "The image showcases a young woman with a joyful expression. She has her mouth wide open, revealing her teeth, and her eyes are wide open, indicating surprise or excitement. Her arms are raised, and she's clenching her fists, further emphasizing her emotional state of elation or triumph.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "52840846659874861284868549490647591244857162161532665377017845561071957080604",
+        "caption": "The image prominently features a woman in a winter setting. She is seen from the back, with her arms outstretched, and snow is being thrown upwards, surrounding her. She is wearing a beige hat, a pink scarf, and a dark-colored coat. The snowflakes are captured mid-fall, creating a mesmerizing effect against the backdrop of a snowy landscape.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "98638160654475741945514604646338339137914645022492813523370358076430657410248",
+        "caption": "The image depicts an umbrella that is open. The umbrella is green in color and has a wooden handle. On the canopy of the umbrella, there is a white text that reads 'Alina Lopez Diva'.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "105425441748818454922414089137729610618005701853296596338477628027072823743730",
+        "caption": "The image contains four playing cards. From left to right, the first card displays a colorful jack of hearts, the second card shows a black spade face, the third card features a colorful king of spades, and the fourth card presents a black ace of spades.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "4066254487630095803713747255717645737157933487179503286497461622530707965878",
+        "caption": "The image does not contain any prominent human figures. It depicts a dark street scene with buildings on both sides, illuminated by streetlights and other artificial light sources.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "19594566428347415281312491892618489606069479640571551156668403013356437217126",
+        "caption": "The image showcases a bee, which is a flying insect. It has a distinctive fuzzy body, a pair of antennae, and wings. The bee is seen on a purple flower, likely collecting nectar or pollen.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "64974287055334127163690981923636899414972622532060949819002142287282819092437",
+        "caption": "The image depicts a man sitting on a beach, engrossed in reading a book. The man is wearing a white t-shirt and a hat, and he is positioned such that the sun is setting behind him, casting a warm glow on the scene. The sun is near the horizon, creating a serene ambiance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "9928364605141930779030443761652637007425581983408582180542802459938699253078",
+        "caption": "The image prominently features a lion, which is a large, majestic feline. The lion in the image has a thick mane that is a mix of dark brown and golden hues. Its eyes are focused and intense, giving it a regal appearance. The lion's fur is well-groomed, and its tail is long and bushy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "14034397213413280548448480119442815906240686178847269192975858043666481785870",
+        "caption": "The picture does not contain any figurative elements.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "81278677163169836361738750222795446340806176023472741742073164331161186454128",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases rows of books on shelves.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "108550139607929233947608232994748935940462738934466480078988382848975127444366",
+        "caption": "The image primarily showcases various gold bars with different brands and weights inscribed on them. Some of the brands visible are 'Degussa', 'Manitonabank', 'UBS', and 'Switzerland'. Each bar has a unique weight mentioned, such as '1 Kilo', '500g', '1000g', and so on. The bars are stacked and scattered, with some placed on top of others, creating a visual hierarchy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "34438372199144127833212864881846544175900809829894795828867042626898238865938",
+        "caption": "The image prominently features a lion lying on a rock. The lion appears to be resting or sleeping, with its head slightly tilted to the side. Its mane is thick and fluffy, and its eyes are closed, giving it a serene expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "52263887253426355726038994263857366380179270959725539394400558040215026136711",
+        "caption": "The image depicts a young woman standing by a train door. She is holding a cup in her hand, possibly containing a beverage. The woman is wearing a gray coat, an orange turtleneck sweater, and blue pants. She has long dark hair and is smiling at the camera.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "67186791029331298959392960957519966493557595989237229231972996832096587002761",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a dense forest landscape.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "4814922055119753686594802002330992157173842856881156441640145761276802573346",
+        "caption": "The image prominently features a lion, which is a large, majestic feline known for its mane and powerful build. The lion in the image appears to be resting or sleeping, with its eyes closed and its head slightly tilted.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "102888728787876464785209326273029769434323595757918187844760746301968296820246",
+        "caption": "The image depicts a war-torn landscape with charred trees, destroyed buildings, and a body of water. In the foreground, there is a broken statue or monument with a face that appears to be in ruins. The statue seems to be a significant or iconic landmark that has been damaged or destroyed during a battle or conflict.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "102513398832724090889998092873581986424082673781867599430044062254125084398897",
+        "caption": "The image primarily showcases several smooth, rounded white stones against a black background. These stones do not have any discernible facial features or other figurative elements, making them appear more like natural objects rather than representations of anything specific.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "30842081088014896425655666553687978850684874623651593646948097215606890020764",
+        "caption": "The image showcases a detailed and vibrant illustration of a human heart. The heart is depicted with intricate veins and arteries, showcasing its complex structure. The color palette consists of deep reds, blues, and a touch of pink, giving it a lifelike appearance. The heart is portrayed in a frontal view, with the major chambers and vessels clearly visible.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "111593769763735334949488795709811564716922291200846107676615792586973287033215",
+        "caption": "The image prominently features a fox curled up in a resting position. The fox appears to be in a deep slumber, with its eyes closed and its body tucked in. The fox's fur is a mix of orange and white, and its ears are perked up, giving it a alert appearance despite its relaxed state.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "23879625354670887856527196892448785907612934579583193061729805624948347985663",
+        "caption": "The image showcases a cat with a distinctive posture. The cat's tail is raised and curled upwards, while its ears are perked up, giving it an alert and attentive appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "18696462093247344690978442691849909289290426056667394576794360775686591454494",
+        "caption": "The image depicts a dense swarm of fireflies illuminating a stone staircase in a forest setting. The fireflies are scattered throughout the scene, creating a vibrant and luminous atmosphere. The staircase, made of weathered stone, leads the viewer's eye deeper into the forest, adding a sense of depth and mystery to the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "90051404494220868582830778189457833738123503095828143888873393740457681331111",
+        "caption": "The image showcases a person lying on the beach, reading a book. The person is wearing a white hat, which they have placed on their head to shade their eyes. The positioning of the hat suggests that the person is relaxed and engrossed in their reading.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "38928252281756689545004091828467844217690847285295343338701367241747372622366",
+        "caption": "The image depicts a house engulfed in flames, symbolizing destruction or devastation. The intense orange and red hues of the fire contrast sharply with the gray of the house, creating a powerful visual impact. The smoke rising from the house further emphasizes the severity of the fire.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "104599208214832397837534584816563017049808140590879799346116197522865857234373",
+        "caption": "The image depicts a war-torn cityscape with a prominent clock tower in the background. The tower is adorned with various decorations, including flags and a statue. In the foreground, there are soldiers engaged in combat, with one soldier firing a rifle. There are also tanks and other military equipment scattered around, indicating a significant battle or invasion. The overall atmosphere is one of chaos, destruction, and heroism.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "101731454848573638453909812177484476934069756035790849174966996002577433347438",
+        "caption": "The image primarily showcases a collection of smooth, rounded pebbles or stones. These pebbles vary in size and are closely packed together, creating a textured background. From a figurative perspective, one could interpret these pebbles as representing life's journey or the path one treads. The varying sizes and shapes could symbolize the ups and downs, twists, and turns of life, while the close packing might signify the journey's challenges and the importance of perseverance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "65202917750153395205801585906960957822191279924261423366639505461884299930122",
+        "caption": "The image features a beach setting with a striped umbrella prominently placed in the foreground. The umbrella has a wooden pole and appears to be of a medium size, providing shade for an area beneath it. To the right of the umbrella, there's a wooden beach chair with white cushions, suggesting a relaxation spot.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "54474889959317887565777353243417275672067662951261375045169919717990748188646",
+        "caption": "The image showcases a light bulb, which is a common symbol for ideas, inspiration, and creativity. The illuminated bulb signifies a bright idea or solution that can illuminate or solve a problem.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "98925856680325061832505606751875891946113447211624152072672193109592935958510",
+        "caption": "The image prominently features a crescent moon in the night sky. The moon appears to be partially obscured by clouds, lending a mysterious and ethereal ambiance to the scene.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart sank",
+        "image_id": "102462995537531904468416369740505269506337158807356312883700877256811679277837",
+        "caption": "The image depicts a boat that appears to be sinking or has sunk, with its bow pointing upwards and its stern submerged in the water. The boat is painted in blue and white colors, and it has a structure that resembles a cabin or deck. The sun is setting in the background, casting a golden hue over the water and creating a serene ambiance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "62459693721824608568861646032532866715824659093120040707260060790065139100551",
+        "caption": "The image prominently features a lion lying down on the ground. The lion appears to be in a relaxed state, with its eyes closed and mouth slightly open. Its mane is thick and dark, and its fur is well-groomed. The lion's face is visible, showcasing its distinctive features such as the prominent nose, cheeks, and whiskers.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "84865019881266600790126625915046851829979879120973996307394248454681214372716",
+        "caption": "The image prominently features a shiny, gold-colored nugget in the foreground. It appears to be a raw, unrefined piece of gold, with a rough and textured surface. The nugget is surrounded by other similar pieces, suggesting it might have been found in a gold mine or extracted during mining operations.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "8669382797276908244054330033014981147413608450406635529467731765098529088472",
+        "caption": "The image showcases an open umbrella. The umbrella is predominantly black in color and has a classic design with a straight handle. The canopy of the umbrella is large and spans across the entire image, providing coverage.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "96825724067552856404767765378244276509191922902000275046182451041391528505433",
+        "caption": "The image showcases a playing card deck with a specific card, the Jack of Spades, prominently displayed. The Jack of Spades features an illustration of a man with long hair, wearing a crown and a red and blue outfit with gold detailing.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "74233766634028593435305518284635689425486540844995841586790647069618241676021",
+        "caption": "The image does not contain any figurative parts. It primarily showcases a chair with a fluffy white blanket draped over it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "104187697805134747342967237300439321331744384105784277597789378779356878701136",
+        "caption": "The image prominently features a cat lying down, with its eyes closed and its paws raised. The cat appears to be in a relaxed or sleeping state.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "92287960334181823393751412222016483793843490470749133987746542833812252246886",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene and lush tropical forest scene with dense vegetation and a flowing stream.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "13631631674864289357871347601068817699338978110142893739914990316212074086868",
+        "caption": "The image primarily showcases stacks of gold bars, with a person's hands handling one of the bars. The gold bars have inscriptions and markings on them, indicating their weight and purity. The person's hands are positioned above the bars, suggesting they are either examining or arranging them.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "105759729046303009782901299438127361246081364068270608010666325567230820873236",
+        "caption": "The image does not contain any prominent human figures. It depicts an urban alleyway at night with buildings on both sides, a wet road, and a lamppost.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "8082364597910707696149054398546216052653143880946536570826369809653864247343",
+        "caption": "The image showcases a person sitting on a beach chair, engrossed in reading a book. The individual is wearing a wide-brimmed straw hat, which partially obscures their face. The hat has decorative beads along its edge.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "61340431227963260696208595781413800580857598758628719166887406991215600652168",
+        "caption": "The image prominently features a human eye, which is a figurative part of the face. The eye is detailed, showing the iris, pupil, eyelashes, and eyelid. The makeup applied to the eye accentuates its features, with a smoky eyeshadow and mascara giving it depth and dimension.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "22404025552025088793591354454277104196795973919346563797069785334662459372605",
+        "caption": "The image primarily showcases a vibrant flower with a central disc-shaped structure that is densely packed with yellow stamens. The petals are radiant in red and yellow hues, and the overall appearance is reminiscent of a sunflower or similar daisy-like flowers.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "36454128419182506524933268867287922101481878749266078538647597411883298095293",
+        "caption": "The image depicts a house engulfed in flames, with thick black smoke billowing into the sky. The house appears to be made of brick, and the windows are emitting intense orange and yellow flames. The scene conveys a sense of destruction and chaos, representing a literal interpretation of the phrase 'burning house'.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "19545059735746394550275885970661791775329425327079682080069877752471007013734",
+        "caption": "The image features a snowman as its figurative part. The snowman is adorned with a scarf that has a pattern of alternating colors, predominantly in shades of pink, purple, and black. It also has two carrot-like sticks for its eyes and a small triangle for its nose.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "70880446152435547697790867745812047784130531315708478622273102555737409142608",
+        "caption": "The image primarily showcases a serene landscape with tall trees lining the edge of a calm body of water. The trees are illuminated by the soft light of either sunrise or sunset, casting a golden hue over the scene. The water reflects the trees and the sky, creating a mirror-like effect. There are no human figures or animals visible in the image, making it a purely natural and untouched scene.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "47838032101265718321677932767517281170449332226192167938822701514648331173444",
+        "caption": "The image depicts a young woman standing by a window. She is wearing a brown long-sleeved shirt and blue jeans. She has her hair tied back, and she is wearing a blue face mask. The woman is looking out of the window, and her right hand is placed on the window sill.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "53942808140091000924395222431800618912048535112247049718221700968359822561204",
+        "caption": "The image showcases a rocket in mid-flight, soaring above the Earth's atmosphere. The rocket is prominently displayed with its white body, black base, and a flag of the United States on its side. Additionally, there's a logo or emblem on the side of the rocket, which appears to be a stylized letter 'X' inside a circle.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "22428595749981953567946582708219064438873977643512144163263777630706680939166",
+        "caption": "The image depicts a detailed anatomical illustration of the human heart. It showcases various parts such as the atria, ventricles, valves, and chambers. The heart is divided into four chambers: the left atrium, left ventricle, right atrium, and right ventricle. The valves include the mitral valve, aortic valve, tricuspid valve, and pulmonary valve. The image also labels the pulmonary artery and aorta.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "81659107293120209381638785224546304464679567231769095483123212179203128536344",
+        "caption": "The image showcases a fox with its eyes closed, giving it a serene and contemplative appearance. The fox's fur appears soft and well-groomed, with a rich reddish-brown hue. The closed eyes and relaxed facial expression evoke feelings of calmness and contentment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "71777095910554312242812579899114276832030992513817401632591798768162037448484",
+        "caption": "The image depicts a serene sunset scene with the sun casting a golden hue over a vast field of grass. The sun is partially obscured by clouds, creating a dramatic effect with rays of light piercing through the gaps. The clouds take on a darker shade, contrasting with the lighter sky and the illuminated grass below.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "65504177683773995305956524229497108914224895782937177416648381980970753079216",
+        "caption": "The image showcases a green tank placed atop a concrete pedestal. The tank has a prominent turret with a gun barrel pointing forward. It appears to be a monument or a memorial, possibly dedicated to military history or a specific event.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "70860022884621139626323620149273466871360803352681491044550691176757861712772",
+        "caption": "The image depicts a house engulfed in flames, which is a metaphorical representation of a significant problem or crisis. The fire symbolizes destruction, chaos, or a major setback.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "78538545933695234530434041789378417363945139385476008127716340539116781975749",
+        "caption": "The image prominently features a large tree with dense foliage. The tree stands tall, its branches sprawling outwards, creating a silhouette against the backdrop of the sun. The sun's rays pierce through the tree's branches, creating a radiant and ethereal glow, which illuminates the mist or fog below. The tree can be seen as a metaphor for strength, resilience, and the beauty of nature.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "35348945373344638242637872245079188692274640113209086313677996888051572572393",
+        "caption": "The image showcases two bullets, each with a distinct design. The top bullet has a smooth, glossy surface with a visible red ring at its base. The bottom bullet, on the other hand, has a more rugged texture with a silver or metallic appearance. Both bullets appear to be detailed and realistic, with a focus on their design and construction.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "17218652248095587491282503807813085869051194689966808247777035443546495942501",
+        "caption": "The image prominently features a gray cat with striking green eyes. The cat appears to be resting or lounging, with its head slightly tilted to the side. It wears a yellow tag around its neck, which has a design on it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "15916742277363413061427230573858480191677931335205510263348137688612935176299",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a lush green landscape with trees and vegetation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "61117171175893573376609350845568775046349480233938721545027546324153778598110",
+        "caption": "The image showcases a figurine that represents Justice, often referred to as 'Justitia'. Justice is depicted as a woman with a blindfold, symbolizing impartiality. She holds a scale in one hand, which represents balance and fairness, and a sword in the other, symbolizing the power of law and justice.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "51874680436147503662066288144544757842449430649913348856615696530675486017757",
+        "caption": "The image showcases a celestial body, specifically a planet, with distinct geographical features. It has a large, dark area that appears to be a vast plain or ocean, surrounded by lighter, more textured regions that could represent mountains, valleys, or other geological formations. The overall appearance suggests that this might be Pluto, which is known for its diverse and intricate surface features.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "93535813319496546658423742683259522832974881740586372579449624460342381791089",
+        "caption": "The image prominently features an owl with striking yellow eyes. The owl is perched inside a hollow of a tree, giving it a lookout position. The owl's feathers are intricately detailed, and it appears to be gazing intently forward.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "48790319926547811340858581491802249195503427750264637981974287041452841763487",
+        "caption": "The image does not contain any prominent human or animal figures. It is primarily an urban nightscape with buildings, trees, and a cobblestone street.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "22866690279222868017413307738998950205662005452197962477453524572376314502929",
+        "caption": "The image does not contain any prominent figurative elements. It depicts an urban alleyway with buildings on both sides, lit streetlights, and a puddle on the ground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "71444779304200940396660887272792845092536386398468140470565666810070619659471",
+        "caption": "The image showcases a rocket launch. The rocket is prominently displayed in the center, with its fiery exhaust and smoke trail indicating its ascent. The rocket is orange and white, with the white being the body and the orange being the boosters. The launch pad is visible at the bottom, with the rocket standing tall above it. The sky is clear blue, providing a stark contrast to the brightness of the rocket and the smoke.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "101051078365966050206128256295967163969866584560251297782280791709551021521839",
+        "caption": "The image showcases a close-up of a bee's head. The bee has a prominent, detailed eye with a black pupil and golden-brown iris. It also has a pair of long, slender, and slightly curved antennae. The bee's mouthparts, which are visible, appear to be in a state of movement or action, suggesting it might be either feeding or grooming.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "12451123977299718813560559490619757772695457132189757896623134728970365053649",
+        "caption": "The image depicts a person walking on a pathway in a park. The person is wearing a red top and black leggings, and they appear to be in motion, possibly jogging or walking briskly. The sun is casting a shadow of the person on the ground, creating a dynamic contrast with the surrounding environment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "44168112828578581294255993192313031115589673026332485781039312361226041221685",
+        "caption": "The image features a man with a beard and mustache. He has a well-groomed appearance with the beard neatly trimmed and the mustache neatly groomed. The man has a confident and approachable facial expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "52468230980389422116259576927687195861863500391917023565431986286721718333258",
+        "caption": "The image showcases a hand holding a deck of playing cards. The cards are displayed in an upright position, and the visible cards include the Ace of Spades, 2 of Diamonds, 3 of Hearts, 4 of Clubs, 5 of Clubs, and 6 of Clubs.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "56585101948164036682597557705330220909602631394330649897047267212969044045543",
+        "caption": "The image prominently features a vibrant pink flower with a unique and intricate center. The center of the flower is a cluster of dark, almost black, petals that resemble a star or a cluster of grapes. This central cluster contrasts sharply with the bright pink petals surrounding it, making it the focal point of the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "694571905661382713424948543225775241228510047479657055937271502926520686817",
+        "caption": "The image primarily showcases a collection of books arranged on wooden shelves. The books are uniformly bound in blue covers with red text on the spines. The titles of the books are in Swedish, and they seem to be part of a series titled 'Bok - & biblioteksv\u00e4sen', which translates to 'Book - & Libraries'. The books are organized in multiple rows, with some of the volumes appearing to be thicker than others.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "77881746471872246815775106778572202930715223808572524865206657250254501451754",
+        "caption": "The man in the image is wearing a white shirt and a blue jacket. He is holding a bouquet of white flowers in his hand.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "106933410240216358812793958737937699509035735887161296804298643381764148105521",
+        "caption": "The image does not contain any figurative parts. It depicts a beach scene with a colorful umbrella and a lounge chair.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "70446032795227170356792818082897792004380725808759269779366312295276326673689",
+        "caption": "The image showcases a detailed view of Jupiter, a gas giant planet in our solar system. The prominent feature in the image is the Great Red Spot, a large, oval-shaped storm system that has persisted for centuries on Jupiter. The spot is characterized by its deep red and brown hues, and it is surrounded by a complex pattern of white and brown cloud formations.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "90154438020383751094782635283368075248413495579468350381641089242948447785852",
+        "caption": "The image showcases a person lying on a sandy beach, engrossed in reading a book. The person appears to be wearing a light-colored shirt and a dark-colored jacket or sweater. Beside them, there's a woven basket containing a few items, including what looks like a white cloth or towel.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "31576335210159608543761236726043204167832507289800169072955676295812058076472",
+        "caption": "The image showcases a bee, which is a flying insect. It has a distinctive fuzzy body, a pair of antennae, and wings. The bee is also seen collecting nectar from a flower, which is a symbolic action often associated with hard work and dedication.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "48180228484344652451547493562612168887829186242744697696946617657207809575830",
+        "caption": "The image depicts two individuals sitting on a white couch. The person on the left appears to be a woman with long hair, wearing a white top, and holding a mug. The person on the right is a man with short hair, wearing a gray top, and holding a remote control. They both seem to be relaxed and engaged in a conversation or activity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "48378769398197012176269089461906449168836193274105353215679112475995558703522",
+        "caption": "The image does not contain any figurative parts. It showcases a row of old books on wooden shelves.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "5458291043119286807884757226473908203142795148355307345369139842084953571745",
+        "caption": "The image prominently features the face of a cheetah. The cheetah has a distinctive black 'tear mark' running from the inner corner of its eye to the side of its nose. Its eyes are large, round, and amber-colored, giving it a penetrating gaze. The cheetah's mouth is slightly open, revealing its sharp teeth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "70088540080071913759519151081466410478821954482389945037499876851336545738301",
+        "caption": "The image showcases a white daisy flower with a prominent yellow center. The daisy has multiple petals arranged in a circular pattern around the center. The petals are smooth and radiate outward, giving the flower a delicate and graceful appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "63365483074290225813845760116941657862579078071928998881731918524477935949402",
+        "caption": "The image showcases a balance scale, which is a symbol of justice and fairness. It consists of two pans, suspended from a central axis by a fulcrum. The pans are empty, indicating a state of balance. The design is intricate, with a stand and arms that give it a classic appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "105300465194338075135160209663249891452534952141838807354998709918100663237130",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a serene forest scene with tall trees, sunlight filtering through the canopy, and a lush green undergrowth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "22186675713281614554440124499530289853779096092373310585632083842763417770472",
+        "caption": "The image showcases a detailed view of Jupiter, a gas giant planet in our solar system. The swirling patterns and vibrant colors in the image represent the planet's vast atmosphere, with distinct cloud formations. The most prominent features in the image are the white oval-shaped storms, known as 'white ovals', which are often seen in Jupiter's southern hemisphere. These storms are characterized by their intense turbulence and can last for several years.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "93029715974313993090510088400691101451203305802859252236538467751174842108998",
+        "caption": "The image prominently features a sunset or sunrise, with the sun casting a warm, golden hue over the landscape. The sun appears to be radiating light, creating a beautiful contrast with the cooler tones of the mountains and trees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "101720545643182364907296495389255294657040503540315399193714072204243378442682",
+        "caption": "The image showcases four playing cards laid out on a green surface. Each card has a unique symbol on it: a heart, a spade, a club, and a diamond. These symbols are often associated with traditional card games and represent the suits in a deck of cards.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "17305780255719166943132252526128936146973443337406654126280383503280117593975",
+        "caption": "The image depicts a human heart, which is a vital organ responsible for pumping blood throughout the body. It is shown in a detailed anatomical illustration, with different chambers and vessels clearly marked.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "27361479466373671403690064196119584812225999687664223887904497585104181462396",
+        "caption": "The image prominently features a fox with its eyes closed, giving it a relaxed and serene appearance. The fox's fur is a rich shade of orange, and its ears are perked up, suggesting alertness despite its seemingly peaceful state.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "40210758243610191885015729089302436090137538747063983476789118517387941529576",
+        "caption": "The image showcases a bee, which is a prominent insect. It has a fuzzy body with alternating bands of yellow and black, and it has a pair of wings attached to its back. The bee's head is black and yellow, with a pair of antennae extending outward. It also has a stinger on its tail.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "114256834467489800150170540802240354001652533236058286333843163389007580476590",
+        "caption": "The image showcases an elderly man in the midst of running. He is captured mid-stride, with one foot off the ground and the other pushing forward. He is wearing a bright orange shirt, black shorts, and black socks. His facial expression appears focused and determined, suggesting he is deeply engrossed in his run.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "11571547039356766082653613921896641341312984058552433760993431733207391826460",
+        "caption": "The image showcases an umbrella with a vibrant color scheme. The umbrella has a large canopy that is divided into two main colors: purple and yellow. The handle of the umbrella is curved and is colored in a shade of red.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "16127542417286292849686851415133189357094505729649881402584556860579183877894",
+        "caption": "The image showcases a Great Grey Owl perched on a tree. The owl has distinctive round, yellow eyes with black pupils, and its feathers are a mix of grey and white with intricate patterns. The owl's facial disc is prominent, which is typical of many owl species and helps in hearing prey.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "72533892552717785566597961961014941987171195950736695300273042027196310316598",
+        "caption": "The image depicts a lone figure, presumably male, walking on a pathway. He is wearing a black jacket with a hood, jeans, and sneakers. The individual appears to be in motion, with his back turned to the viewer, suggesting a sense of introspection or journey. The sun is setting in the background, casting a warm glow and long shadows, creating a serene and contemplative atmosphere.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "79223138138262779486323757563092239740296179583251383126318754295756961958474",
+        "caption": "The image showcases a white daisy flower with a prominent yellow center. The petals are arranged in a circular pattern, radiating outward from the center. The yellow center is composed of numerous small, tightly packed florets. The overall appearance of the daisy is both vibrant and delicate, making it a popular choice in floral arrangements and symbolism.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "48648553377234098367663433318981446838277997626895281852427563365638235172824",
+        "caption": "The image depicts a house engulfed in flames, symbolizing destruction or devastation. The large plume of smoke rising from the house further emphasizes the intensity of the fire.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "89959955618793869774407608097330056717616720432767526237702213183738641695976",
+        "caption": "The image showcases a lion resting on a rock. The lion appears to be in a relaxed state, with its eyes closed and its body sprawled out. The lion's mane is prominent, and its fur is a mix of light brown and dark brown shades. The lion's paws are visible, and it seems to be in a peaceful slumber.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "111718349782114030554279951688798975696261659852498510689049300228553677170297",
+        "caption": "The image depicts a bee, which is a flying insect. It has a distinctive striped pattern on its abdomen, with alternating bands of yellow and black. The bee also has a pair of wings attached to its back, which it uses for flight. Its head is black and yellow, with a pair of antennae extending outward.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "47915931312147238523728170654609543286710305867879553309118630701669318126563",
+        "caption": "The image depicts a serene beach scene with a blue and white striped umbrella providing shade for a lounge chair. The lounge chair is wooden with blue and white striped cushions. The umbrella is large, occupying a significant portion of the image, and is anchored firmly in the sand with a long pole. The background showcases a clear blue sky, and the ocean waves gently crash onto the sandy shore.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "57257412965171117337863359820790924543320395912814916682161931377839314175320",
+        "caption": "The image depicts a stack of gold bars, each labeled with the text 'FINE GOLD' and a specific weight in troy ounces, such as '399.9'. The gold bars are shiny and reflective, suggesting they are of high quality.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "42178675140768849030148013071030566824733741034464766709009200790323113381943",
+        "caption": "The image showcases a transparent human figure with a highlighted heart in the center. The heart is depicted in a vibrant red color, indicating its vital function. The surrounding bones and structures of the chest are also visible, providing a clear view of the heart's placement within the body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "31801789871778558948073173521208043291104120920324422692175535959714925139086",
+        "caption": "The image showcases a young child, possibly a toddler, in a winter setting. The child is wearing a blue jacket and a colorful striped beanie. The child appears to be catching snowflakes on their tongue, expressing joy and wonder at the natural phenomenon. The background is blurred, emphasizing the child as the main subject, and there are numerous snowflakes visible, creating a serene and playful atmosphere.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "86247905656295416164815271031900001080243091180820404702512144139227648807762",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a house with architectural details, vegetation, and a pathway.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "44154829168351513527430377546569819701066102899201506113462741282766883542102",
+        "caption": "The image depicts a jar filled with a luminescent substance that emits greenish-yellow particles. These particles appear to be floating and scattered throughout the jar, creating a visually captivating effect. The jar itself has a blue lid, and it's placed on a surface with a dark background, which further accentuates the glow of the particles.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "83469836960386162256523657103401403431061831609554417393983942622055078413716",
+        "caption": "The image prominently features a fox with its eyes closed, giving an impression of contentment or bliss. The fox's ears are perked up, and its snout is slightly tilted upwards, further emphasizing its relaxed state.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "88371550155036705093023119218512751346534521753970211218031608613968821031217",
+        "caption": "The image depicts a hand gripping onto vertical bars, suggesting a sense of confinement or desperation. The hand appears to be human, with visible knuckles and fingers, and it's positioned in a way that emphasizes its strength and determination.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "78462363749394831889834443327875473074344413057848432571425509705875773265026",
+        "caption": "The image does not contain any figurative elements that require a detailed description. It primarily showcases a house with architectural details, landscaping, and a pathway.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "75247419546128433116987268850368469362569645224917865418935901258129071098747",
+        "caption": "The image showcases a snake coiled around a moss-covered tree branch in a dense forest setting. The snake appears to be in a resting or alert posture, with its head raised slightly.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "29021681547641361638445796096638467743411226345772736151789094723206110525414",
+        "caption": "The image showcases two wooden lounge chairs with cushions placed under a white beach umbrella. The umbrella is held up by a wooden pole and has a circular base. The chairs are positioned on a sandy beach, with the ocean in the background. The sky is clear with a few clouds, and there are some green plants and trees visible near the beach.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "31658877545210228019209016470193414373504143986254494921978151709785771694419",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a group of people engaged in a beach cleanup activity.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "51607066233766382098050180678019746719333157861409657380972145100621777898101",
+        "caption": "The image contains no figurative parts.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "50097959828287594952490053105608466700137950965416824589648615829325511716676",
+        "caption": "The image depicts a dramatic scene of a house engulfed in flames at night. In the foreground, there are two individuals observing the fire. One is standing closer to the house, while the other is farther away, near a fire truck. The presence of the fire truck suggests that the fire department has been called to the scene. The individuals' expressions and postures convey a sense of awe, concern, or perhaps even fascination with the devastating power of the fire.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "86900135133574090874872993222867655828011481620551324682147144177747781576960",
+        "caption": "The image showcases a fox resting its head on a moss-covered rock. The fox appears to be in a relaxed state, with its eyes closed, suggesting it might be sleeping or in a state of contentment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "109923828922951646157198817897048034363001202725392998711569829164953165328200",
+        "caption": "The image depicts a woman looking out of a window. She is wearing a face mask, which covers the lower half of her face, and her hair is tied back. The woman appears to be in a contemplative or somber mood, as she gazes out at the view.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "1449179304419101242365574356623624414168632003493781599709689619578193643031",
+        "caption": "The image showcases a transparent representation of the human body, focusing on the cardiovascular system. It prominently displays the heart, surrounded by the intricate network of arteries and veins. The image provides a detailed view of the circulatory system, highlighting the pathways through which blood flows throughout the body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "cute teddy bear",
+        "image_id": "108198217203376746396343912282243043038190426972023347416055437775866447482476",
+        "caption": "The image prominently features a bear, which is a mammal known for its distinctive fur, sharp claws, and powerful jaws. The bear in the image appears to be a grizzly bear, characterized by its brown fur and prominent hump on its back.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "20176922863082323247332900562399110233541214502003168146252427395992370807673",
+        "caption": "The image showcases a human figure with a transparent torso, revealing the internal organs, particularly the heart. The heart is prominently displayed in pink, indicating its function and location within the body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "46735897246925829939093667258677924078412329828317346124660685182718511694755",
+        "caption": "The image showcases a solitary snowball placed on a snowy surface. The snowball appears smooth and rounded, with a pristine white color. It casts a distinct shadow on the snow, indicating the direction of the light source. The snowball can be seen as a metaphorical representation of something pure and untouched, perhaps innocence or simplicity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "71177128751885064430301618005004086582142931431450575639642853638188529398996",
+        "caption": "The image prominently features a full moon in the night sky. The moon appears bright and clear, illuminating the surrounding area with its glow.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "81165596966519660777096589622423716483394926788887806585565086486767206496651",
+        "caption": "The image showcases a figurine, likely representing Justice, based on its traditional attire and the scales it holds. Justice is often depicted as a woman with a blindfold, symbolizing impartiality. She holds a scale in one hand, which represents balance and fairness, and a sword in the other, symbolizing the power of law and justice.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "111882123336073797975497606058741710056789622829181776008481916030524081956701",
+        "caption": "The image showcases a top-down view of a beach with clear turquoise waters meeting white sand. There are four red umbrellas aligned in a row, possibly indicating a seating or relaxation area.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "47023930868676306086710388036589412006319311083090376933837148399513851943015",
+        "caption": "The image showcases a series of books titled 'The Dictionary of Art'. Each book is focused on a specific artist, as indicated by the names on the spines, such as 'Jane Turner' and 'Raphael'. The books are organized alphabetically, as suggested by the 'ART' in the title, and each volume seems to be a comprehensive reference guide to the artist's life, works, and style.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "110091202216469057029715158554122522453365709264410844821341231022209234114720",
+        "caption": "The image does not contain any figurative parts. It showcases a bed with a white sheet and a black and white checkered blanket.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "52115007458812144190550442760328070249574117772382707603814171394013951353198",
+        "caption": "The image showcases a circular light source, often referred to as a ring light, which is illuminating a dark background. The light is bright and appears to be in the center of the image, casting a soft glow.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "84355726227613880657301862582963731151895395335908961112566104475493297033009",
+        "caption": "The image showcases a gavel, which is a tool typically used by judges or presiding officers in legal proceedings to make decisions or to call the court's attention to something. The gavel is placed on a wooden block and is positioned in such a way that it appears to be in the process of coming down, indicating a verdict or ruling.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "70343962036099038134639595484876039416602694260746159037312281558074013370049",
+        "caption": "The image primarily features a man wearing glasses. He is holding a bouquet of flowers close to his face, partially obscuring it. The man appears to be smiling or expressing happiness.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "68765929776402634690911115212895054025524023402358180548708532802395824212702",
+        "caption": "The image showcases two individuals, a man and a woman, at a beach during sunset. The man is giving the woman a piggyback ride. Both of them appear to be in a joyful mood, with the woman laughing heartily and the man smiling. The woman is wearing a hat, sunglasses, and a striped tank top, while the man has a beard and is wearing a tank top with horizontal stripes.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "99724130451423044975683261650313735242778678205204523649552327379479461535246",
+        "caption": "The image depicts a person lying on a beach, reading a book. The person is wearing a white shirt, blue shorts, and a straw hat. They have their legs raised and are propped up on their hands, with their back facing the camera. The book they are reading is open in front of them.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "54483654329799434832501649239053419077712117757324152515967788649362154046414",
+        "caption": "The image showcases a collection of books arranged on wooden shelves. Each book is labeled 'Britannica', and they vary in color from dark brown to red and blue. The books are neatly aligned, and there are white dividers between them.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "42172187260434629950471293934375966845043274001069605924798222449522903778692",
+        "caption": "The image prominently features a fox with its eyes closed, lying down in a grassy field. The fox appears to be in a relaxed or sleeping state, with its snout resting on the ground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "79199019218227035841895044643886961610840875798784679202028950913543953823248",
+        "caption": "The image primarily showcases a collection of books arranged on wooden shelves. The books are bound in leather with gold lettering on their spines. The spines display a consistent pattern with the word 'LIBRARY' repeated multiple times, followed by the name 'VOLUME' and a number. The books appear to be old and well-used, with some wear and tear visible on the covers and edges.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "104212333688222770614670645267731008681084708160622168053954576908127947071975",
+        "caption": "The image prominently features a cheetah, which is a large wild cat known for its speed and agility. The cheetah in the image appears to be in a relaxed posture, with its head turned slightly to the side, revealing its distinctive black 'tear marks' that run from the inner corners of its eyes down to the sides of its mouth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "79873024532789039087729093542688215747519375037453914595276630870596801148554",
+        "caption": "The image does not contain any figurative parts. It is a textual image with a pattern of the letter 'H' repeated in a checkered pattern on a fabric or cloth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "20422789060632166412639989235724530221160690847057051354879318315913718985423",
+        "caption": "The image primarily showcases stacks of gold bars, which are literal representations of wealth. The bars are neatly arranged, indicating organization and value. The sheer quantity and shiny appearance of the gold bars evoke feelings of abundance and financial security.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "91911503307540259606875365445337987991064499045089594796957158644849454586638",
+        "caption": "The image showcases a woman with curly hair that cascades down her back. She is smiling, revealing her teeth, and appears to be in a joyful or relaxed state. The woman is wearing a white tank top, and her skin tone is a blend of light and dark shades.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "78393151831201262013607057399662116809310093704947859104480485210309219995998",
+        "caption": "The image showcases a detailed and realistic depiction of a bee. The bee is portrayed in a side view, with its wings spread out. The bee's body is predominantly yellow with black stripes, and it has a pair of antennae extending outward. The wings display a pattern of veins, and the legs are also visible, ending in small claws.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "104418713880078422281886773226050069482778380341450693669115229423338917176387",
+        "caption": "The image prominently features an owl perched on a tree branch. The owl has distinctive large, round eyes with yellow irises and a heart-shaped facial disc. Its plumage is a mix of brown, white, and gray, with intricate patterns that provide camouflage in its natural habitat.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "64816797395868486148002393273183976907213366718894550865063775391269354883130",
+        "caption": "The image depicts a woman sleeping peacefully with her eyes closed. She appears to be in a restful state, with her head resting on a white pillow.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "104597068896056007932544220666401145764510075513890992851501943076590779568539",
+        "caption": "The image showcases a close-up of a human eye. It captures the intricate details of the eye, including the iris, pupil, eyelashes, and eyelid. The image provides a clear view of the eye's anatomy, emphasizing its depth and complexity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "62829957341374974733663704535820583650090740801406374289001540097545892416022",
+        "caption": "The image primarily showcases a hand holding a pen and writing on a notebook. The notebook contains mathematical formulas and diagrams, including a triangle with three vertices labeled as A, B, and C.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "108715539966343992309078760045855252466845475791509572429936043546416271720257",
+        "caption": "The image showcases a shiny, elongated object that resembles a bullet or projectile. It is depicted in mid-air, floating against a blurred background that appears to be an outdoor setting with natural elements.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "42197608262328075400724656447386675818388582961623565443369901752950618695040",
+        "caption": "The image showcases a vibrant flower with a prominent center that resembles a sun or a star. The petals are arranged in a radial pattern, radiating outwards from the center, and they transition in color from a deep red at the base to a lighter orange towards the tips. The center of the flower is yellow with darker spots, giving it a sun-like appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "76440485905596478067624996434187407662080546432344784885173069622165423504604",
+        "caption": "The image depicts two individuals lounging on beach chairs under a large striped umbrella. The person on the left is facing away from the viewer, with their hands behind their head, while the person on the right is facing towards the viewer, with their hands also behind their head. Both are relaxed and seem to be enjoying the serene beach environment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "23918002932224314479573578386778075908756513196267913406857947643353470787827",
+        "caption": "The image depicts a person lying on the beach, reading a book. The person is positioned with their back to the camera, and the book is held up close to their face, obscuring their features.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "80459930773096503718902519386173483838560835211124526598566447655550595563228",
+        "caption": "The image prominently features a fox with a reddish-brown fur coat. The fox appears to be resting or sleeping, with its eyes closed and its head slightly tilted to the side.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "75644023596798243030618016331253008943132766216859316820171220324903791893118",
+        "caption": "The image showcases a series of books with a consistent design. The most prominent feature is the emblem or symbol on the spine of each book. This emblem appears to be a stylized letter 'O' enclosed within a circle. The design is repeated consistently across all the books, indicating a uniform series or edition.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "34088007883203888337508789328225980923154556955353408566476270806483858584007",
+        "caption": "The image showcases a cat with striking green eyes and a tabby pattern on its fur. The cat appears to be peering over a surface, with its front paws resting on the edge, giving it a curious and alert expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "31509483591195120534238506803989823425498951096210474111277247548117221159813",
+        "caption": "The image showcases a close-up of a cat's face, focusing on its eyes, nose, and mouth. The cat appears to be of a young age, with soft fur and bright, inquisitive eyes. The whiskers are prominently displayed, and the fur has a mix of dark and light shades.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "31194315117106877880361691866930826480544269095208103421956097334217355339775",
+        "caption": "The image prominently features a lion with its mouth open, showcasing its sharp teeth. The lion appears to be roaring or growling, which is a common behavior exhibited by lions, especially when they feel threatened or are on the hunt.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "69897725322684401860505001841974099942892403287558378450763456417802727507928",
+        "caption": "The image showcases a bee, which is an insect. Bees are known for their distinctive appearance, characterized by their fuzzy bodies, striped patterns, and long, slender legs. They also have a pair of wings attached to their back, which they use for flight.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "102911944599573555101586708700653534891171145177096431858023812676578391039151",
+        "caption": "The image prominently features a figurine that represents Justice. This figure is often depicted as a woman with a blindfold, symbolizing impartiality. She holds a scale in one hand, which represents balance and fairness, and a sword in the other, symbolizing the power of justice.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "6115754277161037719533057742981879132296994688353235830843858218031587740270",
+        "caption": "The image showcases multiple gold bars stacked together. Each bar has an embossed logo and inscriptions, indicating the weight and purity of the gold. The logo appears to be a stylized cross with the text 'Argor Heraeus' surrounding it. This suggests that the gold bars are from the Argor Heraeus refinery, which is a well-known company in the precious metals industry.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "4820163082455432240558491852246065868635754583674985291318154776433639657822",
+        "caption": "The image showcases a close-up of a cat's face. The cat has a distinctive expression with its mouth slightly open, revealing its tongue and teeth. Its eyes are wide open, and it appears to be in a state of surprise or alertness. The fur is long and fluffy, with a mix of brown and gray shades.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "91470783862641502960913767433384704115618343311766911163371798948357830868502",
+        "caption": "The image showcases a man holding a bouquet of flowers. He appears to be in a cheerful mood, with a broad smile on his face. The man is wearing a white shirt and is standing near a glass door or window. The bouquet consists of various flowers, including roses and green leaves, which are tied with a pink ribbon.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "4443448638138774725378395402955406799409739445167660714056083690113220235777",
+        "caption": "The image prominently features a cheetah's face, which is characterized by its distinctive black tear marks running from the inner corners of its eyes down to the sides of its mouth. The cheetah's eyes are large, round, and have a golden-brown hue. Its snout is long and slender, with a black nose. The cheetah's fur is a mix of light brown and black dots, which helps it camouflage in grasslands.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "71099699294597788594054785778616908665181819929343793790363622577569827660963",
+        "caption": "The image does not contain any figurative parts. It depicts bees on a surface, which is the literal representation of the subject.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "38165591875754063394129948314001025675426929851325459526079939286028486570071",
+        "caption": "The image showcases Jupiter, which is a gas giant planet in our solar system. It is characterized by its prominent bands of clouds, with the Great Red Spot being one of the most recognizable features. The Great Red Spot is a large, oval-shaped storm that has persisted for centuries. Jupiter also has a number of moons orbiting around it, with the largest ones being Ganymede, Callisto, and Io.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "47712339050514583841933165708222337834483204711107175386802584041385268555619",
+        "caption": "The image depicts a human heart, which is a vital organ responsible for pumping blood throughout the body. It is shown in a lateral view, highlighting its chambers, valves, and major blood vessels.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "83853197457636330259275525843524563415023362381574712205776950996423400801009",
+        "caption": "The image does not contain any figurative parts. It only shows an open blue umbrella.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "11614912031904245285721571548056437681280496958799810213043427367902833656519",
+        "caption": "The image showcases a hand holding a gold bar. The gold bar has inscriptions on it, indicating its purity and weight. Specifically, the text '999.9' is visible on the bar, which suggests that it is 99.99% pure gold. Additionally, there are markings '1 KG' and 'NET WT 1000g' on the bar, indicating that it weighs 1 kilogram and has a net weight of 1000 grams.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "99775184296303985031889146796782382475126234580655202673687479239923211633153",
+        "caption": "The image prominently features an owl perched on a tree branch. The owl has large, round, and expressive eyes, which are a key characteristic of owls. Its plumage is predominantly white with some brown and orange hues, especially around its head.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "92438732994330609454113614278844146918926460234865949439664218227377223736354",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a lush, verdant forest with tall trees, sunlight filtering through the canopy, and a pathway or trail visible in the foreground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "43976602303551246317678815688063707689160487470511093371416062051277587684148",
+        "caption": "The image primarily showcases a vast expanse of blue ocean with gentle waves. There isn't a discernible figurative part in the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a chicken",
+        "image_id": "16012868887915228305695987530559336999305431236226890135907127688863292923246",
+        "caption": "The image showcases a vibrant and colorful rooster standing on grass. The rooster is prominently displayed with a bright red comb and wattle, a shiny orange body, and a long, dark blue-green tail feather.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "71380649196411592849098057739927365818002752409261601311805705161561475715864",
+        "caption": "The image prominently features a cat with distinct facial markings. The cat has green eyes, a striped fur pattern, and a pink nose. Its ears are perked up, and it appears to be looking directly at the camera.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "11950650003234766808026828500772816125549651009654717924014649528587981101850",
+        "caption": "The image showcases a fox with its eyes closed and mouth slightly open, giving it a relaxed and content expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "59363300800362953722612379035532400981376149521150229199619645729148098409911",
+        "caption": "The image showcases a space shuttle in mid-launch, soaring above the Earth. The shuttle is prominently displayed with its orange external fuel tanks, white main body, and two solid rocket boosters on either side. The Earth serves as a stunning backdrop, with clouds and city lights visible below. The overall scene conveys a sense of exploration, advancement, and the vastness of space.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "3857145951438069262811509575055483976030376714274665726510131914607138455673",
+        "caption": "The image primarily showcases a series of books arranged on a shelf. The books are bound in a dark brown leather or similar material and have gold-colored lettering and decorative elements on their spines. The most prominent feature on the spines are the eagle designs, which are repeated across multiple volumes. These eagle designs are likely symbolic of the United States of America.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "80021472422035888478721856120447560512480916874997214552821121805822138242853",
+        "caption": "The image showcases a bee, which is a flying insect. It has a distinctive fuzzy body, a pair of antennae, and wings. The bee is also seen collecting nectar from a flower, which is a symbolic action often associated with hard work and dedication.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "65288173334358512147746663987061429496407177499206817703916601311285647855673",
+        "caption": "The image depicts a long corridor with multiple cells on either side. Each cell has a metal door with bars, indicating a secure or confined space, typically associated with prisons or detention centers. The corridor is illuminated by overhead lights, providing a stark contrast between the dimly lit cells and the well-lit walkway.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "23728568171082743887504038583166309361531581317537664765713151844807530200802",
+        "caption": "The image showcases a dramatic sky with radiant beams of sunlight piercing through the clouds. These beams are often referred to as 'rays of sunshine' or 'crepuscular rays'. They are a result of sunlight scattering in all directions due to atmospheric particles, creating a beautiful play of light and shadow on the ground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "35170587307678214142903553385868303527172645969727676884825153816850628099914",
+        "caption": "The image showcases a wooden gavel, which is a tool typically used by judges or auctioneers to make decisions or to bring attention to proceedings. The gavel is placed on a wooden base, and its design features a rounded top with a flat surface, followed by a cylindrical shaft that tapers to a smaller end.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "101460625669581454861052481228737916459416686537906156867164773990414932567363",
+        "caption": "The image showcases a person standing on a beach, holding up a colorful umbrella that has a rainbow pattern. The umbrella is open, and its vibrant colors contrast with the sandy beach and the serene blue sea in the background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "64475011411077580990981073167148128831017898375096177878194814572865843081841",
+        "caption": "The image showcases a human heart within a transparent body, highlighting the intricate vascular system that connects the heart to the rest of the body. The heart is prominently displayed with its chambers and major vessels visible. The surrounding vessels are colored in shades of blue, while the heart itself is depicted in a reddish hue, indicating its pumping function.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "35615480935998597736954155797652683379201434883201570543446084030327797122266",
+        "caption": "The image depicts a lone figure standing in the middle of a street at night. The person appears to be wearing a dark-colored jacket and pants, and they are facing away from the camera, looking towards the buildings on the side of the street. The figure's posture and the dim lighting create a sense of solitude and introspection.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "17391883736309883871726027535772560223212837412025540844361999638504431196505",
+        "caption": "The image showcases a space shuttle launching into the sky. The shuttle is prominently displayed with its orange external fuel tank and twin white solid rocket boosters. The smoke and flames from the launch create a dramatic backdrop, emphasizing the power and speed of the shuttle as it ascends into space.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "70636541981368729696431985680536490487539156299118137949080112901013429022318",
+        "caption": "The image showcases a snake coiled around a green leafy branch. The snake appears to be in a resting or observant posture, with its head raised slightly, allowing it to view its surroundings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "15036236510598149731371687826013482692722530159939951335416671317264446232844",
+        "caption": "The image showcases a lively party scene with multiple individuals engaged in a celebration. The central focus is on a group of people, possibly friends or party-goers, who are raising their hands and enjoying the moment. The atmosphere is vibrant with colorful lights, confetti, and a sense of euphoria. The silhouette of the people, combined with the bright lights and confetti, creates a dynamic and energetic visual.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "108573565712192682557582074667457912012326226425664252702304463297428623261968",
+        "caption": "The image prominently features a radiant sun, which is the central and most luminous part. The sun emits bright beams of light that spread outwards, creating a sunburst effect. This sunburst is a figurative representation that symbolizes the sun's power, brilliance, and its role as a source of light and warmth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "8932990869476201080774074352409080631431256125258384599242151876569309421984",
+        "caption": "The image features a woman sitting on a bed. She appears to be wrapped in a dark-colored blanket or shawl. The woman is looking away from the camera, with a contemplative or pensive expression on her face.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "79025495568702447497517581196499202729893149856844909673571745684535093476648",
+        "caption": "The image features a statue of a person standing upright, facing a tank. The statue appears to be made of a dark material, possibly bronze, and depicts a person in a military uniform, holding a helmet in one hand and a briefcase in the other. The person's posture is straight and formal, suggesting a sense of duty or respect.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "102946775803152857864293525512667780813294694291562749419673680217742531001345",
+        "caption": "The image showcases a bee, which is an insect. Bees are characterized by their striped abdomen, translucent wings, and a distinctive head with a pair of compound eyes and a proboscis.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "25947205774214651460304220764995934524897962321399802169138452850653483047403",
+        "caption": "The image depicts a radiant burst of light at its center, emanating outward in a fan-like pattern. This light source appears to be the focal point and is surrounded by a gradient of colors transitioning from blue at the top to green at the bottom. The rays emanating from the light source create a sense of movement and energy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "10590503341814028055098888499026149943434323138777432001457133351475283730729",
+        "caption": "The image prominently features a cheetah, which is a large wild cat known for its speed and agility. The cheetah in the image appears to be in mid-stride, with its body leaning forward and its tail extended behind it. Its eyes are focused intently ahead, suggesting alertness and readiness for potential prey or threats.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "107377728411076640800681016334495645635231295570399109168528543570313091431272",
+        "caption": "The image showcases a figurative sculpture of a woman, often referred to as 'Justice'. She is depicted with one hand raised, holding a pair of scales symbolizing justice and fairness. The other hand holds a sword, symbolizing the power of law and authority. The woman is draped in a flowing robe, and her head is adorned with a crown or wreath, further emphasizing her status as a symbol of justice.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "65948237475350549495194980946617060309297841999367775972097912366688681885226",
+        "caption": "The image showcases a green pencil placed on top of a notebook. The notebook contains mathematical formulas and equations written in a handwritten style.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "63678380397793072801904661375559490051918727517868636139095673215024745755405",
+        "caption": "The image showcases four aces of different suits, each with a distinct symbol. The spades have a black spade, the diamonds have a black diamond, the clubs have a black club, and the hearts have a red heart.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "112484291446125218721645130152948251361958919581529058860981890204353080975299",
+        "caption": "The image showcases a man holding a red heart with both hands. The heart is a symbol of love, affection, and emotions. The man appears to be closing his eyes and has a gentle smile on his face, suggesting a feeling of contentment or happiness.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "homework is a breeze",
+        "image_id": "45842397909688605993941298567287188508256103774885635341773765973312303923972",
+        "caption": "The image prominently features question marks scattered throughout the background. These question marks are white and appear in various sizes, suggesting a sense of confusion, uncertainty, or doubt.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "11078326901046011968447681574355317880314753455311151593856223656761307627899",
+        "caption": "The image prominently features a lion with a thick mane, sharp eyes, and a focused gaze. The lion appears to be resting on a rock or elevated surface, with its paws extended forward.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "13900796202483130843582210352598098961460293693963268897135335383214807831886",
+        "caption": "The image prominently features a radiant sun with bright beams of light emanating from it. The sun appears to be positioned at the top right corner, casting a warm, golden hue across the scene.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "12442741105399708348808700477791135887945326172848504335000275792181970978069",
+        "caption": "The image showcases a close-up portrait of a woman. The key features related to the figurative part include her eyes, nose, lips, and hair. She has almond-shaped eyes with a hint of makeup, including eyeliner and mascara. Her nose is straight and narrow, and her lips are slightly parted with a muted pink lipstick. Her hair is long, dark, and wavy, cascading down past her shoulders.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "44630392530319621655606832718574940473833576930884665840787008818495420873284",
+        "caption": "The image depicts a woman sitting on a beach, facing the sea. She is wearing a black one-piece swimsuit and has her hair tied up in a bun. She is positioned on a red and white striped towel, and she is looking out at the sea.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "25458801446370302428599391178210908982080978222575976873120723833635489502149",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a folded piece of fabric with a geometric and striped pattern.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "107946343125078245513933489839615800863288380298291003217816996296775960101321",
+        "caption": "The image prominently features a cat with a focused and intense gaze. The cat has a ginger or orange-colored fur with distinct white whiskers. Its eyes are green, and it appears to be in a state of alertness or curiosity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "80142985244509977396806979769681896610458317244817374209091713862571530457514",
+        "caption": "The image depicts a human heart, which is a vital organ responsible for pumping blood throughout the body. It consists of four chambers: the left atrium, left ventricle, right atrium, and right ventricle. The heart is connected to major blood vessels, including the aorta and the pulmonary artery, which carry oxygenated and deoxygenated blood respectively.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "74001009216390658191432885961374163119082746272652662567380752633567318519623",
+        "caption": "The image prominently features several figurative elements. There are balloons in various colors and shapes, some of which have text on them. Additionally, there are party blowers being held by individuals, releasing confetti into the air.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "13512855645914750502559323796646481821089991705297070085467520247615569027042",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a natural seascape with waves crashing against rocks.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "7825460050116240897094611125027158936627016744841157743595536967105132190359",
+        "caption": "The image does not contain any figurative parts. It depicts a blue Toyota car driving on a road with a scenic background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "68969745554271034494263965728749414014790514073901957242176920218791325003805",
+        "caption": "The image prominently features a radiant sun with intense rays emanating from it. The sun is depicted as a bright, luminous orb, casting its rays across the sky. The sun's rays can be seen as a symbol of warmth, light, and energy, often representing hope, optimism, and the power of the sun.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "82992435283384664151468412243557380259911448498587885019360188061222696602529",
+        "caption": "The image primarily features two male runners in mid-stride. They are wearing athletic attire and are focused on their run. The runner on the left is wearing a red tank top with the text 'P'inners 3KET' and blue shorts with the number '3823'. The runner on the right is wearing a black tank top with the text '3204' and black shorts. Both runners have pink shoes and are wearing wristbands.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "62372136120123928240803465866769353043050479712505617474092678796840620181169",
+        "caption": "The image depicts a human heart, which is a vital organ responsible for pumping blood throughout the body. It has four chambers: two atria (upper chambers) and two ventricles (lower chambers). The heart is connected to various blood vessels, including arteries and veins, which carry oxygenated and deoxygenated blood to and from different parts of the body.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "110008477903804297361033011848242670042852854468513084989502395650072372041766",
+        "caption": "The image showcases a celestial body, which appears to be a moon, with a distinct and prominent crater at its top. The crater has a reddish hue, contrasting with the grayish-white surface of the moon. The moon's surface is dotted with numerous craters, valleys, and ridges, suggesting a complex geological history.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "77076700612075913876296836818385996131634667091455672487046209456919067865280",
+        "caption": "The image depicts a full moon that appears to be partially obscured by clouds. The moon's glow illuminates the surrounding area, creating a dramatic and mysterious atmosphere. The clouds add depth and dimension to the scene, making the moon appear as if it's emerging from or being enveloped by them.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "14072770779467475429284436599007258757792779573713716410308694423934211202039",
+        "caption": "The image prominently features two lions. The larger lion, presumably an adult, stands tall with a majestic mane, looking into the distance. Beside it, a younger lion, possibly a cub, sits attentively, gazing up at the adult lion.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "45065375796803402964947024779735133597176572809661683852513174513378041932502",
+        "caption": "The image showcases a detailed view of a bee, highlighting its intricate physical features. The bee appears to be in a dorsal view, displaying its fuzzy body, striped abdomen, and delicate wings. The wings are translucent with visible veins, and the bee's eyes and antennae are prominently visible.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "10365057082343015736255241674026697386151047584052982462637431209473021580847",
+        "caption": "The image prominently features a bee, which is a figurative part of the image. The bee is collecting nectar from the yellow flower, showcasing its role as a pollinator.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "2339474368315035330920728052425877751631818804725047583430554884003785628992",
+        "caption": "The image showcases a space shuttle launch. The shuttle is prominently featured in the center, with its white body, orange external fuel tanks, and two solid rocket boosters on either side. The launch is captured in a moment of ignition, with flames and smoke emanating from the base of the shuttle. The background displays a clear blue sky, and there's a structure on the left side, possibly a launch pad, with various equipment and machinery.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "33548955445916227974161516020403698951000942593335337273815950880148844929538",
+        "caption": "The image prominently features a fox curled up and sleeping. The fox appears to be in a restful state with its eyes closed and its body tucked in.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "91415018377464540770919213225303546975657116685955076879563313548732849002649",
+        "caption": "The image showcases a shiny, golden nugget that resembles a piece of jewelry or a decorative item. It has a rough, uneven surface with some parts appearing more polished than others. The nugget is placed on a textured surface, possibly concrete or stone, which provides a contrasting background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "91042369520825548286350662607049808890116679926714923140300343324841941603698",
+        "caption": "The image showcases a group of young individuals having a lively celebration. They are wearing party hats and are surrounded by confetti, indicating a festive atmosphere. The group consists of both men and women, with some of them making playful gestures and expressions. The presence of the confetti and party hats suggests that this could be a birthday party, graduation, or another special occasion.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "58851414017889887443564812896495748053366864956731281252012906872261870859307",
+        "caption": "The image showcases an umbrella with a unique design. The umbrella has a black canopy with a pattern that resembles a mesh or net-like structure. The handle of the umbrella is curved and has a wooden finish.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "62378342428761219799210915268669237588253710636620707542991343119414976070774",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a young girl holding a book in a library setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "57392294893340737220596929055703566943025004754507031528876990759060726853266",
+        "caption": "The image showcases a light bulb with the word 'WYZE' printed on it. The light bulb appears to be illuminated, casting a bright glow against a textured blue background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "the car is a rocket",
+        "image_id": "61566630723777033095225551950617246894329277816784037157165688698534271378186",
+        "caption": "The image depicts a rocket launch, with a large rocket soaring into the sky. The rocket is emitting thick smoke and flames, indicating the intense power and energy required for takeoff. The smoke and flames serve as a metaphorical representation of ambition, progress, and the pursuit of goals.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he was a tiger",
+        "image_id": "98076840554892126751160240863614651539619585269623062169227053049251794515069",
+        "caption": "The image showcases a man in what appears to be a battle scene. He has a fierce expression, with his mouth open wide, revealing his teeth. His eyes are intense, and he seems to be in the midst of a battle or confrontation. The man has a beard and is wearing what looks like ancient warrior attire, including a red cloak or cloth draped over his shoulders.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "93924009735398934857228991684804273989704128881735761837719936217844630554302",
+        "caption": "The image primarily features a young woman sitting on a bed or couch. She is wrapped in a blanket with colorful, abstract patterns and letters. The woman has long, blonde hair and is smiling, looking directly at the camera. She is wearing a pair of striped socks with colorful patterns.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "90141049264147633555888976276479408485786620396587961056101001572932582494377",
+        "caption": "The image prominently features a lion, which is a large, majestic feline known for its mane and powerful build. The lion in the image appears to be walking on a dry ground, with its mane blowing slightly due to the wind, suggesting a natural, possibly early morning or late afternoon setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "59412640922454444030573552312998965743350717634412214567926207020247116728611",
+        "caption": "The image prominently features a lion, which is a large, majestic feline known for its mane and powerful build. The lion in the image appears to be resting or sleeping, with its eyes closed and its mouth slightly open.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "31735887871576226405586527917856019278122247851489377542082067499212965400424",
+        "caption": "The image features two beach chairs with red and white striped canopies. These chairs are commonly referred to as 'deck chairs' and are often used for relaxation on sandy beaches.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "46884347421661404096088094136509148958482370731771879932372794184791531452136",
+        "caption": "The image prominently features the face of a lion, which is a large, feline mammal. The lion's face is characterized by its mane, which is thick and covers its head and neck. Its eyes are round and yellow, and it has a distinctive nose and whiskers.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "110169599197880543096566043809993994032278978806026225789833767362572584591472",
+        "caption": "The image showcases a bee, which is an insect. Bees are characterized by their fuzzy yellow and black bodies, large eyes, and long, slender legs. They also have a pair of wings attached to their back, which they use for flight.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "34848193887452845777439224209370937817555368836508434456697789539444788830414",
+        "caption": "The image showcases a bullet that appears to be in motion. The bullet has a pointed tip and a cylindrical body with a flat base. The surface of the bullet exhibits signs of wear and tear, suggesting it has been fired multiple times. The bullet's motion is depicted by a blurred background, emphasizing its speed and direction.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "70768755117728207631167558388646425525397632796440502523511343265141719474699",
+        "caption": "The image does not contain any figurative parts that can be described in detail. It primarily showcases a collection of rounded stones or pebbles of various sizes and colors.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "115507822717839478343032295104758353152927897614475900944569585322577707450950",
+        "caption": "The image primarily showcases a vibrant flower with a prominent center, which can be interpreted as a symbol of beauty, radiance, or perhaps even the sun. The intricate details of the flower's petals and center can be seen, emphasizing its natural beauty.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "104444540843436332974955230383978838054273602633052431774788272081649699985037",
+        "caption": "The image showcases a bee, which is a flying insect. It has a distinctive striped pattern on its abdomen and is covered in fine hairs. The bee's wings are translucent with a yellowish hue, and it has a pair of antennae in front of its head.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "35669485923908536072398155310630469506306099218296758306909096365878794212378",
+        "caption": "The image depicts a house engulfed in flames, with thick smoke billowing into the night sky. In the foreground, there are two firefighters, one of whom is actively spraying water towards the house while the other seems to be observing. The house, with its wooden structure and large windows, serves as a metaphor for a dream, goal, or aspiration that is being consumed or destroyed. The firefighters represent the efforts and sacrifices needed to protect or save it.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "115064475178321521556989020458089339035264722265166003961253395125825132206510",
+        "caption": "The image showcases three bullets, each with a distinct shape and appearance. They are metallic, with a golden hue and visible signs of wear and use, indicating they might have been fired or are old. The bullets have a cylindrical shape with a flat base and a pointed tip.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "20185481595963553813083913396168307759876436236785028889345304265825527269835",
+        "caption": "The image depicts a man in a suit, with his hands clasped together in front of his chin. He has a focused and intense expression on his face, suggesting deep thought or contemplation. The lighting is dramatic, highlighting the man's face and creating a shadow behind him, which adds to the overall mood of the image.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "83743382782401304952202086749906415012431439578025107604958967946176146263050",
+        "caption": "The image showcases four aces from a deck of playing cards. Each ace is distinctly marked with a different suit symbol: spades, diamonds, clubs, and hearts. Among these, the heart ace is prominently displayed in the foreground.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "50406142882086220522180623724456873667050000131003550325958103431359865960233",
+        "caption": "The image showcases a row of Britannica encyclopedia volumes on a shelf. The Britannica logo, which is an eagle, is prominently displayed on the spines of the books.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "70917447429170868092386644510301711438225192077114631862682251386055167261189",
+        "caption": "The image prominently features a lion with a thick mane, intense eyes, and a focused gaze. The lion appears to be resting or lounging, with its head turned slightly to the side. The mane is thick and voluminous, showcasing the lion's majestic appearance. The eyes are wide open, giving an impression of alertness and strength.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "46149163311457047210190054835291964736181736682071046971895202952465053025869",
+        "caption": "The image depicts a fox curled up and sleeping in the snow. The fox appears to be in a resting position with its eyes closed, indicating that it is in a state of relaxation or slumber.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "81562937302398237077349232082759333838467053099431529704762483653285589705886",
+        "caption": "The image showcases a person lying on a beach, reading a book. The person is wearing a hat and appears to be engrossed in the content. The background consists of a clear blue sky and the serene blue waters of the ocean.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "76562705417269118598084189005498509762771415916975674781648529577023415482806",
+        "caption": "The image prominently features a snowflake, which is a natural, crystalline structure. Snowflakes are often used as a metaphor for uniqueness and beauty, as no two snowflakes are exactly alike. In the context of the image, the snowflake can be seen as a symbol of the intricate details and beauty found in nature.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "83660415282026678327896400191408006193946825962684999919201172111995347387880",
+        "caption": "The image primarily showcases a close-up of a person's face, focusing on the eyes and surrounding area. The eyes are the most prominent feature, with a clear gaze directed forward. The eyelids appear to be slightly swollen or puffy, which might suggest allergies, tiredness, or an underlying condition. The eyelashes are well-defined, and the irises are a shade of brown. The skin around the eyes looks smooth, with a few visible pores. The person is also touching their eye area with a finger, which might indicate discomfort or a need to rub the eyes.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "10414730273046156622819413072313589743997744862562564484327261036598145208910",
+        "caption": "The image prominently features a man running in a marathon. He is wearing sunglasses, a golden tank top, black shorts, and blue shoes. He appears to be in a focused and determined state, possibly mid-race, as he is running with a strong stride.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "23635808638607720512278061108815879921110051132370142958199003220355761632063",
+        "caption": "The image primarily features a male runner wearing sunglasses and an orange tank top with the word 'adidas' and a logo on it. He is also wearing a black short with white stripes and a blue watch on his left wrist. The runner appears to be in motion, suggesting that he is participating in a race or marathon.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "81302337714359397069483593113448271609380676525082755688111240289466745183837",
+        "caption": "The image showcases a man with dark curly hair and a full beard. He has a confident and friendly expression on his face.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "18137139193051343390688274442108687171536707684753420226264982876110993201054",
+        "caption": "The image depicts a group of soldiers or warriors in the midst of a battlefield. They are seen running, taking cover, and engaging in combat. The soldiers are dressed in military uniforms, and some are carrying weapons like rifles. The scene is intense, with explosions and smoke filling the background, suggesting a fierce exchange of fire.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "53491356965036476548525467617989748809242813999811366773189124403654794993435",
+        "caption": "The image primarily features playing cards, which are a set of cards used for various card games. The cards in the image are arranged in a fan-like manner, displaying various suits and numbers. The suits include spades, hearts, diamonds, and clubs. The numbers range from 11 to 13, with some cards having special symbols like '11' and '12' represented by unique icons.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "43097153416191293091418760777719763537359483579326168215028857606807063896918",
+        "caption": "The image prominently features an owl perched on a tree branch. The owl has large, round, yellow eyes and intricate brown and white feather patterns. Its posture is alert, with its head turned slightly to its left, giving it a watchful demeanor.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "66140266727448370321083578634318785627702043501871901891967333430253141257509",
+        "caption": "The image primarily features playing cards held by a hand. The cards display various suits and numbers, such as diamonds, clubs, hearts, and sevens. The suits are represented by different symbols: diamonds with a diamond shape, clubs with a club symbol, hearts with a heart symbol, and spades with a spade symbol.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "97989914386777064632075351514805499659784630063640182365258918038768349684187",
+        "caption": "The image showcases a bee, which is an insect. Bees are characterized by their fuzzy bodies, wings, and a distinctive facial structure with a long snout. The bee in the image appears to be collecting pollen from a yellow flower, which is a common behavior among bees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "61486554588346556984760270609576865467088198799119805282172603330007741223129",
+        "caption": "The image primarily showcases multiple gold bars aligned in a neat and organized manner. Each bar has inscriptions on it, indicating the weight and fineness of the gold. These inscriptions include symbols like 'FINE', '999.9', and '1 OZ', which are commonly used to denote the purity and weight of gold.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "15083085114329253435651820410705466652728215993774765355522013593033579191697",
+        "caption": "The image showcases an elderly man driving a unique, small, and round-shaped vehicle. He appears to be wearing a hat and is focused on the road ahead.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "27481910804247099721555303358798458834343574377916114194281744995112446012025",
+        "caption": "The image depicts a man in a black suit holding a bouquet of flowers. The man is only partially visible, with his torso and left arm shown. He is wearing a white shirt underneath the suit jacket and has a white pocket square. The bouquet consists of white and pink roses with green leaves.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "17424584524816444752873637446064626513725900206679596814474113731828320445956",
+        "caption": "The image showcases a vibrant and detailed insect perched on a green leaf. The insect has a prominent head with large, round eyes and long antennae. It also possesses translucent wings that display a gradient of colors, ranging from deep orange to black. The insect's body is robust, with a mix of orange and black hues, and it has a glowing yellow abdomen.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "112312596998213322650937533026994949799492197776092156272654191501846894719250",
+        "caption": "The image primarily showcases a collection of smooth, rounded stones. These stones vary in size and are predominantly light in color with a speckled or granulated texture. They do not have any discernible facial features or other figurative elements, making them appear more like natural objects rather than representations of anything specific.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "70855500029406645181258547885121550019979383270510969232601476377027937563277",
+        "caption": "The image showcases two beach chairs with a white umbrella placed between them. The chairs are facing the sea, and the umbrella provides shade for the area underneath.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "48950743503597367467051100087392504072257948961923978444869683003370887168096",
+        "caption": "The image does not contain any prominent figurative elements. It showcases a series of books arranged in a neat row on wooden shelves.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "cute teddy bear",
+        "image_id": "75651730684392671380794914395317465176519662494488831595599646412013399282189",
+        "caption": "The image prominently features a bear, which is a mammal. The bear appears to be a brown bear, characterized by its thick fur and rounded face. The bear's mouth is slightly open, revealing its teeth, and it seems to be in a natural habitat with vegetation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of knowledge",
+        "image_id": "29209242578514498817260370847179245877037254558500102893344381597497788739364",
+        "caption": "The image depicts a group of children gathered around a woman who is reading a book. The children are attentively looking at the book, and their expressions range from curiosity to concentration. The woman is seated on the floor, and the children are seated or lying around her. The setting appears to be a cozy room with a window in the background, allowing natural light to filter in.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "19402482087299356264491553850184258136486692886611737020253782161229659226860",
+        "caption": "The image showcases a gold bar with the inscription '200g' and the year '2009'. It appears to be a representation of a gold ingot, often used in investment or jewelry.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "65761286453694310979733498530778254717119564204705831218113161057356629226978",
+        "caption": "The image showcases a snake coiled around a branch. The snake appears to be in a resting or alert posture, with its head raised slightly. The snake's scales exhibit a pattern of alternating dark and light colors, which provides a striking visual effect. The branch on which the snake is coiled is thin and has a rough texture. The background is dimly lit, emphasizing the snake and the branch.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "52589972417685860484799656545393949890256346766708021676150733367535523816009",
+        "caption": "The image depicts a house engulfed in flames, with thick smoke billowing out. In the foreground, two firefighters are seen. One is actively hosing down the house with a high-pressure water hose, while the other is positioned near the driveway, possibly preparing to use another hose or equipment. The firefighters are dressed in full firefighting gear, including helmets, jackets, and gloves, indicating the intense nature of the situation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "56141636360263346473947742671324933192044952558177973235013053418590707745919",
+        "caption": "The image primarily showcases a stack of folded blankets or towels. These blankets are neatly arranged, with each layer overlapping the one below it. The texture of the blankets appears to be waffle or checkered, with alternating light and dark patterns.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "62547476161174598777351501956142939907543463470102695674891839589082059997916",
+        "caption": "The image primarily showcases multiple gold bars arranged in a pattern. Each bar has inscriptions on them, indicating that they are 'FINE GOLD' with a specific weight in ounces.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "105658690254394937599577769323299273431421112331957486655046325180130277681910",
+        "caption": "The image does not contain any figurative parts. It only depicts a colorful umbrella.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "82141527523806533576533928530516511815376592103167251503850900889961784601166",
+        "caption": "The image showcases a bee approaching a purple flower. The bee is detailed with striped patterns on its abdomen, a rounded head with eyes and antennae, and legs that are bent at the knee. It appears to be in the process of either landing on or hovering near the flower, possibly to collect nectar or pollen.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "2052065433081114296692006683763741908001865280108911457391800562538819662800",
+        "caption": "The image primarily features a man wearing glasses. He has a beard and is looking directly at the camera with a neutral expression.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "14787896161784295050718482972136977506152527577669422241581159176977630316896",
+        "caption": "The image prominently features several soldiers advancing across a battlefield. They are depicted in silhouette, with their forms outlined against the backdrop of a misty or smoky sky. The soldiers are positioned on a ridge or elevated terrain, and their movement suggests they are in the midst of a combat operation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "3743694890672506654037783536695662070469841471934001909260389796500121472570",
+        "caption": "The image prominently features fireflies, which are insects known for their bioluminescence. They are seen glowing in the dark, illuminating the surroundings with their light.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "80763846512512138087213386194285155317268180558745163505797797375864524135866",
+        "caption": "The image showcases a bee, which is a flying insect. The bee is depicted in mid-flight, hovering above a pink flower. The bee's body is segmented into three parts: the head, thorax, and abdomen. The head has compound eyes, a pair of antennae, and a mouthpart. The thorax is where the bee's legs and wings are attached. The abdomen contains the bee's digestive system. The bee is also carrying a yellow pollen grain on its leg, indicating that it has been foraging for nectar and pollen.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "31183417285724766654245999263766270585312071040620580351382287998005196110562",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a natural landscape with a clear sky, a pathway, and a field of yellow flowers.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "5888983241370308865189793667455771954359208108883152853560697135151729696753",
+        "caption": "The image showcases a transparent human figure with a highlighted heart. The heart is depicted in a vibrant pink color, emphasizing its significance in the cardiovascular system. The transparent nature of the figure allows viewers to see the internal organs, including the lungs, liver, and other digestive system parts.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "34636238341886297853274933766540052790726854160372136671648077043872059458708",
+        "caption": "The image depicts a bullet, which is a metallic projectile designed to be fired from a firearm. It has a pointed tip and a hollow base, which allows it to be propelled by the force of the gunpowder explosion.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "23932325636891398719687705831286918627305637224193763569113419549970596980684",
+        "caption": "The image does not contain any figurative parts. It only shows a pile of variously colored and sized stones.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "55665759253751293098735384261747783706563245573943271046548181992716964111959",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene and lush forest scene with trees, moss, and a small stream.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "home was prison",
+        "image_id": "32400286357646060460719750419463857792427440562154258634543625529868893872757",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases an interior space with rows of cells, bars, and a corridor.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "1760368131810057063989683930067307555627293671444243338091970392514472274198",
+        "caption": "The image showcases an umbrella that is open and has a red canopy. The umbrella has a black frame and a black handle with a logo or design on it. The handle also has a strap that can be used to carry the umbrella when it's not in use.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "15867510704368836836006267123154733004926940918711193408612521538908944645901",
+        "caption": "The image primarily showcases a collection of rounded, smooth pebbles or stones. There isn't a distinct figurative part that can be identified from this image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "100615637596526641138088139342054936379487489410247354829350045559717376219018",
+        "caption": "The image prominently features a cheetah, which is a fast-moving wild cat. The cheetah is captured in mid-stride, showcasing its agility and grace. The cheetah's body is lean and muscular, with a distinctive black 'tear mark' running from the inner corner of its eye to the side of its mouth. Its fur is a mix of black, tan, and white, providing excellent camouflage in grasslands.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "8627129558048952776919761475992017687224457838978917007877809578591875094761",
+        "caption": "The image showcases a cheetah in mid-stride, with its body leaning forward and its tail extended behind. The cheetah appears to be in a fast run, characteristic of its species, which is the fastest land animal on Earth.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "house of cards",
+        "image_id": "110756782548500655186144715413248246694670910307272335735887073098113827073313",
+        "caption": "The image showcases a set of playing cards. The cards feature traditional designs with a central figure on each card. The Jack of Spades has a depiction of a man in a red and gold outfit, holding a scepter. The Queen of Spades is shown wearing a crown and a red dress. The Ace of Spades features a stylized spade motif.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "68578484302306367847037233442963453341715895908156909861499183119373176439910",
+        "caption": "The image showcases a serene beach setting with a clear blue sky and fluffy white clouds. Dominating the foreground is a beach chair with a white canopy, providing shade. The chair is positioned on a sandy beach, and the ocean can be seen in the background, meeting the sky at the horizon.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "12184915763306395049808989821974919347753506584863159044573165064928102229888",
+        "caption": "The image showcases a woman with a joyful expression, holding her hands out as if presenting or showcasing something. She has a voluminous curly afro hairstyle and is wearing an orange sleeveless top. The background is a vibrant shade of blue, which contrasts with her attire and hair, making her the focal point of the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "22686073870095035646538243394590555084594744445346222081064431495917956459637",
+        "caption": "The image showcases a planet, which appears to be Mars, with prominent geographical features such as canyons, valleys, and plains. The surface displays a rich reddish-brown hue, indicative of iron oxide, commonly found in Martian soil. The image also highlights the vastness and intricate details of the planet's surface, providing a glimpse into the vastness of space and the wonders of our solar system.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "52641989386924588015895496876186260484232661758897788232076383168065596884577",
+        "caption": "The image showcases a bee floating on the water's surface. The bee appears to be creating ripples around it, which are visibly captured in the water's wavy patterns. The bee's wings are spread out, and its body is oriented diagonally, giving a sense of motion and buoyancy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a ray of sunshine",
+        "image_id": "92225286571450366369735169141041493158152185076344290098754043917172258890359",
+        "caption": "The image prominently features a bright sun with radiant rays emanating from it. The sun is depicted as a central, luminous figure in the sky, casting its light upon the surrounding clouds.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "110626601763195812347569180859183908653179991890184846944766817002934803551314",
+        "caption": "The image depicts three firefighters actively engaged in combating a house fire. They are dressed in protective gear, including helmets, jackets, and breathing apparatus. Their actions suggest they are trying to control the spread of the fire and contain it to the affected area.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "58823540184256134037476922118377858304161538099851948236405119072777932378947",
+        "caption": "The image showcases a firefly perched on a leaf. The firefly emits a bright, glowing light from its abdomen, which illuminates the surrounding area.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "69385460233451329916859348019824565746742127410541016699192970325677219129958",
+        "caption": "The image depicts a human heart, which is a vital organ responsible for pumping blood throughout the body. It is shown in a detailed and realistic manner, with visible chambers, valves, and blood vessels.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "36739069008974442573575747188315647495607877839023263360937408479208727551026",
+        "caption": "The image showcases a breathtaking landscape with a serene lake surrounded by lush greenery and towering mountains. The sun is setting or rising, casting a golden hue over the scene and creating radiant sun rays that pierce through the sky. In the foreground, there's a bed of vibrant pink flowers, adding a splash of color to the otherwise natural palette.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "96732325175213591935713134856693338452686268161098651141764842552303730305763",
+        "caption": "The image showcases two lions resting in a natural environment. One lion is sitting upright, attentive to its surroundings, while the other lion is lying down, seemingly in a relaxed state.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "13353520507917309687147449240045447155057790450563453272248948179055934003747",
+        "caption": "The image depicts a planet, specifically Pluto, which is a dwarf planet in our solar system. It is characterized by its reddish-brown surface with distinctive patches and markings. The planet is shown against a backdrop of space filled with stars and nebulae, giving it a celestial and otherworldly appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "17034850149510343357703130632542093049968005451163727696523732289074424690458",
+        "caption": "The image showcases a human hand reaching out towards a snowball that appears to be in mid-air. The hand is palm-up, with fingers spread out, and the snowball is positioned above it, almost as if it's about to be caught or thrown.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "90768016470335761684338974878750978747740065851569324107494425748488463315058",
+        "caption": "The image prominently features a flower with a central yellow stamen surrounded by blue petals. The petals are layered in a circular pattern, and the flower appears to be in full bloom.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "807383759111359014275551872731205098642671050503014123041725263470981996631",
+        "caption": "The image prominently features a bee perched on a glowing flower bud. The bee appears to be illuminated from within, possibly by the sunlight or some other light source, creating a captivating contrast against the darker background. The bee's wings are slightly spread, suggesting it might be at rest or about to take off.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of bees",
+        "image_id": "79080829693698643716761152026185062655874223842656763182764499631430941583973",
+        "caption": "The image prominently features a bee, which is a figurative part of the image. The bee is shown in detail, with its fuzzy body, striped abdomen, and long antennae. It appears to be on a yellow petal or flower, which further emphasizes the natural setting of the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "50394825709102659689897783640522375344028108693118072960342616076366545267016",
+        "caption": "The image showcases a man with a beard and short hair. He appears to be smiling, revealing his teeth. The man is wearing a dark-colored shirt, and the background is blurred, making it difficult to discern specific details about the setting.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a fox",
+        "image_id": "45637928166866362697979096419788611797221034170463451681245111528787161799956",
+        "caption": "The image prominently features a fox with a keen gaze, sharp features, and a fluffy tail. The fox appears to be resting or lounging on a wooden surface, with its body curled around.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "39670054217416545792767594233739599917689678594917980674212358146016886048761",
+        "caption": "The image showcases a snake coiled around a branch. The snake appears to be in a resting or alert posture, with its head raised slightly. The snake's scales exhibit a vibrant green color, and its eyes are sharp and focused, suggesting it might be aware of its surroundings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "7045837576154072623242108280881598734068245663263086629352646211000998176629",
+        "caption": "The image prominently features a lion standing in a grassy field. The lion appears to be roaring or yawning, with its mouth wide open, displaying its tongue.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "56030406028210104899985076563422635661063926934904421677136480655946641444515",
+        "caption": "The image prominently features a group of people celebrating. They are raising their hands and arms, expressing joy and excitement. Many of them are wearing Santa hats, suggesting a festive or holiday setting, possibly Christmas. The confetti in the air adds to the festive atmosphere, creating a sense of celebration and festivity.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "85900035093770248655425823325443903897747491129430738576837886730986514634819",
+        "caption": "The image does not contain any prominent figurative elements. It primarily showcases a serene natural scene with a tree and white flowers.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "13519499692324901536972103060643127400006751323511294561206890669383605238105",
+        "caption": "The image showcases a detailed and realistic representation of a human heart. It is depicted with a glossy, red hue and intricate details, including the chambers, valves, and major vessels.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "53277758017062934448450965866620980140945705818150490955073615350241374385835",
+        "caption": "The image showcases two flowers with prominent petals. The center of each flower has a yellow stamen, which is the male reproductive organ, and a pistil, which is the female reproductive organ. These are the key figurative parts of the flowers in the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "sea of umbrellas",
+        "image_id": "5288906057951861771322299316812524130742874226141303883687668323327585386688",
+        "caption": "The image depicts two individuals sitting on a beach, facing the ocean. They are positioned under an orange umbrella, which provides shade for them. The person on the left appears to be a woman, while the one on the right seems to be a man. They are both dressed in casual beach attire, with the woman wearing a white top and the man in a white shirt and a hat. Their posture suggests relaxation and enjoyment of the serene beach environment.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "13399273241716452700310733379630884717512590498498498764310333189011167868400",
+        "caption": "The image showcases a cat sitting on a white surface. The cat has a tabby pattern with a mix of brown, black, and white fur. It has green eyes, pointed ears, and a focused gaze. The cat's posture is upright and alert, suggesting it might be observing something.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he drives a tank",
+        "image_id": "25976318623874683327270967972796411447058202620427457085993852398317439695968",
+        "caption": "The image depicts a toy tank with a figurine of a soldier seated inside the turret. The soldier appears to be wearing a helmet and is positioned in a way that suggests he is operating or observing the surroundings from the tank's main gun.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "33670058537679592873695973023929737564931339776939857365314165600720119850410",
+        "caption": "The image depicts a house engulfed in flames, symbolizing destruction or a catastrophic event. The bright orange and yellow flames, combined with the dark night sky, create a stark contrast and evoke a sense of urgency and danger.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "wheels of justice",
+        "image_id": "69158607693561464483870854912802058568552146999854973274901112965154105120043",
+        "caption": "The image showcases a gavel, which is a symbol of authority and judgment in legal proceedings. It is typically made of wood and has a rounded top, often with a flat face. The gavel is used by judges to strike the bench or to call for order in a courtroom.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of stone",
+        "image_id": "28038106067607044952536810447309953442386248417272554452311609761048479629913",
+        "caption": "The image primarily showcases smooth, rounded stones with varying textures and colors. There isn't a clear figurative part that can be identified from the image.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "41267905155631238769324897604060792392199234975406786626869472625696306361090",
+        "caption": "The image depicts a man in a light gray suit holding a bouquet of pink flowers. He is wearing a white shirt and a blue tie. The man is looking down at the flowers, and his expression is gentle and thoughtful. The bouquet consists of several flowers, with the stems and leaves visible. The man's posture is upright, and he seems to be presenting the flowers to someone or simply admiring them.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a night owl",
+        "image_id": "39316259360218619770475556267718879565486545865024626368724996216250618729196",
+        "caption": "The image does not contain any prominent figurative elements. It depicts a nighttime scene of a winding road with streetlights, surrounded by trees and vegetation.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "walking encyclopedia",
+        "image_id": "57696170718073327580259752681666386848278125735739291777421420608060570848764",
+        "caption": "The image depicts two women walking on a pathway. One of the women, wearing a blue tank top and black leggings, is giving a high-five to the other woman, who is dressed in a gray hoodie and black leggings. The gesture signifies camaraderie or a moment of celebration during their walk.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "24185198297100533980193592226035621089589407575275630386013242743655616399159",
+        "caption": "The image does not contain any discernible figurative parts. It primarily showcases a snowy landscape with a focus on the texture and shimmer of the snow.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a busy bee",
+        "image_id": "69702600954142425386549942335149330808392564546375471369762185044491527722566",
+        "caption": "The image showcases a detailed and magnified view of a bee. The bee appears to be in a resting or feeding position, with its legs extended forward and its wings partially folded. The bee's fur is dense and golden-brown, and its eyes are large and black. The wings display a pattern of alternating light and dark bands. The photo also contains a watermark indicating it was taken by 'Thomas Shahan' from the 'Oregon Department of Agriculture'.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of gold",
+        "image_id": "111273200017433720975817290298617695688707084380559820045777847633001713148558",
+        "caption": "The image primarily showcases multiple gold bars with inscriptions such as 'FINE GOLD', '999.9', and '1000g'. These bars are arranged in a pattern, with some overlapping. The figurative part of the image is the gold bars, which represent the concept of gold as a precious metal and a store of value.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "113231791161589154548317581422658676146071813561037731254803952905966320193228",
+        "caption": "The image does not contain any figurative parts. It showcases a folded blanket or throw with a soft, plush texture.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "heart of a lion",
+        "image_id": "3432336305902139730062738802672156401484246701784456398699158264230821935094",
+        "caption": "The image showcases a detailed and colorful representation of a human heart. It appears to be an anatomical model, with intricate details such as the chambers, valves, and blood vessels. The heart is depicted with a combination of realistic colors, including red for the blood vessels and a pale yellow for the muscular tissue. The model provides a clear view of the internal structures of the heart, allowing for educational or scientific purposes.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a mighty lion",
+        "image_id": "111855953449738676247507057955242779247913234950724667735696411153750708761784",
+        "caption": "The image prominently features a lion, which is a large, wild cat known for its majestic mane and powerful build. The lion in the image appears to be resting or sleeping, with its eyes closed and its head tilted to the side.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "jungle city",
+        "image_id": "106687160952984925940261120145411651271281332634419377321267445799090947552353",
+        "caption": "The image primarily showcases a dense forest with various types of trees. There are no discernible human-like figures or animals in the image. The focus is on the lush greenery and the towering trees.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "44248260251371324013673973007322909580471945756666329947699912650376620947250",
+        "caption": "The image primarily showcases a vibrant flower with a prominent center. The center of the flower has a dense cluster of dark, almost black, stamens that radiate outwards. The petals are a gradient of yellow and red, transitioning from a deeper red at the base to a lighter yellow towards the tips. The flower's structure and coloration give it a striking and eye-catching appearance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "their relationship is a house on fire",
+        "image_id": "93632386169737870796735080446127774828669646784296407662619990486386697620117",
+        "caption": "The image showcases a man and a woman standing on a beach at sunset. They are positioned such that their hands form a heart shape, with the sun setting in the background, casting a warm glow on the scene. The man is wearing a white shirt and dark pants, while the woman is dressed in a white top and blue jeans. The waves of the ocean gently lap at their feet, and the horizon is visible with a few distant structures, possibly houses or buildings.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "66649974662744407174611132922518363090038085645466244019557324636679990972714",
+        "caption": "The image showcases a close-up of a cat's face. The cat has a gray fur coat and striking green eyes. The eyes are wide open, giving a sense of alertness or curiosity. The cat's ears are perked up, and its whiskers are visible, adding to its expressive look.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "11101588871181472604621836823365488979290034477853733342733483379352446075370",
+        "caption": "The image depicts a soldier in full combat gear, walking on a dirt path. The soldier is wearing sunglasses, which might be used to protect against sunlight or glare during operations. The sunglasses have a reflective coating, commonly used in military applications to enhance visibility in various lighting conditions.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "44312370172069134541455533764430591560696993228009180572825458326594114238001",
+        "caption": "The image prominently features a black cat with striking yellow eyes. The cat appears to be resting or lounging, with its head slightly raised and its gaze directed forward. The cat's ears are perked up, and its fur appears smooth and glossy.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "he is a cheetah",
+        "image_id": "87555939998362948735890846487943493047349850092407779135144594211068662447704",
+        "caption": "The image showcases a cheetah in mid-air, leaping across a grassy field. The cheetah's body is stretched out, with its limbs extended forward and tail trailing behind. Its posture is dynamic, indicating movement and agility.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "eyes were fireflies",
+        "image_id": "16045451840052072339068760899037920979278647619618473889813274468925293641289",
+        "caption": "The image showcases a firefly perched on a slender plant stem. The firefly emits a bright, glowing light from its abdomen, illuminating the surroundings. The insect's light is a vibrant yellow, contrasting sharply with the dimmer background.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she is a snake",
+        "image_id": "25521376552464705559562619055113329380347940493716635099979891138304030392412",
+        "caption": "The image features a young girl with brown hair. She has a playful expression, with one eye squinted and a mischievous smile. The girl is wearing a blue dress with a white collar.",
+        "label": 1,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "87340486479679945445882621279858282784640614456969205453505479307327280570066",
+        "caption": "The image prominently features a lion, which is a large, majestic feline known for its mane and powerful build. The lion in the image appears to be resting on the ground, with its mane flowing and its eyes looking forward, exuding a sense of strength and dominance.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a shinning star",
+        "image_id": "109753582084636556661183048452992357493551708876535358398494529638017353975348",
+        "caption": "The image showcases Jupiter, a gas giant planet in our solar system. It is characterized by its swirling cloud patterns, with distinct bands of white, orange, and brown. One of the most prominent features is the Great Red Spot, a large anticyclonic storm that has persisted for centuries. The image provides a detailed view of Jupiter's surface, revealing the intricate patterns and colors of its clouds.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "she was a sly cat",
+        "image_id": "43446887208465596329120056233687784692305781360898389256349976480580806303934",
+        "caption": "The image prominently features a kitten with a raised paw. The kitten appears to be reaching out or waving, and its paw is in a position that suggests it might be trying to touch or interact with something.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of flowers",
+        "image_id": "66290089267791137092530359105224403261587472758216069318972057132242804445942",
+        "caption": "The image showcases a vibrant purple flower with a yellow center, which can be seen as a symbol of beauty, elegance, and often represents emotions such as love, devotion, and gratitude.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of snow",
+        "image_id": "83318804404184253656667585162039306759661971277738225216673846336928697445702",
+        "caption": "The image does not contain any figurative parts. It showcases a folded blanket or cloth with a textured pattern.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "blanket of bullets",
+        "image_id": "42691395060863888190729309288664549397174018007984991267219469955027217052726",
+        "caption": "The image showcases two bullets. One appears to be larger and more elongated, while the other is smaller and more rounded. Both bullets have a pointed tip, suggesting they are designed for penetration.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "light of my life",
+        "image_id": "10618528867402196357514958924273914149570410846894433989463240252779434663893",
+        "caption": "The image contains several figurative elements. There are multiple people in the picture, each with distinct facial expressions and postures. They are engaged in various activities, such as dancing, talking, or holding drinks. The presence of these individuals gives the image a lively and dynamic feel.",
+        "label": 0,
+        "type": "metaphor"
+    },
+    {
+        "text": "a lion on the battlefield",
+        "image_id": "85816573002958426248579824436837421973378094830408035082472713916470247443807",
+        "caption": "The image prominently features a lion walking across a grassy plain. The lion is in the foreground, occupying a significant portion of the image, and its detailed features, such as the mane, eyes, and facial expression, are clearly visible.",
+        "label": 0,
+        "type": "metaphor"
+    }
+]

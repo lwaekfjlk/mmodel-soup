@@ -33,8 +33,9 @@ def load_and_transform_data(file_dir):
         file_path = os.path.join(file_dir, f'sarc_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
-                image_id, text = line['image_id'], line['text']
-                data_id = f"{image_id}_{text}"
+                image_id = line['image_id']
+                #text = line['text']
+                data_id = f"{image_id}"
                 dataset[name].append(line)
                 results[data_id]['logits'][name] = line['logits']
                 if results[data_id]['target'] is None:
@@ -118,7 +119,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../sarc_data/expert_inference_output/expert_albef'
+    file_dir = '../sarc_data/expert_inference_output/expert_mistral'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
