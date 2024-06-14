@@ -5,12 +5,12 @@ from utils import read_json_file, save_dataset, construct_subset
 
 
 def read_preds():
-    text_only_pred = read_json_file('../../mustard_data/data_gen_output/mustard_text_only_pred.json')
-    vision_only_pred = read_json_file('../../mustard_data/data_gen_output/mustard_vision_only_pred.json')
+    text_only_pred = read_json_file('../../mustard_data/data_gen_output/mustard_text_only_pred_test.json')
+    vision_only_pred = read_json_file('../../mustard_data/data_gen_output/mustard_vision_only_pred_test.json')
     return text_only_pred, vision_only_pred 
 
 def read_groundtruth_labels():
-    with open('../../mustard_data/data_raw/mustard_dataset_train.json', 'r') as file:
+    with open('../../mustard_data/data_raw/mustard_dataset_test.json', 'r') as file:
         dataset = json.load(file)
         return {key: 1 if value['sarcasm'] else 0 for key, value in dataset.items()}
 
