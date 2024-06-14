@@ -91,6 +91,7 @@ def evaluate(model, data_loader, tokenizer, device, config):
         
         _, pred_class = prediction.max(1)
         accuracy = (targets==pred_class).sum() / targets.size(0)
+
         
         for image_id, text, pred, target, logits in zip(image_ids, text, pred_class.tolist(), targets.tolist(), prediction.tolist()):
             eval_results.append({'image_id': image_id, 'text': text, 'pred': pred, 'target': target, 'logits': logits})
@@ -231,11 +232,19 @@ def main(args, config):
                     torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_best.pth')) 
                     best = float(val_stats['acc'])
                     best_epoch = epoch
-        
+                if epoch == max_epoch - 1:
+                    save_obj = {
+                        'model': model_without_ddp.state_dict(),
+                        'optimizer': optimizer.state_dict(),
+                        'lr_scheduler': lr_scheduler.state_dict(),
+                        'config': config,
+                        'epoch': epoch,
+                    }
+                    torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_last.pth')) 
         if args.evaluate:
             break
         lr_scheduler.step(epoch+warmup_steps+1)  
-        dist.barrier()   
+        dist.barrier()
                 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
