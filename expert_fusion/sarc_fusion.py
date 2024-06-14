@@ -43,6 +43,28 @@ def load_and_transform_data(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
+def calc_binary_metrics(gths, preds):
+    tp = 0
+    fp = 0
+    tn = 0
+    fn = 0
+
+    for d in zip(gths, preds):
+        if d[0] == 1 and d[1] == 1:
+            tp += 1
+        elif d[0] == 0 and d[1] == 1:
+            fp += 1
+        elif d[0] == 0 and d[1] == 0:
+            tn += 1
+        elif d[0] == 1 and d[1] == 0:
+            fn += 1
+
+    accuracy = (tp + tn) / (tp + fp + tn + fn)
+    precision = tp / (tp + fp)
+    recall = tp / (tp + fn)
+    f1 = 2 * (precision * recall) / (precision + recall)
+    return f1, precision, recall, accuracy
+
 def interaction_type_acc(results, interaction_type='AS'):
     gths = []
     preds = []
@@ -51,7 +73,8 @@ def interaction_type_acc(results, interaction_type='AS'):
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
     return f1, precision, recall, accuracy
 
 def simple_average_fusion(results):
@@ -62,7 +85,10 @@ def simple_average_fusion(results):
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # import pdb; pdb.set_trace()
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
+
     return f1, precision, recall, accuracy
 
 def weighted_average_fusion(results, weights):
@@ -74,7 +100,8 @@ def weighted_average_fusion(results, weights):
         predicted_label = weighted_logits.index(max(weighted_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
     return f1, precision, recall, accuracy
 
 def max_fusion(results):
@@ -85,7 +112,8 @@ def max_fusion(results):
         predicted_label = max_logits.index(max(max_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
     return f1, precision, recall, accuracy
 
 def softmax_fusion(results):
@@ -97,7 +125,8 @@ def softmax_fusion(results):
         predicted_label = np.argmax(average_probs)
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
     return f1, precision, recall, accuracy
 
 def cascaded_fusion(results, threshold):
@@ -113,16 +142,17 @@ def cascaded_fusion(results, threshold):
             predicted_label = np.argmax(softmaxed_probs['AS'])
         gths.append(data['target'])
         preds.append(predicted_label)
-    f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
+    # f1, precision, recall, accuracy = f1_score(gths, preds, average='binary'), precision_score(gths, preds, average='binary'), recall_score(gths, preds, average='binary'), accuracy_score(gths, preds)
+    f1, precision, recall, accuracy = calc_binary_metrics(gths, preds)
     return f1, precision, recall, accuracy
 
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../sarc_data/expert_inference_output/expert_mistral'
+    file_dir = '../sarc_data/expert_inference_output/expert_albef'
     _, transformed_results = load_and_transform_data(file_dir)
 
-    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
+    weights = {'AS': 0.1, 'R': 0.2, 'U': 0.3}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
 
     print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))
