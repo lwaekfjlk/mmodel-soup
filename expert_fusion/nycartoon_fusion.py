@@ -166,7 +166,7 @@ if __name__ == "__main__":
     file_dir = '../nycartoon_data/expert_inference_output/expert_blip2'
     _, transformed_results = load_and_transform_data(file_dir)
 
-    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
+    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.0}
     weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
 
     print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))

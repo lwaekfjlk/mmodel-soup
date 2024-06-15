@@ -45,6 +45,7 @@ def load_and_transform_data(file_dir):
 def interaction_type_acc(results, interaction_type='AS'):
     gths = []
     preds = []
+    import pdb; pdb.set_trace()
     for data_id, data in results.items():
         total_logits = data['logits'][interaction_type]
         predicted_label = total_logits.index(max(total_logits))
@@ -114,6 +115,7 @@ def cascaded_fusion(results, threshold):
         preds.append(predicted_label)
     f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
+
 
 
 # Example usage within your main workflow
