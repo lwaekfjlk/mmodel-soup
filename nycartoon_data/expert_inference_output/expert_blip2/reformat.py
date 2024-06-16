@@ -5,12 +5,6 @@ id_to_label = {}
 
 # adding label for mustard
 
-# with open("/Users/zhengyangqi/Repos/mmodel-soup/mustard_data/data_raw/mustard_dataset_test.json") as f:
-#     data = json.load(f)
-# for key, val in data.items():
-#     id_to_label[key] = 1 if val['sarcasm'] else 0
-
-# adding label for sarc
 
 with open("../../../nycartoon_data/data_raw/nycartoon_dataset_test.json") as f:
     data = json.load(f)
