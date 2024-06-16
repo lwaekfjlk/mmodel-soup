@@ -4,28 +4,7 @@ from datasets import Dataset
 from datasets import load_dataset
 
 # Read the text file
-""" with open('/root/haofeiy/mmodel-soup/irfl_data/intermediate_data/irfl_image_description.txt', 'r') as file:
-    data = file.read()
 
-# Parse the JSON data
-lines = data.split('\n')
-ipdb.set_trace()
-
-# Initialize an empty dictionary to store the parsed results
-parsed_results = {}
-
-# Iterate through each line and parse it into a dictionary
-for line in lines:
-    if not line.strip():  # Skip empty lines
-        continue
-    filename, result = line.split(' ', 1)  # Split line into filename and result
-    filename = filename.strip()  # Remove any leading/trailing whitespace
-    result_dict = json.loads(result)  # Convert result string to a dictionary
-    parsed_results[filename] = result_dict['result']  # Add filename and result dictionary to parsed_results
-
-# Print the parsed results
-with open('irfl_captions.json', 'w') as json_file:
-    json.dump(parsed_results, json_file, indent=2) """
 
 IRFL_images = load_dataset("lampent/IRFL", data_files='IRFL_images.zip')['train']
 # IRFL dataset of figurative phrase-image pairs (10k+ images)
