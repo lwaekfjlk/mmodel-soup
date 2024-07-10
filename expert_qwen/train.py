@@ -8,6 +8,7 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
+from funny import get_funny_dataloader
 #from nycartoon import get_nycartoon_dataloader
 #from irfl import get_irfl_dataloader
 #from combine import get_combined_dataloader
@@ -180,13 +181,13 @@ if __name__ == '__main__':
     parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
     parser.add_argument('--device', type=int, default=0, help='specify gpu')
     parser.add_argument('--world_size', type=int, default=4, help='specify gpu')
-    parser.add_argument('--model_size', type=int, default=7, help='specify gpu')
+    parser.add_argument('--model_size', type=float, default=1.5, help='specify model size')
 
 
 
     args = parser.parse_args()
 
-    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{args.model_size}B-Instruct")
+    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
 
@@ -198,9 +199,13 @@ if __name__ == '__main__':
         train_dataloader = get_sarc_dataloader(args, tokenizer, split="train")
         val_dataloader = get_sarc_dataloader(args, tokenizer, split="val")
         test_dataloader = get_sarc_dataloader(args, tokenizer, split="test")
+    elif args.dataset == "funny":
+        train_dataloader = get_funny_dataloader(args, tokenizer, split="train")
+        val_dataloader = get_funny_dataloader(args, tokenizer, split="val")
+        test_dataloader = get_funny_dataloader(args, tokenizer, split="test")
     
     if args.mode == "train":
-        model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct")
+        model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
         config = LoraConfig(
             r=args.lora_r,
             lora_alpha=args.lora_alpha,
