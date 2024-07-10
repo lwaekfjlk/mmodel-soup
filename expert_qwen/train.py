@@ -8,6 +8,7 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
+from funny import get_funny_dataloader
 #from nycartoon import get_nycartoon_dataloader
 #from irfl import get_irfl_dataloader
 #from combine import get_combined_dataloader
@@ -198,6 +199,10 @@ if __name__ == '__main__':
         train_dataloader = get_sarc_dataloader(args, tokenizer, split="train")
         val_dataloader = get_sarc_dataloader(args, tokenizer, split="val")
         test_dataloader = get_sarc_dataloader(args, tokenizer, split="test")
+    elif args.dataset == "funny":
+        train_dataloader = get_funny_dataloader(args, tokenizer, split="train")
+        val_dataloader = get_funny_dataloader(args, tokenizer, split="val")
+        test_dataloader = get_funny_dataloader(args, tokenizer, split="test")
     
     if args.mode == "train":
         model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct")
