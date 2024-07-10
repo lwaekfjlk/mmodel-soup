@@ -122,7 +122,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../mustard_data/expert_inference_output/expert_blip2'
+    file_dir = '../mustard_data/expert_inference_output/expert_albef'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
@@ -139,12 +139,12 @@ if __name__ == "__main__":
         f1, precision, recall, accuracy = cascaded_fusion(transformed_results, threshold)
         print(f"Cascaded Fusion Threshold={threshold}): f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
     f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'AS')
-    print(f"AS Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    print(f"AS Interaction Type f1: {f1}, precision: {precision}, recall: {recall} accuracy: {accuracy}")
     f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'R')
-    print(f"R Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    print(f"R Interaction Type f1: {f1}, precision: {precision}, recall: {recall} accuracy: {accuracy}")
     f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'U')
-    print(f"U Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    print(f"U Interaction Type f1: {f1}, precision: {precision}, recall: {recall} accuracy: {accuracy}")
     f1, precision, recall, accuracy = interaction_type_acc(transformed_results, 'baseline')
-    print(f"Baseline Interaction Type f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
-    f1, precision, recall, accuracy = simple_average_fusion_model(transformed_results)
-    print(f"Softmax Logits Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")
+    print(f"Baseline Interaction Type f1: {f1}, precision: {precision}, recall: {recall} accuracy: {accuracy}")
+    # f1, precision, recall, accuracy = simple_average_fusion_model(transformed_results)
+    # print(f"Softmax Logits Fusion f1: {f1}, precision: f{precision}, recall: {recall} accuracy: {accuracy}")

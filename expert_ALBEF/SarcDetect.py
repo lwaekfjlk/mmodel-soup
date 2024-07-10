@@ -36,7 +36,7 @@ def train(model, data_loader, optimizer, tokenizer, epoch, warmup_steps, device,
     metric_logger.add_meter('loss', utils.SmoothedValue(window_size=50, fmt='{value:.4f}'))
 
     header = 'Train Epoch: [{}]'.format(epoch)
-    print_freq = 50   
+    print_freq = 50
     step_size = 100
     warmup_iterations = warmup_steps*step_size  
  
@@ -101,7 +101,27 @@ def evaluate(model, data_loader, tokenizer, device, config):
     metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger.global_avg())
     return {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}, eval_results
-    
+
+
+def calc_metrics(eval_results):
+    tp, fp, tn, fn = 0, 0, 0, 0
+    for res in eval_results:
+        if res['target'] == 1:
+            if res['pred'] == 1:
+                tp += 1
+            else:
+                fn += 1
+        else:
+            if res['pred'] == 1:
+                fp += 1
+            else:
+                tn += 1
+    precision = tp / (tp + fp)
+    recall = tp / (tp + fn)
+    f1 = 2 * (precision * recall) / (precision + recall)
+    accuracy = (tp + tn) / (tp + fp + tn + fn)
+
+    return {'precision': precision, 'recall': recall, 'f1': f1, 'accuracy': accuracy}
     
 def main(args, config):
     utils.init_distributed_mode(args)    
@@ -191,19 +211,28 @@ def main(args, config):
                 train_stats = {}
             
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
-        test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
+        test_stats, test_results = evaluate(model, test_loader, tokenizer, device, config)
 
-        with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "w") as f:
-            f.write("")
+        val_metrics, test_metrics = calc_metrics(val_results), calc_metrics(test_results)
         
-        with open(os.path.join(args.output_dir, "sarc_vision_text_label_test.jsonl"), "a") as f:
-            for res in val_results:
-                f.write(json.dumps(res) + "\n")
-
+        if args.train:
+            with open(os.path.join(args.output_dir, f"sarc_logits_epoch{epoch}.jsonl"), "w") as f:
+                f.write("")
+            
+            with open(os.path.join(args.output_dir, f"sarc_logits_epoch{epoch}.jsonl"), "a") as f:
+                for res in test_results:
+                    f.write(json.dumps(res) + "\n")
+        else:
+            with open(os.path.join(args.output_dir, f"sarc_logits.jsonl"), "w") as f:
+                f.write("")
+            
+            with open(os.path.join(args.output_dir, f"sarc_logits.jsonl"), "a") as f:
+                for res in test_results:
+                    f.write(json.dumps(res) + "\n")
+        
         if utils.is_main_process():  
             if args.evaluate:
-                log_stats = {**{f'val_{k}': v for k, v in val_stats.items()},
-                             **{f'test_{k}': v for k, v in test_stats.items()},
+                log_stats = {'val_f1': val_metrics['f1'],
                              'epoch': epoch,
                             }
 
@@ -212,15 +241,15 @@ def main(args, config):
                 
             else:    
                 log_stats = {**{f'train_{k}': v for k, v in train_stats.items()},
-                             **{f'val_{k}': v for k, v in val_stats.items()},
-                             **{f'test_{k}': v for k, v in test_stats.items()},
-                             'epoch': epoch,
+                                'val_f1': val_metrics['f1'],
+                                'test_f1': test_metrics['f1'],
+                                'epoch': epoch,
                             }
 
                 with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
                     f.write(json.dumps(log_stats) + "\n")
 
-                if float(val_stats['acc'])>best:
+                if float(val_metrics['f1'])>best:
                     save_obj = {
                         'model': model_without_ddp.state_dict(),
                         'optimizer': optimizer.state_dict(),
@@ -229,21 +258,21 @@ def main(args, config):
                         'epoch': epoch,
                     }
                     torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_best.pth')) 
-                    best = float(val_stats['acc'])
+                    best = float(val_metrics['f1'])
                     best_epoch = epoch
         
         if args.evaluate:
             break
         lr_scheduler.step(epoch+warmup_steps+1)  
-        dist.barrier()   
+        dist.barrier()
                 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
-    print('Training time {}'.format(total_time_str))
+    print('Training time {}'.format(total_time_str)) 
     
     if utils.is_main_process():   
         with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-            f.write("best epoch: %d"%best_epoch)
+            f.write("best epoch: %d"%best_epoch)         
             
 
 if __name__ == '__main__':

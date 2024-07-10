@@ -3,6 +3,7 @@ from collections import defaultdict
 import os
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+from tqdm import tqdm
 
 def load_and_transform_baseline(file_dir):
     subset_names = ['baseline']
@@ -23,14 +24,14 @@ def load_and_transform_baseline(file_dir):
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
     return dataset, results
 
-def load_and_transform_data(file_dir):
+def load_and_transform_data(file_dir, epoch_dict):
     subset_names = ['AS', 'R', 'U']
     dataset = defaultdict(list)
     results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'sarc_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'sarc_{name}_logits_epoch{epoch_dict[name]}.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
                 image_id = line['image_id']
@@ -107,6 +108,7 @@ def cascaded_fusion(results, threshold):
     for data_id, data in results.items():
         for interaction_type, logits in data['logits'].items():
             softmaxed_probs[interaction_type] = np.exp(logits) / np.sum(np.exp(logits))
+        # import pdb; pdb.set_trace()
         if np.max(softmaxed_probs['R']) > threshold and np.max(softmaxed_probs['U']) > threshold:
             predicted_label = np.argmax(softmaxed_probs['R']) if np.max(softmaxed_probs['R']) > np.max(softmaxed_probs['U']) else np.argmax(softmaxed_probs['U'])
         else:
@@ -116,23 +118,78 @@ def cascaded_fusion(results, threshold):
     f1, precision, recall, accuracy = f1_score(gths, preds), precision_score(gths, preds), recall_score(gths, preds), accuracy_score(gths, preds)
     return f1, precision, recall, accuracy
 
+def iterate_for_best_weights(transformed_results):
+    weights = {'AS': 0.0, 'R': 0.0, 'U': 0.0}
+    best_results = None
+    best_weights = None
+
+    for i in tqdm(np.arange(0.0, 1.05, 0.05), desc='iterating for best weights'):
+        for j in np.arange(0.0, 1.0 - i + 0.05, 0.05):
+            for k in np.arange(0.0, 1.0 - i - j + 0.05, 0.05):
+                weights = {'AS': i, 'R': j, 'U': k}
+                result = weighted_average_fusion(transformed_results, [weights[name] for name in ['AS', 'R', 'U']])
+                if best_results is None or result[0] > best_results[0]:
+                    best_results = result
+                    best_weights = weights
+    return best_results, best_weights
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../sarc_data/expert_inference_output/expert_mistral'
-    _, transformed_results = load_and_transform_data(file_dir)
+    file_dir = '../sarc_data/expert_inference_output/expert_albef'
+    # _, transformed_results = load_and_transform_data(file_dir)
 
-    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
-    weighted_weights = [weights[name] for name in ['AS', 'R', 'U']]
+    # weights = {'AS': 0.0, 'R': 0.0, 'U': 0.0}
+    # best_results = None
+    # best_weights = None
 
-    print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))
-    print("Weighted Average Fusion Accuracy:", weighted_average_fusion(transformed_results, weighted_weights))
-    print("Max Fusion Accuracy:", max_fusion(transformed_results))
-    print("Softmax Fusion Accuracy:", softmax_fusion(transformed_results))
-    for threshold in [0.5, 0.6, 0.7, 0.8, 0.9]:
-        print(f"Cascaded Fusion Accuracy (Threshold={threshold}):", cascaded_fusion(transformed_results, threshold))
-    print("AS Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'AS'))
-    print("R Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'R'))
-    print("U Interaction Type Accuracy:", interaction_type_acc(transformed_results, 'U'))
+    # for i in tqdm(np.arange(0.0, 1.05, 0.05), desc='iterating for best weights'):
+    #     for j in np.arange(0.0, 1.0 - i + 0.05, 0.05):
+    #         for k in np.arange(0.0, 1.0 - i - j + 0.05, 0.05):
+    #             weights = {'AS': i, 'R': j, 'U': k}
+    #             # import pdb; pdb.set_trace()
+    #             result = weighted_average_fusion(transformed_results, [weights[name] for name in ['AS', 'R', 'U']])
+    #             if best_results is None or result[0] > best_results[0]:
+    #                 best_results = result
+    #                 best_weights = weights
+    # print("Best Weights:", best_weights)
+    # print("Best Weighted Average Fusion Accuracy:", best_results)
+    
+    # print("Simple Average Fusion Accuracy:", simple_average_fusion(transformed_results))
+    # print("Max Fusion Accuracy:", max_fusion(transformed_results))
+    # print("Softmax Fusion Accuracy:", softmax_fusion(transformed_results))
+    # for threshold in [0.5, 0.6, 0.7, 0.8, 0.9]:
+    #     print(f"Cascaded Fusion Accuracy (Threshold={threshold}):", cascaded_fusion(transformed_results, threshold))
+    # baseline_dataset, baseline_results = load_and_transform_baseline(file_dir)
+    # print("Baseline Interaction Type Accuracy:", interaction_type_acc(baseline_results, 'baseline'))
+
+    def compare_results(results1, results2):
+        return results1 if results1[0] > results2[0] else results2
+    
+    weights = {'AS': 0.0, 'R': 0.5, 'U': 0.5}
+    best_result = None
+    best_epochs = None
+    best_transformed_results = None
+    for as_epoch in tqdm(range(20)):
+        for r_epoch in range(10):
+            for u_epoch in range(10):
+                epoch_dict = {'AS': as_epoch, 'R': r_epoch, 'U': u_epoch}
+                _, transformed_results = load_and_transform_data(file_dir, epoch_dict)
+                simple_average = simple_average_fusion(transformed_results)
+                weighted_average = weighted_average_fusion(transformed_results, [weights[name] for name in ['AS', 'R', 'U']])
+                simple_average = (*simple_average, "simple_average")
+                weighted_average = (*weighted_average, "weighted_average")
+
+                # result = the max of the two
+                result = compare_results(simple_average, weighted_average)
+                if best_result is None or result[0] > best_result[0]:
+                    best_result = result
+                    best_epochs = epoch_dict
+                    best_transformed_results = transformed_results
+    print("Best Epochs:", best_epochs)
+    print("Best Fusion Accuracy:", best_result)
+    
     baseline_dataset, baseline_results = load_and_transform_baseline(file_dir)
     print("Baseline Interaction Type Accuracy:", interaction_type_acc(baseline_results, 'baseline'))
+    print("AS Interaction Type Accuracy:", interaction_type_acc(best_transformed_results, 'AS'))
+    print("R Interaction Type Accuracy:", interaction_type_acc(best_transformed_results, 'R'))
+    print("U Interaction Type Accuracy:", interaction_type_acc(best_transformed_results, 'U'))
