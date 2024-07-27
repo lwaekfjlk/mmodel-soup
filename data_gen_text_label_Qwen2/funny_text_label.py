@@ -7,7 +7,7 @@ import concurrent.futures
 import os
 import numpy as np
 from sklearn.metrics import f1_score
-from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold
+from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold, multi_process_run
 
 SYS_PROMPT = (
     "Please analyze the text provided below for humor or not."
@@ -46,17 +46,7 @@ def main():
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
-    with concurrent.futures.ProcessPoolExecutor(max_workers=args.max_workers) as executor:
-        future_to_key = {executor.submit(process_text, value): key for key, value in dataset.items() if key not in results or results[key]['logits'] is None}
-        for future in tqdm(concurrent.futures.as_completed(future_to_key), total=len(future_to_key), desc='Processing'):
-            key = future_to_key[future]
-            try:
-                results[key] = future.result()
-            except Exception as e:
-                results[key] = {'logits': None, 'gth': dataset[key]['label']}
-                print(f"Error processing {key}: {e}")
-            save_results(results, args.save_file)
-            print(key, len(results))
+    multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     thresholds = np.arange(0, 1.0, 0.02)
     f1_scores = apply_thresholds(results, thresholds)
