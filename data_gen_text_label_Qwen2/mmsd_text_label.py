@@ -19,7 +19,7 @@ SYS_PROMPT = (
 EXAMPLES = [
     {"role": "user", "content": "TEXT: because lunch is more interesting than job and even tasty..."},
     {"role": "assistant", "content": "Yes. It expresses the speaker's preference for lunch over job by using the word 'tasty'."},
-    {"role": "user", "content": "TEXT: gameday ready # alabamacrimsontide emoji_53'"},
+    {"role": "user", "content": "TEXT: gameday ready'"},
     {"role": "assistant", "content": "No. It is a neutral statement."}
 ]
 
@@ -35,11 +35,11 @@ def process_text(data_item: Dict[str, str]) -> Dict[str, int]:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--text_data", type=str, default='../mmsd_data/data_raw', help='text_list')
-    parser.add_argument("--save_file", type=str, default='../mmsd_data/data_gen_output/sarc_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--save_file", type=str, default='../mmsd_data/data_gen_output/mmsd_text_only_pred_qwen2.json', help='save file path')
     parser.add_argument("--max_workers", type=int, default=32, help='max workers')
     args = parser.parse_args()
 
-    files = ['test_data.json', 'train_data.json', 'val_data.json']
+    files = ['mmsd_dataset_test.json', 'mmsd_dataset_train.json', 'mmsd_dataset_val.json']
     dataset = {k: v for file in files for k, v in json.load(open(os.path.join(args.text_data, file))).items()}
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
