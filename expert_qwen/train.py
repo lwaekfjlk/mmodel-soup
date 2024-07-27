@@ -181,13 +181,13 @@ if __name__ == '__main__':
     parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
     parser.add_argument('--device', type=int, default=0, help='specify gpu')
     parser.add_argument('--world_size', type=int, default=4, help='specify gpu')
-    parser.add_argument('--model_size', type=int, default=7, help='specify gpu')
+    parser.add_argument('--model_size', type=float, default=1.5, help='specify model size')
 
 
 
     args = parser.parse_args()
 
-    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{args.model_size}B-Instruct")
+    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
 
@@ -205,7 +205,7 @@ if __name__ == '__main__':
         test_dataloader = get_funny_dataloader(args, tokenizer, split="test")
     
     if args.mode == "train":
-        model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct")
+        model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
         config = LoraConfig(
             r=args.lora_r,
             lora_alpha=args.lora_alpha,

@@ -35,12 +35,17 @@ class FunnyDataset(Dataset):
         text = item['utterance']
         id = item['id']
         context = item['context']
+        input_json_file = "/storage/mmodel-soup/funny_data/data_gen_output/image_captions_output.json"
+        # Read the dictionary from the JSON file
+        with open(input_json_file, "r") as json_file:
+            image_description_dict = json.load(json_file)
+        caption = image_description_dict[id]
         fullContext = "The dialogue so far has been:"
         for i in range(len(context)):
             currentUtterance = f"{context[i]} \n"
             fullContext += currentUtterance
         label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Predict if the punchline is humorous. {fullContext}. The punchline is {text}. Following up to this image input, the dialogue has been {fullContext}. Is the punchline humorous? Answer:"
+        full_prompt = f"Predict if the punchline given an image captioned as {caption} is humorous. {fullContext}. The punchline is {text}. Following up to this image input, the dialogue has been {fullContext}. Is the punchline humorous? Answer:"
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return {
             "input_ids": text_encoding["input_ids"].squeeze(),

@@ -23,3 +23,6 @@
 **/__pycache__/*
 **/*.out
 **.zip
+**/*.err
+**/*.log
+**/key_frames/*
