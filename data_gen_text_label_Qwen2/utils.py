@@ -65,6 +65,7 @@ def add_pred_based_on_threshold(results: Dict, threshold: float) -> Dict:
 def multi_process_run(process_text, results, dataset, max_workers, save_file):
     with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
         future_to_key = {executor.submit(process_text, value): key for key, value in dataset.items() if key not in results or results[key]['logits'] is None}
+        print(future_to_key)
         for future in tqdm(concurrent.futures.as_completed(future_to_key), total=len(future_to_key), desc='Processing'):
             key = future_to_key[future]
             try:
