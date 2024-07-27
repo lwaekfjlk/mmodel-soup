@@ -26,3 +26,4 @@
 **/*.err
 **/*.log
 **/key_frames/*
+**/subfolder_*/*
