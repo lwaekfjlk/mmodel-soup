@@ -36,8 +36,8 @@ def process_text(data_item: Dict[str, str]) -> Dict[str, Dict[str, int]]:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--text_data", type=str, default='../funny_data/data_raw', help='text_list')
-    parser.add_argument("--save_file", type=str, default='../funny_data/data_gen_output/funny_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--text_data", type=str, default='../urfunny_data/data_raw', help='text_list')
+    parser.add_argument("--save_file", type=str, default='../urfunny_data/data_gen_output/funny_text_only_pred_qwen2.json', help='save file path')
     parser.add_argument("--max_workers", type=int, default=64, help='max workers')
     args = parser.parse_args()
 
