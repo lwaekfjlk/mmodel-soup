@@ -8,12 +8,12 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import time
 from tqdm import tqdm
 
-MODEL_PATH = "THUDM/cogvlm2-llama3-chat-19B"
+MODEL_PATH = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda:0'
 
-image_folder = "/home/zqi2/mmodel-soup/funny_data/data_raw/images"
-output_file = "/home/zqi2/mmodel-soup/funny_data/data_raw/image_captions.jsonl"
+image_folder = "../funny_data/data_raw/images"
+output_file = "../funny_data/data_raw/image_captions.jsonl"
 
 batch_size = 3
 query = 'Describe this image in detail, and the description should be between 15 to 80 words.'

@@ -22,3 +22,6 @@
 **/*.csv
 **/__pycache__/*
 **/*.out
+**/*.err
+**/*.log
+**/key_frames/*
