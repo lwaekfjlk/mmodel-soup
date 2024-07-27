@@ -7,7 +7,7 @@ import concurrent.futures
 import os
 import numpy as np
 from sklearn.metrics import f1_score
-from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold
+from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold, multi_process_run
 
 litellm.set_verbose = False
 
@@ -39,6 +39,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--text_data", type=str, default='../mustard_data/data_raw', help='text_list')
     parser.add_argument("--save_file", type=str, default='../mustard_data/data_gen_output/mustard_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--max_workers", type=int, default=8, help='max workers')
     args = parser.parse_args()
 
     files = ['mustard_dataset_train.json', 'mustard_dataset_test.json']

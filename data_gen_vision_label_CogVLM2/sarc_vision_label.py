@@ -12,9 +12,9 @@ MODEL_PATH = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda'
 
-image_folder = "../mustard_data/data_raw/images"
-data_folder = "../mustard_data/data_raw"
-output_file = "../mustard_data/data_gen_output/mustard_image_only_pred_cogvlm2.jsonl"
+image_folder = "../sarc_data/data_raw/images"
+data_folder = "../sarc_data/data_raw"
+output_file = "../sarc_data/data_gen_output/sarc_image_only_pred_cogvlm2.jsonl"
 
 batch_size = 4
 query = (
@@ -27,7 +27,7 @@ query = (
     "You should only make No judgement when you are very sure that the text is not funny. As long as you think potentially it is funny, you should say Yes."
 )
 
-ground_truth_labels = load_ground_truth_labels(data_folder, ["mustard_dataset_train.json", "mustard_dataset_test.json"])
+ground_truth_labels = load_ground_truth_labels(data_folder, ["sarc_dataset_train.json", "sarc_dataset_val.json", "sarc_dataset_test.json"])
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
 
