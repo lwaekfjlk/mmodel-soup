@@ -4,8 +4,8 @@ sys.path.append('../')
 from utils import read_json_file, save_dataset, construct_subset
 
 def read_preds():
-    text_only_pred = read_json_file('../../sarc_data/data_gen_output/sarc_text_only_pred.json')
-    vision_only_pred = read_json_file('../../sarc_data/data_gen_output/sarc_vision_only_pred.json')
+    text_only_pred = read_json_file('../../sarc_data/data_gen_output/sarc_text_only_pred_qwen2.json')
+    vision_only_pred = read_json_file('../../sarc_data/data_gen_output/sarc_image_only_pred_cogvlm2.json')
     return text_only_pred, vision_only_pred 
 
 def read_groundtruth_labels():
@@ -35,13 +35,13 @@ def main():
     train_dataset = read_json_file('../../sarc_data/data_raw/sarc_dataset_train.json')
     
     R_dataset = construct_subset(R_ids, train_dataset)
-    save_dataset('../../sarc_data/data_split_output/sarc_R_dataset_train.json', R_dataset)
+    save_dataset('../../sarc_data/data_split_output/sarc_R_dataset_train_covlm2_qwen2.json', R_dataset)
     
     AS_dataset = construct_subset(AS_ids, train_dataset)
-    save_dataset('../../sarc_data/data_split_output/sarc_AS_dataset_train.json', AS_dataset)
+    save_dataset('../../sarc_data/data_split_output/sarc_AS_dataset_train_cogvlm2_qwen2.json', AS_dataset)
     
     U_dataset = construct_subset(U_ids, train_dataset)
-    save_dataset('../../sarc_data/data_split_output/sarc_U_dataset_train.json', U_dataset)
+    save_dataset('../../sarc_data/data_split_output/sarc_U_dataset_train_cogvlm2_qwen2.json', U_dataset)
     
     print(f"R_ids: {len(R_ids)}")
     print(f"AS_ids: {len(AS_ids)}")

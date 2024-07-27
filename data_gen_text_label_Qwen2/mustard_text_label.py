@@ -7,7 +7,7 @@ import concurrent.futures
 import os
 import numpy as np
 from sklearn.metrics import f1_score
-from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold
+from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold, multi_process_run
 
 litellm.set_verbose = False
 
@@ -39,6 +39,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--text_data", type=str, default='../mustard_data/data_raw', help='text_list')
     parser.add_argument("--save_file", type=str, default='../mustard_data/data_gen_output/mustard_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--max_workers", type=int, default=8, help='max workers')
     args = parser.parse_args()
 
     files = ['mustard_dataset_train.json', 'mustard_dataset_test.json']
@@ -46,16 +47,7 @@ def main():
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        future_to_key = {executor.submit(process_text, value): key for key, value in dataset.items() if key not in results or results[key]['logits'] is None}
-        for future in tqdm(concurrent.futures.as_completed(future_to_key), total=len(future_to_key), desc='Processing'):
-            key = future_to_key[future]
-            try:
-                results[key] = future.result()
-            except Exception as e:
-                results[key] = {'logits': None, 'gth': int(dataset[key]['sarcasm'])}
-                print(f"Error processing {key}: {e}")
-            save_results(results, args.save_file)
+    multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     thresholds = np.arange(0, 1.0, 0.01)
     f1_scores = apply_thresholds(results, thresholds)
