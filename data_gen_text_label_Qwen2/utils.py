@@ -10,7 +10,7 @@ def prompt_llm(messages) -> Dict[str, int]:
         response = litellm.completion(
             model='openai/Qwen2-72B-Instruct',
             messages=messages,
-            base_url='http://cccxc713.pok.ibm.com:8000/v1',
+            base_url='http://cccxc713.pok.ibm.com:8001/v1',
             api_key='fake',
             temperature=0,
             top_p=1,
@@ -22,11 +22,19 @@ def prompt_llm(messages) -> Dict[str, int]:
 
         if 'Yes' in res and 'No' in res:
             return {'logits': {'Yes': np.exp(res['Yes']), 'No': np.exp(res['No'])}}
-    return {'logits': None}
+        elif 'Yes' in res and 'No' not in res:
+            return {'logits': {'Yes': np.exp(res['Yes']), 'No': -10000}}
+        elif 'Yes' not in res and 'No' in res:
+            return {'logits': {'Yes': -10000, 'No': np.exp(res['No'])}}
+    return {'logits': {'Yes': -10000, 'No': -10000}}
 
 def save_results(results: Dict, save_file: str):
+    filtered_results = {}
+    for key, value in results.items():
+        if value['logits'] and 'Yes' in value['logits'] and 'No' in value['logits']:
+            filtered_results[key] = value
     with open(save_file, 'w') as f:
-        json.dump(results, f, indent=4)
+        json.dump(filtered_results, f, indent=4)
 
 def apply_thresholds(results: Dict, thresholds: List[float]) -> Dict[float, float]:
     f1_scores = {}
