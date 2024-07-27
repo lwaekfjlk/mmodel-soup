@@ -36,6 +36,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--text_data", type=str, default='../sarc_data/data_raw', help='text_list')
     parser.add_argument("--save_file", type=str, default='../sarc_data/data_gen_output/sarc_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--max_workers", type=int, default=32, help='max workers')
     args = parser.parse_args()
 
     files = ['sarc_dataset_test.json', 'sarc_dataset_train.json', 'sarc_dataset_val.json']
@@ -43,7 +44,7 @@ def main():
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=args.max_workers) as executor:
         future_to_key = {executor.submit(process_text, value): key for key, value in dataset.items() if key not in results or results[key]['logits'] is None}
         for future in tqdm(concurrent.futures.as_completed(future_to_key), total=len(future_to_key), desc='Processing'):
             key = future_to_key[future]
@@ -54,7 +55,7 @@ def main():
                 print(f"Error processing {key}: {e}")
             save_results(results, args.save_file)
 
-    thresholds = np.arange(0, 1.0, 0.01)
+    thresholds = np.arange(0, 1.0, 0.02)
     f1_scores = apply_thresholds(results, thresholds)
     best_threshold = max(f1_scores, key=f1_scores.get)
     print(f"Best Threshold: {best_threshold}, Best F1 Score: {f1_scores[best_threshold]}")
