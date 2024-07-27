@@ -12,13 +12,13 @@ MODEL_PATH = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda'
 
-image_folder = "../mustard_data/data_raw/images"
-data_folder = "../mustard_data/data_raw"
-output_file = "../mustard_data/data_gen_output/mustard_image_only_pred_cogvlm2.jsonl"
+image_folder = "../urfunny_data/data_raw/images"
+data_folder = "../urfunny_data/data_raw"
+output_file = "../urfunny_data/data_gen_output/urfunny_image_only_pred_cogvlm2.jsonl"
 
 batch_size = 4
 query = (
-    "Please analyze the image provided for sarcastic or not."
+    "Please analyze the image provided for humor or not."
     "If you think the text includes exaggerated description or it is expressing sarcastic meaning, please answer 'Yes'."
     "If you think the text is neutral or just common meaning, please answer 'No'."
     "Please make sure that your answer is based on the text itself, not on the context or your personal knowledge."
@@ -27,7 +27,7 @@ query = (
     "You should only make No judgement when you are very sure that the text is not funny. As long as you think potentially it is funny, you should say Yes."
 )
 
-ground_truth_labels = load_ground_truth_labels(data_folder, ["mustard_dataset_train.json", "mustard_dataset_test.json"])
+ground_truth_labels = load_ground_truth_labels(data_folder, ["train_data.json", "val_data.json", "test_data.json"])
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
 
