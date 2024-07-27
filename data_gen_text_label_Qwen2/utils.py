@@ -1,6 +1,8 @@
 import numpy as np
 import litellm
 from typing import Dict, List
+import concurrent.futures
+from tqdm import tqdm
 import json
 from sklearn.metrics import f1_score
 from scipy.special import softmax
@@ -59,3 +61,15 @@ def add_pred_based_on_threshold(results: Dict, threshold: float) -> Dict:
             y_pred[key] = None
             results[key]['pred'] = None
     return results
+
+def multi_process_run(process_text, results, dataset, max_workers, save_file):
+    with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+        future_to_key = {executor.submit(process_text, value): key for key, value in dataset.items() if key not in results or results[key]['logits'] is None}
+        for future in tqdm(concurrent.futures.as_completed(future_to_key), total=len(future_to_key), desc='Processing'):
+            key = future_to_key[future]
+            try:
+                results[key] = future.result()
+            except Exception as e:
+                results[key] = {'logits': None, 'gth': dataset[key]['label']}
+                print(f"Error processing {key}: {e}")
+            save_results(results, save_file)
