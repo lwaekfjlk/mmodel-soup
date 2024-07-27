@@ -8,14 +8,17 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import time
 from tqdm import tqdm
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 MODEL_PATH = "THUDM/cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda:0'
 
-image_folder = "../funny_data/data_raw/images"
-output_file = "../funny_data/data_gen_output/urfunny_image_only_pred_cogvlm2.jsonl"
+image_folder = "../urfunny_data/data_raw/image_data"
+data_folder = "../urfunny_data/data_raw"
+output_file = "../urfunny_data/data_gen_output/urfunny_image_only_pred_cogvlm2.jsonl"
 
-batch_size = 3
+batch_size = 2
 query = 'Describe this image in detail, and the description should be between 15 to 80 words.'
 
 def recur_move_to(item, tgt, criterion_func):
@@ -58,10 +61,24 @@ def collate_fn(features, tokenizer) -> dict:
 
     return batch
 
+
+ground_truth_labels = {}
+for file_name in ["train_data.json", "val_data.json", "test_data.json"]:
+    with open(os.path.join(data_folder, file_name), "r") as f:
+        data = json.load(f)
+        for key, value in data.items():
+            ground_truth_labels[key] = value["label"]
+
 tokenizer = AutoTokenizer.from_pretrained(
     MODEL_PATH,
     trust_remote_code=True
 )
+
+yes_token = tokenizer.tokenize("Yes")
+yes_token_id = tokenizer.convert_tokens_to_ids(yes_token)
+no_token = tokenizer.tokenize("No")
+no_token_id = tokenizer.convert_tokens_to_ids(no_token)
+
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_PATH,
     torch_dtype=TORCH_TYPE,
@@ -109,15 +126,18 @@ for idx in tqdm(range(0, length, batch_size)):
 
     start = time.time()
     with torch.no_grad():
-        outputs = model.generate(**input_batch, **gen_kwargs)
-        outputs = outputs[:, input_batch['input_ids'].shape[1]:]
-        outputs = tokenizer.batch_decode(outputs)
+        outputs = model(**input_batch)
+        logits = outputs.logits.to("cpu").float()
+        for i in range(len(logits)):
+            
+            last_logits = logits[i, -1, :]
+            yes_logits = last_logits[yes_token_id]
+            no_logits = last_logits[no_token_id]
+            response = {"Yes": yes_logits[0].item(), "No": no_logits[0].item()}
 
-
-    outlist = [output.split("<|end_of_text|>")[0].strip() for output in outputs]
-    print(f"Generate time: {time.time() - start}")
-    
-    with open(output_file, "a") as f:
-        for i, out in enumerate(outlist):
-            result = {"image": image_id_list[i], "caption": out}
-            f.write(json.dumps(result) + "\n")
+            with open(output_file, "a") as f:
+                result = {"image_id": image_id_list[i], 
+                          "logits": response, 
+                          "gth": ground_truth_labels[image_id_list[i]], 
+                          "pred": 1 if yes_logits[0].item() > no_logits[0].item() else 0}
+                f.write(json.dumps(result) + "\n")
