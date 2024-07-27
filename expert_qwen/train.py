@@ -9,6 +9,7 @@ from peft import LoraConfig, get_peft_model
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
 from funny import get_funny_dataloader
+from mmsd import get_mmsd_dataloader
 #from nycartoon import get_nycartoon_dataloader
 #from irfl import get_irfl_dataloader
 #from combine import get_combined_dataloader
@@ -121,6 +122,7 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             
             if f1 > best_f1:
                 best_f1 = f1
+                print("SAVING MODEL")
                 model.save_pretrained(args.save_path)
                 torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
         else: 
@@ -187,7 +189,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
+    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{int(args.model_size)}B" if args.model_size > 1.5 else f"Qwen/Qwen2-{args.model_size}B")
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
 
@@ -203,6 +205,10 @@ if __name__ == '__main__':
         train_dataloader = get_funny_dataloader(args, tokenizer, split="train")
         val_dataloader = get_funny_dataloader(args, tokenizer, split="val")
         test_dataloader = get_funny_dataloader(args, tokenizer, split="test")
+    elif args.dataset == "mmsd":
+        train_dataloader = get_mmsd_dataloader(args, tokenizer, split="train")
+        val_dataloader = get_mmsd_dataloader(args, tokenizer, split="val")
+        test_dataloader = get_mmsd_dataloader(args, tokenizer, split="test")
     
     if args.mode == "train":
         model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
