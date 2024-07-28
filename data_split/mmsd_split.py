@@ -52,6 +52,7 @@ def main():
         AS_label_distribution = record_label_distribution(AS_ids, gth_label)
         U_label_distribution = record_label_distribution(U_ids, gth_label)
         
+
         print(split)
         print(f"R_ids: {len(R_ids)}")
         print(f"AS_ids: {len(AS_ids)}")

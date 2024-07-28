@@ -58,7 +58,6 @@ if __name__ == "__main__":
     with jsonlines.open(f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.jsonl') as reader:
         dataset = list(reader)
 
-
     gth_label_count = Counter([value['gth'] for value in dataset if value['gth'] is not None])
     yes_percentage = gth_label_count[1] / sum(gth_label_count.values())
     print(f'Yes percentage in gth: {yes_percentage}')

@@ -45,7 +45,9 @@ class FunnyDataset(Dataset):
             currentUtterance = f"{context[i]} \n"
             fullContext += currentUtterance
         label = torch.tensor(item['label'], dtype=torch.long)
-        full_prompt = f"Predict if the punchline given an image captioned as {caption} is humorous. {fullContext}. The punchline is {text}. Following up to this image input, the dialogue has been {fullContext}. Is the punchline humorous? Answer:"
+        #full_prompt = f"Predict if the punchline given an image captioned as {caption} is humorous. The punchline is {text}. Following up to this image input, the dialogue has been {fullContext}. Is the punchline humorous? Answer:"
+        full_prompt = f"Predict if the punchline given an image captioned as {caption} is humorous. The punchline is {text}. Is the punchline humorous? Answer:"
+
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
         return {
             "input_ids": text_encoding["input_ids"].squeeze(),
