@@ -18,16 +18,20 @@ output_file = "../urfunny_data/data_gen_output/urfunny_image_only_pred_cogvlm2.j
 
 batch_size = 4
 query = (
-    "Please analyze the image provided for humor or not."
-    "If you think the text includes exaggerated description or it is expressing sarcastic meaning, please answer 'Yes'."
-    "If you think the text is neutral or just common meaning, please answer 'No'."
-    "Please make sure that your answer is based on the text itself, not on the context or your personal knowledge."
+    "You are looking at a screenshot of a TED talk. It is part of the talk and it can be a slide or a speaker."
+    "Please analyze the image provided the answer to show whether the image is part of a talk that is showing serious content or trying to show some potentially funny content that can make audience laugh."
+    "If you are looking at a slide, please think about the content of the slide."
+    "If the slide is showing some very interesting and informal things, we believe the speaker is trying to make some jokes and please answer 'Yes'."
+    "If the slide is showing some very serious and formal things, we believe the speaker is trying to show some serious content and please answer 'No'."
+    "If you are looking at a speaker, please think about the speaker's facial expression and body language."
+    "If you think the image includes exaggerated emotions or its body language is exaggerated. We believe the speaker is talking about some informal things and please answer 'Yes'."
+    "If you think the speaker in the image looks very serious and formal, they are tring to convey their key points and please answer 'No'."
+    "Please make sure that your answer is based on the image itself, not on the context or your personal knowledge."
     "There are only two options: 'Yes' or 'No'."
     "If you are not sure, please provide your best guess and do not say that you are not sure."
-    "You should only make No judgement when you are very sure that the text is not funny. As long as you think potentially it is funny, you should say Yes."
 )
 
-ground_truth_labels = load_ground_truth_labels(data_folder, ["train_data.json", "val_data.json", "test_data.json"])
+ground_truth_labels = load_ground_truth_labels(data_folder, ["urfunny_dataset_train.json", "urfunny_dataset_val.json", "urfunny_dataset_test.json"])
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH, trust_remote_code=True)
 
