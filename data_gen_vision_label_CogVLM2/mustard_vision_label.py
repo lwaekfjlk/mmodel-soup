@@ -18,13 +18,14 @@ output_file = "../mustard_data/data_gen_output/mustard_image_only_pred_cogvlm2.j
 
 batch_size = 4
 query = (
-    "Please analyze the image provided for sarcastic or not."
-    "If you think the text includes exaggerated description or it is expressing sarcastic meaning, please answer 'Yes'."
-    "If you think the text is neutral or just common meaning, please answer 'No'."
-    "Please make sure that your answer is based on the text itself, not on the context or your personal knowledge."
+    "Please analyze the image provided for sarcastic or not. The image is a screenshot of a TV show."
+    "If you think the image includes exaggerated emotions (like laughing or looking angry or raising bows) or exaggerated posture (like stretching hands), please answer 'Yes'."
+    "If you think the image shows people discussing serious things and just daily routines, please answer 'No'."
+    "You need to think about what is the potential even going on in the image."
+    "Please make sure that your answer is based on the image itself, not on the context or your personal knowledge."
     "There are only two options: 'Yes' or 'No'."
     "If you are not sure, please provide your best guess and do not say that you are not sure."
-    "You should only make No judgement when you are very sure that the text is not funny. As long as you think potentially it is funny, you should say Yes."
+    "You should only make No judgement when you are very sure that the image is not sarcastic. As long as you think potentially it is sarcastic, you should say Yes."
 )
 
 ground_truth_labels = load_ground_truth_labels(data_folder, ["mustard_dataset_train.json", "mustard_dataset_test.json"])

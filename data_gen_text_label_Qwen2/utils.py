@@ -74,3 +74,16 @@ def multi_process_run(process_text, results, dataset, max_workers, save_file):
                 results[key] = {'logits': None, 'gth': dataset[key]['label']}
                 print(f"Error processing {key}: {e}")
             save_results(results, save_file)
+
+
+def select_top_percent_as_one(results, percentage):
+    logits = [(image_id, data['logits']) for image_id, data in results.items()]
+    sorted_logits = sorted(logits, key=lambda x: x[1]['Yes'], reverse=True)
+    threshold_index = int(len(sorted_logits) * percentage)
+
+    for i, (image_id, logit) in enumerate(sorted_logits):
+        if i < threshold_index:
+            results[image_id]['pred'] = 1
+        else:
+            results[image_id]['pred'] = 0
+    return results
