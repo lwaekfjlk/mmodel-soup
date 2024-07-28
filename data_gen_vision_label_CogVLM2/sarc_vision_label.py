@@ -12,19 +12,24 @@ MODEL_PATH = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda'
 
-image_folder = "../sarc_data/data_raw/images"
+image_folder = "../sarc_data/data_raw/subfolder_4"
 data_folder = "../sarc_data/data_raw"
-output_file = "../sarc_data/data_gen_output/sarc_image_only_pred_cogvlm2.jsonl"
+output_file = "../sarc_data/data_gen_output/sarc_image_only_pred_cogvlm2_subfolder_4.jsonl"
+
+print(image_folder)
+print(output_file)
 
 batch_size = 4
 query = (
-    "Please analyze the image provided for sarcastic or not."
-    "If you think the text includes exaggerated description or it is expressing sarcastic meaning, please answer 'Yes'."
-    "If you think the text is neutral or just common meaning, please answer 'No'."
-    "Please make sure that your answer is based on the text itself, not on the context or your personal knowledge."
+    "Please analyze the image provided for sarcastic or not. The image is the screenshot of the image in a twitter. It might include a lot of text so you need to combine the information of the text in the image."
+    "If you think the image includes exaggerated emotions (like laughing or looking angry or raising bows) or exaggerated posture (like stretching hands), please answer 'Yes'."
+    "If you think the image includes text that is sarcastic or exaggerated, please answer 'Yes'."
+    "If you think the image shows people discussing serious things and just daily routines, please answer 'No'."
+    "You need to think about what is the potential even going on in the image."
+    "Please make sure that your answer is based on the image itself, not on the context or your personal knowledge."
     "There are only two options: 'Yes' or 'No'."
     "If you are not sure, please provide your best guess and do not say that you are not sure."
-    "You should only make No judgement when you are very sure that the text is not funny. As long as you think potentially it is funny, you should say Yes."
+    "You should only make No judgement when you are very sure that the text is not sarcastic. As long as you think potentially it is sarcastic, you should say Yes."
 )
 
 ground_truth_labels = load_ground_truth_labels(data_folder, ["sarc_dataset_train.json", "sarc_dataset_val.json", "sarc_dataset_test.json"])

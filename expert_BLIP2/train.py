@@ -7,6 +7,8 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model, PeftModel
 from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
+from mmsd import get_mmsd_dataloader
+from urfunny import get_urfunny_dataloader
 from nycartoon import get_nycartoon_dataloader
 from irfl import get_irfl_dataloader
 from combine import get_combined_dataloader
@@ -172,6 +174,14 @@ if __name__ == '__main__':
             train_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="train")
             val_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="val")
             test_dataloader = get_sarc_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "mmsd":
+            train_dataloader = get_mmsd_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_mmsd_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_mmsd_dataloader(args, tokenizer, processor, split="test")
+        elif args.dataset == "urfunny":
+            train_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="test")
         elif args.dataset == "nycartoon":
             train_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="train")
             val_dataloader = get_nycartoon_dataloader(args, tokenizer, processor, split="val")
@@ -260,3 +270,29 @@ if __name__ == '__main__':
                 device, 
                 args
             )
+        
+        elif args.test_dataset == "mmsd":
+            test_dataloader = get_mmsd_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
+
+        elif args.test_dataset == "urfunny":
+            test_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="test")
+            acc, f1, precision, recall, yesno_logits = evaluate(
+                tokenizer, 
+                model, 
+                test_dataloader, 
+                device, 
+                args
+            )
+            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+                json.dump(yesno_logits, f)
+            print(acc, f1, precision, recall)
