@@ -7,10 +7,10 @@ python train.py \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
 --image_data_path ../mmsd_data/data_raw/images \
 --save_path ./blip2_mmsd_AS_model \
---batch_size 30 \
+--batch_size 10 \
 --eval_steps 100 \
 --epochs 8 \
---max_length 1024;
+--max_length 512;
 
 python train.py \
 --dataset mmsd \
@@ -19,10 +19,10 @@ python train.py \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
 --image_data_path ../mmsd_data/data_raw/images \
 --save_path ./blip2_mmsd_R_model \
---batch_size 30 \
---eval_steps 200 \
+--batch_size 10 \
+--eval_steps 100 \
 --epochs 8 \
---max_length 1024;
+--max_length 512;
 
 python train.py \
 --dataset mmsd \
@@ -31,10 +31,10 @@ python train.py \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
 --image_data_path ../mmsd_data/data_raw/images \
 --save_path ./blip2_mmsd_U_model \
---batch_size 30 \
---eval_steps 200 \
+--batch_size 10 \
+--eval_steps 100 \
 --epochs 8 \
---max_length 1024;
+--max_length 512;
 
 python train.py \
 --dataset mmsd \
@@ -43,7 +43,7 @@ python train.py \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
 --image_data_path ../mmsd_data/data_raw/images \
 --save_path ./blip2_mmsd_baseline_model \
---batch_size 30 \
---eval_steps 200 \
+--batch_size 10 \
+--eval_steps 100 \
 --epochs 8 \
---max_length 1024;
+--max_length 512;
