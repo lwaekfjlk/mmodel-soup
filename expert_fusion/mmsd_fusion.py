@@ -4,8 +4,6 @@ import os
 import jsonlines
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
-import pdb
-
 def load_and_transform_baseline(file_dir):
     subset_names = ['baseline']
     dataset = defaultdict(list)
@@ -13,7 +11,7 @@ def load_and_transform_baseline(file_dir):
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'urfunny_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'mmsd_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
                 image_id, text = line['image_id'], line['text']
@@ -32,7 +30,7 @@ def load_and_transform_data(file_dir):
 
     # Load data from files
     for name in subset_names:
-        file_path = os.path.join(file_dir, f'urfunny_{name}_logits.jsonl')
+        file_path = os.path.join(file_dir, f'mmsd_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
                 image_id = line['image_id']
@@ -50,9 +48,6 @@ def interaction_type_acc(results, interaction_type='AS'):
     preds = []
     for data_id, data in results.items():
         total_logits = data['logits'][interaction_type]
-        if len(total_logits) == 0:
-            print(f"Skipping {data_id} due to missing logits for {interaction_type}")
-            continue
         predicted_label = total_logits.index(max(total_logits))
         gths.append(data['target'])
         preds.append(predicted_label)
@@ -124,7 +119,7 @@ def cascaded_fusion(results, threshold):
 
 # Example usage within your main workflow
 if __name__ == "__main__":
-    file_dir = '../urfunny_data/expert_inference_output/expert_albef'
+    file_dir = '../mmsd_data/expert_inference_output/expert_albef'
     _, transformed_results = load_and_transform_data(file_dir)
 
     weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
