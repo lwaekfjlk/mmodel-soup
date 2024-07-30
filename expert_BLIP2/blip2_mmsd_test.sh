@@ -1,4 +1,4 @@
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-test.log -err ./mmsd-test.err python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -7,9 +7,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-r-test.log -err ./mmsd-r-test.err python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -18,9 +18,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-u-test.log -err ./mmsd-u-test.err python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -29,9 +29,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-as-test.log -err ./mmsd-as-test.err  python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -40,4 +40,4 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512

@@ -14,6 +14,7 @@ from irfl import get_irfl_dataloader
 from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
+import os
 
 
 
@@ -145,6 +146,7 @@ if __name__ == '__main__':
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
     parser.add_argument('--test_dataset', type=str, default='mustard', help='Dataset to test on')
     parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
+    parser.add_argument('--load_from_ckpt', type=str, default=None, help='Path to load the model from')
     
     args = parser.parse_args()
 
@@ -155,14 +157,13 @@ if __name__ == '__main__':
         
     if args.mode == "train":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
-        config = LoraConfig(
-            r=args.lora_r,
-            lora_alpha=args.lora_alpha,
-            lora_dropout=args.lora_dropout,
-            bias="none",
-            target_modules=["q_proj", "k_proj"]
-        )
-        model = get_peft_model(model, config)
+
+        if args.load_from_ckpt:
+            model = PeftModel.from_pretrained(model, args.load_from_ckpt, is_trainable=True)
+        else:
+            config = LoraConfig.from_pretrained(args.load_from_ckpt)
+            model = get_peft_model(model, config)
+
         model.print_trainable_parameters()
         model.to(device)
 
@@ -212,7 +213,7 @@ if __name__ == '__main__':
         print(f"Test F1 Score: {f1:.4f}")
         print(f"Test Precision: {precision:.4f}")
         print(f"Test Recall: {recall:.4f}")
-        model.save_pretrained(args.save_path)
+        model.save_pretrained(args.save_path + '_final')
     
     elif args.mode == "test":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")

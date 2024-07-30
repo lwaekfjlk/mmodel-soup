@@ -5,17 +5,47 @@ import json
 from collections import defaultdict
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
-def load_and_transform_data(dataset_name, file_dir, subset_names):
-    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None})
+with open('../mmsd_data/data_split_output/mmsd_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+
+AS_test_data_ids = list(dataset.keys())
+
+with open('../mmsd_data/data_split_output/mmsd_R_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+
+R_test_data_ids = list(dataset.keys())
+
+with open('../mmsd_data/data_split_output/mmsd_U_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+
+U_test_data_ids = list(dataset.keys())
+
+def load_weights(weights_file):
+    with jsonlines.open(weights_file, 'r') as f:
+        return {line['image_id']: line['logits'] for line in f}
+
+def load_and_transform_data(dataset_name, file_dir, subset_names, weights=None):
+    results = defaultdict(lambda: {'logits': defaultdict(list), 'target': None, 'weights': {}})
     for name in subset_names:
         file_path = os.path.join(file_dir, f'{dataset_name}_{name}_logits.jsonl')
         with jsonlines.open(file_path, 'r') as f:
             for line in f:
                 data_id = line['image_id']
                 results[data_id]['logits'][name] = line['logits']
-                if results[data_id]['target'] is None:
-                    results[data_id]['target'] = line['target']
+                results[data_id]['target'] = results[data_id]['target'] or line['target']
                 assert results[data_id]['target'] == line['target'], "Targets do not match across subsets for the same data."
+                if weights and data_id in weights:
+                    results[data_id]['weights'][name] = weights[data_id][name]
+                    '''
+                    print(weights[data_id])
+                    if data_id in AS_test_data_ids:
+                        print(weights[data_id]['AS'])
+                        print('AS')
+                    elif data_id in R_test_data_ids:
+                        print('R')
+                    elif data_id in U_test_data_ids:
+                        print('U')
+                    '''
     return results
 
 def calculate_metrics(gths, preds):
@@ -28,32 +58,44 @@ def calculate_metrics(gths, preds):
 
 def get_predictions(results, fusion_strategy, *args):
     gths, preds = [], []
-    for data_id, data in results.items():
-        predicted_label = fusion_strategy(data['logits'], *args)
+    for data in results.values():
+        predicted_label = fusion_strategy(data['logits'], data['weights'], *args)
         gths.append(data['target'])
         preds.append(predicted_label)
     return calculate_metrics(gths, preds)
 
-def simple_average(logits):
+def weighted_softmax_rus_fusion(logits, weights, *args):
+    # make weight softmax
+    softmax_weights = {}
+    softmax_weights['R'] = np.exp(weights['R']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS']))
+    softmax_weights['U'] = np.exp(weights['U']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS']))
+    softmax_weights['AS'] = np.exp(weights['AS']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS']))
+
+    softmax_logits = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
+
+    weighted_logits = sum(softmax_weights[name] * np.array(logit) for name, logit in softmax_logits.items())
+    return np.argmax(weighted_logits)
+
+def simple_average(logits, *args):
     avg_logits = np.mean([logits[name] for name in logits], axis=0)
     return np.argmax(avg_logits)
 
-def weighted_average(logits, weights):
+def weighted_average(logits, weights, *args):
     weighted_logits = sum(weights[name] * np.array(logits[name]) for name in logits)
     return np.argmax(weighted_logits)
 
-def max_fusion(logits):
+def max_fusion(logits, *args):
     max_logits = np.max([logits[name] for name in logits], axis=0)
     return np.argmax(max_logits)
 
-def softmax_fusion(logits):
+def softmax_fusion(logits, *args):
     softmaxed_probs = np.mean([np.exp(logits[name]) / np.sum(np.exp(logits[name])) for name in logits], axis=0)
     return np.argmax(softmaxed_probs)
 
-def cascaded_fusion(logits, threshold):
+def cascaded_fusion(logits, threshold, *args):
     softmaxed_probs = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
     if max(softmaxed_probs['R']) > threshold and max(softmaxed_probs['U']) > threshold:
-        return np.argmax(softmaxed_probs['R']) if max(softmaxed_probs['R']) > max(softmaxed_probs['U']) else np.argmax(softmaxed_probs['U'])
+        return np.argmax(softmaxed_probs['R'] if max(softmaxed_probs['R']) > max(softmaxed_probs['U']) else softmaxed_probs['U'])
     return np.argmax(softmaxed_probs['AS'])
 
 def get_oracle_prediction(dataset_name, logits):
@@ -61,45 +103,42 @@ def get_oracle_prediction(dataset_name, logits):
     for interaction_type in ['AS', 'R', 'U']:
         with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_{interaction_type}_dataset_test_cogvlm2_qwen2.json', 'r') as f:
             dataset = json.load(f)
-        for image_id, data in dataset.items():
+        for image_id in dataset:
             fusion_type_dict[image_id] = interaction_type
-    
+
     gths, preds = [], []
     for data_id, data in logits.items():
         interaction_type = fusion_type_dict[data_id]
-        if interaction_type == 'AS':
-            pred = np.argmax(data['logits']['AS'])
-        elif interaction_type == 'R':
-            pred = np.argmax(data['logits']['R'])
-        elif interaction_type == 'U':
-            pred = np.argmax(data['logits']['U'])
+        pred = np.argmax(data['logits'][interaction_type])
         gths.append(data['target'])
         preds.append(pred)
-    return calculate_metrics(gths, preds) 
+    return calculate_metrics(gths, preds)
 
-
-if __name__ == "__main__":
+def main():
     dataset_name = 'mmsd'
     model_name = 'blip2'
     file_dir = f'../{dataset_name}_data/expert_inference_output/expert_{model_name}'
-    
-    subset_names = ['AS', 'R', 'U']
-    results = load_and_transform_data(dataset_name, file_dir, subset_names)
+    weights_file = f'../{dataset_name}_data/expert_inference_output/expert_{model_name}/{dataset_name}_rus_logits.jsonl'
+    subset_names = ['R', 'U', 'AS']
 
+    weights = load_weights(weights_file)
+    results = load_and_transform_data(dataset_name, file_dir, subset_names, weights)
 
-    weights = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
-    weight_list = [weights[name] for name in subset_names]
+    print("RUS Fusion:", get_predictions(results, weighted_softmax_rus_fusion))
+
+    weight_dict = {'AS': 0.0, 'R': 0.2, 'U': 0.2}
 
     print("Oracle Prediction:", get_oracle_prediction(dataset_name, results))
     print("Simple Average Fusion:", get_predictions(results, simple_average))
-    print("Weighted Average Fusion:", get_predictions(results, weighted_average, weights))
+    print("Weighted Average Fusion:", get_predictions(results, weighted_average, weight_dict))
     print("Max Fusion:", get_predictions(results, max_fusion))
     print("Softmax Fusion:", get_predictions(results, softmax_fusion))
-    for threshold in [0.5, 0.6, 0.7, 0.8, 0.9]:
-        print(f"Cascaded Fusion (Threshold={threshold}):", get_predictions(results, cascaded_fusion, threshold))
 
     for interaction_type in subset_names:
-        print(f"{interaction_type} Interaction Type Accuracy:", get_predictions(results, lambda x: np.argmax(x[interaction_type])))
+        print(f"{interaction_type} Interaction Type Accuracy:", get_predictions(results, lambda x, y: np.argmax(x[interaction_type])))
 
-    baseline_results = load_and_transform_data(dataset_name, file_dir, ['baseline'])
-    print("Baseline Interaction Type Accuracy:", get_predictions(baseline_results, lambda x: np.argmax(x['baseline'])))
+    baseline_results = load_and_transform_data(dataset_name, file_dir, ['baseline'], {})
+    print("Baseline Interaction Type Accuracy:", get_predictions(baseline_results, lambda x, y: np.argmax(x['baseline'])))
+
+if __name__ == "__main__":
+    main()

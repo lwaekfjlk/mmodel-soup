@@ -1,11 +1,11 @@
 #!/bin/bash
 
-python blip2_fusion_train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-test.log -err ./mmsd-test.err python blip2_fusion_train.py \
 --mode test \
---test_dataset mmsd \
+--dataset mmsd \
 --image_data_path ../mmsd_data/data_raw/images \
---load_model_name blip2_fuser \
---batch_size 10 \
+--load_model_name mmsd_blip2_fuser_2e-4lr \
+--val_batch_size 20 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512

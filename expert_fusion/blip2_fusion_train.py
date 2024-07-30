@@ -9,7 +9,6 @@ import json
 
 from mmsd import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
-from mustard import get_mustard_dataloader
 
 
 def evaluate(tokenizer, model, dataloader, device):
@@ -109,7 +108,6 @@ if __name__ == '__main__':
         model.to(device)
 
         dataloaders = {
-            "mustard": get_mustard_dataloader,
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
         }
@@ -128,7 +126,6 @@ if __name__ == '__main__':
         model = PeftModel.from_pretrained(model, args.load_model_name, is_trainable=True).to(device)
 
         dataloaders = {
-            "mustard": get_mustard_dataloader,
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
         }

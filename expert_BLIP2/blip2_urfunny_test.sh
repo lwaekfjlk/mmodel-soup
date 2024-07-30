@@ -1,4 +1,4 @@
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-test.log -err ./urfunny-test.err python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -7,9 +7,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-r-test.log -err ./urfunny-r-test.err python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -18,9 +18,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-u-test.log -err ./urfunny-u-test.err python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -29,9 +29,9 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-as-test.log -err ./urfunny-as-test.err  python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -40,4 +40,4 @@ python train.py \
 --batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \
---max_length 512;
+--max_length 512

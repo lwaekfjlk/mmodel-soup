@@ -27,3 +27,7 @@
 **/*.log
 **/key_frames/*
 **/subfolder_*/*
+**/data_raw/*
+expert_BLIP2/blip2_*/*
+expert_fusion/mmsd_blip2_*/*
+expert_fusion/urfunny_blip2_*/*
