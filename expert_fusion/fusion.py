@@ -141,7 +141,7 @@ def main():
         print(f"Baseline results on the {interaction_type} test set:", 
               get_predictions(subpart_baseline_results[interaction_type], lambda x, y: np.argmax(x['baseline'])))
         print(f"{interaction_type} expert results on the whole test set:",
-              get_predictions(results[interaction_type], lambda x, y: np.argmax(x[interaction_type])))
+              get_predictions(results, lambda x, y: np.argmax(x[interaction_type])))
 
 if __name__ == "__main__":
     main()
