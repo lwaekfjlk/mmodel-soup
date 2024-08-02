@@ -5,10 +5,11 @@ from collections import Counter
 sys.path.append('../')
 from utils import read_json_file, save_dataset, construct_subset
 
-def read_preds():
-    text_only_pred = read_json_file('../mustard_data/data_gen_output/mustard_text_only_pred_qwen2.json')
-    vision_only_pred = read_json_file('../mustard_data/data_gen_output/mustard_image_only_pred_cogvlm2.json')
-    return text_only_pred, vision_only_pred 
+
+def read_preds(split):
+    text_only_pred = read_json_file(f'../mustard_data/data_gen_output/mustard_text_only_pred_qwen2.json')
+    vision_only_pred = read_json_file(f'../mustard_data/data_gen_output/mustard_image_only_pred_cogvlm2.json')
+    return text_only_pred, vision_only_pred
 
 def read_groundtruth_labels(split):
     with open(f'../mustard_data/data_raw/mustard_dataset_{split}.json', 'r') as file:
@@ -34,10 +35,22 @@ def record_label_distribution(ids, label_dict):
 def main():
     for split in ['train', 'test']:
         gth_label = read_groundtruth_labels(split)
-        text_only_pred, vision_only_pred = read_preds()
+        text_only_pred, vision_only_pred = read_preds(split)
         R_ids, AS_ids, U_ids = select_subset_ids(text_only_pred, vision_only_pred, gth_label)
         
         train_dataset = read_json_file(f'../mustard_data/data_raw/mustard_dataset_{split}.json')
+
+        '''
+        new_train_dataset = {}
+        for type in ['R', 'AS', 'U']:
+            with open(f'../mustard_data/data_split_output_old/mustard_{type}_dataset_train.json', 'r') as f:
+                dataset2 = json.load(f)
+            
+                for id, data in train_dataset.items():
+                    if id in dataset2.keys():
+                        new_train_dataset[id] = data
+        train_dataset = new_train_dataset
+        '''
         
         R_dataset = construct_subset(R_ids, train_dataset)
         save_dataset(f'../mustard_data/data_split_output/mustard_R_dataset_{split}_cogvlm2_qwen2.json', R_dataset)

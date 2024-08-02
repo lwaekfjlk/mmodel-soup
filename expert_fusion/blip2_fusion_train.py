@@ -9,6 +9,7 @@ import json
 
 from mmsd import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
+from mustard import get_mustard_dataloader
 
 
 def evaluate(tokenizer, model, dataloader, device):
@@ -86,7 +87,7 @@ if __name__ == '__main__':
     parser.add_argument('--val_batch_size', type=int, default=32, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=128, help='Maximum length for tokenized sequences')
     parser.add_argument('--epochs', type=int, default=50, help='Number of training epochs')
-    parser.add_argument('--lr', type=float, default=5e-5, help='Learning rate')
+    parser.add_argument('--lr', type=float, default=1e-4, help='Learning rate')
     parser.add_argument('--eval_steps', type=int, default=10, help='Number of steps between evaluations')
     parser.add_argument('--lora_r', type=int, default=16, help='LoRA r parameter')
     parser.add_argument('--lora_alpha', type=int, default=32, help='LoRA alpha parameter')
@@ -110,6 +111,7 @@ if __name__ == '__main__':
         dataloaders = {
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
+            "mustard": get_mustard_dataloader,
         }
 
         train_dataloader = dataloaders[args.dataset](args, tokenizer, processor, split="train")
@@ -128,6 +130,7 @@ if __name__ == '__main__':
         dataloaders = {
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
+            "mustard": get_mustard_dataloader
         }
 
         test_dataloader = dataloaders[args.dataset](args, tokenizer, processor, split="test")

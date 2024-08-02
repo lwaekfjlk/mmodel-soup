@@ -67,6 +67,19 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
 
     best_f1 = -1
     model.train()
+
+    acc, f1, precision, recall, yesno_logits = evaluate(
+        tokenizer, 
+        model, 
+        val_dataloader, 
+        device, 
+        args
+    )
+    print(f"Starting point")
+    print(f"Validation Accuracy: {acc:.4f}")
+    print(f"Validation F1 Score: {f1:.4f}")
+    print(f"Validation Precision: {precision:.4f}")
+    print(f"Validation Recall: {recall:.4f}")
     
     for epoch in range(args.epochs):
         total_loss = 0
@@ -161,7 +174,13 @@ if __name__ == '__main__':
         if args.load_from_ckpt:
             model = PeftModel.from_pretrained(model, args.load_from_ckpt, is_trainable=True)
         else:
-            config = LoraConfig.from_pretrained(args.load_from_ckpt)
+            config = LoraConfig(
+                r=args.lora_r,
+                lora_alpha=args.lora_alpha,
+                lora_dropout=args.lora_dropout,
+                bias="none",
+                target_modules=["q_proj", "k_proj"]
+            )
             model = get_peft_model(model, config)
 
         model.print_trainable_parameters()

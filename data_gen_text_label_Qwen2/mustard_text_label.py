@@ -7,8 +7,16 @@ import concurrent.futures
 import os
 import numpy as np
 from sklearn.metrics import f1_score
-from utils import prompt_llm, save_results, apply_thresholds, add_pred_based_on_threshold, multi_process_run, select_top_percent_as_one
 from collections import Counter
+from utils import (
+    prompt_llm,
+    save_results,
+    get_prediction,
+    multi_process_run,
+    load_dataset,
+    load_ids,
+    calculate_f1
+)
 
 litellm.set_verbose = False
 
@@ -44,22 +52,24 @@ def main():
     args = parser.parse_args()
 
     files = ['mustard_dataset_train.json', 'mustard_dataset_test.json']
-    dataset = {k: v for file in files for k, v in json.load(open(os.path.join(args.text_data, file))).items()}
+    train_ids = load_ids('../mustard_data/data_raw/mustard_dataset_train.json')
+    test_ids = load_ids('../mustard_data/data_raw/mustard_dataset_test.json')
+
+    dataset = load_dataset(files, args.text_data)
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
     #multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
-    gth_label_count = Counter([value['gth'] for value in results.values() if value['gth'] is not None])
-    yes_percentage = gth_label_count[1] / sum(gth_label_count.values())
-    print(f"Percentage of Yes: {yes_percentage}")
+    # Process results and calculate F1 scores
+    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2)
+    test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0)
 
-    results = select_top_percent_as_one(results, yes_percentage)
-    preds = [value['pred'] for value in results.values() if value['pred'] is not None]
-    gths = [value['gth'] for value in results.values() if value['gth'] is not None]
+    print(f"Train F1 Score: {calculate_f1(train_results, train_ids)}")
+    print(f"Test F1 Score: {calculate_f1(test_results, test_ids)}")
 
-    f1 = f1_score(gths, preds)
-    print(f"F1 Score: {f1}")
+    # Merge results and save
+    results = {**train_results, **test_results}
     save_results(results, args.save_file)
 
 if __name__ == "__main__":

@@ -2,10 +2,10 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mmsd'
+dataset_name = 'mustard'
 
 inference_results = [f'{dataset_name}_rus_logits.jsonl']
-model_directories = [f'{dataset_name}_blip2_fuser_2e-4lr']
+model_directories = [f'{dataset_name}_blip2_fuser']
 
 
 for inference_result, model_directory in zip(inference_results, model_directories):
@@ -15,7 +15,10 @@ for inference_result, model_directory in zip(inference_results, model_directorie
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_test.json', 'r') as f:
         dataset = json.load(f)
         for image_id, data in dataset.items():
-            gth[image_id] = data['label']
+            if dataset_name == "mustard":
+                gth[image_id] = 1 if data['sarcasm'] is True else False
+            else:
+                gth[image_id] = data['label']
 
     with open(f'./{model_directory}/test_rus_logits.json', 'r') as f:
         inference_output = json.load(f)

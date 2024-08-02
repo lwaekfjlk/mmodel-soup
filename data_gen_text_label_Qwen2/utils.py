@@ -4,8 +4,43 @@ from typing import Dict, List
 import concurrent.futures
 from tqdm import tqdm
 import json
+import os
 from sklearn.metrics import f1_score
 from scipy.special import softmax
+from collections import Counter
+
+def get_prediction(results, balance_lower_bound):
+    pred_counter = Counter()
+    for id, result in results.items():
+        logits = result['logits']
+        if logits['Yes'] > logits['No']:
+            result['pred'] = 1
+        else:
+            result['pred'] = 0
+        pred_counter[result['pred']] += 1
+    
+    if pred_counter[1] / sum(pred_counter.values()) < balance_lower_bound:
+        results = select_top_percent_as_one(results, balance_lower_bound)
+    elif pred_counter[1] / sum(pred_counter.values()) > 1 - balance_lower_bound:
+        results = select_top_percent_as_one(results, 1 - balance_lower_bound)
+
+    pred_counter = Counter()
+    for id, result in results.items():
+        pred_counter[result['pred']] += 1
+    print(pred_counter)
+    return results
+
+def select_top_percent_as_one(results, percentage):
+    logits = [(image_id, data['logits']) for image_id, data in results.items()]
+    sorted_logits = sorted(logits, key=lambda x: x[1]['Yes'], reverse=True)
+    threshold_index = int(len(sorted_logits) * percentage)
+
+    for i, (image_id, logit) in enumerate(sorted_logits):
+        if i < threshold_index:
+            results[image_id]['pred'] = 1
+        else:
+            results[image_id]['pred'] = 0
+    return results
 
 def prompt_llm(messages) -> Dict[str, int]:
     for _ in range(5):
@@ -76,14 +111,24 @@ def multi_process_run(process_text, results, dataset, max_workers, save_file):
             save_results(results, save_file)
 
 
-def select_top_percent_as_one(results, percentage):
-    logits = [(image_id, data['logits']) for image_id, data in results.items()]
-    sorted_logits = sorted(logits, key=lambda x: x[1]['Yes'], reverse=True)
-    threshold_index = int(len(sorted_logits) * percentage)
+def load_dataset(file_paths: List[str], text_data_dir: str) -> Dict[str, Dict]:
+    """Load the dataset from multiple JSON files."""
+    dataset = {}
+    for file in file_paths:
+        file_path = os.path.join(text_data_dir, file)
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+            dataset.update(data)
+    return dataset
 
-    for i, (image_id, logit) in enumerate(sorted_logits):
-        if i < threshold_index:
-            results[image_id]['pred'] = 1
-        else:
-            results[image_id]['pred'] = 0
-    return results
+def load_ids(file_path: str) -> List[str]:
+    """Load a list of IDs from a JSON file."""
+    with open(file_path, 'r') as f:
+        return list(json.load(f).keys())
+
+def calculate_f1(results: Dict[str, Dict[str, int]], dataset_ids: List[str]) -> float:
+    """Calculate the F1 score for a subset of results."""
+    subset = {k: v for k, v in results.items() if k in dataset_ids}
+    preds = [v['pred'] for v in subset.values() if v['pred'] is not None]
+    gths = [v['gth'] for v in subset.values() if v['gth'] is not None]
+    return f1_score(gths, preds)

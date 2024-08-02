@@ -31,3 +31,6 @@
 expert_BLIP2/blip2_*/*
 expert_fusion/mmsd_blip2_*/*
 expert_fusion/urfunny_blip2_*/*
+expert_fusion/mustard_blip2_*/*
+**/data_gen_output_old/*
+**/data_split_output_old/*

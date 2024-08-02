@@ -87,6 +87,39 @@ def get_oracle_prediction(dataset_name, logits):
         preds.append(pred)
     return calculate_metrics(gths, preds)
 
+def use_unimodal_label_for_prediction(dataset_name, logits):
+    fusion_type_dict = {}
+    gths = []
+    preds = []
+
+    for interaction_type in ['AS', 'R', 'U']:
+        with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_{interaction_type}_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+            dataset = json.load(f)
+        for image_id in dataset:
+            fusion_type_dict[image_id] = interaction_type
+
+    with open(f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.json', 'r') as f:
+        image_only_labels = json.load(f)
+
+    with open(f'../{dataset_name}_data/data_gen_output/{dataset_name}_text_only_pred_qwen2.json', 'r') as f:
+        text_only_labels = json.load(f)
+
+    for id, data in logits.items():
+        image_only_label = image_only_labels[id]['pred']
+        text_only_label = text_only_labels[id]['pred']
+        logits = data['logits']
+        softmaxed_probs = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
+        if image_only_label == text_only_label:
+            R_logits = logits['R']
+            AS_logits = logits['AS']
+            pred = np.argmax([R_logits[0]+AS_logits[0], R_logits[1]+AS_logits[1]])
+        else:
+            pred = np.argmax(logits['U'])
+        gths.append(data['target'])
+        preds.append(pred)
+    return calculate_metrics(gths, preds)
+
+
 def main():
     dataset_name = 'mustard'
     model_name = 'blip2'
@@ -118,6 +151,7 @@ def main():
         print("RUS Fusion:", get_predictions(results, weighted_softmax_rus_fusion))
 
     print("Oracle Prediction:", get_oracle_prediction(dataset_name, results))
+    print("Unimodal labels augmented prediction", use_unimodal_label_for_prediction(dataset_name, results))
     print("Simple Average Fusion:", get_predictions(results, simple_average))
     print("Max Fusion:", get_predictions(results, max_fusion))
     print("Softmax Fusion:", get_predictions(results, softmax_fusion))

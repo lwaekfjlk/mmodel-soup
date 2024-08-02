@@ -1,4 +1,4 @@
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./sarc-test.log -err ./sarc-test.err python train.py \
 --mode test \
 --test_dataset sarc \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
@@ -9,7 +9,7 @@ python train.py \
 --epochs 5 \
 --max_length 512;
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./sarc-r-test.log -err ./sarc-r-test.err python train.py \
 --mode test \
 --test_dataset sarc \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
@@ -20,7 +20,7 @@ python train.py \
 --epochs 5 \
 --max_length 512;
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./sarc-u-test.log -err ./sarc-u-test.err python train.py \
 --mode test \
 --test_dataset sarc \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
@@ -31,7 +31,7 @@ python train.py \
 --epochs 5 \
 --max_length 512;
 
-python train.py \
+jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./sarc-as-test.log -err ./sarc-as-test.err  python train.py \
 --mode test \
 --test_dataset sarc \
 --test_path ../sarc_data/data_raw/sarc_dataset_test.json \
