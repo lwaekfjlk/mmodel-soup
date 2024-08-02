@@ -2,7 +2,7 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mustard'
+dataset_name = 'urfunny'
 
 inference_results = [f'{dataset_name}_baseline_logits.jsonl', f'{dataset_name}_AS_logits.jsonl', f'{dataset_name}_R_logits.jsonl', f'{dataset_name}_U_logits.jsonl']
 model_directories = [f'blip2_{dataset_name}_baseline_model', f'blip2_{dataset_name}_AS_model', f'blip2_{dataset_name}_R_model', f'blip2_{dataset_name}_U_model']

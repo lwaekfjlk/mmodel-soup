@@ -10,7 +10,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-as.log -err ./mm
 --load_from_ckpt ./blip2_mmsd_baseline_model \
 --batch_size 10 \
 --eval_steps 100 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-r.log -err ./mmsd-r.err python train.py \

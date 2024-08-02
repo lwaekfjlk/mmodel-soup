@@ -9,7 +9,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-as.log -err .
 --save_path ./blip2_urfunny_AS_model \
 --load_from_ckpt ./blip2_urfunny_baseline_model \
 --batch_size 10 \
---eval_steps 100 \
+--eval_steps 80 \
 --epochs 4 \
 --max_length 512
 

@@ -94,6 +94,7 @@ if __name__ == '__main__':
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='LoRA dropout parameter')
     parser.add_argument('--save_path', type=str, default='./model', help='Path to save the trained model')
     parser.add_argument('--load_model_name', type=str, help='Path to load the model from')
+    parser.add_argument('--load_from_ckpt', type=str, default=None, help='Path to load the model from')
     
     args = parser.parse_args()
 
@@ -103,8 +104,18 @@ if __name__ == '__main__':
 
     if args.mode == "train":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
-        config = LoraConfig(r=args.lora_r, lora_alpha=args.lora_alpha, lora_dropout=args.lora_dropout, bias="none", target_modules=["q_proj", "k_proj"])
-        model = get_peft_model(model, config)
+        if args.load_from_ckpt:
+            model = PeftModel.from_pretrained(model, args.load_from_ckpt, is_trainable=True)
+        else:
+            config = LoraConfig(
+                r=args.lora_r, 
+                lora_alpha=args.lora_alpha, 
+                lora_dropout=args.lora_dropout, 
+                bias="none", 
+                target_modules=["q_proj", "k_proj"]
+            )
+            model = get_peft_model(model, config)
+
         model.print_trainable_parameters()
         model.to(device)
 

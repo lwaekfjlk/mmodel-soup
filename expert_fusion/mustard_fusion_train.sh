@@ -6,4 +6,5 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard.log -err ./mu
 --eval_steps 20 \
 --lr 1e-4 \
 --epochs 50 \
+--load_from_ckpt ../expert_BLIP2/blip2_mustard_baseline_model \
 --max_length 512

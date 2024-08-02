@@ -75,16 +75,22 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
         device, 
         args
     )
+    best_f1 = f1
+    model.save_pretrained(args.save_path)
+    with open(f"{args.save_path}/yesno_logits.json", "w") as f:
+        json.dump(yesno_logits, f)
     print(f"Starting point")
     print(f"Validation Accuracy: {acc:.4f}")
     print(f"Validation F1 Score: {f1:.4f}")
     print(f"Validation Precision: {precision:.4f}")
     print(f"Validation Recall: {recall:.4f}")
     
+    total_step = 0
     for epoch in range(args.epochs):
         total_loss = 0
         
         for step, batch in enumerate(tqdm(train_dataloader, desc=f"Epoch {epoch + 1}", leave=False)):
+            total_step += 1
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             images = batch["image"].to(device)
@@ -100,7 +106,7 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
 
             total_loss += loss.item()
 
-            if (step + 1) % args.eval_steps == 0:
+            if (total_step + 1) % args.eval_steps == 0:
                 acc, f1, precision, recall, yesno_logits = evaluate(
                     tokenizer, 
                     model, 

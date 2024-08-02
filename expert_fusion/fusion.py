@@ -108,10 +108,10 @@ def use_unimodal_label_for_prediction(dataset_name, logits):
         image_only_label = image_only_labels[id]['pred']
         text_only_label = text_only_labels[id]['pred']
         logits = data['logits']
-        softmaxed_probs = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
+        softmax_probs = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
         if image_only_label == text_only_label:
-            R_logits = logits['R']
-            AS_logits = logits['AS']
+            R_logits = softmax_probs['R']
+            AS_logits = softmax_probs['AS']
             pred = np.argmax([R_logits[0]+AS_logits[0], R_logits[1]+AS_logits[1]])
         else:
             pred = np.argmax(logits['U'])
@@ -121,7 +121,7 @@ def use_unimodal_label_for_prediction(dataset_name, logits):
 
 
 def main():
-    dataset_name = 'mustard'
+    dataset_name = 'urfunny'
     model_name = 'blip2'
 
     with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:

@@ -43,7 +43,7 @@ class MustardDataset(Dataset):
                     "id": id,
                     "image_id": id,
                     "text": content["utterance"],
-                    "label": label_map[type]
+                    "label": label_map[type],
                 })
         return overall_dataset
 
