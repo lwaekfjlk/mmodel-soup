@@ -68,6 +68,24 @@ def train(model, data_loader, optimizer, tokenizer, epoch, warmup_steps, device,
     print("Averaged stats:", metric_logger.global_avg())     
     return {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}    
 
+def calc_precision_recall_f1(pred, target):
+    assert len(pred) == len(target)
+    tp, fp, tn, fn = 0, 0, 0, 0
+    for i in range(len(pred)):
+        if pred[i] == 1:
+            if target[i] == 1:
+                tp += 1
+            else:
+                fp += 1
+        else:
+            if target[i] == 1:
+                fn += 1
+            else:
+                tn += 1
+    precision = tp / (tp + fp) if tp + fp > 0 else 0
+    recall = tp / (tp + fn) if tp + fn > 0 else 0
+    f1 = 2 * precision * recall / (precision + recall) if precision + recall > 0 else 0
+    return precision, recall, f1
 
 @torch.no_grad()
 def evaluate(model, data_loader, tokenizer, device, config):
@@ -99,10 +117,21 @@ def evaluate(model, data_loader, tokenizer, device, config):
                 
     # gather the stats from all processes
     metric_logger.synchronize_between_processes()
-    print("Averaged stats:", metric_logger.global_avg())
-    return {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}, eval_results
-    
-    
+
+    precision, recall, f1 = calc_precision_recall_f1(np.array([res['pred'] for res in eval_results]), np.array([res['target'] for res in eval_results]))
+    print("Averaged stats:", metric_logger.global_avg(), 
+          "precision:{0:.4f}".format(precision), 
+          "recall:{0:.4f}".format(recall), 
+          "f1:{0:.4f}".format(f1)
+          )
+    eval_scores = {k: "{:.4f}".format(meter.global_avg) for k, meter in metric_logger.meters.items()}
+    eval_scores['precision'] = precision
+    eval_scores['recall'] = recall
+    eval_scores['f1'] = f1
+
+    return eval_scores, eval_results
+
+
 def main(args, config):
     utils.init_distributed_mode(args)    
     
@@ -191,7 +220,7 @@ def main(args, config):
                 train_stats = {}
             
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
-        test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
+        test_stats, test_results = evaluate(model, test_loader, tokenizer, device, config)
         
         with open(os.path.join(args.output_dir, "mustard_vision_text_logits.jsonl"), "w") as f:
             f.write("")
@@ -220,7 +249,7 @@ def main(args, config):
                 with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
                     f.write(json.dumps(log_stats) + "\n")
 
-                if float(val_stats['acc'])>best:
+                if float(val_stats['f1'])>best:
                     save_obj = {
                         'model': model_without_ddp.state_dict(),
                         'optimizer': optimizer.state_dict(),
@@ -229,7 +258,7 @@ def main(args, config):
                         'epoch': epoch,
                     }
                     torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_best.pth')) 
-                    best = float(val_stats['acc'])
+                    best = float(val_stats['f1'])
                     best_epoch = epoch
         
         if args.evaluate:
@@ -239,11 +268,11 @@ def main(args, config):
                 
     total_time = time.time() - start_time
     total_time_str = str(datetime.timedelta(seconds=int(total_time)))
-    print('Training time {}'.format(total_time_str)) 
+    print('Training time {}'.format(total_time_str))
     
     if utils.is_main_process():   
         with open(os.path.join(args.output_dir, "log.txt"),"a") as f:
-            f.write("best epoch: %d"%best_epoch)         
+            f.write("best epoch: %d"%best_epoch)
             
 
 if __name__ == '__main__':
