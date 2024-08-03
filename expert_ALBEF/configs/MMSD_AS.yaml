@@ -1,5 +1,5 @@
-train_file: '../four_dataset_data_split_output/mmsd_data_split_output/mmsd_AS_dataset_train_cogvlm2_qwen2.json' 
-val_file: '../four_dataset_data_split_output/mmsd_data_split_output/mmsd_AS_dataset_val_cogvlm2_qwen2.json' 
+train_file: '../mmsd_data/data_split_output/mmsd_AS_dataset_train_cogvlm2_qwen2.json' 
+val_file: '../mmsd_data/data_split_output/mmsd_AS_dataset_val_cogvlm2_qwen2.json' 
 test_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 
 image_root: '../sarc_data/data_raw/image_data'

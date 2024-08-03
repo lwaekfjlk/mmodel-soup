@@ -16,6 +16,7 @@ class urfunny_train_dataset(Dataset):
         return len(self.dataset)
 
     def load_dataset(self, dataset_path):
+        # import pdb; pdb.set_trace()
         with open(dataset_path) as f:
             raw_dataset = json.load(f)
         result = []

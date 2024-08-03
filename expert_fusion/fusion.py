@@ -88,7 +88,7 @@ def get_oracle_prediction(dataset_name, logits):
     return calculate_metrics(gths, preds)
 
 def main():
-    dataset_name = 'mustard'
+    dataset_name = 'mmsd'
     model_name = 'albef'
 
     with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:

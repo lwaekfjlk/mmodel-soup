@@ -11,8 +11,6 @@ from dataset.vqa_dataset import vqa_dataset
 from dataset.grounding_dataset import grounding_dataset
 from dataset.bi_cls_dataset import bi_cls_dataset
 from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
-from dataset.irfl_dataset import irfl_train_dataset, irfl_test_dataset
-from dataset.nycartoon_dataset import nycartoon_train_dataset, nycartoon_test_dataset
 from dataset.mustard_dataset import mustard_train_dataset, mustard_test_dataset
 from dataset.urfunny_dataset import urfunny_train_dataset, urfunny_test_dataset
 

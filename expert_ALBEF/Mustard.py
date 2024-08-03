@@ -220,7 +220,7 @@ def main(args, config):
                 train_stats = {}
             
         val_stats, val_results = evaluate(model, val_loader, tokenizer, device, config)
-        test_stats, test_results = evaluate(model, test_loader, tokenizer, device, config)
+        test_stats, _ = evaluate(model, test_loader, tokenizer, device, config)
         
         with open(os.path.join(args.output_dir, "mustard_vision_text_logits.jsonl"), "w") as f:
             f.write("")
@@ -260,7 +260,7 @@ def main(args, config):
                     torch.save(save_obj, os.path.join(args.output_dir, 'checkpoint_best.pth')) 
                     best = float(val_stats['f1'])
                     best_epoch = epoch
-        
+
         if args.evaluate:
             break
         lr_scheduler.step(epoch+warmup_steps+1)  
