@@ -9,9 +9,23 @@ from sklearn.metrics import f1_score
 from scipy.special import softmax
 from collections import Counter
 
-def get_prediction(results, balance_lower_bound):
+def get_prediction(results, balance_lower_bound, split):
+    new_results = {}
+    for id, data in results.items():
+        if split == 'train':
+            if abs(data['logits']['Yes'] - data['logits']['No']) > 0.10:
+                new_results[id] = {
+                    'logits': data['logits'],
+                    'gth': data.get('gth')
+                }
+        else:
+            new_results[id] = {
+                'logits': data['logits'],
+                'gth': data.get('gth')
+            }
+
     pred_counter = Counter()
-    for id, result in results.items():
+    for id, result in new_results.items():
         logits = result['logits']
         if logits['Yes'] > logits['No']:
             result['pred'] = 1
@@ -20,15 +34,15 @@ def get_prediction(results, balance_lower_bound):
         pred_counter[result['pred']] += 1
     
     if pred_counter[1] / sum(pred_counter.values()) < balance_lower_bound:
-        results = select_top_percent_as_one(results, balance_lower_bound)
+        new_results = select_top_percent_as_one(new_results, balance_lower_bound)
     elif pred_counter[1] / sum(pred_counter.values()) > 1 - balance_lower_bound:
-        results = select_top_percent_as_one(results, 1 - balance_lower_bound)
+        new_results = select_top_percent_as_one(new_results, 1 - balance_lower_bound)
 
     pred_counter = Counter()
-    for id, result in results.items():
+    for id, result in new_results.items():
         pred_counter[result['pred']] += 1
     print(pred_counter)
-    return results
+    return new_results
 
 def select_top_percent_as_one(results, percentage):
     logits = [(image_id, data['logits']) for image_id, data in results.items()]

@@ -66,8 +66,10 @@ def process_data(file_path, ids, split):
     dataset = {}
     for data in labels:
         if data['image_id'] in ids:
+            yes_probs = data['logits']['Yes'] / (data['logits']['Yes'] + data['logits']['No'])
+            no_probs = data['logits']['No'] / (data['logits']['Yes'] + data['logits']['No'])
             if split == 'train':
-                if abs(data['logits']['Yes'] - data['logits']['No']) > 0.1:
+                if abs(yes_probs - no_probs) > 0.1:
                     dataset[data['image_id']] = {
                         'logits': data['logits'],
                         'gth': data.get('gth')
@@ -86,7 +88,7 @@ def compute_f1(results):
 
 if __name__ == "__main__":
 
-    dataset_name = 'urfunny'
+    dataset_name = 'mustard'
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_train.json') as f:
         train_ids = list(json.load(f).keys())
