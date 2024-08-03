@@ -2,7 +2,7 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mustard'
+dataset_name = 'mmsd'
 
 inference_results = [f'{dataset_name}_rus_logits.jsonl']
 model_directories = [f'{dataset_name}_blip2_fuser']

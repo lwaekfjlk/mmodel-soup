@@ -23,7 +23,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-r.log -err ./mms
 --load_from_ckpt ./blip2_mmsd_baseline_model \
 --batch_size 10 \
 --eval_steps 100 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-u.log -err ./mmsd-u.err python train.py \
@@ -36,7 +36,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-u.log -err ./mms
 --load_from_ckpt ./blip2_mmsd_baseline_model \
 --batch_size 10 \
 --eval_steps 100 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd.log -err ./mmsd.err python train.py \

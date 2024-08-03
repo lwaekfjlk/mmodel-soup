@@ -8,7 +8,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard-as.log -err .
 --save_path ./blip2_mustard_AS_model \
 --batch_size 5 \
 --eval_steps 10 \
---epochs 5 \
+--epochs 20 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard-r.log -err ./mustard-r.err python train.py \
@@ -21,7 +21,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard-r.log -err ./
 --save_path ./blip2_mustard_R_model \
 --batch_size 5 \
 --eval_steps 10 \
---epochs 5 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard-u.log -err ./mustard-u.err python train.py \
@@ -34,7 +34,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard-u.log -err ./
 --save_path ./blip2_mustard_U_model \
 --batch_size 5 \
 --eval_steps 10 \
---epochs 5 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard.log -err ./mustard.err python train.py \
@@ -46,5 +46,5 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard.log -err ./mu
 --save_path ./blip2_mustard_baseline_model \
 --batch_size 10 \
 --eval_steps 10 \
---epochs 5 \
+--epochs 10 \
 --max_length 512

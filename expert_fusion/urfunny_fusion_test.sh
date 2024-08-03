@@ -4,7 +4,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-test.log -err
 --mode test \
 --dataset urfunny \
 --image_data_path ../urfunny_data/data_raw/images \
---load_model_name urfunny_blip2_fuser_50epoch \
+--load_model_name urfunny_blip2_fuser \
 --val_batch_size 10 \
 --eval_steps 10 \
 --epochs 5 \

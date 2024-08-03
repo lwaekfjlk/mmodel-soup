@@ -10,7 +10,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-as.log -err .
 --load_from_ckpt ./blip2_urfunny_baseline_model \
 --batch_size 10 \
 --eval_steps 80 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-r.log -err ./urfunny-r.err python train.py \
@@ -23,7 +23,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-r.log -err ./
 --load_from_ckpt ./blip2_urfunny_baseline_model \
 --batch_size 10 \
 --eval_steps 100 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-u.log -err ./urfunny-u.err python train.py \
@@ -36,7 +36,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-u.log -err ./
 --load_from_ckpt ./blip2_urfunny_baseline_model \
 --batch_size 10 \
 --eval_steps 100 \
---epochs 4 \
+--epochs 10 \
 --max_length 512
 
 jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny.log -err ./urfunny.err python train.py \
