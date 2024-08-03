@@ -121,7 +121,7 @@ def use_unimodal_label_for_prediction(dataset_name, logits):
 
 
 def main():
-    dataset_name = 'urfunny'
+    dataset_name = 'mmsd'
     model_name = 'blip2'
 
     with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:

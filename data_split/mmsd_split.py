@@ -20,6 +20,7 @@ def select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict):
     for id, gth_label in gth_label_dict.items():
         text_label = text_label_dict.get(id, {}).get('pred')
         vision_label = vision_label_dict.get(id, {}).get('pred')
+
         if text_label is None or vision_label is None:
             continue
         if text_label == vision_label:

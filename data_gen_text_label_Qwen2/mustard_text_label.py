@@ -62,8 +62,8 @@ def main():
     #multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     # Process results and calculate F1 scores
-    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2)
-    test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0)
+    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2, split='train')
+    test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0, split='test')
 
     print(f"Train F1 Score: {calculate_f1(train_results, train_ids)}")
     print(f"Test F1 Score: {calculate_f1(test_results, test_ids)}")
