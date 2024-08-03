@@ -1,5 +1,5 @@
-train_file: '../urfunny_data/data_raw/train_data.json'
-val_file: '../urfunny_data/data_raw/val_data.json'             
+train_file: '../four_dataset_data_split_output/urfunny_data_split_output/urfunny_U_dataset_train_cogvlm2_qwen2.json'
+val_file: '../four_dataset_data_split_output/urfunny_data_split_output/urfunny_U_dataset_val_cogvlm2_qwen2.json'
 test_file: '../urfunny_data/data_raw/test_data.json'
 
 image_root: '../urfunny_data/data_raw/image_data'
