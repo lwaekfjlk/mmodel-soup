@@ -1,8 +1,8 @@
-train_file: '../urfunny_data/data_raw/train_data.json'
-val_file: '../urfunny_data/data_raw/val_data.json'             
-test_file: '../urfunny_data/data_raw/test_data.json'
+train_file: '../four_dataset_data_split_output/mmsd_data_split_output/mmsd_U_dataset_train_cogvlm2_qwen2.json' 
+val_file: '../four_dataset_data_split_output/mmsd_data_split_output/mmsd_U_dataset_val_cogvlm2_qwen2.json' 
+test_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 
-image_root: '../urfunny_data/data_raw/image_data'
+image_root: '../sarc_data/data_raw/image_data'
 
 image_res: 384
 batch_size_train: 32
@@ -16,10 +16,5 @@ bert_config: 'configs/config_bert.json'
 
 optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
 schedular: {sched: cosine, lr: 2e-5, epochs: 10, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
-
-
-
-
-
 
 
