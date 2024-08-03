@@ -1,8 +1,8 @@
-train_file: '../urfunny_data/data_raw/train_data.json'
-val_file: '../urfunny_data/data_raw/val_data.json'             
-test_file: '../urfunny_data/data_raw/test_data.json'
+train_file: '../mmsd_data/data_raw/mmsd_dataset_train.json'
+val_file: '../mmsd_data/data_raw/mmsd_dataset_val.json'             
+test_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 
-image_root: '../urfunny_data/data_raw/image_data'
+image_root: '../sarc_data/data_raw/image_data'
 
 image_res: 384
 batch_size_train: 32
