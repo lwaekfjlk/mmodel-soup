@@ -59,17 +59,25 @@ def mask_uncertain_predictions(results, threshold):
     print(f'Train count: {train_count}')
     return results
 
-def process_data(file_path, train_ids):
+def process_data(file_path, ids, split):
     with jsonlines.open(file_path) as reader:
         labels = list(reader)
     
-    return {
-        data['image_id']: {
-            'logits': data['logits'],
-            'gth': data.get('gth')
-        }
-        for data in labels if data['image_id'] in train_ids
-    }
+    dataset = {}
+    for data in labels:
+        if data['image_id'] in ids:
+            if split == 'train':
+                if abs(data['logits']['Yes'] - data['logits']['No']) > 0.1:
+                    dataset[data['image_id']] = {
+                        'logits': data['logits'],
+                        'gth': data.get('gth')
+                    }
+            else:
+                dataset[data['image_id']] = {
+                    'logits': data['logits'],
+                    'gth': data.get('gth')
+                }
+    return dataset
 
 def compute_f1(results):
     preds = [value['pred'] for value in results.values() if value['gth'] is not None]
@@ -78,7 +86,7 @@ def compute_f1(results):
 
 if __name__ == "__main__":
 
-    dataset_name = 'sarc'
+    dataset_name = 'urfunny'
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_train.json') as f:
         train_ids = list(json.load(f).keys())
@@ -94,7 +102,8 @@ if __name__ == "__main__":
 
     train_results = process_data(
         f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.jsonl',
-        train_ids
+        train_ids,
+        'train'
     )
 
     train_results = get_prediction(train_results, 0.2)
@@ -102,7 +111,8 @@ if __name__ == "__main__":
 
     other_results = process_data(
         f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.jsonl',
-        val_ids + test_ids
+        val_ids + test_ids,
+        'other'
     )
 
     other_results = get_prediction(other_results, 0.0)
