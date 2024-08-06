@@ -6,10 +6,32 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model, PeftModel
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
+from torch.nn import functional as F
 
 from mmsd import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
 from mustard import get_mustard_dataloader
+
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=1, gamma=2, logits=False, reduce=True):
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.logits = logits
+        self.reduce = reduce
+
+    def forward(self, inputs, targets):
+        if self.logits:
+            CE_loss = F.cross_entropy(inputs, targets, reduce=False)
+        else:
+            CE_loss = F.cross_entropy(inputs, targets, reduce=False)
+        pt = torch.exp(-CE_loss)
+        F_loss = self.alpha * (1-pt)**self.gamma * CE_loss
+
+        if self.reduce:
+            return torch.mean(F_loss)
+        else:
+            return F_loss
 
 
 def evaluate(tokenizer, model, dataloader, device):
@@ -47,7 +69,7 @@ def evaluate(tokenizer, model, dataloader, device):
 
 def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    criterion = nn.CrossEntropyLoss()
+    criterion = FocalLoss(alpha=1, gamma=2)
     token_ids = {token: tokenizer.convert_tokens_to_ids(tokenizer.tokenize(token))[0] for token in ["R", "U", "S"]}
     best_f1 = -1
 

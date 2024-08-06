@@ -2,10 +2,10 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mmsd'
+dataset_name = 'mustard'
 
 inference_results = [f'{dataset_name}_rus_logits.jsonl']
-model_directories = [f'{dataset_name}_blip2_fuser']
+model_directories = [f'{dataset_name}_blip2_fuser_best_val_loss']
 
 
 for inference_result, model_directory in zip(inference_results, model_directories):
@@ -33,4 +33,10 @@ for inference_result, model_directory in zip(inference_results, model_directorie
         f.write_all(overall_dataset)
 
     with jsonlines.open(f'../{dataset_name}_data/expert_inference_output/expert_albef/{inference_result}', 'w') as f:
+        f.write_all(overall_dataset)
+    with jsonlines.open(f'../{dataset_name}_data/expert_inference_output/expert_qwen-0.5b/{inference_result}', 'w') as f:
+        f.write_all(overall_dataset)
+    with jsonlines.open(f'../{dataset_name}_data/expert_inference_output/expert_qwen-1.5b/{inference_result}', 'w') as f:
+        f.write_all(overall_dataset)
+    with jsonlines.open(f'../{dataset_name}_data/expert_inference_output/expert_qwen-7b/{inference_result}', 'w') as f:
         f.write_all(overall_dataset)

@@ -5,6 +5,19 @@ import json
 from collections import defaultdict
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
+with open('../mustard_data/data_split_output/mustard_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+    AS_test_data_ids = list(dataset.keys())
+
+with open('../mustard_data/data_split_output/mustard_R_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+    R_test_data_ids = list(dataset.keys())
+
+with open('../mustard_data/data_split_output/mustard_U_dataset_test_cogvlm2_qwen2.json', 'r') as f:
+    dataset = json.load(f)
+    U_test_data_ids = list(dataset.keys())
+
+
 def load_weights(weights_file):
     with jsonlines.open(weights_file, 'r') as f:
         return {line['image_id']: line['logits'] for line in f}
@@ -33,7 +46,7 @@ def calculate_metrics(gths, preds):
 
 def get_predictions(results, fusion_strategy, *args):
     gths, preds = [], []
-    for data in results.values():
+    for id, data in results.items():
         predicted_label = fusion_strategy(data['logits'], data['weights'], *args)
         gths.append(data['target'])
         preds.append(predicted_label)
@@ -43,8 +56,13 @@ def weighted_softmax_rus_fusion(logits, weights, *args):
     softmax_weights = {
         'R': np.exp(weights['R']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS'])),
         'U': np.exp(weights['U']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS'])),
-        'AS': np.exp(weights['AS']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS']))
+        'AS': np.exp(weights['AS']) / (np.exp(weights['R']) + np.exp(weights['U']) + np.exp(weights['AS'])),
     }
+
+
+    predicted_rus = np.argmax([softmax_weights['R'], softmax_weights['U'], softmax_weights['AS']])
+    predicted_rus = 'pred R' if predicted_rus == 0 else 'pred U' if predicted_rus == 1 else 'pred AS'
+
     softmax_logits = {name: np.exp(logit) / np.sum(np.exp(logit)) for name, logit in logits.items()}
     weighted_logits = sum(softmax_weights[name] * np.array(logit) for name, logit in softmax_logits.items())
     return np.argmax(weighted_logits)
@@ -121,8 +139,8 @@ def use_unimodal_label_for_prediction(dataset_name, logits):
 
 
 def main():
-    dataset_name = 'mmsd'
-    model_name = 'blip2'
+    dataset_name = 'urfunny'
+    model_name = 'qwen-1.5b'
 
     with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:
         dataset = json.load(f)

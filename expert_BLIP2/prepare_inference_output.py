@@ -2,10 +2,11 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mmsd'
+dataset_name = 'mustard'
+seed = '2'
 
 inference_results = [f'{dataset_name}_baseline_logits.jsonl', f'{dataset_name}_AS_logits.jsonl', f'{dataset_name}_R_logits.jsonl', f'{dataset_name}_U_logits.jsonl']
-model_directories = [f'blip2_{dataset_name}_baseline_model', f'blip2_{dataset_name}_AS_model', f'blip2_{dataset_name}_R_model', f'blip2_{dataset_name}_U_model']
+model_directories = [f'blip2_{dataset_name}_baseline_model_{seed}', f'blip2_{dataset_name}_AS_model_{seed}', f'blip2_{dataset_name}_R_model_{seed}', f'blip2_{dataset_name}_U_model_{seed}']
 
 
 for inference_result, model_directory in zip(inference_results, model_directories):
@@ -20,7 +21,9 @@ for inference_result, model_directory in zip(inference_results, model_directorie
             else:
                 gth[image_id] = data['label']
 
-    with open(f'./{model_directory}/test_yesno_logits.json', 'r') as f:
+    file = f'./{model_directory}/test_yesno_logits.json'
+
+    with open(file, 'r') as f:
         inference_output = json.load(f)
         for image_id, logits in inference_output.items():
             overall_dataset.append({'image_id': image_id, 'logits': logits, 'target': gth[image_id]})

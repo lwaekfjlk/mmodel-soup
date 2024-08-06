@@ -7,21 +7,21 @@ class URFUNNYDataset(Dataset):
     def __init__(self, split, image_data_path, tokenizer, image_processor, max_length=512):
         if split == "train":
             dataset_files = {
-                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_train_cogvlm2_qwen2.json",
-                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_train_cogvlm2_qwen2.json",
-                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_train_cogvlm2_qwen2.json",
+                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_train_cogvlm2_qwen2_for_fuser.json",
+                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_train_cogvlm2_qwen2_for_fuser.json",
+                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_train_cogvlm2_qwen2_for_fuser.json",
             }
         elif split == "val":
             dataset_files = {
-                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_val_cogvlm2_qwen2.json",
-                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_val_cogvlm2_qwen2.json",
-                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_val_cogvlm2_qwen2.json",
+                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_val_cogvlm2_qwen2_for_fuser.json",
+                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_val_cogvlm2_qwen2_for_fuser.json",
+                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_val_cogvlm2_qwen2_for_fuser.json",
             }
         elif split == "test":
             dataset_files = {
-                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_test_cogvlm2_qwen2.json",
-                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_test_cogvlm2_qwen2.json",
-                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_test_cogvlm2_qwen2.json",
+                "R": "../urfunny_data/data_split_output/urfunny_R_dataset_test_cogvlm2_qwen2_for_fuser.json",
+                "U": "../urfunny_data/data_split_output/urfunny_U_dataset_test_cogvlm2_qwen2_for_fuser.json",
+                "S": "../urfunny_data/data_split_output/urfunny_AS_dataset_test_cogvlm2_qwen2_for_fuser.json",
             }
         self.dataset = self.load_dataset(dataset_files)
         self.tokenizer = tokenizer

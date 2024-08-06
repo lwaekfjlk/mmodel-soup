@@ -51,8 +51,9 @@ def main():
     parser.add_argument("--max_workers", type=int, default=8, help='max workers')
     args = parser.parse_args()
 
-    files = ['mustard_dataset_train.json', 'mustard_dataset_test.json']
+    files = ['mustard_dataset_train.json', 'mustard_dataset_val.json', 'mustard_dataset_test.json']
     train_ids = load_ids('../mustard_data/data_raw/mustard_dataset_train.json')
+    val_ids = load_ids('../mustard_data/data_raw/mustard_dataset_val.json')
     test_ids = load_ids('../mustard_data/data_raw/mustard_dataset_test.json')
 
     dataset = load_dataset(files, args.text_data)
@@ -63,13 +64,15 @@ def main():
 
     # Process results and calculate F1 scores
     train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2, split='train')
+    val_results = get_prediction({k: v for k, v in results.items() if k in val_ids}, 0, split='val')
     test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0, split='test')
 
     print(f"Train F1 Score: {calculate_f1(train_results, train_ids)}")
+    print(f"Val F1 Score: {calculate_f1(val_results, val_ids)}")
     print(f"Test F1 Score: {calculate_f1(test_results, test_ids)}")
 
     # Merge results and save
-    results = {**train_results, **test_results}
+    results = {**train_results, **val_results, **test_results}
     save_results(results, args.save_file)
 
 if __name__ == "__main__":

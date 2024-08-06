@@ -33,11 +33,12 @@ def record_label_distribution(ids, label_dict):
     return Counter([label_dict[id] for id in ids])
 
 def main():
-    for split in ['train', 'test']:
+    for split in ['train', 'val', 'test']:
         gth_label = read_groundtruth_labels(split)
         text_only_pred, vision_only_pred = read_preds(split)
         R_ids, AS_ids, U_ids = select_subset_ids(text_only_pred, vision_only_pred, gth_label)
         
+        import pdb; pdb.set_trace()
         train_dataset = read_json_file(f'../mustard_data/data_raw/mustard_dataset_{split}.json')
 
         '''

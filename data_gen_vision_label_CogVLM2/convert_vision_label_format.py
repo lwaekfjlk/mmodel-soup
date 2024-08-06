@@ -88,16 +88,13 @@ def compute_f1(results):
 
 if __name__ == "__main__":
 
-    dataset_name = 'mustard'
+    dataset_name = 'urfunny'
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_train.json') as f:
         train_ids = list(json.load(f).keys())
 
-    if dataset_name != 'mustard':
-        with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_val.json') as f:
-            val_ids = list(json.load(f).keys())
-    else:
-        val_ids = []
+    with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_val.json') as f:
+        val_ids = list(json.load(f).keys())
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_test.json') as f:
         test_ids = list(json.load(f).keys())
@@ -119,6 +116,7 @@ if __name__ == "__main__":
 
     other_results = get_prediction(other_results, 0.0)
     print(f'Other F1 score: {compute_f1(other_results)}')
+
 
     results = {**train_results, **other_results}
     save_results_to_json(results, f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.json')
