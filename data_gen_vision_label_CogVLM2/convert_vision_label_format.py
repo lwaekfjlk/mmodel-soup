@@ -88,7 +88,7 @@ def compute_f1(results):
 
 if __name__ == "__main__":
 
-    dataset_name = 'urfunny'
+    dataset_name = 'sarc'
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_train.json') as f:
         train_ids = list(json.load(f).keys())

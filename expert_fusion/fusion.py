@@ -68,8 +68,8 @@ def weighted_softmax_rus_fusion(logits, weights, *args):
     return np.argmax(weighted_logits)
 
 def simple_average(logits, *args):
-    avg_logits = np.mean([logits[name] for name in logits], axis=0)
-    return np.argmax(avg_logits)
+    sum_logits = np.mean([logits[name][:2] for name in logits], axis=0)
+    return np.argmax(sum_logits)
 
 def weighted_average(logits, weights, *args):
     weighted_logits = sum(weights[name] * np.array(logits[name]) for name in logits)
@@ -139,8 +139,8 @@ def use_unimodal_label_for_prediction(dataset_name, logits):
 
 
 def main():
-    dataset_name = 'urfunny'
-    model_name = 'qwen-1.5b'
+    dataset_name = 'mmsd'
+    model_name = 'phi3v'
 
     with open(f'../{dataset_name}_data/data_split_output/{dataset_name}_AS_dataset_test_cogvlm2_qwen2.json', 'r') as f:
         dataset = json.load(f)
@@ -164,13 +164,12 @@ def main():
     baseline_results = load_and_transform_data(dataset_name, file_dir, ['baseline'], {})
 
     print("Baseline Interaction Type Accuracy:", get_predictions(baseline_results, lambda x, y: np.argmax(x['baseline'])))
-
+    print("Simple Average Fusion:", get_predictions(results, simple_average))
     if weights:
         print("RUS Fusion:", get_predictions(results, weighted_softmax_rus_fusion))
 
     print("Oracle Prediction:", get_oracle_prediction(dataset_name, results))
     print("Unimodal labels augmented prediction", use_unimodal_label_for_prediction(dataset_name, results))
-    print("Simple Average Fusion:", get_predictions(results, simple_average))
     print("Max Fusion:", get_predictions(results, max_fusion))
     print("Softmax Fusion:", get_predictions(results, softmax_fusion))
 

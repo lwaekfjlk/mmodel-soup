@@ -2,8 +2,8 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mustard'
-seed = '2'
+dataset_name = 'urfunny'
+seed = '1111'
 
 inference_results = [f'{dataset_name}_baseline_logits.jsonl', f'{dataset_name}_AS_logits.jsonl', f'{dataset_name}_R_logits.jsonl', f'{dataset_name}_U_logits.jsonl']
 model_directories = [f'blip2_{dataset_name}_baseline_model_{seed}', f'blip2_{dataset_name}_AS_model_{seed}', f'blip2_{dataset_name}_R_model_{seed}', f'blip2_{dataset_name}_U_model_{seed}']
