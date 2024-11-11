@@ -12,11 +12,17 @@
 
 </div>
 
-### Introduction
+# Introduction
 
-MMoE is an initial trial to build better multimodal foundation models with the help of the concept of multimodal interaction. In this work, multimodal interaction relationship between image and text modalities are split into three different types: *redundnacy* (when two modalities carry similar task-related information), *uniqueness* (when two modalities carry unique task-related information), and *synergy* (when two modalities interact with each other to synergize new task-related information). We build and train expert models for each interaction type and train a fuser to fuse them together as the final prediction.
+MMoE is an initial trial to create better multimodal foundation models by focusing on how different types of interactions occur between image and text data. In this work, we categorize interactions between these two modalities into three types:
 
-### Get started
+- **Redundancy**: When both image and text contain similar information relevant to the task.
+- **Uniqueness**: When each modality (image or text) holds different information that’s valuable for the task.
+- **Synergy**: When the image and text combine in a way that produces new, useful information for the task.
+
+We design and train expert models to handle each interaction type separately, and then a final model (a “fuser”) combines their outputs to make the final prediction.
+
+# Get started
 
 The overall pipeline of MMoE includes three steps:
 
@@ -26,7 +32,7 @@ The overall pipeline of MMoE includes three steps:
 
 In the following section, we provide detailed instruction on running experiments for each part.
 
-### Categorization
+# Categorization
 
 To categorize multimodal datasets into interaction types (Redundancy, Uniqueness, Synergy), we use unimodal predictions from the **CogVLM2-LLaMA3-chat19B** for images and **Qwen2-72B-Instruct** for text. Below is an example using the MUSTARD dataset.
 
@@ -72,7 +78,7 @@ Due to size limitations, the image data is hosted externally. To use these datas
 - Download images from the provided Google Drive links
 - Place them in the respective image folders (`/mmsd2.0_data`, `/mustard_data`, `/urfunny_data`).
 
-### Training
+# Training
 
 Train expert models and the fusion model based on the multimodal interaction type.
 
@@ -91,7 +97,7 @@ sh mustard_fusion_train.sh
 sh mustard_fusion_test.sh // generate rus logits for each datapoint
 ```
 
-### Inference
+# Inference
 
 Once models are trained, fusion-based inference combines expert predictions for final results.
 
@@ -100,7 +106,7 @@ cd ./expert_fusion
 python fusion.py
 ```
 
-### Citation
+# Citation
 
 If you find MMoE useful in your research, please consider citing our paper:
 
