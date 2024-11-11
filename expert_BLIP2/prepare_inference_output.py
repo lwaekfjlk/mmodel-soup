@@ -2,10 +2,11 @@ import json
 import os
 import jsonlines
 
-dataset_name = 'mmsd'
+dataset_name = 'urfunny'
+seed = '1111'
 
 inference_results = [f'{dataset_name}_baseline_logits.jsonl', f'{dataset_name}_AS_logits.jsonl', f'{dataset_name}_R_logits.jsonl', f'{dataset_name}_U_logits.jsonl']
-model_directories = [f'blip2_{dataset_name}_baseline_model', f'blip2_{dataset_name}_AS_model', f'blip2_{dataset_name}_R_model', f'blip2_{dataset_name}_U_model']
+model_directories = [f'blip2_{dataset_name}_baseline_model_{seed}', f'blip2_{dataset_name}_AS_model_{seed}', f'blip2_{dataset_name}_R_model_{seed}', f'blip2_{dataset_name}_U_model_{seed}']
 
 
 for inference_result, model_directory in zip(inference_results, model_directories):
@@ -15,9 +16,14 @@ for inference_result, model_directory in zip(inference_results, model_directorie
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_test.json', 'r') as f:
         dataset = json.load(f)
         for image_id, data in dataset.items():
-            gth[image_id] = data['label']
+            if dataset_name == 'mustard':
+                gth[image_id] = 1 if data['sarcasm'] else 0
+            else:
+                gth[image_id] = data['label']
 
-    with open(f'./{model_directory}/test_yesno_logits.json', 'r') as f:
+    file = f'./{model_directory}/test_yesno_logits.json'
+
+    with open(file, 'r') as f:
         inference_output = json.load(f)
         for image_id, logits in inference_output.items():
             overall_dataset.append({'image_id': image_id, 'logits': logits, 'target': gth[image_id]})
