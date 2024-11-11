@@ -4,6 +4,6 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mustard.log -err ./mu
 --save_path ./mustard_blip2_fuser \
 --batch_size 10 \
 --eval_steps 20 \
---lr 1e-4 \
+--lr 3e-4 \
 --epochs 50 \
 --max_length 512

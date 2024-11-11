@@ -7,9 +7,11 @@ from peft import LoraConfig, get_peft_model, PeftModel
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
 
-from mmsd import get_mmsd_dataloader
+from mmsd_with_classifier import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
-from mustard import get_mustard_dataloader
+from mustard_with_classifier import get_mustard_dataloader
+import pickle
+import os
 
 class FocalLoss(nn.Module):
     def __init__(self, alpha=1, gamma=2, reduction='mean'):
@@ -69,8 +71,19 @@ class Blip2WithClassifier(nn.Module):
         self.blip2 = PeftModel.from_pretrained(blip2, path, is_trainable=True)
         
         # Load the classifiers' state dicts
-        self.rus_classifier.load_state_dict(torch.load(f"{path}/rus_classifier.pth"))
-        self.task_classifier.load_state_dict(torch.load(f"{path}/task_classifier.pth"))
+
+        # path has rus and task classifier state dicts
+        if f"rus_classifier.pth" in os.listdir(path):
+            print('loading rus classifier')
+            self.rus_classifier.load_state_dict(torch.load(f"{path}/rus_classifier.pth"))
+        else:
+            self.rus_classifier = nn.Linear(self.blip2.config.text_config.hidden_size, 3)
+        
+        if f"task_classifier.pth" in os.listdir(path):
+            print('loading task classifier')
+            self.task_classifier.load_state_dict(torch.load(f"{path}/task_classifier.pth"))
+        else:
+            self.task_classifier = nn.Linear(self.blip2.config.text_config.hidden_size, 2)
 
         return self
         
@@ -142,10 +155,13 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
     rus_criterion = FocalLoss(alpha=0.25, gamma=2)
     task_criterion = FocalLoss(alpha=0.25, gamma=2)
+    lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(train_dataloader) * args.epochs)
 
     best_f1 = -1
     best_val_loss = 1000000
     total_step = 0
+    rus_losses = []
+    task_losses = []
     for epoch in range(args.epochs):
         total_loss = 0
         model.train()
@@ -167,14 +183,22 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             # Compute losses for both tasks
             rus_loss = rus_criterion(rus_logits, rus_labels)
             task_loss = task_criterion(task_logits, task_labels)
-            loss = rus_loss
+            rus_losses.append(rus_loss)
+            task_losses.append(task_loss)
+            #loss = rus_loss + task_loss
+            loss = task_loss
+            print('rus_loss: ', rus_loss)
+            print('task_loss: ', task_loss)
 
             loss.backward()
             optimizer.step()
+            lr_scheduler.step()
 
             total_loss += loss.item()
 
             if (total_step + 1) % args.eval_steps == 0:
+                pickle.dump(rus_losses, open('rus_losses_mmsd_without_task_loss.pkl', 'wb'))
+                pickle.dump(task_losses, open('task_losses_mmsd_without_task_loss.pkl', 'wb'))
                 metrics = evaluate(tokenizer, model, val_dataloader, device)
                 rus_metrics = metrics['rus_metrics']
                 task_metrics = metrics['task_metrics']
@@ -185,6 +209,9 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
                       f"RUS Val loss: {val_loss:.4f}, "
                       f"RUS Val F1: {rus_metrics['f1']:.4f}, "
                 )
+
+                print(f"RUS metric: {rus_metrics['f1']}, {rus_metrics['precision']}, {rus_metrics['recall']}")
+                print(f"Task metric: {task_metrics['f1']}, {task_metrics['precision']}, {task_metrics['recall']}")
 
                 if val_loss < best_val_loss:
                     print(f"Saving model with best val loss: {val_loss:.4f}")
@@ -200,7 +227,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', type=str, required=True, help='Dataset to use')
     parser.add_argument('--image_data_path', type=str, required=True, help='Path to the image data')
     parser.add_argument('--batch_size', type=int, default=2, help='Batch size for training')
-    parser.add_argument('--val_batch_size', type=int, default=32, help='Batch size for validation')
+    parser.add_argument('--val_batch_size', type=int, default=40, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=128, help='Maximum length for tokenized sequences')
     parser.add_argument('--epochs', type=int, default=50, help='Number of training epochs')
     parser.add_argument('--lr', type=float, default=1e-4, help='Learning rate')
@@ -232,7 +259,7 @@ if __name__ == '__main__':
         else:
             model = get_peft_model(model, config)
 
-        model.print_trainable_parameters()
+        #model.print_trainable_parameters()
         model.to(device)
 
         dataloaders = {
