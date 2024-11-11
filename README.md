@@ -61,7 +61,7 @@ Example: Training BLIP-2-Based Expert and Fusion Models
 
 To train BLIP-2 models for the MUSTARD dataset:
 
-```
+```bash
 cd ./expert_BLIP2
 pip install -r requirements.txt
 sh blip2_mustard_train.sh
@@ -85,7 +85,7 @@ python fusion.py
 
 If you find MMoE useful in your research, please consider citing our paper:
 
-```latex
+```bibtex
 @inproceedings{yu-etal-2024-mmoe,
     title = "{MMoE}: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts",
     author = "Yu, Haofei and Qi, Zhengyang and Jang, Lawrence Keunho and Salakhutdinov, Russ and Morency, Louis-Philippe and Liang, Paul Pu",
