@@ -9,8 +9,8 @@ import time
 from tqdm import tqdm
 from utils import recur_move_to, collate_fn, generate
 
-image_folder = "../sarc_data/data_raw/images"
-output_file = "../sarc_data/data_raw/image_captions_cogvlm2.jsonl"
+image_folder = "../mmsd_data/data_raw/images"
+output_file = "../mmsd_data/data_raw/image_captions_cogvlm2.jsonl"
 
 batch_size = 12
 query = (
@@ -21,7 +21,7 @@ query = (
     "Ensure the description is between 15 to 100 words."
 )
 
-model_path = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
+model_path = "./cogvlm2-llama3-chat-19B"
 torch_type = torch.bfloat16
 device = 'cuda:0'
 
