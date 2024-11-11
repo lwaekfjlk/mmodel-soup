@@ -2,7 +2,6 @@ import json
 import torch
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
-import ipdb
 
 
 class FunnyDataset(Dataset):
@@ -35,7 +34,7 @@ class FunnyDataset(Dataset):
         text = item['utterance']
         id = item['id']
         context = item['context']
-        input_json_file = "/storage/mmodel-soup/funny_data/data_gen_output/image_captions_output.json"
+        input_json_file = "../urfunny_data/data_gen_output/image_captions_output.json"
         # Read the dictionary from the JSON file
         with open(input_json_file, "r") as json_file:
             image_description_dict = json.load(json_file)
