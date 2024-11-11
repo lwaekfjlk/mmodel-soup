@@ -87,11 +87,9 @@ If you find MMoE useful in your research, please consider citing our paper:
 
 ```latex
 @inproceedings{yu-etal-2024-mmoe,
-    title = "{MM}o{E}: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts",
-    author = "Yu, Haofei  and Qi, Zhengyang  and Jang, Lawrence Keunho  and Salakhutdinov, Russ  and Morency, Louis-Philippe  and Liang, Paul Pu",
-    editor = "Al-Onaizan, Yaser  and
-      Bansal, Mohit  and
-      Chen, Yun-Nung",
+    title = "{MMoE}: Enhancing Multimodal Models with Mixtures of Multimodal Interaction Experts",
+    author = "Yu, Haofei and Qi, Zhengyang and Jang, Lawrence Keunho and Salakhutdinov, Russ and Morency, Louis-Philippe and Liang, Paul Pu",
+    editor = "Al-Onaizan, Yaser and Bansal, Mohit and Chen, Yun-Nung",
     booktitle = "Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing",
     month = nov,
     year = "2024",
@@ -100,4 +98,5 @@ If you find MMoE useful in your research, please consider citing our paper:
     url = "https://aclanthology.org/2024.emnlp-main.558",
     pages = "10006--10030",
 }
+
 ```
