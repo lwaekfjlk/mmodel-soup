@@ -1,4 +1,4 @@
-""" RMSProp modified to behave like Tensorflow impl
+"""RMSProp modified to behave like Tensorflow impl
 
 Originally cut & paste from PyTorch RMSProp
 https://github.com/pytorch/pytorch/blob/063946d2b3f3f1e953a2a3b54e0b34f1393de295/torch/optim/rmsprop.py
@@ -45,8 +45,18 @@ class RMSpropTF(Optimizer):
 
     """
 
-    def __init__(self, params, lr=1e-2, alpha=0.9, eps=1e-10, weight_decay=0, momentum=0., centered=False,
-                 decoupled_decay=False, lr_in_momentum=True):
+    def __init__(
+        self,
+        params,
+        lr=1e-2,
+        alpha=0.9,
+        eps=1e-10,
+        weight_decay=0,
+        momentum=0.0,
+        centered=False,
+        decoupled_decay=False,
+        lr_in_momentum=True,
+    ):
         if not 0.0 <= lr:
             raise ValueError("Invalid learning rate: {}".format(lr))
         if not 0.0 <= eps:
@@ -58,15 +68,23 @@ class RMSpropTF(Optimizer):
         if not 0.0 <= alpha:
             raise ValueError("Invalid alpha value: {}".format(alpha))
 
-        defaults = dict(lr=lr, momentum=momentum, alpha=alpha, eps=eps, centered=centered, weight_decay=weight_decay,
-                        decoupled_decay=decoupled_decay, lr_in_momentum=lr_in_momentum)
+        defaults = dict(
+            lr=lr,
+            momentum=momentum,
+            alpha=alpha,
+            eps=eps,
+            centered=centered,
+            weight_decay=weight_decay,
+            decoupled_decay=decoupled_decay,
+            lr_in_momentum=lr_in_momentum,
+        )
         super(RMSpropTF, self).__init__(params, defaults)
 
     def __setstate__(self, state):
         super(RMSpropTF, self).__setstate__(state)
         for group in self.param_groups:
-            group.setdefault('momentum', 0)
-            group.setdefault('centered', False)
+            group.setdefault("momentum", 0)
+            group.setdefault("centered", False)
 
     def step(self, closure=None):
         """Performs a single optimization step.
@@ -80,57 +98,63 @@ class RMSpropTF(Optimizer):
             loss = closure()
 
         for group in self.param_groups:
-            for p in group['params']:
+            for p in group["params"]:
                 if p.grad is None:
                     continue
                 grad = p.grad.data
                 if grad.is_sparse:
-                    raise RuntimeError('RMSprop does not support sparse gradients')
+                    raise RuntimeError("RMSprop does not support sparse gradients")
                 state = self.state[p]
 
                 # State initialization
                 if len(state) == 0:
-                    state['step'] = 0
-                    state['square_avg'] = torch.ones_like(p.data)  # PyTorch inits to zero
-                    if group['momentum'] > 0:
-                        state['momentum_buffer'] = torch.zeros_like(p.data)
-                    if group['centered']:
-                        state['grad_avg'] = torch.zeros_like(p.data)
+                    state["step"] = 0
+                    state["square_avg"] = torch.ones_like(
+                        p.data
+                    )  # PyTorch inits to zero
+                    if group["momentum"] > 0:
+                        state["momentum_buffer"] = torch.zeros_like(p.data)
+                    if group["centered"]:
+                        state["grad_avg"] = torch.zeros_like(p.data)
 
-                square_avg = state['square_avg']
-                one_minus_alpha = 1. - group['alpha']
+                square_avg = state["square_avg"]
+                one_minus_alpha = 1.0 - group["alpha"]
 
-                state['step'] += 1
+                state["step"] += 1
 
-                if group['weight_decay'] != 0:
-                    if 'decoupled_decay' in group and group['decoupled_decay']:
-                        p.data.add_(-group['weight_decay'], p.data)
+                if group["weight_decay"] != 0:
+                    if "decoupled_decay" in group and group["decoupled_decay"]:
+                        p.data.add_(-group["weight_decay"], p.data)
                     else:
-                        grad = grad.add(group['weight_decay'], p.data)
+                        grad = grad.add(group["weight_decay"], p.data)
 
                 # Tensorflow order of ops for updating squared avg
                 square_avg.add_(one_minus_alpha, grad.pow(2) - square_avg)
                 # square_avg.mul_(alpha).addcmul_(1 - alpha, grad, grad)  # PyTorch original
 
-                if group['centered']:
-                    grad_avg = state['grad_avg']
+                if group["centered"]:
+                    grad_avg = state["grad_avg"]
                     grad_avg.add_(one_minus_alpha, grad - grad_avg)
                     # grad_avg.mul_(alpha).add_(1 - alpha, grad)  # PyTorch original
-                    avg = square_avg.addcmul(-1, grad_avg, grad_avg).add(group['eps']).sqrt_()  # eps moved in sqrt
+                    avg = (
+                        square_avg.addcmul(-1, grad_avg, grad_avg)
+                        .add(group["eps"])
+                        .sqrt_()
+                    )  # eps moved in sqrt
                 else:
-                    avg = square_avg.add(group['eps']).sqrt_()  # eps moved in sqrt
+                    avg = square_avg.add(group["eps"]).sqrt_()  # eps moved in sqrt
 
-                if group['momentum'] > 0:
-                    buf = state['momentum_buffer']
+                if group["momentum"] > 0:
+                    buf = state["momentum_buffer"]
                     # Tensorflow accumulates the LR scaling in the momentum buffer
-                    if 'lr_in_momentum' in group and group['lr_in_momentum']:
-                        buf.mul_(group['momentum']).addcdiv_(group['lr'], grad, avg)
+                    if "lr_in_momentum" in group and group["lr_in_momentum"]:
+                        buf.mul_(group["momentum"]).addcdiv_(group["lr"], grad, avg)
                         p.data.add_(-buf)
                     else:
                         # PyTorch scales the param update by LR
-                        buf.mul_(group['momentum']).addcdiv_(grad, avg)
-                        p.data.add_(-group['lr'], buf)
+                        buf.mul_(group["momentum"]).addcdiv_(grad, avg)
+                        p.data.add_(-group["lr"], buf)
                 else:
-                    p.data.addcdiv_(-group['lr'], grad, avg)
+                    p.data.addcdiv_(-group["lr"], grad, avg)
 
         return loss
