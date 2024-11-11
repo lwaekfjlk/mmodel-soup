@@ -1,3 +1,0 @@
-export OPENAI_API_KEY=XX
-
-python sarc_text_label.py --text_data ../sarc_data/raw_data/valid.txt --save_file ../sarc_data/intermediate_data/sarc_text_label_logits.txt --query "Please analyze the text provided below for sarcasm. Begin your response by stating whether the text is sarcastic, answering with a simple 'Yes' or 'No.' Follow your initial judgment with a detailed explanation of your reasoning. Focus on identifying any elements within the text that contribute to a sarcastic tone, such as linguistic cues, context, or contrast between what is said and what may be implied. Text to evaluate: "
