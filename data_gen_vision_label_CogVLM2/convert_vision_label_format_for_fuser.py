@@ -68,17 +68,10 @@ def process_data(file_path, ids, split):
         if data['image_id'] in ids:
             yes_probs = data['logits']['Yes'] / (data['logits']['Yes'] + data['logits']['No'])
             no_probs = data['logits']['No'] / (data['logits']['Yes'] + data['logits']['No'])
-            if split == 'train':
-                if abs(yes_probs - no_probs) > 0.1:
-                    dataset[data['image_id']] = {
-                        'logits': data['logits'],
-                        'gth': data.get('gth')
-                    }
-            else:
-                dataset[data['image_id']] = {
-                    'logits': data['logits'],
-                    'gth': data.get('gth')
-                }
+            dataset[data['image_id']] = {
+                'logits': data['logits'],
+                'gth': data.get('gth')
+            }
     return dataset
 
 def compute_f1(results):
@@ -88,7 +81,7 @@ def compute_f1(results):
 
 if __name__ == "__main__":
 
-    dataset_name = 'sarc'
+    dataset_name = 'urfunny'
 
     with open(f'../{dataset_name}_data/data_raw/{dataset_name}_dataset_train.json') as f:
         train_ids = list(json.load(f).keys())
@@ -105,7 +98,7 @@ if __name__ == "__main__":
         'train'
     )
 
-    train_results = get_prediction(train_results, 0.2)
+    train_results = get_prediction(train_results, 0.0)
     print(f'Train F1 score: {compute_f1(train_results)}')
 
     other_results = process_data(
@@ -119,4 +112,4 @@ if __name__ == "__main__":
 
 
     results = {**train_results, **other_results}
-    save_results_to_json(results, f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2.json')
+    save_results_to_json(results, f'../{dataset_name}_data/data_gen_output/{dataset_name}_image_only_pred_cogvlm2_for_fuser.json')
