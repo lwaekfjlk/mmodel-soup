@@ -18,18 +18,42 @@ class MMSDDataset(Dataset):
     def __len__(self):
         return len(self.dataset)
     
-    def load_dataset(self, dataset_path):
-        with open(dataset_path) as f:
-            raw_dataset = json.load(f)
-        return [
-            {
-                "image_id": id,
-                "text": data["text"],
-                "label": data["label"],
-                "id": id,
-            }
-            for id, data in raw_dataset.items()
-        ]
+    def load_dataset(self, dataset_path, all_train_data_path="../mmsd_data/data_raw/mmsd_dataset_train.json"):
+        if 'train' in dataset_path:
+            with open(all_train_data_path) as f:
+                all_dataset = json.load(f)
+            with open(dataset_path) as f:
+                raw_dataset = json.load(f)
+
+            processed_dataset = []
+            for id, data in all_dataset.items():
+                if id in raw_dataset:
+                    processed_dataset.append({
+                        "image_id": id,
+                        "text": raw_dataset[id]["text"],
+                        "label": raw_dataset[id]["label"],
+                        "id": id,
+                    })
+                else:
+                    processed_dataset.append({
+                        "image_id": id,
+                        "text": data["text"],
+                        "label": 2,
+                        "id": id,
+                    })
+            return processed_dataset
+        else:
+            with open(dataset_path) as f:
+                raw_dataset = json.load(f)
+            return [
+                {
+                    "image_id": id,
+                    "text": data["text"],
+                    "label": data["label"],
+                    "id": id,
+                }
+                for id, data in raw_dataset.items()
+            ]
 
     def __getitem__(self, idx):
         item = self.dataset[idx]
@@ -42,7 +66,7 @@ class MMSDDataset(Dataset):
 
         full_prompt = (
             f"Question: The tweet related to this image is: {text}."
-            f"Is the tweet sarcastic (yes or no)? Answer:"
+            f"Is the tweet sarcastic (yes or no or other)? Answer:"
         )
 
         text_encoding = self.tokenize_and_left_pad(full_prompt, self.max_length)
