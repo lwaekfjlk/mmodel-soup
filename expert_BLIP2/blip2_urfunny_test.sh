@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export SEED=1111;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-test-${SEED}.log -err ./urfunny-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -13,7 +13,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-test-${SEED}.
 --max_length 512
 
 export SEED=1111;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-r-test-${SEED}.log -err ./urfunny-r-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -25,7 +25,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-r-test-${SEED
 --max_length 512
 
 export SEED=1111;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-u-test-${SEED}.log -err ./urfunny-u-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \
@@ -37,7 +37,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-u-test-${SEED
 --max_length 512
 
 export SEED=1111;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./urfunny-as-test-${SEED}.log -err ./urfunny-as-test-${SEED}.err  python train.py \
+python train.py \
 --mode test \
 --test_dataset urfunny \
 --test_path ../urfunny_data/data_raw/urfunny_dataset_test.json \

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export SEED=3456;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-test-${SEED}.log -err ./mmsd-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -13,7 +13,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-test-${SEED}.log
 --max_length 512
 
 export SEED=3456;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-r-test-${SEED}.log -err ./mmsd-r-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
@@ -37,7 +37,7 @@ jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-u-test-${SEED}.l
 --max_length 512
 
 export SEED=3456;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-as-test-${SEED}.log -err ./mmsd-as-test-${SEED}.err  python train.py \
+python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \
