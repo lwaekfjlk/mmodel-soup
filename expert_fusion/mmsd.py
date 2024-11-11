@@ -55,11 +55,13 @@ class MMSDDataset(Dataset):
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
         image = self.image_processor(Image.open(image_path), return_tensors="pt").pixel_values.squeeze(0)
         label = torch.tensor(item['label'], dtype=torch.long)
-        text_encoding = self.tokenizer(f"The tweet related to this image is: {item['text']}.", 
-                                       truncation=True, 
-                                       max_length=self.max_length, 
-                                       return_tensors="pt",
-                                       padding='max_length')
+        text_encoding = self.tokenizer(
+            f"The tweet related to this image is: {item['text']}. What type of multimodal interaction is that?", 
+            truncation=True, 
+            max_length=self.max_length, 
+            return_tensors="pt",
+            padding='longest'
+        )
         
         return { 
             "input_ids": text_encoding["input_ids"].squeeze(),
@@ -70,6 +72,24 @@ class MMSDDataset(Dataset):
         }
 
 def mmsd_collate(batch):
+    # pad the input_ids and attention_mask to the same length, adding padding to the left side
+    max_length = max(len(item["input_ids"]) for item in batch)
+    
+    for item in batch:
+        padding_length = max_length - len(item["input_ids"])
+        if padding_length > 0:
+            pad_ids = torch.full((padding_length,), 0, dtype=torch.long)
+            pad_mask = torch.zeros((padding_length,), dtype=torch.long)
+            item["input_ids"] = torch.cat([pad_ids, item["input_ids"]], dim=0)
+            item["attention_mask"] = torch.cat([pad_mask, item["attention_mask"]], dim=0)
+    
+    # Ensure image tensors have the same dimensions
+    max_image_shape = tuple(max(s) for s in zip(*[item["image"].shape for item in batch]))
+    for item in batch:
+        pad_image = torch.zeros(max_image_shape, dtype=item["image"].dtype)
+        pad_image[:item["image"].shape[0], :item["image"].shape[1], :item["image"].shape[2]] = item["image"]
+        item["image"] = pad_image
+
     return {
         "input_ids": torch.stack([item["input_ids"] for item in batch]),
         "attention_mask": torch.stack([item["attention_mask"] for item in batch]),
@@ -87,4 +107,4 @@ def get_mmsd_dataloader(args, tokenizer, image_processor, split):
         return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mmsd_collate)
     elif split == "test":
         dataset = MMSDDataset(split, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.test_batch_size, shuffle=False, collate_fn=mmsd_collate)
+        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=mmsd_collate)
