@@ -14,7 +14,7 @@
 
 ### Introduction
 
-MMoE is an initial trial to build better multimodal foundation models with the help of the concept of multimodal interaction. In this work, multimodal interaction relationship between image and text modalities are split into three different types: redundnacy (when two modalities carry similar task-related information), uniqueness (when two modalities carry unique task-related information), and synergy (when two modalities interact with each other to synergize new task-related information). We build and train expert models for each interaction type and train a fuser to fuse them together as the final prediction.
+MMoE is an initial trial to build better multimodal foundation models with the help of the concept of multimodal interaction. In this work, multimodal interaction relationship between image and text modalities are split into three different types: *redundnacy* (when two modalities carry similar task-related information), *uniqueness* (when two modalities carry unique task-related information), and *synergy* (when two modalities interact with each other to synergize new task-related information). We build and train expert models for each interaction type and train a fuser to fuse them together as the final prediction.
 
 ### Get started
 
@@ -48,10 +48,29 @@ python mustard_split.py
 
 2. Accessing Preprocessed Data
 
-We provide RUS-categorized datasets, including data for the `MMSD`, `MUSTARD`, and `URFUNNY` datasets. Due to size limitations, the image data is hosted externally. To use these datasets:
+We provide organized and processed data for the `MMSD2.0`, `MUSTARD`, and `URFUNNY` datasets. Each dataset contains the following components:
+
+- **data_raw**: Original dataset files (note: large images are stored separately; see instructions below).
+- **data_gen_output**: Unimodal labels and captions.
+- **data_split_output**: Data split according to unimodal labels.
+- **expert_inference_output**: Expert model outputs.
+
+You can download each dataset at the following links:
+
+- [MMSD2.0 Data](https://drive.google.com/file/d/15PNO7Ve4k0S2SvASs_3lOCDulzlosVKC/view?usp=share_link)
+- [MUSTARD Data](https://drive.google.com/file/d/15PNO7Ve4k0S2SvASs_3lOCDulzlosVKC/view?usp=share_link)
+- [URFUNNY Data](https://drive.google.com/file/d/1kY44ewjhC5eUpN_Bw-3GjOmK8d2W4d2Y/view?usp=share_link)
+
+**Note on Large Images**: Each dataset’s `/data_raw` folder contains an `/images` directory, which includes files that are too large to store directly. If you wish to run experiments, please download these images and place them under `/data_raw/images` as indicated below:
+
+- [MMSD2.0 Images](https://drive.google.com/file/d/1b6WAOqYKuYybDmaEyyVanN9Ffx8QdJsN/view?usp=share_link)
+- [MUSTARD Images](https://drive.google.com/file/d/1z4kCFM4gO0o18hKpFLIVUnzLtlIJDc1m/view?usp=share_link)
+- [URFUNNY Images](https://drive.google.com/file/d/1p_z3s1zyga9EoGdTcne8qlWR2zMsjdPE/view?usp=share_link)
+
+Due to size limitations, the image data is hosted externally. To use these datasets:
 
 - Download images from the provided Google Drive links
-- Place them in the respective image folders (`/mmsd_data`, `/mustard_data`, `/urfunny_data`).
+- Place them in the respective image folders (`/mmsd2.0_data`, `/mustard_data`, `/urfunny_data`).
 
 ### Training
 
