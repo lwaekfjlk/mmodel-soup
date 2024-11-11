@@ -1,13 +1,15 @@
 import json
+
 import torch
-from torch.utils.data import Dataset, DataLoader
 from PIL import Image
+from torch.utils.data import DataLoader, Dataset
 
 
 class MustardDataset(Dataset):
     """
     A custom dataset class that prepares image-text pairs for training.
     """
+
     def __init__(self, image_data_path, tokenizer, image_processor, max_length=512):
         dataset_dict = {
             "R": "../mustard_data/data_split_output/mustard_R_dataset_train.json",
@@ -28,15 +30,17 @@ class MustardDataset(Dataset):
             with open(file_path) as f:
                 data = json.load(f)
             for id, content in data.items():
-                overall_dataset.append({
-                    "id": id,
-                    "image_id": id,
-                    "show": content["show"],
-                    "context": content["context"],
-                    "speaker": content["speaker"],
-                    "utterance": content["utterance"],
-                    "label": label_map[type]
-                })
+                overall_dataset.append(
+                    {
+                        "id": id,
+                        "image_id": id,
+                        "show": content["show"],
+                        "context": content["context"],
+                        "speaker": content["speaker"],
+                        "utterance": content["utterance"],
+                        "label": label_map[type],
+                    }
+                )
         return overall_dataset
 
     def __len__(self):
@@ -45,9 +49,11 @@ class MustardDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         image_path = f'{self.image_data_path}/{item["image_id"]}.jpg'
-        image = self.image_processor(Image.open(image_path), return_tensors="pt").pixel_values.squeeze(0)
-        label = torch.tensor(item['label'], dtype=torch.long)
-        
+        image = self.image_processor(
+            Image.open(image_path), return_tensors="pt"
+        ).pixel_values.squeeze(0)
+        label = torch.tensor(item["label"], dtype=torch.long)
+
         full_prompt = (
             f"Question: You are watching an episode of {item['show']}. "
             f"Following up to this image input, the dialogue has been {item['context']}. "
@@ -55,8 +61,14 @@ class MustardDataset(Dataset):
             f"are they being sarcastic? Answer:"
         )
 
-        text_encoding = self.tokenizer(full_prompt, truncation=True, max_length=self.max_length, padding='max_length', return_tensors="pt")
-        
+        text_encoding = self.tokenizer(
+            full_prompt,
+            truncation=True,
+            max_length=self.max_length,
+            padding="max_length",
+            return_tensors="pt",
+        )
+
         return {
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
@@ -64,6 +76,7 @@ class MustardDataset(Dataset):
             "label": label,
             "id": item["id"],
         }
+
 
 def mustard_collate(batch):
     return {
@@ -74,7 +87,15 @@ def mustard_collate(batch):
         "id": [item["id"] for item in batch],
     }
 
+
 def get_mustard_dataloader(args, tokenizer, image_processor, split):
-    dataset = MustardDataset(args.image_data_path, tokenizer, image_processor, args.max_length)
+    dataset = MustardDataset(
+        args.image_data_path, tokenizer, image_processor, args.max_length
+    )
     batch_size = args.batch_size if split == "train" else args.val_batch_size
-    return DataLoader(dataset, batch_size=batch_size, shuffle=(split == "train"), collate_fn=mustard_collate)
+    return DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=(split == "train"),
+        collate_fn=mustard_collate,
+    )

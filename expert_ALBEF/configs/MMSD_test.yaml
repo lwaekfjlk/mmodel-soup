@@ -1,5 +1,5 @@
 train_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
-val_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'                
+val_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 test_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 
 image_root: '../sarc_data/data_raw/image_data'

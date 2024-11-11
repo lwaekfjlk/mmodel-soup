@@ -1,10 +1,14 @@
 import json
+
 import torch
-from torch.utils.data import Dataset, DataLoader
 from PIL import Image
+from torch.utils.data import DataLoader, Dataset
+
 
 class URFUNNYDataset(Dataset):
-    def __init__(self, split, image_data_path, tokenizer, image_processor, max_length=512):
+    def __init__(
+        self, split, image_data_path, tokenizer, image_processor, max_length=512
+    ):
         if split == "train":
             dataset_files = {
                 "R": "../urfunny_data/data_split_output/urfunny_R_dataset_train_cogvlm2_qwen2_for_fuser.json",
@@ -32,17 +36,19 @@ class URFUNNYDataset(Dataset):
     def load_dataset(self, dataset_files):
         overall_dataset = []
         label_map = {"R": 0, "U": 1, "S": 2}
-        
+
         for type, file_path in dataset_files.items():
             with open(file_path) as f:
                 data = json.load(f)
             for id, content in data.items():
-                overall_dataset.append({
-                    "id": id,
-                    "image_id": id,
-                    "text": content["punchline_sentence"],
-                    "label": label_map[type]
-                })
+                overall_dataset.append(
+                    {
+                        "id": id,
+                        "image_id": id,
+                        "text": content["punchline_sentence"],
+                        "label": label_map[type],
+                    }
+                )
         return overall_dataset
 
     def __len__(self):
@@ -51,17 +57,19 @@ class URFUNNYDataset(Dataset):
     def __getitem__(self, idx):
         item = self.dataset[idx]
         image_path = f'{self.image_data_path}/{item["image_id"]}.png'
-        image = self.image_processor(Image.open(image_path), return_tensors="pt").pixel_values.squeeze(0)
-        label = torch.tensor(item['label'], dtype=torch.long)
+        image = self.image_processor(
+            Image.open(image_path), return_tensors="pt"
+        ).pixel_values.squeeze(0)
+        label = torch.tensor(item["label"], dtype=torch.long)
         text_encoding = self.tokenizer(
-            f"The text is: {item['text']}. What type of multimodal interaction is that?", 
-            truncation=True, 
-            max_length=self.max_length, 
+            f"The text is: {item['text']}. What type of multimodal interaction is that?",
+            truncation=True,
+            max_length=self.max_length,
             return_tensors="pt",
-            padding='longest'
+            padding="longest",
         )
-        
-        return { 
+
+        return {
             "input_ids": text_encoding["input_ids"].squeeze(),
             "attention_mask": text_encoding["attention_mask"].squeeze(),
             "image": image,
@@ -69,23 +77,30 @@ class URFUNNYDataset(Dataset):
             "id": item["id"],
         }
 
+
 def urfunny_collate(batch):
     # pad the input_ids and attention_mask to the same length, adding padding to the left side
     max_length = max(len(item["input_ids"]) for item in batch)
-    
+
     for item in batch:
         padding_length = max_length - len(item["input_ids"])
         if padding_length > 0:
             pad_ids = torch.full((padding_length,), 0, dtype=torch.long)
             pad_mask = torch.zeros((padding_length,), dtype=torch.long)
             item["input_ids"] = torch.cat([pad_ids, item["input_ids"]], dim=0)
-            item["attention_mask"] = torch.cat([pad_mask, item["attention_mask"]], dim=0)
-    
+            item["attention_mask"] = torch.cat(
+                [pad_mask, item["attention_mask"]], dim=0
+            )
+
     # Ensure image tensors have the same dimensions
-    max_image_shape = tuple(max(s) for s in zip(*[item["image"].shape for item in batch]))
+    max_image_shape = tuple(
+        max(s) for s in zip(*[item["image"].shape for item in batch])
+    )
     for item in batch:
         pad_image = torch.zeros(max_image_shape, dtype=item["image"].dtype)
-        pad_image[:item["image"].shape[0], :item["image"].shape[1], :item["image"].shape[2]] = item["image"]
+        pad_image[
+            : item["image"].shape[0], : item["image"].shape[1], : item["image"].shape[2]
+        ] = item["image"]
         item["image"] = pad_image
 
     return {
@@ -96,13 +111,35 @@ def urfunny_collate(batch):
         "id": [item["id"] for item in batch],
     }
 
+
 def get_urfunny_dataloader(args, tokenizer, image_processor, split):
     if split == "train":
-        dataset = URFUNNYDataset(split, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.batch_size, shuffle=True, collate_fn=urfunny_collate)
+        dataset = URFUNNYDataset(
+            split, args.image_data_path, tokenizer, image_processor, args.max_length
+        )
+        return DataLoader(
+            dataset,
+            batch_size=args.batch_size,
+            shuffle=True,
+            collate_fn=urfunny_collate,
+        )
     elif split == "val":
-        dataset = URFUNNYDataset(split, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=urfunny_collate)
+        dataset = URFUNNYDataset(
+            split, args.image_data_path, tokenizer, image_processor, args.max_length
+        )
+        return DataLoader(
+            dataset,
+            batch_size=args.val_batch_size,
+            shuffle=False,
+            collate_fn=urfunny_collate,
+        )
     elif split == "test":
-        dataset = URFUNNYDataset(split, args.image_data_path, tokenizer, image_processor, args.max_length)
-        return DataLoader(dataset, batch_size=args.val_batch_size, shuffle=False, collate_fn=urfunny_collate)
+        dataset = URFUNNYDataset(
+            split, args.image_data_path, tokenizer, image_processor, args.max_length
+        )
+        return DataLoader(
+            dataset,
+            batch_size=args.val_batch_size,
+            shuffle=False,
+            collate_fn=urfunny_collate,
+        )

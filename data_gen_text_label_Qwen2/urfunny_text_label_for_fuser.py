@@ -1,17 +1,10 @@
-import json
 import argparse
+import json
 import os
-from typing import List, Dict
-from sklearn.metrics import f1_score
-from utils import (
-    prompt_llm,
-    save_results,
-    get_prediction,
-    multi_process_run,
-    load_dataset,
-    load_ids,
-    calculate_f1
-)
+from typing import Dict
+
+from utils import (calculate_f1, get_prediction, load_dataset, load_ids,
+                   multi_process_run, prompt_llm, save_results)
 
 # System prompt for the language model
 SYS_PROMPT = (
@@ -26,32 +19,58 @@ SYS_PROMPT = (
 
 EXAMPLES = [
     {"role": "user", "content": "TEXT: why invite men they are the problem"},
-    {"role": "assistant", "content": "Yes. It expresses that men can be problematic and the speaker is sarcastic to make people laugh."},
+    {
+        "role": "assistant",
+        "content": "Yes. It expresses that men can be problematic and the speaker is sarcastic to make people laugh.",
+    },
     {"role": "user", "content": "TEXT: we all feel the same things."},
-    {"role": "assistant", "content": "No. It is a neutral statement."}
+    {"role": "assistant", "content": "No. It is a neutral statement."},
 ]
+
 
 def process_text(data_item: Dict[str, str]) -> Dict[str, Dict[str, int]]:
     """Process a single text item to determine if it is humorous."""
-    text = 'TEXT: ' + data_item['punchline_sentence']
-    messages = [{"role": "system", "content": SYS_PROMPT}] + EXAMPLES + [{"role": "user", "content": text}]
+    text = "TEXT: " + data_item["punchline_sentence"]
+    messages = (
+        [{"role": "system", "content": SYS_PROMPT}]
+        + EXAMPLES
+        + [{"role": "user", "content": text}]
+    )
     result = prompt_llm(messages)
-    result['gth'] = data_item['label']
+    result["gth"] = data_item["label"]
     return result
-
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--text_data", type=str, default='../urfunny_data/data_raw', help='Text data directory')
-    parser.add_argument("--save_file", type=str, default='../urfunny_data/data_gen_output/urfunny_text_only_pred_qwen2_for_fuser.json', help='Save file path')
-    parser.add_argument("--max_workers", type=int, default=64, help='Maximum number of workers for parallel processing')
+    parser.add_argument(
+        "--text_data",
+        type=str,
+        default="../urfunny_data/data_raw",
+        help="Text data directory",
+    )
+    parser.add_argument(
+        "--save_file",
+        type=str,
+        default="../urfunny_data/data_gen_output/urfunny_text_only_pred_qwen2_for_fuser.json",
+        help="Save file path",
+    )
+    parser.add_argument(
+        "--max_workers",
+        type=int,
+        default=64,
+        help="Maximum number of workers for parallel processing",
+    )
     args = parser.parse_args()
 
-    files = ['urfunny_dataset_val.json', 'urfunny_dataset_test.json', 'urfunny_dataset_train.json']
-    train_ids = load_ids('../urfunny_data/data_raw/urfunny_dataset_train.json')
-    val_ids = load_ids('../urfunny_data/data_raw/urfunny_dataset_val.json')
-    test_ids = load_ids('../urfunny_data/data_raw/urfunny_dataset_test.json')
+    files = [
+        "urfunny_dataset_val.json",
+        "urfunny_dataset_test.json",
+        "urfunny_dataset_train.json",
+    ]
+    train_ids = load_ids("../urfunny_data/data_raw/urfunny_dataset_train.json")
+    val_ids = load_ids("../urfunny_data/data_raw/urfunny_dataset_val.json")
+    test_ids = load_ids("../urfunny_data/data_raw/urfunny_dataset_test.json")
 
     dataset = load_dataset(files, args.text_data)
 
@@ -61,9 +80,15 @@ def main():
     multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     # Process results and calculate F1 scores
-    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0, split='fuser')
-    val_results = get_prediction({k: v for k, v in results.items() if k in val_ids}, 0, split='val')
-    test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0, split='test')
+    train_results = get_prediction(
+        {k: v for k, v in results.items() if k in train_ids}, 0, split="fuser"
+    )
+    val_results = get_prediction(
+        {k: v for k, v in results.items() if k in val_ids}, 0, split="val"
+    )
+    test_results = get_prediction(
+        {k: v for k, v in results.items() if k in test_ids}, 0, split="test"
+    )
 
     print(f"Train F1 Score: {calculate_f1(train_results, train_ids)}")
     print(f"Validation F1 Score: {calculate_f1(val_results, val_ids)}")
@@ -72,6 +97,7 @@ def main():
     # Merge results and save
     results = {**train_results, **val_results, **test_results}
     save_results(results, args.save_file)
+
 
 if __name__ == "__main__":
     main()

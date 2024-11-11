@@ -1,21 +1,18 @@
 import argparse
+import json
+import random
+
+import numpy as np
 import torch
 import torch.nn as nn
-from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor
-from torch.nn.parallel import DistributedDataParallel as DDP
-import torch.distributed as dist
-from tqdm import tqdm
-from peft import LoraConfig, get_peft_model
-from mustard import get_mustard_dataloader
-from sarc import get_sarc_dataloader
 from funny import get_funny_dataloader
 from mmsd import get_mmsd_dataloader
+from mustard import get_mustard_dataloader
+from peft import LoraConfig, get_peft_model
+from sarc import get_sarc_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
-import json
-import numpy as np
-import utils
-import random
-from peft import LoraConfig, get_peft_model, PeftModel
+from tqdm import tqdm
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
 def evaluate(tokenizer, model, dataloader, device, args):
@@ -32,21 +29,32 @@ def evaluate(tokenizer, model, dataloader, device, args):
     c_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("3"))[0]
     d_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("4"))[0]
     e_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("5"))[0]
-    
+
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
         labels = batch["label"].to(device)
         ids = batch["id"]
-        
+
         with torch.no_grad():
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits
             logits = logits[:, -1, :]
             if args.answer_options > 2:
-                yesno_logits = torch.stack([logits[:, a_token_id], logits[:, b_token_id],  logits[:, c_token_id], logits[:, d_token_id], logits[:, e_token_id]], dim=-1)
+                yesno_logits = torch.stack(
+                    [
+                        logits[:, a_token_id],
+                        logits[:, b_token_id],
+                        logits[:, c_token_id],
+                        logits[:, d_token_id],
+                        logits[:, e_token_id],
+                    ],
+                    dim=-1,
+                )
             else:
-                yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+                yesno_logits = torch.stack(
+                    [logits[:, no_token_id], logits[:, yes_token_id]], dim=-1
+                )
             predictions = torch.argmax(yesno_logits, dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
@@ -81,11 +89,13 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
     best_f1 = -1
     best_acc = -1
     model.train()
-    
+
     for epoch in range(args.epochs):
         total_loss = 0
-        
-        for step, batch in enumerate(tqdm(train_dataloader, desc=f"Epoch {epoch + 1}", leave=False)):
+
+        for step, batch in enumerate(
+            tqdm(train_dataloader, desc=f"Epoch {epoch + 1}", leave=False)
+        ):
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["label"].to(device)
@@ -94,103 +104,199 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits[:, -1, :]
             if args.answer_options > 2:
-                yesno_logits = torch.stack([logits[:, a_token_id], logits[:, b_token_id],  logits[:, c_token_id], logits[:, d_token_id], logits[:, e_token_id]], dim=-1)
+                yesno_logits = torch.stack(
+                    [
+                        logits[:, a_token_id],
+                        logits[:, b_token_id],
+                        logits[:, c_token_id],
+                        logits[:, d_token_id],
+                        logits[:, e_token_id],
+                    ],
+                    dim=-1,
+                )
             else:
-                yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+                yesno_logits = torch.stack(
+                    [logits[:, no_token_id], logits[:, yes_token_id]], dim=-1
+                )
             loss = criterion(yesno_logits, labels)
             loss.backward()
             optimizer.step()
 
             total_loss += loss.item()
 
-            #if (step + 1) % args.eval_steps == 0:
+            # if (step + 1) % args.eval_steps == 0:
         if args.answer_options == 2:
             acc, f1, precision, recall, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print(f"Epoch {epoch + 1} Step {step + 1}")
             print(f"Validation Accuracy: {acc:.4f}")
             print(f"Validation F1 Score: {f1:.4f}")
             print(f"Validation Precision: {precision:.4f}")
             print(f"Validation Recall: {recall:.4f}")
-            
+
             if f1 > best_f1:
                 best_f1 = f1
                 print("SAVING MODEL")
                 model.save_pretrained(args.save_path)
                 torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
-        else: 
+        else:
             acc, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print(f"Epoch {epoch + 1} Step {step + 1}")
             print(f"Validation Accuracy: {acc:.4f}")
-            
+
             if acc > best_acc:
                 best_acc = acc
                 print("SAVING MODEL")
                 model.save_pretrained(args.save_path)
                 torch.save(yesno_logits, f"{args.save_path}/yesno_logits.pt")
 
+
 def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
     configs = []
-    for name, path, image_path, max_length in zip(dataset_names, dataset_paths, image_data_paths, max_lengths):
+    for name, path, image_path, max_length in zip(
+        dataset_names, dataset_paths, image_data_paths, max_lengths
+    ):
         config = {
             "name": name,
             "dataset_path": path,
             "image_data_path": image_path,
-            "max_length": max_length
+            "max_length": max_length,
         }
         configs.append(config)
     return configs
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Train a model on the mustard dataset")
-    parser.add_argument('--dataset', type=str, default='mustard')
-    parser.add_argument('--train_path', type=str, default='../mustard_data/data_split_output/mustard_AS_dataset_train.json', help='Path to the training data')
-    parser.add_argument('--val_path', type=str, default='../mustard_data/data_split_output/mustard_dataset_test.json', help='Path to the validation data')
-    parser.add_argument('--test_path', type=str, default='../mustard_data/data_split_output/mustard_dataset_test.json', help='Path to the test data')
-    parser.add_argument('--image_data_path', type=str, default='../mustard_data/data_raw/images', help='Path to the image data')
-    parser.add_argument('--batch_size', type=int, default=2, help='Batch size for training')
-    parser.add_argument('--val_batch_size', type=int, default=32, help='Batch size for validation')
-    parser.add_argument('--test_batch_size', type=int, default=32, help='Batch size for testing')
-    parser.add_argument('--max_length', type=int, default=128, help='Maximum length for tokenized sequences')
-    parser.add_argument('--epochs', type=int, default=5, help='Number of training epochs')
-    parser.add_argument('--lr', type=float, default=5e-5, help='Learning rate')
-    parser.add_argument('--eval_steps', type=int, default=10, help='Number of steps between evaluations')
-    parser.add_argument('--lora_r', type=int, default=16, help='LoRA r parameter')
-    parser.add_argument('--lora_alpha', type=int, default=32, help='LoRA alpha parameter')
-    parser.add_argument('--lora_dropout', type=float, default=0.05, help='LoRA dropout parameter')
-    parser.add_argument('--save_path', type=str, default='none', help='Path to save the trained model')
-    parser.add_argument('--combined_dataset_names', type=str, nargs='+', default=[], help='Names of the datasets to combine')
-    parser.add_argument('--combined_train_paths', type=str, nargs='+', default=[], help='Paths to the training data')
-    parser.add_argument('--combined_val_paths', type=str, nargs='+', default=[], help='Paths to the validation data')
-    parser.add_argument('--combined_test_paths', type=str, nargs='+', default=[], help='Paths to the test data')
-    parser.add_argument('--combined_image_data_paths', type=str, nargs='+', default=[], help='Paths to the image data')
-    parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
-    parser.add_argument('--answer_options', type=int, default=2, help='Maximum number of choices')
-    parser.add_argument('--mode', type=str, default="train", help='train/test type')
-    parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
-    parser.add_argument('--device', type=int, default=0, help='specify gpu')
-    parser.add_argument('--world_size', type=int, default=4, help='specify gpu')
-    parser.add_argument('--model_size', type=float, default=1.5, help='specify model size')
-    parser.add_argument('--seed', default=0, type=int)
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Train a model on the mustard dataset")
+    parser.add_argument("--dataset", type=str, default="mustard")
+    parser.add_argument(
+        "--train_path",
+        type=str,
+        default="../mustard_data/data_split_output/mustard_AS_dataset_train.json",
+        help="Path to the training data",
+    )
+    parser.add_argument(
+        "--val_path",
+        type=str,
+        default="../mustard_data/data_split_output/mustard_dataset_test.json",
+        help="Path to the validation data",
+    )
+    parser.add_argument(
+        "--test_path",
+        type=str,
+        default="../mustard_data/data_split_output/mustard_dataset_test.json",
+        help="Path to the test data",
+    )
+    parser.add_argument(
+        "--image_data_path",
+        type=str,
+        default="../mustard_data/data_raw/images",
+        help="Path to the image data",
+    )
+    parser.add_argument(
+        "--batch_size", type=int, default=2, help="Batch size for training"
+    )
+    parser.add_argument(
+        "--val_batch_size", type=int, default=32, help="Batch size for validation"
+    )
+    parser.add_argument(
+        "--test_batch_size", type=int, default=32, help="Batch size for testing"
+    )
+    parser.add_argument(
+        "--max_length",
+        type=int,
+        default=128,
+        help="Maximum length for tokenized sequences",
+    )
+    parser.add_argument(
+        "--epochs", type=int, default=5, help="Number of training epochs"
+    )
+    parser.add_argument("--lr", type=float, default=5e-5, help="Learning rate")
+    parser.add_argument(
+        "--eval_steps", type=int, default=10, help="Number of steps between evaluations"
+    )
+    parser.add_argument("--lora_r", type=int, default=16, help="LoRA r parameter")
+    parser.add_argument(
+        "--lora_alpha", type=int, default=32, help="LoRA alpha parameter"
+    )
+    parser.add_argument(
+        "--lora_dropout", type=float, default=0.05, help="LoRA dropout parameter"
+    )
+    parser.add_argument(
+        "--save_path", type=str, default="none", help="Path to save the trained model"
+    )
+    parser.add_argument(
+        "--combined_dataset_names",
+        type=str,
+        nargs="+",
+        default=[],
+        help="Names of the datasets to combine",
+    )
+    parser.add_argument(
+        "--combined_train_paths",
+        type=str,
+        nargs="+",
+        default=[],
+        help="Paths to the training data",
+    )
+    parser.add_argument(
+        "--combined_val_paths",
+        type=str,
+        nargs="+",
+        default=[],
+        help="Paths to the validation data",
+    )
+    parser.add_argument(
+        "--combined_test_paths",
+        type=str,
+        nargs="+",
+        default=[],
+        help="Paths to the test data",
+    )
+    parser.add_argument(
+        "--combined_image_data_paths",
+        type=str,
+        nargs="+",
+        default=[],
+        help="Paths to the image data",
+    )
+    parser.add_argument(
+        "--combined_max_lengths",
+        type=int,
+        nargs="+",
+        default=[],
+        help="Maximum lengths for tokenized sequences",
+    )
+    parser.add_argument(
+        "--answer_options", type=int, default=2, help="Maximum number of choices"
+    )
+    parser.add_argument("--mode", type=str, default="train", help="train/test type")
+    parser.add_argument(
+        "--load_model_name",
+        type=str,
+        default="./model",
+        help="Path to load the model from",
+    )
+    parser.add_argument("--device", type=int, default=0, help="specify gpu")
+    parser.add_argument("--world_size", type=int, default=4, help="specify gpu")
+    parser.add_argument(
+        "--model_size", type=float, default=1.5, help="specify model size"
+    )
+    parser.add_argument("--seed", default=0, type=int)
 
     args = parser.parse_args()
     seed = args.seed
     torch.manual_seed(seed)
     np.random.seed(seed)
     random.seed(seed)
-    tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{int(args.model_size)}B" if args.model_size > 1.5 else f"Qwen/Qwen2-{args.model_size}B")
+    tokenizer = AutoTokenizer.from_pretrained(
+        f"Qwen/Qwen2-{int(args.model_size)}B"
+        if args.model_size > 1.5
+        else f"Qwen/Qwen2-{args.model_size}B"
+    )
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
 
@@ -210,20 +316,26 @@ if __name__ == '__main__':
         train_dataloader = get_mmsd_dataloader(args, tokenizer, split="train")
         val_dataloader = get_mmsd_dataloader(args, tokenizer, split="val")
         test_dataloader = get_mmsd_dataloader(args, tokenizer, split="test")
-    
+
     if args.mode == "train":
         print("MODE", args.save_path)
         print("BASELINE", args.load_model_name)
         if args.load_model_name == "none":
-            model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{int(args.model_size)}B" if args.model_size > 1.5 else f"Qwen/Qwen2-{args.model_size}B")
+            model = AutoModelForCausalLM.from_pretrained(
+                f"Qwen/Qwen2-{int(args.model_size)}B"
+                if args.model_size > 1.5
+                else f"Qwen/Qwen2-{args.model_size}B"
+            )
         else:
-            model = AutoModelForCausalLM.from_pretrained(args.load_model_name).to(device)
+            model = AutoModelForCausalLM.from_pretrained(args.load_model_name).to(
+                device
+            )
         config = LoraConfig(
             r=args.lora_r,
             lora_alpha=args.lora_alpha,
             lora_dropout=args.lora_dropout,
             bias="none",
-            target_modules=["q_proj", "k_proj"]
+            target_modules=["q_proj", "k_proj"],
         )
         model = get_peft_model(model, config)
         model.print_trainable_parameters()
@@ -232,11 +344,7 @@ if __name__ == '__main__':
 
         if args.answer_options == 2:
             acc, f1, precision, recall, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print("Test Results:")
             print(f"Test Accuracy: {acc:.4f}")
@@ -246,34 +354,25 @@ if __name__ == '__main__':
             with open(f"./{args.save_path}/test_yesno_logits.json", "w") as f:
                 json.dump(yesno_logits, f)
 
-        else: 
+        else:
             acc, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print("Test Results:")
             print(f"Test Accuracy: {acc:.4f}")
 
-
-#        model.save_pretrained(args.save_path)
+    #        model.save_pretrained(args.save_path)
     else:
         print(f"TEST {args.load_model_name}")
         model = AutoModelForCausalLM.from_pretrained(args.load_model_name).to(device)
-        #model = PeftModel.from_pretrained(
+        # model = PeftModel.from_pretrained(
         #    model,
         #    args.load_model_name,
         #    is_trainable=True
-        #).to(device)
+        # ).to(device)
         if args.answer_options == 2:
             acc, f1, precision, recall, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print("Test Results:")
             print(f"Test Accuracy: {acc:.4f}")
@@ -283,13 +382,9 @@ if __name__ == '__main__':
             with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
                 json.dump(yesno_logits, f)
             print(acc, f1, precision, recall)
-        else: 
+        else:
             acc, yesno_logits = evaluate(
-                tokenizer, 
-                model, 
-                test_dataloader, 
-                device, 
-                args
+                tokenizer, model, test_dataloader, device, args
             )
             print("Test Results:")
             print(f"Test Accuracy: {acc:.4f}")

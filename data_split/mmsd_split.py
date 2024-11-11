@@ -2,24 +2,31 @@ import json
 import sys
 from collections import Counter
 
-sys.path.append('../')
-from utils import read_json_file, save_dataset, construct_subset
+sys.path.append("../")
+from utils import construct_subset, read_json_file, save_dataset
+
 
 def read_preds():
-    text_only_pred = read_json_file('../mmsd_data/data_gen_output/mmsd_text_only_pred_qwen2.json')
-    vision_only_pred = read_json_file('../mmsd_data/data_gen_output/mmsd_image_only_pred_cogvlm2.json')
-    return text_only_pred, vision_only_pred 
+    text_only_pred = read_json_file(
+        "../mmsd_data/data_gen_output/mmsd_text_only_pred_qwen2.json"
+    )
+    vision_only_pred = read_json_file(
+        "../mmsd_data/data_gen_output/mmsd_image_only_pred_cogvlm2.json"
+    )
+    return text_only_pred, vision_only_pred
+
 
 def read_groundtruth_labels(split):
-    with open(f'../mmsd_data/data_raw/mmsd_dataset_{split}.json', 'r') as file:
+    with open(f"../mmsd_data/data_raw/mmsd_dataset_{split}.json", "r") as file:
         dataset = json.load(file)
-        return {key: value['label'] for key, value in dataset.items()}
+        return {key: value["label"] for key, value in dataset.items()}
+
 
 def select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict):
     R_ids, AS_ids, U_ids = [], [], []
     for id, gth_label in gth_label_dict.items():
-        text_label = text_label_dict.get(id, {}).get('pred')
-        vision_label = vision_label_dict.get(id, {}).get('pred')
+        text_label = text_label_dict.get(id, {}).get("pred")
+        vision_label = vision_label_dict.get(id, {}).get("pred")
         if text_label is None or vision_label is None:
             continue
         if text_label == vision_label:
@@ -28,30 +35,44 @@ def select_subset_ids(text_label_dict, vision_label_dict, gth_label_dict):
             U_ids.append(id)
     return R_ids, AS_ids, U_ids
 
+
 def record_label_distribution(ids, label_dict):
     return Counter([label_dict[id] for id in ids])
 
+
 def main():
-    for split in ['train', 'test', 'val']:
+    for split in ["train", "test", "val"]:
         gth_label = read_groundtruth_labels(split)
         text_only_pred, vision_only_pred = read_preds()
-        R_ids, AS_ids, U_ids = select_subset_ids(text_only_pred, vision_only_pred, gth_label)
-        
-        train_dataset = read_json_file(f'../mmsd_data/data_raw/mmsd_dataset_{split}.json')
-        
+        R_ids, AS_ids, U_ids = select_subset_ids(
+            text_only_pred, vision_only_pred, gth_label
+        )
+
+        train_dataset = read_json_file(
+            f"../mmsd_data/data_raw/mmsd_dataset_{split}.json"
+        )
+
         R_dataset = construct_subset(R_ids, train_dataset)
-        save_dataset(f'../mmsd_data/data_split_output/mmsd_R_dataset_{split}_cogvlm2_qwen2.json', R_dataset)
-        
+        save_dataset(
+            f"../mmsd_data/data_split_output/mmsd_R_dataset_{split}_cogvlm2_qwen2.json",
+            R_dataset,
+        )
+
         AS_dataset = construct_subset(AS_ids, train_dataset)
-        save_dataset(f'../mmsd_data/data_split_output/mmsd_AS_dataset_{split}_cogvlm2_qwen2.json', AS_dataset)
-        
+        save_dataset(
+            f"../mmsd_data/data_split_output/mmsd_AS_dataset_{split}_cogvlm2_qwen2.json",
+            AS_dataset,
+        )
+
         U_dataset = construct_subset(U_ids, train_dataset)
-        save_dataset(f'../mmsd_data/data_split_output/mmsd_U_dataset_{split}_cogvlm2_qwen2.json', U_dataset)
-        
+        save_dataset(
+            f"../mmsd_data/data_split_output/mmsd_U_dataset_{split}_cogvlm2_qwen2.json",
+            U_dataset,
+        )
+
         R_label_distribution = record_label_distribution(R_ids, gth_label)
         AS_label_distribution = record_label_distribution(AS_ids, gth_label)
         U_label_distribution = record_label_distribution(U_ids, gth_label)
-        
 
         print(split)
         print(f"R_ids: {len(R_ids)}")
@@ -61,10 +82,15 @@ def main():
         print("Ground-truth label distribution for AS_ids:", AS_label_distribution)
         print("Ground-truth label distribution for U_ids:", U_label_distribution)
         # show prediction distribution
-        text_only_pred_distribution = Counter([value['pred'] for value in text_only_pred.values()])
-        vision_only_pred_distribution = Counter([value['pred'] for value in vision_only_pred.values()])
+        text_only_pred_distribution = Counter(
+            [value["pred"] for value in text_only_pred.values()]
+        )
+        vision_only_pred_distribution = Counter(
+            [value["pred"] for value in vision_only_pred.values()]
+        )
         print("Text-only prediction distribution:", text_only_pred_distribution)
         print("Vision-only prediction distribution:", vision_only_pred_distribution)
+
 
 if __name__ == "__main__":
     main()
