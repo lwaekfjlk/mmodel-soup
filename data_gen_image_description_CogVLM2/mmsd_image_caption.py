@@ -9,8 +9,8 @@ import time
 from tqdm import tqdm
 from utils import recur_move_to, collate_fn, generate
 
-image_folder = "../sarc_data/data_raw/images"
-output_file = "../sarc_data/data_raw/image_captions_cogvlm2.jsonl"
+image_folder = "../mmsd_data/data_raw/images"
+output_file = "../mmsd_data/data_raw/image_captions_cogvlm2.jsonl"
 
 batch_size = 12
 query = (

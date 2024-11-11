@@ -4,15 +4,8 @@ from torchvision import transforms
 from PIL import Image
 from datasets import load_dataset
 
-from dataset.caption_dataset import re_train_dataset, re_eval_dataset, pretrain_dataset
-from dataset.nlvr_dataset import nlvr_dataset
-from dataset.ve_dataset import ve_dataset
-from dataset.vqa_dataset import vqa_dataset
-from dataset.grounding_dataset import grounding_dataset
 from dataset.bi_cls_dataset import bi_cls_dataset
 from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
-from dataset.irfl_dataset import irfl_train_dataset, irfl_test_dataset
-from dataset.nycartoon_dataset import nycartoon_train_dataset, nycartoon_test_dataset
 from dataset.mustard_dataset import mustard_train_dataset, mustard_test_dataset
 from dataset.urfunny_dataset import urfunny_train_dataset, urfunny_test_dataset
 
@@ -44,47 +37,7 @@ def create_dataset(dataset, config):
         normalize,
         ])   
     
-    if dataset=='pretrain':
-        dataset = pretrain_dataset(config['train_file'], pretrain_transform)                  
-        return dataset      
-               
-    elif dataset=='re':          
-        train_dataset = re_train_dataset(config['train_file'], train_transform, config['image_root'])
-        val_dataset = re_eval_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = re_eval_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset   
-
-    elif dataset=='vqa': 
-        train_dataset = vqa_dataset(config['train_file'], train_transform, config['vqa_root'], config['vg_root'], split='train') 
-        vqa_test_dataset = vqa_dataset(config['test_file'], test_transform, config['vqa_root'], config['vg_root'], split='test', answer_list=config['answer_list'])       
-        return train_dataset, vqa_test_dataset
-
-    elif dataset=='nlvr':   
-        train_dataset = nlvr_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = nlvr_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = nlvr_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset        
-               
-    elif dataset=='ve':   
-        train_dataset = ve_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = ve_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = ve_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset     
-    
-    elif dataset=='grounding':
-        train_transform = transforms.Compose([                        
-                transforms.Resize((config['image_res'],config['image_res']),interpolation=Image.BICUBIC),
-                transforms.RandomHorizontalFlip(),
-                RandomAugment(2,7,isPIL=True,augs=['Identity','AutoContrast','Equalize','Brightness','Sharpness',
-                                                  'ShearX', 'ShearY', 'TranslateX', 'TranslateY', 'Rotate']),     
-                transforms.ToTensor(),
-                normalize,
-            ])         
-        train_dataset = grounding_dataset(config['train_file'], train_transform, config['image_root'], mode='train')       
-        test_dataset = grounding_dataset(config['test_file'], test_transform, config['image_root'], mode='test')             
-        return train_dataset, test_dataset
-    
-    elif dataset=='bi-cls':
+    if dataset=='bi-cls':
         train_transform = transforms.Compose([                        
                 transforms.RandomResizedCrop(config['image_res'],scale=(0.5, 1.0), interpolation=Image.BICUBIC),
                 transforms.Grayscale(num_output_channels=3),
@@ -111,18 +64,6 @@ def create_dataset(dataset, config):
         val_dataset = sarc_detect_test_dataset(config['val_file'], test_transform, config['image_root'])  
         test_dataset = sarc_detect_test_dataset(config['test_file'], test_transform, config['image_root'])                
         return train_dataset, val_dataset, test_dataset 
-    
-    elif dataset=='irfl':   
-        train_dataset = irfl_train_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = irfl_test_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = irfl_test_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset 
-
-    elif dataset=='nycartoon':   
-        train_dataset = nycartoon_train_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = nycartoon_test_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = nycartoon_test_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset
 
     elif dataset=='mustard':   
         train_dataset = mustard_train_dataset(config['train_file'], train_transform, config['image_root'])  
