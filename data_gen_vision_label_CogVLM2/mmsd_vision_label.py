@@ -8,7 +8,7 @@ from utils import recur_move_to, collate_fn, load_ground_truth_labels, load_imag
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-MODEL_PATH = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
+MODEL_PATH = "./cogvlm2-llama3-chat-19B"
 TORCH_TYPE = torch.bfloat16
 device = 'cuda'
 
