@@ -10,12 +10,11 @@ from mustard import get_mustard_dataloader
 from sarc import get_sarc_dataloader
 from funny import get_funny_dataloader
 from mmsd import get_mmsd_dataloader
-#from nycartoon import get_nycartoon_dataloader
-#from irfl import get_irfl_dataloader
-#from combine import get_combined_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
-import ipdb
+import numpy as np
+import utils
+import random
 from peft import LoraConfig, get_peft_model, PeftModel
 
 
@@ -49,7 +48,6 @@ def evaluate(tokenizer, model, dataloader, device, args):
             else:
                 yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
             predictions = torch.argmax(yesno_logits, dim=-1)
-            #ipdb.set_trace()
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
             yesno_logits = yesno_logits.tolist()
@@ -171,7 +169,7 @@ if __name__ == '__main__':
     parser.add_argument('--lora_r', type=int, default=16, help='LoRA r parameter')
     parser.add_argument('--lora_alpha', type=int, default=32, help='LoRA alpha parameter')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='LoRA dropout parameter')
-    parser.add_argument('--save_path', type=str, default='./model', help='Path to save the trained model')
+    parser.add_argument('--save_path', type=str, default='none', help='Path to save the trained model')
     parser.add_argument('--combined_dataset_names', type=str, nargs='+', default=[], help='Names of the datasets to combine')
     parser.add_argument('--combined_train_paths', type=str, nargs='+', default=[], help='Paths to the training data')
     parser.add_argument('--combined_val_paths', type=str, nargs='+', default=[], help='Paths to the validation data')
@@ -184,11 +182,14 @@ if __name__ == '__main__':
     parser.add_argument('--device', type=int, default=0, help='specify gpu')
     parser.add_argument('--world_size', type=int, default=4, help='specify gpu')
     parser.add_argument('--model_size', type=float, default=1.5, help='specify model size')
-
+    parser.add_argument('--seed', default=0, type=int)
 
 
     args = parser.parse_args()
-
+    seed = args.seed
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(f"Qwen/Qwen2-{int(args.model_size)}B" if args.model_size > 1.5 else f"Qwen/Qwen2-{args.model_size}B")
     device = torch.device(f"cuda:{args.device}" if torch.cuda.is_available() else "cpu")
     print(device)
@@ -211,7 +212,12 @@ if __name__ == '__main__':
         test_dataloader = get_mmsd_dataloader(args, tokenizer, split="test")
     
     if args.mode == "train":
-        model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{args.model_size}B")
+        print("MODE", args.save_path)
+        print("BASELINE", args.load_model_name)
+        if args.load_model_name == "none":
+            model = AutoModelForCausalLM.from_pretrained(f"Qwen/Qwen2-{int(args.model_size)}B" if args.model_size > 1.5 else f"Qwen/Qwen2-{args.model_size}B")
+        else:
+            model = AutoModelForCausalLM.from_pretrained(args.load_model_name).to(device)
         config = LoraConfig(
             r=args.lora_r,
             lora_alpha=args.lora_alpha,
@@ -237,7 +243,7 @@ if __name__ == '__main__':
             print(f"Test F1 Score: {f1:.4f}")
             print(f"Test Precision: {precision:.4f}")
             print(f"Test Recall: {recall:.4f}")
-            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
+            with open(f"./{args.save_path}/test_yesno_logits.json", "w") as f:
                 json.dump(yesno_logits, f)
 
         else: 
