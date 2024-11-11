@@ -36,7 +36,7 @@ In the following section, we provide detailed instruction on running experiments
 
 To categorize multimodal datasets into interaction types (Redundancy, Uniqueness, Synergy), we use unimodal predictions from the **CogVLM2-LLaMA3-chat19B** for images and **Qwen2-72B-Instruct** for text. Below is an example using the MUSTARD dataset.
 
-** Step-by-Step Data Categorization **
+**Step-by-Step Data Categorization**
 
 ```bash
 cd ./data_gen_vision_label_CogVLM2
@@ -52,7 +52,7 @@ pip install -r requirements.txt
 python mustard_split.py
 ```
 
-** Accessing Preprocessed Data **
+**Accessing Preprocessed Data**
 
 We provide organized and processed data for the `MMSD2.0`, `MUSTARD`, and `URFUNNY` datasets. Each dataset contains the following components:
 
