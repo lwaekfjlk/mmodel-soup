@@ -10,8 +10,39 @@ from mmsd import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
+import os
+import random
+import numpy as np
 
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=1, gamma=2, reduction='mean'):
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.reduction = reduction
 
+    def forward(self, inputs, targets):
+        BCE_loss = nn.functional.cross_entropy(inputs, targets, reduction='none')
+        pt = torch.exp(-BCE_loss)
+        F_loss = self.alpha * (1-pt)**self.gamma * BCE_loss
+
+        if self.reduction == 'mean':
+            return torch.mean(F_loss)
+        elif self.reduction == 'sum':
+            return torch.sum(F_loss)
+        else:
+            return F_loss
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)  # if you are using multi-GPU.
+    # This ensures that CUDA operations are deterministic
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 def evaluate(tokenizer, model, dataloader, device, args):
     model.eval()
@@ -22,6 +53,7 @@ def evaluate(tokenizer, model, dataloader, device, args):
     all_predictions = []
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
+    other_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("other"))[0]
     
     for batch in tqdm(dataloader, desc="Evaluating", leave=False):
         input_ids = batch["input_ids"].to(device)
@@ -35,8 +67,8 @@ def evaluate(tokenizer, model, dataloader, device, args):
             logits = outputs.logits
             logits = logits[:, -1, :]
 
-            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
-            predictions = torch.argmax(yesno_logits, dim=-1)
+            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id], logits[:, other_token_id]], dim=-1)
+            predictions = torch.argmax(yesno_logits[:, :2], dim=-1)
             total_correct += (predictions == labels).sum().item()
             total += labels.size(0)
             yesno_logits = yesno_logits.tolist()
@@ -55,18 +87,37 @@ def evaluate(tokenizer, model, dataloader, device, args):
 
 def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    criterion = nn.CrossEntropyLoss()
+    criterion = FocalLoss(alpha=0.25, gamma=2)
 
     yes_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("yes"))[0]
     no_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("no"))[0]
+    other_token_id = tokenizer.convert_tokens_to_ids(tokenizer.tokenize("other"))[0]
 
     best_f1 = -1
     model.train()
+
+    acc, f1, precision, recall, yesno_logits = evaluate(
+        tokenizer, 
+        model, 
+        val_dataloader, 
+        device, 
+        args
+    )
+    #model.save_pretrained(args.save_path)
+    #with open(f"{args.save_path}/val_best_f1_yesno_logits.json", "w") as f:
+    #    json.dump(yesno_logits, f)
+    print(f"Starting point")
+    print(f"Validation Accuracy: {acc:.4f}")
+    print(f"Validation F1 Score: {f1:.4f}")
+    print(f"Validation Precision: {precision:.4f}")
+    print(f"Validation Recall: {recall:.4f}")
     
+    total_step = 0
     for epoch in range(args.epochs):
         total_loss = 0
         
         for step, batch in enumerate(tqdm(train_dataloader, desc=f"Epoch {epoch + 1}", leave=False)):
+            total_step += 1
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             images = batch["image"].to(device)
@@ -75,14 +126,14 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
             optimizer.zero_grad()
             outputs = model(input_ids=input_ids, attention_mask=attention_mask, pixel_values=images)
             logits = outputs.logits[:, -1, :]
-            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id]], dim=-1)
+            yesno_logits = torch.stack([logits[:, no_token_id], logits[:, yes_token_id], logits[:, other_token_id]], dim=-1)
             loss = criterion(yesno_logits, labels)
             loss.backward()
             optimizer.step()
 
             total_loss += loss.item()
 
-            if (step + 1) % args.eval_steps == 0:
+            if (total_step + 1) % args.eval_steps == 0:
                 acc, f1, precision, recall, yesno_logits = evaluate(
                     tokenizer, 
                     model, 
@@ -96,10 +147,11 @@ def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
                 print(f"Validation Precision: {precision:.4f}")
                 print(f"Validation Recall: {recall:.4f}")
                 
-                if f1 > best_f1:
+                if f1 >= best_f1:
                     best_f1 = f1
                     model.save_pretrained(args.save_path)
-                    with open(f"{args.save_path}/yesno_logits.json", "w") as f:
+                    print("Model saved")
+                    with open(f"{args.save_path}/val_best_f1_yesno_logits.json", "w") as f:
                         json.dump(yesno_logits, f)
 
 def create_dataset_configs(dataset_names, dataset_paths, image_data_paths, max_lengths):
@@ -141,8 +193,13 @@ if __name__ == '__main__':
     parser.add_argument('--combined_max_lengths', type=int, nargs='+', default=[], help='Maximum lengths for tokenized sequences')
     parser.add_argument('--test_dataset', type=str, default='mustard', help='Dataset to test on')
     parser.add_argument('--load_model_name', type=str, default='./model', help='Path to load the model from')
+    parser.add_argument('--load_from_ckpt', type=str, default=None, help='Path to load the model from')
+    parser.add_argument('--seed', type=int, default=1234, help='Random seed for initialization')  # Add seed argument
     
+
     args = parser.parse_args()
+
+    set_seed(args.seed)
 
     # BLIP2 Properties
     tokenizer = AutoTokenizer.from_pretrained("Salesforce/blip2-opt-2.7b")
@@ -151,14 +208,19 @@ if __name__ == '__main__':
         
     if args.mode == "train":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
-        config = LoraConfig(
-            r=args.lora_r,
-            lora_alpha=args.lora_alpha,
-            lora_dropout=args.lora_dropout,
-            bias="none",
-            target_modules=["q_proj", "k_proj"]
-        )
-        model = get_peft_model(model, config)
+
+        if args.load_from_ckpt:
+            model = PeftModel.from_pretrained(model, args.load_from_ckpt, is_trainable=True)
+        else:
+            config = LoraConfig(
+                r=args.lora_r,
+                lora_alpha=args.lora_alpha,
+                lora_dropout=args.lora_dropout,
+                bias="none",
+                target_modules=["q_proj", "k_proj"]
+            )
+            model = get_peft_model(model, config)
+
         model.print_trainable_parameters()
         model.to(device)
 
@@ -174,16 +236,10 @@ if __name__ == '__main__':
             train_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="train")
             val_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="val")
             test_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="test")
-        elif args.dataset == "combined":
-            train_configs = create_dataset_configs(args.combined_dataset_names, args.combined_train_paths, args.combined_image_data_paths, args.combined_max_lengths)
-            val_configs = create_dataset_configs(args.combined_dataset_names, args.combined_val_paths, args.combined_image_data_paths, args.combined_max_lengths)
-            test_configs = create_dataset_configs(args.combined_dataset_names, args.combined_test_paths, args.combined_image_data_paths, args.combined_max_lengths)
-            train_dataloader = get_combined_dataloader(train_configs, args, tokenizer, processor, split="train")
-            val_dataloader = get_combined_dataloader(val_configs, args, tokenizer, processor, split="val")
-            test_dataloader = get_combined_dataloader(test_configs, args, tokenizer, processor, split="test")
-
+        
         train(model, train_dataloader, val_dataloader, tokenizer, device, args)
 
+        model = PeftModel.from_pretrained(model, args.save_path, is_trainable=True).to(device)
         acc, f1, precision, recall, yesno_logits = evaluate(
             tokenizer, 
             model, 
@@ -196,7 +252,7 @@ if __name__ == '__main__':
         print(f"Test F1 Score: {f1:.4f}")
         print(f"Test Precision: {precision:.4f}")
         print(f"Test Recall: {recall:.4f}")
-        model.save_pretrained(args.save_path)
+        
     
     elif args.mode == "test":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")

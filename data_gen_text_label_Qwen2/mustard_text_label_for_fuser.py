@@ -47,7 +47,7 @@ def process_text(data_item: Dict[str, str]) -> Dict[str, Dict[str, int]]:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--text_data", type=str, default='../mustard_data/data_raw', help='text_list')
-    parser.add_argument("--save_file", type=str, default='../mustard_data/data_gen_output/mustard_text_only_pred_qwen2.json', help='save file path')
+    parser.add_argument("--save_file", type=str, default='../mustard_data/data_gen_output/mustard_text_only_pred_qwen2_for_fuser.json', help='save file path')
     parser.add_argument("--max_workers", type=int, default=8, help='max workers')
     args = parser.parse_args()
 
@@ -60,10 +60,11 @@ def main():
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
+
     #multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     # Process results and calculate F1 scores
-    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2, split='train')
+    train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0, split='test')
     val_results = get_prediction({k: v for k, v in results.items() if k in val_ids}, 0, split='val')
     test_results = get_prediction({k: v for k, v in results.items() if k in test_ids}, 0, split='test')
 
