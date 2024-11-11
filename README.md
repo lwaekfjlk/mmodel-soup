@@ -8,7 +8,7 @@
 
 [![Python 3.8](https://img.shields.io/badge/python-%E2%89%A53.10-blue)](https://www.python.org/downloads/release/python-3109/)
 [![GitHub pull request](https://img.shields.io/badge/PRs-welcome-orange)](https://github.com/hiyouga/LLaMA-Factory/pulls)
-[![Arxiv](https://img.shields.io/badge/arXiv-2311.09580-b31b1b)](https://github.com/ulab-uiuc/research-town)
+[![Arxiv](https://img.shields.io/badge/arXiv-2311.09580-b31b1b)](https://arxiv.org/abs/2311.09580)
 
 </div>
 
