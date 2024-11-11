@@ -1,5 +1,5 @@
 train_file: '../mmsd_data/data_raw/mmsd_dataset_train.json'
-val_file: '../mmsd_data/data_raw/mmsd_dataset_val.json'             
+val_file: '../mmsd_data/data_raw/mmsd_dataset_val.json'
 test_file: '../mmsd_data/data_raw/mmsd_dataset_test.json'
 
 image_root: '../sarc_data/data_raw/image_data'
@@ -16,10 +16,3 @@ bert_config: 'configs/config_bert.json'
 
 optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
 schedular: {sched: cosine, lr: 2e-5, epochs: 10, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
-
-
-
-
-
-
-
