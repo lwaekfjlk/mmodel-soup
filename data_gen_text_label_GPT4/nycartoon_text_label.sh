@@ -1,2 +1,0 @@
-export OPENAI_API_KEY=xx
-python nycartoon_text_label.py
