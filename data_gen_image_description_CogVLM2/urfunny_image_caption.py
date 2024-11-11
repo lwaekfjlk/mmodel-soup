@@ -21,7 +21,7 @@ query = (
     "Ensure the description is between 15 to 100 words."
 )
 
-model_path = "/dataset/granite_ckpt/haofeiyu/cogvlm2-llama3-chat-19B"
+model_path = "./cogvlm2-llama3-chat-19B"
 torch_type = torch.bfloat16
 device = 'cuda:0'
 

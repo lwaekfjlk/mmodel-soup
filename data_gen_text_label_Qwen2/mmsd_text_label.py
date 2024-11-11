@@ -58,7 +58,7 @@ def main():
 
     results = json.load(open(args.save_file)) if os.path.exists(args.save_file) else {}
 
-    #multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
+    multi_process_run(process_text, results, dataset, args.max_workers, args.save_file)
 
     # Process results and calculate F1 scores
     train_results = get_prediction({k: v for k, v in results.items() if k in train_ids}, 0.2, split='train')
