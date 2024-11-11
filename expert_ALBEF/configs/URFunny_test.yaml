@@ -1,5 +1,5 @@
 train_file: '../urfunny_data/data_raw/test_data.json'
-val_file: '../urfunny_data/data_raw/test_data.json'             
+val_file: '../urfunny_data/data_raw/test_data.json'
 test_file: '../urfunny_data/data_raw/test_data.json'
 
 image_root: '../urfunny_data/data_raw/image_data'

@@ -8,16 +8,35 @@ Copyright (c) 2020-present NAVER Corp.
 MIT license
 """
 
-import torch
-import torch.nn as nn
-from torch.optim.optimizer import Optimizer, required
 import math
 
+import torch
+from torch.optim.optimizer import Optimizer, required
+
+
 class SGDP(Optimizer):
-    def __init__(self, params, lr=required, momentum=0, dampening=0,
-                 weight_decay=0, nesterov=False, eps=1e-8, delta=0.1, wd_ratio=0.1):
-        defaults = dict(lr=lr, momentum=momentum, dampening=dampening, weight_decay=weight_decay,
-                        nesterov=nesterov, eps=eps, delta=delta, wd_ratio=wd_ratio)
+    def __init__(
+        self,
+        params,
+        lr=required,
+        momentum=0,
+        dampening=0,
+        weight_decay=0,
+        nesterov=False,
+        eps=1e-8,
+        delta=0.1,
+        wd_ratio=0.1,
+    ):
+        defaults = dict(
+            lr=lr,
+            momentum=momentum,
+            dampening=dampening,
+            weight_decay=weight_decay,
+            nesterov=nesterov,
+            eps=eps,
+            delta=delta,
+            wd_ratio=wd_ratio,
+        )
         super(SGDP, self).__init__(params, defaults)
 
     def _channel_view(self, x):
@@ -40,7 +59,6 @@ class SGDP(Optimizer):
         wd = 1
         expand_size = [-1] + [1] * (len(p.shape) - 1)
         for view_func in [self._channel_view, self._layer_view]:
-
             cosine_sim = self._cosine_similarity(grad, p.data, eps, view_func)
 
             if cosine_sim.max() < delta / math.sqrt(view_func(p.data).size(1)):
@@ -58,12 +76,12 @@ class SGDP(Optimizer):
             loss = closure()
 
         for group in self.param_groups:
-            weight_decay = group['weight_decay']
-            momentum = group['momentum']
-            dampening = group['dampening']
-            nesterov = group['nesterov']
+            weight_decay = group["weight_decay"]
+            momentum = group["momentum"]
+            dampening = group["dampening"]
+            nesterov = group["nesterov"]
 
-            for p in group['params']:
+            for p in group["params"]:
                 if p.grad is None:
                     continue
                 grad = p.grad.data
@@ -71,10 +89,10 @@ class SGDP(Optimizer):
 
                 # State initialization
                 if len(state) == 0:
-                    state['momentum'] = torch.zeros_like(p.data)
+                    state["momentum"] = torch.zeros_like(p.data)
 
                 # SGD
-                buf = state['momentum']
+                buf = state["momentum"]
                 buf.mul_(momentum).add_(1 - dampening, grad)
                 if nesterov:
                     d_p = grad + momentum * buf
@@ -84,13 +102,21 @@ class SGDP(Optimizer):
                 # Projection
                 wd_ratio = 1
                 if len(p.shape) > 1:
-                    d_p, wd_ratio = self._projection(p, grad, d_p, group['delta'], group['wd_ratio'], group['eps'])
+                    d_p, wd_ratio = self._projection(
+                        p, grad, d_p, group["delta"], group["wd_ratio"], group["eps"]
+                    )
 
                 # Weight decay
                 if weight_decay != 0:
-                    p.data.mul_(1 - group['lr'] * group['weight_decay'] * wd_ratio / (1-momentum))
+                    p.data.mul_(
+                        1
+                        - group["lr"]
+                        * group["weight_decay"]
+                        * wd_ratio
+                        / (1 - momentum)
+                    )
 
                 # Step
-                p.data.add_(-group['lr'], d_p)
+                p.data.add_(-group["lr"], d_p)
 
         return loss
