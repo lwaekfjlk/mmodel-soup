@@ -27,3 +27,4 @@
 **/*.log
 **/key_frames/*
 **/subfolder_*/*
+!**/.gitkeep
