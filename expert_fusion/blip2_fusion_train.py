@@ -6,10 +6,32 @@ from tqdm import tqdm
 from peft import LoraConfig, get_peft_model, PeftModel
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
+from torch.nn import functional as F
 
 from mmsd import get_mmsd_dataloader
 from urfunny import get_urfunny_dataloader
 from mustard import get_mustard_dataloader
+
+class FocalLoss(nn.Module):
+    def __init__(self, alpha=1, gamma=2, logits=False, reduce=True):
+        super(FocalLoss, self).__init__()
+        self.alpha = alpha
+        self.gamma = gamma
+        self.logits = logits
+        self.reduce = reduce
+
+    def forward(self, inputs, targets):
+        if self.logits:
+            CE_loss = F.cross_entropy(inputs, targets, reduce=False)
+        else:
+            CE_loss = F.cross_entropy(inputs, targets, reduce=False)
+        pt = torch.exp(-CE_loss)
+        F_loss = self.alpha * (1-pt)**self.gamma * CE_loss
+
+        if self.reduce:
+            return torch.mean(F_loss)
+        else:
+            return F_loss
 
 
 def evaluate(tokenizer, model, dataloader, device):
@@ -47,7 +69,7 @@ def evaluate(tokenizer, model, dataloader, device):
 
 def train(model, train_dataloader, val_dataloader, tokenizer, device, args):
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    criterion = nn.CrossEntropyLoss()
+    criterion = FocalLoss(alpha=1, gamma=2)
     token_ids = {token: tokenizer.convert_tokens_to_ids(tokenizer.tokenize(token))[0] for token in ["R", "U", "S"]}
     best_f1 = -1
 
@@ -87,13 +109,14 @@ if __name__ == '__main__':
     parser.add_argument('--val_batch_size', type=int, default=32, help='Batch size for validation')
     parser.add_argument('--max_length', type=int, default=128, help='Maximum length for tokenized sequences')
     parser.add_argument('--epochs', type=int, default=50, help='Number of training epochs')
-    parser.add_argument('--lr', type=float, default=5e-5, help='Learning rate')
+    parser.add_argument('--lr', type=float, default=1e-4, help='Learning rate')
     parser.add_argument('--eval_steps', type=int, default=10, help='Number of steps between evaluations')
     parser.add_argument('--lora_r', type=int, default=16, help='LoRA r parameter')
     parser.add_argument('--lora_alpha', type=int, default=32, help='LoRA alpha parameter')
     parser.add_argument('--lora_dropout', type=float, default=0.05, help='LoRA dropout parameter')
     parser.add_argument('--save_path', type=str, default='./model', help='Path to save the trained model')
     parser.add_argument('--load_model_name', type=str, help='Path to load the model from')
+    parser.add_argument('--load_from_ckpt', type=str, default=None, help='Path to load the model from')
     
     args = parser.parse_args()
 
@@ -103,15 +126,25 @@ if __name__ == '__main__':
 
     if args.mode == "train":
         model = Blip2ForConditionalGeneration.from_pretrained("Salesforce/blip2-opt-2.7b")
-        config = LoraConfig(r=args.lora_r, lora_alpha=args.lora_alpha, lora_dropout=args.lora_dropout, bias="none", target_modules=["q_proj", "k_proj"])
-        model = get_peft_model(model, config)
+        if args.load_from_ckpt:
+            model = PeftModel.from_pretrained(model, args.load_from_ckpt, is_trainable=True)
+        else:
+            config = LoraConfig(
+                r=args.lora_r, 
+                lora_alpha=args.lora_alpha, 
+                lora_dropout=args.lora_dropout, 
+                bias="none", 
+                target_modules=["q_proj", "k_proj"]
+            )
+            model = get_peft_model(model, config)
+
         model.print_trainable_parameters()
         model.to(device)
 
         dataloaders = {
-            "mustard": get_mustard_dataloader,
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
+            "mustard": get_mustard_dataloader,
         }
 
         train_dataloader = dataloaders[args.dataset](args, tokenizer, processor, split="train")
@@ -128,9 +161,9 @@ if __name__ == '__main__':
         model = PeftModel.from_pretrained(model, args.load_model_name, is_trainable=True).to(device)
 
         dataloaders = {
-            "mustard": get_mustard_dataloader,
             "mmsd": get_mmsd_dataloader,
             "urfunny": get_urfunny_dataloader,
+            "mustard": get_mustard_dataloader
         }
 
         test_dataloader = dataloaders[args.dataset](args, tokenizer, processor, split="test")
