@@ -8,8 +8,8 @@ from dataset.bi_cls_dataset import bi_cls_dataset
 from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
 from dataset.mustard_dataset import mustard_train_dataset, mustard_test_dataset
 from dataset.urfunny_dataset import urfunny_train_dataset, urfunny_test_dataset
-
 from dataset.randaugment import RandomAugment
+
 
 def create_dataset(dataset, config):
     
@@ -42,8 +42,23 @@ def create_dataset(dataset, config):
                 transforms.RandomResizedCrop(config['image_res'],scale=(0.5, 1.0), interpolation=Image.BICUBIC),
                 transforms.Grayscale(num_output_channels=3),
                 transforms.RandomHorizontalFlip(),
-                RandomAugment(2,7,isPIL=True,augs=['Identity','AutoContrast','Equalize','Brightness','Sharpness',
-                                                'ShearX', 'ShearY', 'TranslateX', 'TranslateY', 'Rotate']),
+                RandomAugment(
+                    2,
+                    7,
+                    isPIL=True,
+                    augs=[
+                        "Identity",
+                        "AutoContrast",
+                        "Equalize",
+                        "Brightness",
+                        "Sharpness",
+                        "ShearX",
+                        "ShearY",
+                        "TranslateX",
+                        "TranslateY",
+                        "Rotate",
+                    ],
+                ),
                 transforms.ToTensor(),
                 normalize,
             ])  
@@ -65,42 +80,77 @@ def create_dataset(dataset, config):
         test_dataset = sarc_detect_test_dataset(config['test_file'], test_transform, config['image_root'])                
         return train_dataset, val_dataset, test_dataset 
 
-    elif dataset=='mustard':   
-        train_dataset = mustard_train_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = mustard_test_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = mustard_test_dataset(config['test_file'], test_transform, config['image_root'])                
+    elif dataset == "sarc-detect":
+        train_dataset = sarc_detect_train_dataset(
+            config["train_file"], train_transform, config["image_root"]
+        )
+        val_dataset = sarc_detect_test_dataset(
+            config["val_file"], test_transform, config["image_root"]
+        )
+        test_dataset = sarc_detect_test_dataset(
+            config["test_file"], test_transform, config["image_root"]
+        )
         return train_dataset, val_dataset, test_dataset
 
-    elif dataset=='urfunny':   
-        train_dataset = urfunny_train_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = urfunny_test_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = urfunny_test_dataset(config['test_file'], test_transform, config['image_root'])                
+    elif dataset == "mustard":
+        train_dataset = mustard_train_dataset(
+            config["train_file"], train_transform, config["image_root"]
+        )
+        val_dataset = mustard_test_dataset(
+            config["val_file"], test_transform, config["image_root"]
+        )
+        test_dataset = mustard_test_dataset(
+            config["test_file"], test_transform, config["image_root"]
+        )
         return train_dataset, val_dataset, test_dataset
+
+    elif dataset == "urfunny":
+        train_dataset = urfunny_train_dataset(
+            config["train_file"], train_transform, config["image_root"]
+        )
+        val_dataset = urfunny_test_dataset(
+            config["val_file"], test_transform, config["image_root"]
+        )
+        test_dataset = urfunny_test_dataset(
+            config["test_file"], test_transform, config["image_root"]
+        )
+        return train_dataset, val_dataset, test_dataset
+
 
 def vqa_collate_fn(batch):
     image_list, question_list, answer_list, weight_list, n = [], [], [], [], []
     for image, question, answer, weights in batch:
         image_list.append(image)
         question_list.append(question)
-        weight_list += weights       
+        weight_list += weights
         answer_list += answer
         n.append(len(answer))
-    return torch.stack(image_list,dim=0), question_list, answer_list, torch.Tensor(weight_list), n
+    return (
+        torch.stack(image_list, dim=0),
+        question_list,
+        answer_list,
+        torch.Tensor(weight_list),
+        n,
+    )
 
 
 def create_sampler(datasets, shuffles, num_tasks, global_rank):
     samplers = []
-    for dataset,shuffle in zip(datasets,shuffles):
-        sampler = torch.utils.data.DistributedSampler(dataset, num_replicas=num_tasks, rank=global_rank, shuffle=shuffle)
+    for dataset, shuffle in zip(datasets, shuffles):
+        sampler = torch.utils.data.DistributedSampler(
+            dataset, num_replicas=num_tasks, rank=global_rank, shuffle=shuffle
+        )
         samplers.append(sampler)
-    return samplers     
+    return samplers
 
 
 def create_loader(datasets, samplers, batch_size, num_workers, is_trains, collate_fns):
     loaders = []
-    for dataset,sampler,bs,n_worker,is_train,collate_fn in zip(datasets,samplers,batch_size,num_workers,is_trains,collate_fns):
+    for dataset, sampler, bs, n_worker, is_train, collate_fn in zip(
+        datasets, samplers, batch_size, num_workers, is_trains, collate_fns
+    ):
         if is_train:
-            shuffle = (sampler is None)
+            shuffle = sampler is None
             drop_last = True
         else:
             shuffle = False
@@ -114,6 +164,6 @@ def create_loader(datasets, samplers, batch_size, num_workers, is_trains, collat
             shuffle=shuffle,
             collate_fn=collate_fn,
             drop_last=drop_last,
-        )              
+        )
         loaders.append(loader)
-    return loaders    
+    return loaders

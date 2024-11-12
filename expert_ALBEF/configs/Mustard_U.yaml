@@ -1,5 +1,5 @@
-train_file: '../mustard_data/data_split_output/mustard_U_dataset_train_cogvlm2_qwen2.json' 
-val_file: '../mustard_data/data_split_output/mustard_U_dataset_test_cogvlm2_qwen2.json' 
+train_file: '../mustard_data/data_split_output/mustard_U_dataset_train_cogvlm2_qwen2.json'
+val_file: '../mustard_data/data_split_output/mustard_U_dataset_test_cogvlm2_qwen2.json'
 test_file: '../mustard_data/data_raw/mustard_dataset_test.json'
 
 image_root: '../mustard_data/data_raw/images'
@@ -16,5 +16,3 @@ bert_config: 'configs/config_bert.json'
 
 optimizer: {opt: adamW, lr: 2e-5, weight_decay: 0.02}
 schedular: {sched: cosine, lr: 2e-5, epochs: 10, min_lr: 1e-6, decay_rate: 1, warmup_lr: 1e-5, warmup_epochs: 1, cooldown_epochs: 0}
-
-
