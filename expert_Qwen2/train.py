@@ -5,14 +5,21 @@ import random
 import numpy as np
 import torch
 import torch.nn as nn
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoProcessor
+from torch.nn.parallel import DistributedDataParallel as DDP
+import torch.distributed as dist
+from tqdm import tqdm
+from peft import LoraConfig, get_peft_model
+from mustard import get_mustard_dataloader
 from funny import get_funny_dataloader
 from mmsd import get_mmsd_dataloader
 from mustard import get_mustard_dataloader
 from peft import LoraConfig, get_peft_model
-from sarc import get_sarc_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
-from tqdm import tqdm
-from transformers import AutoModelForCausalLM, AutoTokenizer
+import json
+import numpy as np
+import random
+from peft import LoraConfig, get_peft_model, PeftModel
 
 
 def evaluate(tokenizer, model, dataloader, device, args):
@@ -304,10 +311,6 @@ if __name__ == "__main__":
         train_dataloader = get_mustard_dataloader(args, tokenizer, split="train")
         val_dataloader = get_mustard_dataloader(args, tokenizer, split="val")
         test_dataloader = get_mustard_dataloader(args, tokenizer, split="test")
-    elif args.dataset == "sarc":
-        train_dataloader = get_sarc_dataloader(args, tokenizer, split="train")
-        val_dataloader = get_sarc_dataloader(args, tokenizer, split="val")
-        test_dataloader = get_sarc_dataloader(args, tokenizer, split="test")
     elif args.dataset == "funny":
         train_dataloader = get_funny_dataloader(args, tokenizer, split="train")
         val_dataloader = get_funny_dataloader(args, tokenizer, split="val")

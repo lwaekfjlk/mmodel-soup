@@ -1,4 +1,4 @@
-torch==1.12.1+cu113
+torch==1.12.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
 transformers==4.8.1
 timm
 ruamel.yaml
