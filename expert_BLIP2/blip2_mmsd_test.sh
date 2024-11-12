@@ -25,7 +25,7 @@ python train.py \
 --max_length 512
 
 export SEED=3456;
-jbsub -mem 80g -cores 20+1 -q alt_24h -require h100 -out ./mmsd-u-test-${SEED}.log -err ./mmsd-u-test-${SEED}.err python train.py \
+python train.py \
 --mode test \
 --test_dataset mmsd \
 --test_path ../mmsd_data/data_raw/mmsd_dataset_test.json \

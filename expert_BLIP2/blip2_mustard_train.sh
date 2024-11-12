@@ -6,7 +6,7 @@ python train.py \
 --test_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --image_data_path ../mustard_data/data_raw/images \
 --save_path ./blip2_mustard_baseline_model_${SEED} \
-batch_size 10 \
+--batch_size 10 \
 --eval_steps 10 \
 --epochs 10 \
 --lr 4e-4 \
@@ -22,7 +22,7 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --load_from_ckpt ./blip2_mustard_baseline_model_${SEED} \
 --save_path ./blip2_mustard_AS_model_${SEED} \
-batch_size 10 \
+--batch_size 10 \
 --eval_steps 100 \
 --lr 4e-5 \
 --epochs 10 \
@@ -38,7 +38,7 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --load_from_ckpt ./blip2_mustard_baseline_model_${SEED} \
 --save_path ./blip2_mustard_R_model_${SEED} \
-batch_size 10 \
+--batch_size 10 \
 --eval_steps 10 \
 --epochs 100 \
 --lr 1e-5 \
@@ -54,7 +54,7 @@ python train.py \
 --image_data_path ../mustard_data/data_raw/images \
 --load_from_ckpt ./blip2_mustard_baseline_model_${SEED} \
 --save_path ./blip2_mustard_U_model_${SEED} \
-batch_size 10 \
+--batch_size 10 \
 --eval_steps 10 \
 --epochs 100 \
 --lr 1e-5 \

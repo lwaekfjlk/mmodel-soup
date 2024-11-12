@@ -82,20 +82,75 @@ Due to size limitations, the image data is hosted externally. To use these datas
 
 Train expert models and the fusion model based on the multimodal interaction type.
 
-Example: Training BLIP-2-Based Expert and Fusion Models
+Example of training fusion and expert models:
+
+To train fusion model for MUSTARD:
+
+```bash
+cd ./expert_fusion
+sh mustard_fusion_train.sh
+sh mustard_fusion_test.sh // generate rus logits for each datapoint
+```
 
 To train BLIP-2 models for the MUSTARD dataset:
 
 ```bash
+conda create -n py310 python=3.10
+conda activate py310
+
 cd ./expert_BLIP2
 pip install -r requirements.txt
 sh blip2_mustard_train.sh
 sh blip2_mustard_test.sh // generate prediction for each model for each datapoint
+```
+
+To train Qwen2 models for MUSTARD:
+
+```bash
+conda create -n py310 python=3.10
+conda activate py310
+
+cd ./expert_Qwen2
+pip install -r requirements.txt
+
+sh train_qwen_mustard.sh
+sh test_qwen_mustard.sh // generate prediction for each model for each datapoint
 
 cd ./expert_fusion
 sh mustard_fusion_train.sh
 sh mustard_fusion_test.sh // generate rus logits for each datapoint
 ```
+
+To train Qwen2 models for MUSTARD:
+
+```bash
+conda create -n py310 python=3.10
+conda activate py310
+
+cd ./expert_Qwen2
+pip install -r requirements.txt
+
+sh train_qwen_mustard.sh
+sh test_qwen_mustard.sh // generate prediction for each model for each datapoint
+
+cd ./expert_fusion
+sh mustard_fusion_train.sh
+sh mustard_fusion_test.sh // generate rus logits for each datapoint
+```
+To train ALBEF models for MUSTARD:
+
+```bash
+conda create -n py38 python=3.8
+conda activate py38
+
+cd ./expert_ALBEF
+# download base model weight from https://github.com/salesforce/ALBEF
+wget https://storage.googleapis.com/sfr-pcl-data-research/ALBEF/ALBEF.pth
+pip install -r requirements.txt
+
+sh scripts/all_mustard.sh
+```
+
 
 # Inference
 
