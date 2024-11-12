@@ -20,7 +20,7 @@ python train.py \
 --val_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --test_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --image_data_path ../mustard_data/data_raw/images \
---save_path ./1.5_qwen_mustard_AS_new_model \
+--save_path ./1.5_qwen_mustard_AS_model \
 --model_size 1.5 \
 --batch_size 1 \
 --eval_steps 25 \
@@ -35,7 +35,7 @@ python train.py \
 --val_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --test_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --image_data_path ../mustard_data/data_raw/images \
---save_path ./1.5_qwen_mustard_R_new_model \
+--save_path ./1.5_qwen_mustard_R_model \
 --model_size 1.5 \
 --batch_size 1 \
 --eval_steps 10 \
@@ -50,7 +50,7 @@ python train.py \
 --val_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --test_path ../mustard_data/data_raw/mustard_dataset_test.json \
 --image_data_path ../mustard_data/data_raw/images \
---save_path ./1.5_qwen_mustard_U_new_model \
+--save_path ./1.5_qwen_mustard_U_model \
 --model_size 1.5 \
 --batch_size 1 \
 --eval_steps 10 \

@@ -15,7 +15,6 @@ from funny import get_funny_dataloader
 from mmsd import get_mmsd_dataloader
 from mustard import get_mustard_dataloader
 from peft import LoraConfig, get_peft_model
-from sarc import get_sarc_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 import json
 import numpy as np
