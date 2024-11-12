@@ -5,13 +5,13 @@ import random
 import numpy as np
 import torch
 import torch.nn as nn
-from combine import get_combined_dataloader
-from irfl import get_irfl_dataloader
-from mmsd import get_mmsd_dataloader
+from transformers import AutoTokenizer, Blip2ForConditionalGeneration, AutoProcessor
+from torch.nn.parallel import DistributedDataParallel as DDP
+from tqdm import tqdm
+from peft import LoraConfig, get_peft_model, PeftModel
 from mustard import get_mustard_dataloader
-from nycartoon import get_nycartoon_dataloader
-from peft import LoraConfig, PeftModel, get_peft_model
-from sarc import get_sarc_dataloader
+from mmsd import get_mmsd_dataloader
+from urfunny import get_urfunny_dataloader
 from sklearn.metrics import f1_score, precision_score, recall_score
 from tqdm import tqdm
 from transformers import (AutoProcessor, AutoTokenizer,
@@ -346,25 +346,9 @@ if __name__ == "__main__":
         model.to(device)
 
         if args.dataset == "mustard":
-            train_dataloader = get_mustard_dataloader(
-                args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_mustard_dataloader(
-                args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_mustard_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-        elif args.dataset == "sarc":
-            train_dataloader = get_sarc_dataloader(
-                args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_sarc_dataloader(
-                args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_sarc_dataloader(
-                args, tokenizer, processor, split="test"
-            )
+            train_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_mustard_dataloader(args, tokenizer, processor, split="test")
         elif args.dataset == "mmsd":
             train_dataloader = get_mmsd_dataloader(
                 args, tokenizer, processor, split="train"
@@ -376,64 +360,10 @@ if __name__ == "__main__":
                 args, tokenizer, processor, split="test"
             )
         elif args.dataset == "urfunny":
-            train_dataloader = get_urfunny_dataloader(
-                args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_urfunny_dataloader(
-                args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_urfunny_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-        elif args.dataset == "nycartoon":
-            train_dataloader = get_nycartoon_dataloader(
-                args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_nycartoon_dataloader(
-                args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_nycartoon_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-        elif args.dataset == "irfl":
-            train_dataloader = get_irfl_dataloader(
-                args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_irfl_dataloader(
-                args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_irfl_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-        elif args.dataset == "combined":
-            train_configs = create_dataset_configs(
-                args.combined_dataset_names,
-                args.combined_train_paths,
-                args.combined_image_data_paths,
-                args.combined_max_lengths,
-            )
-            val_configs = create_dataset_configs(
-                args.combined_dataset_names,
-                args.combined_val_paths,
-                args.combined_image_data_paths,
-                args.combined_max_lengths,
-            )
-            test_configs = create_dataset_configs(
-                args.combined_dataset_names,
-                args.combined_test_paths,
-                args.combined_image_data_paths,
-                args.combined_max_lengths,
-            )
-            train_dataloader = get_combined_dataloader(
-                train_configs, args, tokenizer, processor, split="train"
-            )
-            val_dataloader = get_combined_dataloader(
-                val_configs, args, tokenizer, processor, split="val"
-            )
-            test_dataloader = get_combined_dataloader(
-                test_configs, args, tokenizer, processor, split="test"
-            )
-
+            train_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="train")
+            val_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="val")
+            test_dataloader = get_urfunny_dataloader(args, tokenizer, processor, split="test")
+        
         train(model, train_dataloader, val_dataloader, tokenizer, device, args)
 
         model = PeftModel.from_pretrained(model, args.save_path, is_trainable=True).to(
@@ -466,33 +396,9 @@ if __name__ == "__main__":
             with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
                 json.dump(yesno_logits, f)
             print(acc, f1, precision, recall)
-
-        elif args.test_dataset == "sarc":
-            test_dataloader = get_sarc_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-            acc, f1, precision, recall, yesno_logits = evaluate(
-                tokenizer, model, test_dataloader, device, args
-            )
-            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
-                json.dump(yesno_logits, f)
-            print(acc, f1, precision, recall)
-
-        elif args.test_dataset == "nycartoon":
-            test_dataloader = get_nycartoon_dataloader(
-                args, tokenizer, processor, split="test"
-            )
-            acc, f1, precision, recall, yesno_logits = evaluate(
-                tokenizer, model, test_dataloader, device, args
-            )
-            with open(f"./{args.load_model_name}/test_yesno_logits.json", "w") as f:
-                json.dump(yesno_logits, f)
-            print(acc, f1, precision, recall)
-
-        elif args.test_dataset == "irfl":
-            test_dataloader = get_irfl_dataloader(
-                args, tokenizer, processor, split="test"
-            )
+        
+        elif args.test_dataset == "mmsd":
+            test_dataloader = get_mmsd_dataloader(args, tokenizer, processor, split="test")
             acc, f1, precision, recall, yesno_logits = evaluate(
                 tokenizer, model, test_dataloader, device, args
             )
