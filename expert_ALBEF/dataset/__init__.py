@@ -1,45 +1,91 @@
 import torch
+from dataset.bi_cls_dataset import bi_cls_dataset
+from dataset.mustard_dataset import mustard_test_dataset, mustard_train_dataset
+from dataset.randaugment import RandomAugment
+from dataset.sarc_detect_dataset import (sarc_detect_test_dataset,
+                                         sarc_detect_train_dataset)
+from dataset.urfunny_dataset import urfunny_test_dataset, urfunny_train_dataset
+from datasets import load_dataset
+from PIL import Image
 from torch.utils.data import DataLoader
 from torchvision import transforms
-from PIL import Image
-from datasets import load_dataset
-
-from dataset.bi_cls_dataset import bi_cls_dataset
-from dataset.sarc_detect_dataset import sarc_detect_train_dataset, sarc_detect_test_dataset
-from dataset.mustard_dataset import mustard_train_dataset, mustard_test_dataset
-from dataset.urfunny_dataset import urfunny_train_dataset, urfunny_test_dataset
-from dataset.randaugment import RandomAugment
 
 
 def create_dataset(dataset, config):
-    
-    normalize = transforms.Normalize((0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711))
-    
-    pretrain_transform = transforms.Compose([                        
-            transforms.RandomResizedCrop(config['image_res'],scale=(0.2, 1.0), interpolation=Image.BICUBIC),
+    normalize = transforms.Normalize(
+        (0.48145466, 0.4578275, 0.40821073), (0.26862954, 0.26130258, 0.27577711)
+    )
+
+    pretrain_transform = transforms.Compose(
+        [
+            transforms.RandomResizedCrop(
+                config["image_res"], scale=(0.2, 1.0), interpolation=Image.BICUBIC
+            ),
             transforms.RandomHorizontalFlip(),
-            RandomAugment(2,7,isPIL=True,augs=['Identity','AutoContrast','Equalize','Brightness','Sharpness',
-                                              'ShearX', 'ShearY', 'TranslateX', 'TranslateY', 'Rotate']),   
+            RandomAugment(
+                2,
+                7,
+                isPIL=True,
+                augs=[
+                    "Identity",
+                    "AutoContrast",
+                    "Equalize",
+                    "Brightness",
+                    "Sharpness",
+                    "ShearX",
+                    "ShearY",
+                    "TranslateX",
+                    "TranslateY",
+                    "Rotate",
+                ],
+            ),
             transforms.ToTensor(),
             normalize,
-        ])    
-    train_transform = transforms.Compose([                        
-            transforms.RandomResizedCrop(config['image_res'],scale=(0.5, 1.0), interpolation=Image.BICUBIC),
+        ]
+    )
+    train_transform = transforms.Compose(
+        [
+            transforms.RandomResizedCrop(
+                config["image_res"], scale=(0.5, 1.0), interpolation=Image.BICUBIC
+            ),
             transforms.RandomHorizontalFlip(),
-            RandomAugment(2,7,isPIL=True,augs=['Identity','AutoContrast','Equalize','Brightness','Sharpness',
-                                              'ShearX', 'ShearY', 'TranslateX', 'TranslateY', 'Rotate']),     
+            RandomAugment(
+                2,
+                7,
+                isPIL=True,
+                augs=[
+                    "Identity",
+                    "AutoContrast",
+                    "Equalize",
+                    "Brightness",
+                    "Sharpness",
+                    "ShearX",
+                    "ShearY",
+                    "TranslateX",
+                    "TranslateY",
+                    "Rotate",
+                ],
+            ),
             transforms.ToTensor(),
             normalize,
-        ])  
-    test_transform = transforms.Compose([
-        transforms.Resize((config['image_res'],config['image_res']),interpolation=Image.BICUBIC),
-        transforms.ToTensor(),
-        normalize,
-        ])   
-    
-    if dataset=='bi-cls':
-        train_transform = transforms.Compose([                        
-                transforms.RandomResizedCrop(config['image_res'],scale=(0.5, 1.0), interpolation=Image.BICUBIC),
+        ]
+    )
+    test_transform = transforms.Compose(
+        [
+            transforms.Resize(
+                (config["image_res"], config["image_res"]), interpolation=Image.BICUBIC
+            ),
+            transforms.ToTensor(),
+            normalize,
+        ]
+    )
+
+    if dataset == "bi-cls":
+        train_transform = transforms.Compose(
+            [
+                transforms.RandomResizedCrop(
+                    config["image_res"], scale=(0.5, 1.0), interpolation=Image.BICUBIC
+                ),
                 transforms.Grayscale(num_output_channels=3),
                 transforms.RandomHorizontalFlip(),
                 RandomAugment(
@@ -61,24 +107,36 @@ def create_dataset(dataset, config):
                 ),
                 transforms.ToTensor(),
                 normalize,
-            ])  
-        test_transform = transforms.Compose([
-            transforms.Resize((config['image_res'],config['image_res']),interpolation=Image.BICUBIC),
-            transforms.Grayscale(num_output_channels=3),
-            transforms.ToTensor(),
-            normalize,
-            ])   
-        dataset = load_dataset(*config['dataset_args'])
-        train_dataset = bi_cls_dataset(dataset['train'], train_transform)  
-        val_dataset = bi_cls_dataset(dataset['validation'], test_transform)  
-        test_dataset = bi_cls_dataset(dataset['test'], test_transform)                
+            ]
+        )
+        test_transform = transforms.Compose(
+            [
+                transforms.Resize(
+                    (config["image_res"], config["image_res"]),
+                    interpolation=Image.BICUBIC,
+                ),
+                transforms.Grayscale(num_output_channels=3),
+                transforms.ToTensor(),
+                normalize,
+            ]
+        )
+        dataset = load_dataset(*config["dataset_args"])
+        train_dataset = bi_cls_dataset(dataset["train"], train_transform)
+        val_dataset = bi_cls_dataset(dataset["validation"], test_transform)
+        test_dataset = bi_cls_dataset(dataset["test"], test_transform)
         return train_dataset, val_dataset, test_dataset
-    
-    elif dataset=='sarc-detect':   
-        train_dataset = sarc_detect_train_dataset(config['train_file'], train_transform, config['image_root'])  
-        val_dataset = sarc_detect_test_dataset(config['val_file'], test_transform, config['image_root'])  
-        test_dataset = sarc_detect_test_dataset(config['test_file'], test_transform, config['image_root'])                
-        return train_dataset, val_dataset, test_dataset 
+
+    elif dataset == "sarc-detect":
+        train_dataset = sarc_detect_train_dataset(
+            config["train_file"], train_transform, config["image_root"]
+        )
+        val_dataset = sarc_detect_test_dataset(
+            config["val_file"], test_transform, config["image_root"]
+        )
+        test_dataset = sarc_detect_test_dataset(
+            config["test_file"], test_transform, config["image_root"]
+        )
+        return train_dataset, val_dataset, test_dataset
 
     elif dataset == "sarc-detect":
         train_dataset = sarc_detect_train_dataset(
